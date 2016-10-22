@@ -1,0 +1,14 @@
+{
+  "name": "leetcode",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "Suguru Motegi",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "devDependencies": {
+    "lodash": "^4.16.4",
+    "mocha": "^3.1.2"
+  }
+}

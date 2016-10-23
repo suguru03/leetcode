@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const addTwoNumbers = require('./addTwoNumbers');
+const addTwoNumbers = require('./');
 class LinkNode {
   constructor(val) {
     this.val = val;

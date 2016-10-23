@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const twoSum = require('./twoSum');
+const twoSum = require('./');
 
 describe('#twoSum', () => {
 

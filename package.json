@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "lodash": "^4.16.4",
+    "minimist": "^1.2.0",
     "mocha": "^3.1.2"
   }
 }

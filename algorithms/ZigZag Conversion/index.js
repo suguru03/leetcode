@@ -1,13 +1,13 @@
 'use strict';
 
-module.exports = zigZagConversion;
+module.exports = convert;
 
 /**
  * @param {string} s
  * @param {number} numRows
  * @return {string}
  */
-function zigZagConversion(s, numRows) {
+function convert(s, numRows) {
 
   const ha = numRows - 1;
   const a = 2 * ha;

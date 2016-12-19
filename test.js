@@ -1,5 +1,4 @@
 'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
@@ -7,7 +6,6 @@ const _ = require('lodash');
 const argv = require('minimist')(process.argv.slice(2));
 const target = argv.target || argv.t;
 const reg = new RegExp(`${target||'.*'}`);
-console.log(reg);
 const selfpath = path.resolve(__dirname, 'test.js');
 
 (function resolve(dirpath, _exports) {

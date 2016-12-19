@@ -10,15 +10,10 @@ const MIN = -2147483648;
  * @return {number}
  */
 function reverse(x) {
-  const x0 = Math.abs(x);
-  const xs = x0 + '';
-  let l = xs.length;
   let result = 0;
-  while (l--) {
-    result += +xs[l] * Math.pow(10, l);
-  }
-  if (x < 0) {
-    result *= -1;
+  while (x !== 0) {
+    result = result * 10 + (x % 10 | 0);
+    x = x / 10 | 0;
   }
   if (result > MAX || result < MIN) {
     return 0;

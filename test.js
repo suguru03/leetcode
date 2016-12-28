@@ -6,19 +6,15 @@ const _ = require('lodash');
 const argv = require('minimist')(process.argv.slice(2));
 const target = argv.target || argv.t;
 const reg = new RegExp(`${target||'.*'}`);
-const selfpath = path.resolve(__dirname, 'test.js');
 
-(function resolve(dirpath, _exports) {
+(function resolve(dirpath) {
   _.forEach(fs.readdirSync(dirpath), filename => {
     const filepath = path.resolve(dirpath, filename);
-    if (/^(node_modules|.git)$/.test(filename) || selfpath === filepath) {
-      return;
-    }
     if (fs.statSync(filepath).isDirectory()) {
-      return resolve(filepath, _exports[filename] = {});
+      return resolve(filepath);
     }
     if (/^test(.*).js$/.test(filename) && reg.test(filepath)) {
       require(filepath);
     }
   });
-})(__dirname, exports);
+})(path.resolve(__dirname, 'algorithms'));

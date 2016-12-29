@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = romanToInt;
+module.exports = { romanToInt, romanToInt2 };
 
 const hash = {
   I: 1,

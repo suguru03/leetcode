@@ -5,7 +5,7 @@ const twoSum = require('./');
 
 describe('#twoSum', () => {
 
-  it ('nums = [2, 7, 11, 15], target = 9', () => {
+  it('nums = [2, 7, 11, 15], target = 9', () => {
     const nums = [2, 7, 11, 15];
     const target = 9;
     assert.deepEqual(twoSum(nums, target), [0, 1]);

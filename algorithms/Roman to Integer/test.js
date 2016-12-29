@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const romanToInt = require('./');
+const { romanToInt } = require('./');
 
 describe('#RomanToInt', () => {
 

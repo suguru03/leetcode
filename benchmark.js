@@ -4,7 +4,7 @@ const vm = require('vm');
 const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
-const Benchmark = require('benchmark');
+const { Suite } = require('benchmark');
 
 const argv = require('minimist')(process.argv.slice(2));
 const target = argv.target || argv.t || '';
@@ -38,30 +38,33 @@ global.describe = (name, func) => {
 const testpath = path.resolve(__dirname, 'test.js');
 vm.runInNewContext(fs.readFileSync(testpath), context);
 
-const suite = new Benchmark.Suite();
 
 _.forOwn(targets, ({ tasks, funcs }, name) => {
   if (!_.isPlainObject(funcs)) {
     return;
   }
+  const suite = new Suite();
   const task = _.sample(tasks);
   // TODO two arguments
   const arg = _.find(task, (value, key) => key !== 'result');
-  console.log(`name:${name}, task:${JSON.stringify(task, null, 2)}`);
+  console.log(`\n${name}, task:${JSON.stringify(task, null, 2)}`);
   _.forOwn(funcs, func => suite.add(func.name, () => func(arg)));
+
+  suite.on('complete', ({ currentTarget }) => {
+    let nameLength = 0;
+    _.chain(currentTarget)
+      .map(({ name, stats, error }) => {
+        nameLength = Math.max(name.length, nameLength);
+        const { mean } = stats;
+        return { name, mean, error };
+      })
+      .sortBy('mean')
+      .forEach(({ name, mean, error }, index) => {
+        console.log(`[${++index}]${name}${Array(nameLength - name.length + 2).join(' ')}${error||mean}`);
+      })
+      .value();
+
+  })
+  .run();
 });
 
-suite.on('complete', ({ currentTarget }) => {
-  _.chain(currentTarget)
-    .map(({ name, stats, error }) => {
-      const { mean } = stats;
-      return { name, mean, error };
-    })
-    .sortBy('mean')
-    .forEach(({ name, mean, error }, index) => {
-      console.log(`[${++index}]${name}\t${error||mean}`);
-    })
-    .value();
-
-})
-.run();

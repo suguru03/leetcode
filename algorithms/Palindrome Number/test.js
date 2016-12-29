@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const isPalindrome = require('./');
+const { isPalindrome } = require('./');
 
 describe('#PalindromeNumber', () => {
 

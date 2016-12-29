@@ -11,9 +11,8 @@ const target = argv.target || argv.t || '';
 const reg = new RegExp(`(?=.*${__dirname})` + (target ? `(?=.*${target})` : ''));
 
 const targets = {};
-const context = global;
-context.__dirname = __dirname;
-context.require = name => {
+global.__dirname = __dirname;
+global.require = name => {
   const file = require(name);
   if (reg.test(name)) {
     const testpath = path.resolve(name, '..');
@@ -36,7 +35,7 @@ global.describe = (name, func) => {
 };
 
 const testpath = path.resolve(__dirname, 'test.js');
-vm.runInNewContext(fs.readFileSync(testpath), context);
+vm.runInThisContext(fs.readFileSync(testpath));
 
 
 _.forOwn(targets, ({ tasks, funcs }, name) => {

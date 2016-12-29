@@ -44,16 +44,25 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
   }
   const suite = new Suite();
   const task = _.sample(tasks);
+  const { result } = task;
   // TODO two arguments
-  const arg = _.find(task, (value, key) => key !== 'result');
+  const arg = _.find(task, value => value !== result);
   console.log(`\n${name}, task:${JSON.stringify(task, null, 2)}`);
-  _.forOwn(funcs, func => suite.add(func.name, () => func(arg)));
+  _.forOwn(funcs, func => {
+    if (!_.isEqual(func(arg), result)) {
+      throw new Error(`Failed ${func.name}`);
+    }
+    suite.add(func.name, () => func(arg));
+  });
 
   suite.on('complete', ({ currentTarget }) => {
-    let nameLength = 0;
+    const nameLength = _.chain(currentTarget)
+      .map(({ name }) => name.length)
+      .max()
+      .value();
+
     _.chain(currentTarget)
       .map(({ name, stats, error }) => {
-        nameLength = Math.max(name.length, nameLength);
         const { mean } = stats;
         return { name, mean, error };
       })

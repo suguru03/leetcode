@@ -7,8 +7,8 @@ const _ = require('lodash');
 const Benchmark = require('benchmark');
 
 const argv = require('minimist')(process.argv.slice(2));
-const target = argv.target || argv.t;
-const reg = new RegExp(`${target||'.*'}`);
+const target = argv.target || argv.t || '';
+const reg = new RegExp(`(?=.*${__dirname})` + (target ? `(?=.*${target})` : ''));
 
 const targets = {};
 const context = global;
@@ -18,7 +18,7 @@ context.require = name => {
   if (reg.test(name)) {
     const testpath = path.resolve(name, '..');
     const keyReg = new RegExp(testpath.split('/').pop().split(' ').shift());
-    const key = _.findKey(targets, keyReg);
+    const key = _.findKey(targets, (func, key) => keyReg.test(key));
     if (!key) {
       console.log(`Not found ${keyReg}`);
     } else {

@@ -5,7 +5,8 @@
   "author": "Suguru Motegi",
   "license": "MIT",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "benchmark": "node benchmark"
   },
   "devDependencies": {
     "benchmark": "^2.1.3",

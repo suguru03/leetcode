@@ -20,15 +20,14 @@ function longestCommonPrefix(strs) {
 }
 
 function getPrefixLength(s1, s2, min) {
-  let l = Math.min(s1.length, s2.length, min);
-  while (l) {
-    const i = l - 1;
-    if (s1[i] === s2[i]) {
+  let i = -1;
+  const l = Math.min(s1.length, s2.length, min);
+  while (++i < l) {
+    if (s1[i] !== s2[i]) {
       break;
     }
-    l--;
   }
-  return l;
+  return i;
 }
 
 /**

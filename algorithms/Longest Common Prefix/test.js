@@ -21,6 +21,9 @@ describe('#LongestCommonPrefix', () => {
   }, {
     strs: ['abbbbb', 'ab', 'abc', 'abcd', 'abcdea', 'abcdef', 'abcdef'],
     result: 'ab'
+  }, {
+    strs: ['aca', 'cba'],
+    result: ''
   }];
 
   _.forEach(tests, ({ strs, result }) => {

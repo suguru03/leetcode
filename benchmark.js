@@ -7,7 +7,7 @@ const _ = require('lodash');
 const { Suite } = require('benchmark');
 
 const argv = require('minimist')(process.argv.slice(2));
-const target = argv.target || argv.t || '';
+const target = argv.target || argv.t;
 const reg = new RegExp(`(?=.*${__dirname})` + (target ? `(?=.*${target})` : ''));
 
 const targets = {};
@@ -16,7 +16,7 @@ global.require = name => {
   const file = require(name);
   if (reg.test(name)) {
     const testpath = path.resolve(name, '..');
-    const keyReg = new RegExp(testpath.split('/').pop().split(' ').shift());
+    const keyReg = new RegExp(testpath.split('/').pop().split(' ').join(''));
     const key = _.findKey(targets, (func, key) => keyReg.test(key));
     if (!key) {
       console.log(`Not found ${keyReg}`);
@@ -36,7 +36,6 @@ global.describe = (name, func) => {
 
 const testpath = path.resolve(__dirname, 'test.js');
 vm.runInThisContext(fs.readFileSync(testpath));
-
 
 _.forOwn(targets, ({ tasks, funcs }, name) => {
   if (!_.isPlainObject(funcs)) {

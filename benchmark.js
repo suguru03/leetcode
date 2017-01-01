@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const _ = require('lodash');
 const { Suite } = require('benchmark');
+const util = require('./algorithms/util');
 
 const argv = require('minimist')(process.argv.slice(2));
 const target = argv.target || argv.t;
@@ -29,8 +30,11 @@ global.require = name => {
 
 global.describe = (name, func) => {
   const str = `(${func.toString()})()`;
-  const forEach = tasks => targets[name] = { tasks };
-  const context = { console, _: { forEach }, it: _.noop };
+  const forEach = (tasks, iterator) => {
+    _.forEach(tasks, iterator);
+    targets[name] = { tasks };
+  };
+  const context = Object.assign({ console, it: _.noop, _: { forEach } }, util);
   vm.runInNewContext(str, context);
 };
 

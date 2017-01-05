@@ -9,19 +9,23 @@ const util = require('./algorithms/util');
 
 const argv = require('minimist')(process.argv.slice(2));
 const target = argv.target || argv.t;
-const reg = new RegExp(`(?=.*${__dirname})` + (target ? `(?=.*${target})` : ''));
+const baseReStr = `(?=.*${__dirname})` + (target ? `(?=.*${target})` : '');
+const re = {
+  target: new RegExp(baseReStr),
+  trace: new RegExp(`${baseReStr}(?=.*test.js)`),
+  match: /^.*algorithms\/(.*)\/test.js/
+};
 
 const targets = {};
 global.__dirname = __dirname;
 global.require = name => {
   const file = require(name);
-  if (reg.test(name)) {
-    const testpath = path.resolve(name, '..');
-    const keyReg = new RegExp(testpath.split('/').pop().split(' ').join(''));
-    const key = _.findKey(targets, (func, key) => keyReg.test(key));
-    if (!key) {
-      console.log(`Not found ${keyReg}`);
+  if (re.target.test(name)) {
+    const key = _.get(name.match(re.match), [1]);
+    if (!key || !targets[key]) {
+      console.log(`Not found ${key}`);
     } else {
+      const testpath = path.resolve(name, '..');
       targets[key].funcs = require(testpath);
     }
   }
@@ -32,7 +36,16 @@ global.describe = (name, func) => {
   const str = `(${func.toString()})()`;
   const forEach = (tasks, iterator) => {
     _.forEach(tasks, iterator);
-    targets[name] = { tasks };
+    const traces = new Error().stack.split(/\n/g);
+    const targetTrace = _.find(traces, trace => re.trace.test(trace));
+    if (!targetTrace) {
+      return;
+    }
+    const key = _.get(targetTrace.match(re.match), [1]);
+    if (!key) {
+      return;
+    }
+    targets[key] = { tasks };
   };
   const context = Object.assign({ console, it: _.noop, _: { forEach } }, util);
   vm.runInNewContext(str, context);
@@ -42,7 +55,7 @@ const testpath = path.resolve(__dirname, 'test.js');
 vm.runInThisContext(fs.readFileSync(testpath));
 
 _.forOwn(targets, ({ tasks, funcs }, name) => {
-  if (!_.isPlainObject(funcs)) {
+  if (!_.isPlainObject(funcs) || _.size(funcs) < 2) {
     return;
   }
   const suite = new Suite();

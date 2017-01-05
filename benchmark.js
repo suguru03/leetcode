@@ -63,7 +63,7 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
   const { result } = task;
   // TODO two arguments
   const arg = _.find(task, value => value !== result);
-  console.log(`\n${name}, task:${JSON.stringify(task, null, 2)}`);
+  console.log(`\nname: ${name} \ntask: ${JSON.stringify(task, null, 2)}`);
   _.forOwn(funcs, func => {
     if (!_.isEqual(func(arg), result)) {
       throw new Error(`Failed ${func.name}`);

@@ -13,7 +13,11 @@ const baseReStr = `(?=.*${__dirname})` + (target ? `(?=.*${target})` : '');
 const re = {
   target: new RegExp(baseReStr),
   trace: new RegExp(`${baseReStr}(?=.*test.js)`),
-  match: /^.*algorithms\/(.*)\/test.js/
+  match: /^.*algorithms\/(.*)\/test.js/,
+  funcArgs: /^(function)?\s*[^\(]*\(\s*([^\)]*)\)/m,
+  funcArgSplit: /,/,
+  funcArg: /(=.+)?(\s*)$/,
+  stripComments: /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg
 };
 
 const targets = {};
@@ -61,14 +65,17 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
   const suite = new Suite();
   const task = _.sample(tasks);
   const { result } = task;
-  // TODO two arguments
-  const arg = _.find(task, value => value !== result);
   console.log(`\nname: ${name} \ntask: ${JSON.stringify(task, null, 2)}`);
   _.forOwn(funcs, func => {
-    if (!_.isEqual(func(arg), result)) {
-      throw new Error(`Failed ${func.name}`);
+    const { name } = func;
+    const args = _.chain(task)
+      .pick(parseArgs(func.toString()))
+      .toArray()
+      .value();
+    if (!_.isEqual(func.apply(null, args), result)) {
+      throw new Error(`Failed ${name}`);
     }
-    suite.add(func.name, () => func(arg));
+    suite.add(name, () => func.apply(null, args));
   });
 
   suite.on('complete', ({ currentTarget }) => {
@@ -92,3 +99,9 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
   .run();
 });
 
+function parseArgs(code) {
+  code = code.replace(re.stripComments, '');
+  code = code.match(re.funcArgs)[2].replace(' ', '');
+  code = code ? code.split(re.funcArgSplit) : [];
+  return code.map(arg => arg.replace(re.funcArg, '').trim());
+}

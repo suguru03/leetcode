@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = twoSum;
+module.exports = { twoSum };
 
 /**
  * @param {number[]} nums

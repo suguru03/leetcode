@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { removeElement, removeElement2 };
+module.exports = { removeElement, removeElement2, removeElement3 };
 
 /**
  * @param {number[]} nums
@@ -24,17 +24,34 @@ function removeElement(nums, val) {
  * @return {number}
  */
 function removeElement2(nums, val) {
-  let l = nums.length;
+  const l = nums.length;
+  let i = l;
   let count = 0;
-  while (l--) {
-    const n = nums[l];
-    if (n !== val) {
+  while (i--) {
+    if (nums[i] !== val) {
       continue;
     }
-    const j = nums.length - ++count;
-    nums[l] = nums[j];
-    nums[j] = n;
+    nums[i] = nums[l - ++count];
   }
-  nums.length = nums.length - count;
+  nums.length = l - count;
+  return nums.length;
+}
+
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+function removeElement3(nums, val) {
+  const l = nums.length;
+  let i = l;
+  let count = 0;
+  while (i--) {
+    if (nums[i] !== val) {
+      continue;
+    }
+    nums[i] = nums[l - ++count];
+    nums.length--;
+  }
   return nums.length;
 }

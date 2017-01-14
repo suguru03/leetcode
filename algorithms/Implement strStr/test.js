@@ -15,9 +15,17 @@ describe('#strStr', () => {
     needle: '',
     result: 0
   }, {
+    haystack: 'aaa',
+    needle: 'aab',
+    result: -1
+  }, {
     haystack: '',
     needle: 'a',
     result: -1
+  }, {
+    haystack: 'abaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadefefeggg',
+    needle: 'eggg',
+    result: 56
   }];
 
   _.forEach(tests, ({ haystack, needle, result }) => {

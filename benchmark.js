@@ -9,6 +9,7 @@ const util = require('./algorithms/util');
 
 const argv = require('minimist')(process.argv.slice(2));
 const target = argv.target || argv.t;
+const index = argv.index || argv.i;
 const baseReStr = `(?=.*${__dirname})` + (target ? `(?=.*${target})` : '');
 const re = {
   target: new RegExp(baseReStr),
@@ -63,7 +64,7 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
     return;
   }
   const suite = new Suite();
-  const task = _.sample(tasks);
+  const task = index >= 0 ? tasks[index] : _.sample(tasks);
   const { result } = task;
   console.log(`\nname: ${name} \ntask: ${JSON.stringify(task, null, 2)}`);
   _.forOwn(funcs, func => {

@@ -1,6 +1,6 @@
 ## 485. Max Consecutive Ones
 
-https://leetcode.com/contest/leetcode-weekly-contest-15/problems/max-consecutive-ones/
+https://leetcode.com/problems/max-consecutive-ones/
 
 Given a binary array, find the maximum number of consecutive 1s in this array.
 

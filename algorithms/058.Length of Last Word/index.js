@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { lengthOfLastWord };
+module.exports = { lengthOfLastWord, lengthOfLastWord2 };
 
 /**
  * @param {string} s
@@ -16,4 +16,23 @@ function lengthOfLastWord(s) {
     }
   }
   return 0;
+}
+
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+function lengthOfLastWord2(s) {
+  s = s.trimRight();
+  let l = s.length;
+  let result = 0;
+  while (l--) {
+    const c = s[l];
+    if (c === ' ') {
+      break;
+    }
+    result++;
+  }
+  return result;
 }

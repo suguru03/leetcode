@@ -6,7 +6,7 @@ const _ = require('lodash');
 const argv = require('minimist')(process.argv.slice(2));
 const target = argv.target || argv.t || '.*';
 const mainpath = path.resolve(__dirname, 'algorithms');
-const re = new RegExp(`${mainpath}/${target}`);
+const re = new RegExp(`${target}`);
 
 (function resolve(dirpath) {
   _.forEach(fs.readdirSync(dirpath), filename => {

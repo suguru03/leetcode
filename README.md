@@ -40,6 +40,7 @@ $ mocha test -t Roman
 |038|[Count and Say](https://github.com/suguru03/leetcode/tree/master/algorithms/038.Count and Say)|
 |058|[Length of Last Word](https://github.com/suguru03/leetcode/tree/master/algorithms/058.Length of Last Word)|
 |066|[Plus One](https://github.com/suguru03/leetcode/tree/master/algorithms/066.Plus One)|
+|204|[Count Primes](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count Primes)|
 |485|[Max Consecutive Ones](https://github.com/suguru03/leetcode/tree/master/algorithms/485.Max Consecutive Ones)|
 |487|[Max Consecutive Ones II](https://github.com/suguru03/leetcode/tree/master/algorithms/487.Max Consecutive Ones II)|
 |488|[ Zuma Game](https://github.com/suguru03/leetcode/tree/master/algorithms/488. Zuma Game)|

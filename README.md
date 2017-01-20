@@ -42,6 +42,7 @@ $ mocha test -t Roman
 |066|[Plus One](https://github.com/suguru03/leetcode/tree/master/algorithms/066.Plus One)|
 |067|[Add Binary](https://github.com/suguru03/leetcode/tree/master/algorithms/067.Add Binary)|
 |204|[Count Primes](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count Primes)|
+|344|[Reverse String](https://github.com/suguru03/leetcode/tree/master/algorithms/344.Reverse String)|
 |485|[Max Consecutive Ones](https://github.com/suguru03/leetcode/tree/master/algorithms/485.Max Consecutive Ones)|
 |487|[Max Consecutive Ones II](https://github.com/suguru03/leetcode/tree/master/algorithms/487.Max Consecutive Ones II)|
 |488|[Zuma Game](https://github.com/suguru03/leetcode/tree/master/algorithms/488.Zuma Game)|

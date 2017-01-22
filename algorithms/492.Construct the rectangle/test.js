@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { constructRectangle } = require('./');
+const { constructRectangle2: constructRectangle } = require('./');
 
 describe('#constructRectangle', () => {
 

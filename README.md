@@ -35,6 +35,7 @@ $ mocha test -t Roman
 |026|[Remove Duplicates from Sorted Array](https://github.com/suguru03/leetcode/tree/master/algorithms/026.Remove Duplicates from Sorted Array)|
 |027|[Remove Element](https://github.com/suguru03/leetcode/tree/master/algorithms/027.Remove Element)|
 |028|[Implement strStr](https://github.com/suguru03/leetcode/tree/master/algorithms/028.Implement strStr)|
+|035|[Search Insert Position](https://github.com/suguru03/leetcode/tree/master/algorithms/035.Search Insert Position)|
 |036|[Valid Sudoku](https://github.com/suguru03/leetcode/tree/master/algorithms/036.Valid Sudoku)|
 |038|[Count and Say](https://github.com/suguru03/leetcode/tree/master/algorithms/038.Count and Say)|
 |058|[Length of Last Word](https://github.com/suguru03/leetcode/tree/master/algorithms/058.Length of Last Word)|
@@ -46,4 +47,6 @@ $ mocha test -t Roman
 |486|[Predict the Winner](https://github.com/suguru03/leetcode/tree/master/algorithms/486.Predict the Winner)|
 |487|[Max Consecutive Ones II](https://github.com/suguru03/leetcode/tree/master/algorithms/487.Max Consecutive Ones II)|
 |488|[Zuma Game](https://github.com/suguru03/leetcode/tree/master/algorithms/488.Zuma Game)|
+|491|[B](https://github.com/suguru03/leetcode/tree/master/algorithms/491.B)|
+|492|[C](https://github.com/suguru03/leetcode/tree/master/algorithms/492.C)|
 |492|[Construct the rectangle](https://github.com/suguru03/leetcode/tree/master/algorithms/492.Construct the rectangle)|

@@ -6,7 +6,7 @@ const path = require('path');
 const _ = require('lodash');
 
 const basepath = path.resolve(__dirname, 'algorithms');
-const base = fs.readFileSync(path.resolve(__dirname, '_README.md'), 'utf8');
+const base = fs.readFileSync(path.resolve(__dirname, 'templete', 'README.md'), 'utf8');
 
 const re = /^(?!\d)/;
 const tasks = _.chain(fs.readdirSync(basepath))
@@ -16,7 +16,7 @@ const tasks = _.chain(fs.readdirSync(basepath))
     return {
       num: parts[0],
       name: parts[1],
-      url: `https://github.com/suguru03/leetcode/tree/master/algorithms/${dirname}`
+      url: `https://github.com/suguru03/leetcode/tree/master/algorithms/${dirname.replace(/\s/g, '%20')}`
     };
   })
   .orderBy(['num', 'desc'])

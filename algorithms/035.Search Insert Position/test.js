@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { searchInsert } = require('./');
+const { searchInsert1: searchInsert } = require('./');
 
 describe('#searchInsert', () => {
 

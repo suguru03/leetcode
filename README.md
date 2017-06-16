@@ -38,6 +38,7 @@ $ mocha test -t Roman
 |035|[Search Insert Position](https://github.com/suguru03/leetcode/tree/master/algorithms/035.Search%20Insert%20Position)|
 |036|[Valid Sudoku](https://github.com/suguru03/leetcode/tree/master/algorithms/036.Valid%20Sudoku)|
 |038|[Count and Say](https://github.com/suguru03/leetcode/tree/master/algorithms/038.Count%20and%20Say)|
+|042|[Trapping Rain Water](https://github.com/suguru03/leetcode/tree/master/algorithms/042.Trapping%20Rain%20Water)|
 |058|[Length of Last Word](https://github.com/suguru03/leetcode/tree/master/algorithms/058.Length%20of%20Last%20Word)|
 |066|[Plus One](https://github.com/suguru03/leetcode/tree/master/algorithms/066.Plus%20One)|
 |067|[Add Binary](https://github.com/suguru03/leetcode/tree/master/algorithms/067.Add%20Binary)|

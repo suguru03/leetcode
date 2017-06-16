@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { trap } = require('./');
+const { trap2: trap } = require('./');
 
 describe('#trap', () => {
 

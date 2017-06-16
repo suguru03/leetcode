@@ -70,6 +70,7 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
   _.forOwn(funcs, func => {
     const { name } = func;
     const args = _.chain(task)
+      .mapValues(_.clone)
       .pick(parseArgs(func.toString()))
       .toArray()
       .value();

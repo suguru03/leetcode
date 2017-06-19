@@ -19,7 +19,10 @@ describe('#isValid', () => {
     s: '([])]',
     result: false
   }, {
-    s: 'abacaadfa',
+    s: '({[}])',
+    result: false
+  }, {
+    s: '(([[{}]{}{}]))',
     result: true
   }];
 

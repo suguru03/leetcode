@@ -7,7 +7,6 @@ const hash = {
   '}': '{',
   ']': '['
 };
-const reg = new RegExp(/(\(|\{|\[)/);
 
 /**
  * @param {string} s
@@ -21,9 +20,6 @@ function isValid(s) {
     const pair = hash[c];
     if (pair) {
       list.push(pair);
-      continue;
-    }
-    if (!reg.test(c)) {
       continue;
     }
     const p = list.pop();

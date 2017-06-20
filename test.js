@@ -1,10 +1,18 @@
 'use strict';
+
 const fs = require('fs');
 const path = require('path');
+const assert = require('assert');
+const cp = require('child_process');
+
 const _ = require('lodash');
+const Aigle = require('aigle');
+const exec = Aigle.promisify(cp.exec);
 
 const argv = require('minimist')(process.argv.slice(2));
+
 const target = argv.target || argv.t || '.*';
+const java = argv.java;
 const mainpath = path.resolve(__dirname, 'algorithms');
 const re = new RegExp(`${target}`);
 
@@ -15,7 +23,117 @@ const re = new RegExp(`${target}`);
       return resolve(filepath);
     }
     if (/^test(.*).js$/.test(filename) && re.test(filepath)) {
-      require(filepath);
+      java ? createJavaTest(dirpath) : require(filepath);
     }
   });
 })(mainpath);
+
+
+function createJavaTest(dirpath) {
+
+  // copy Solution.java
+  const newsolutionpath = path.resolve(__dirname, 'Solution.java');
+  const solutionpath = path.resolve(dirpath, 'Solution.java');
+  const solutionfile = fs.readFileSync(solutionpath, 'utf8');
+  fs.writeFileSync(newsolutionpath, solutionfile, 'utf8');
+
+  // get function name and args from Solution.java
+  const funcName = solutionfile.match(/.*\s([^\s].*)\(/)[1];
+  const re = new RegExp(`public (.*) ${funcName}`);
+  const resultType = solutionfile.match(re)[1];
+  const args = solutionfile.match(/.*\((.*)\)/)[1].split(',');
+  const argMap = _.transform(args, (result, arg) => {
+    const [type, key] = arg.trim().split(/\s/);
+    result[key] = type;
+  }, {});
+
+  // get tasks from test.js
+  const testjspath = path.resolve(dirpath, 'test.js');
+  const tasks = require('./lib/test').getTasks(testjspath);
+
+  // create Test.java
+  const templatepath = path.resolve(__dirname, 'Template.java');
+  const testpath = path.resolve(__dirname, 'Test.java');
+
+  const template = fs.readFileSync(templatepath, 'utf8');
+  const offset = '\n\t\t';
+
+  before(() => exec('javac Solution.java'));
+  after(() => exec('rm Solution.* Test.*'));
+
+  let i = 0;
+  beforeEach(() => {
+    const task = tasks[i++];
+    const args = [];
+    let str = _.chain(task)
+      .omit('result')
+      .reduce((result, value, key) => {
+        let type = '';
+        let s = '';
+        if (_.isInteger(value)) {
+          type = 'int';
+          s = `${key} = ${value};`;
+        } else if (_.isNumber(value)) {
+          type = 'double';
+          s = `${key} = ${value};`;
+        } else if (_.isString(value)) {
+          type = 'String';
+          s = `${key} = "${value}";`;
+        } else if (_.isArray(value)) {
+          const first = _.first(value);
+          if (_.isInteger(first)) {
+            type = 'int[]';
+            s = `${key} = {${value}};`;
+          }
+        }
+        if (argMap[key] !== type) {
+          throw new Error(`Invalid type key: ${key}, type: ${type}`);
+        }
+        args.push(key);
+        return `${result}${offset}${type} ${s}`.trim();
+      }, '')
+      .value();
+
+    str += `${offset}${resultType} result = new Solution().${funcName}(${args});`;
+    switch (resultType) {
+    case 'int[]':
+      str += `${offset}System.out.println(Arrays.toString(result));`;
+      break;
+    }
+    const file = template.replace(/<% tasks %>/, str);
+    fs.writeFileSync(testpath, file, 'utf8');
+  });
+
+  _.forEach(tasks, task => {
+    const { result } = task;
+    const str = _.chain(task)
+      .omit('result')
+      .reduce((result, value, key) => {
+        return `${result} ${key}: ${value}`;
+      }, '')
+      .add(` -> ${result}`)
+      .value();
+
+    it(str, () => {
+      return exec('javac Test.java')
+        .then(() => exec('java Test'))
+        .then(res => {
+          switch (typeof result) {
+          case 'string':
+            assert.strictEqual(res, result);
+            break;
+          case 'number':
+            assert.strictEqual(+res, result);
+            break;
+          case 'object':
+            assert.deepEqual(JSON.parse(res), result);
+            break;
+          default:
+            assert.fail();
+            break;
+          }
+        });
+    });
+  });
+}
+

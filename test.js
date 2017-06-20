@@ -68,26 +68,16 @@ function createJavaTest(dirpath) {
     let str = _.chain(task)
       .omit('result')
       .reduce((result, value, key) => {
-        let type = '';
         let s = '';
+        const type = argMap[key];
         if (_.isInteger(value)) {
-          type = 'int';
           s = `${key} = ${value};`;
         } else if (_.isNumber(value)) {
-          type = 'double';
           s = `${key} = ${value};`;
         } else if (_.isString(value)) {
-          type = 'String';
           s = `${key} = "${value}";`;
         } else if (_.isArray(value)) {
-          const first = _.first(value);
-          if (_.isInteger(first)) {
-            type = 'int[]';
-            s = `${key} = {${value}};`;
-          }
-        }
-        if (argMap[key] !== type) {
-          throw new Error(`Invalid type key: ${key}, type: ${type}`);
+          s = `${key} = {${value}};`;
         }
         args.push(key);
         return `${result}${offset}${type} ${s}`.trim();
@@ -98,6 +88,9 @@ function createJavaTest(dirpath) {
     switch (resultType) {
     case 'int[]':
       str += `${offset}System.out.println(Arrays.toString(result));`;
+      break;
+    default:
+      str += `${offset}System.out.println(result);`;
       break;
     }
     const file = template.replace(/<% tasks %>/, str);

@@ -4,7 +4,8 @@ module.exports = {
   removeDuplicates,
   removeDuplicates2,
   removeDuplicates3,
-  removeDuplicates4
+  removeDuplicates4,
+  removeDuplicates5
 };
 
 /**
@@ -80,4 +81,26 @@ function removeDuplicates4(nums) {
   }
   Array.prototype.splice.apply(nums, array);
   return nums.length;
+}
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function removeDuplicates5(nums) {
+  const l = nums.length;
+  if (l <= 1) {
+    return l;
+  }
+  let prev;
+  let length = 0;
+  for (let i = 0; i < l; i++) {
+    const n = nums[i];
+    if (prev === n) {
+      continue;
+    }
+    prev = n;
+    nums[length++] = n;
+  }
+  return length;
 }

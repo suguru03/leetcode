@@ -28,11 +28,6 @@ function mergeTwoLists(l1, l2) {
       l2 = l2.next;
     }
   }
-  if (l1) {
-    _head.next = l1;
-  }
-  if (l2) {
-    _head.next = l2;
-  }
+  _head.next = l1 ? l1 : l2;
   return head.next;
 }

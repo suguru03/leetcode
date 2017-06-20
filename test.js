@@ -52,7 +52,7 @@ function createJavaTest(dirpath) {
   const tasks = require('./lib/test').getTasks(testjspath);
 
   // create Test.java
-  const templatepath = path.resolve(__dirname, 'Template.java');
+  const templatepath = path.resolve(__dirname, 'template', 'Template.java');
   const testpath = path.resolve(__dirname, 'Test.java');
 
   const template = fs.readFileSync(templatepath, 'utf8');

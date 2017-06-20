@@ -14,6 +14,11 @@ $ mocha test
 $ mocha test -t Roman
 ```
 
+## Test Java using mocha
+```
+$ mocha test -t '001.Two Sum' --java
+```
+
 ## links
 |#|title|
 |---|---|

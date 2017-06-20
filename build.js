@@ -6,7 +6,7 @@ const path = require('path');
 const _ = require('lodash');
 
 const basepath = path.resolve(__dirname, 'algorithms');
-const base = fs.readFileSync(path.resolve(__dirname, 'templete', 'README.md'), 'utf8');
+const base = fs.readFileSync(path.resolve(__dirname, 'template', 'README.md'), 'utf8');
 
 const re = /^(?!\d)/;
 const tasks = _.chain(fs.readdirSync(basepath))

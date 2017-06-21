@@ -66,7 +66,7 @@ function createJavaTest(dirpath) {
     const task = tasks[i++];
     const args = [];
     let str = _.chain(task)
-      .omit('result')
+      .omitBy((value, key) => /result/.test(key))
       .reduce((result, value, key) => {
         let s = '';
         const type = argMap[key];

@@ -23,6 +23,18 @@ describe('#strStr', () => {
     needle: 'a',
     result: -1
   }, {
+    haystack: 'a',
+    needle: '',
+    result: 0
+  }, {
+    haystack: 'ab',
+    needle: 'c',
+    result: -1
+  }, {
+    haystack: 'mississippi',
+    needle: 'issip',
+    result: 4
+  }, {
     haystack: 'abaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadefefeggg',
     needle: 'eggg',
     result: 56

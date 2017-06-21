@@ -16,18 +16,17 @@ module.exports = { mergeTwoLists };
  */
 function mergeTwoLists(l1, l2) {
   const head = { next: null };
-  let _head = head;
+  let h = head;
   while (l1 && l2) {
     if (l1.val <= l2.val) {
-      _head.next = l1;
-      _head = l1;
+      h.next = l1;
       l1 = l1.next;
     } else {
-      _head.next = l2;
-      _head = l2;
+      h.next = l2;
       l2 = l2.next;
     }
+    h = h.next;
   }
-  _head.next = l1 ? l1 : l2;
+  h.next = l1 ? l1 : l2;
   return head.next;
 }

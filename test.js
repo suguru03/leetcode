@@ -111,6 +111,10 @@ function createJavaTest(dirpath) {
       return exec('javac Test.java')
         .then(() => exec('java Test'))
         .then(res => {
+          const parts = res.split(/\n/g);
+          parts.pop();
+          res = parts.pop();
+          _.forEach(parts, log => console.log(log));
           switch (typeof result) {
           case 'string':
             assert.strictEqual(res, result);

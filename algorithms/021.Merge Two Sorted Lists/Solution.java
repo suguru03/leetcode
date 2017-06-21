@@ -17,10 +17,10 @@ public class Solution {
       int v1 = l1.val;
       int v2 = l2.val;
       if (v1 < v2) {
-        l.next = new ListNode(v1);
+        l.next = l1;
         l1 = l1.next;
       } else {
-        l.next = new ListNode(v2);
+        l.next = l2;
         l2 = l2.next;
       }
       l = l.next;

@@ -48,6 +48,7 @@ $ mocha test -t '001.Two Sum' --java
 |058|[Length of Last Word](https://github.com/suguru03/leetcode/tree/master/algorithms/058.Length%20of%20Last%20Word)|
 |066|[Plus One](https://github.com/suguru03/leetcode/tree/master/algorithms/066.Plus%20One)|
 |067|[Add Binary](https://github.com/suguru03/leetcode/tree/master/algorithms/067.Add%20Binary)|
+|088|[Merge Sorted Array](https://github.com/suguru03/leetcode/tree/master/algorithms/088.Merge%20Sorted%20Array)|
 |204|[Count Primes](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes)|
 |344|[Reverse String](https://github.com/suguru03/leetcode/tree/master/algorithms/344.Reverse%20String)|
 |485|[Max Consecutive Ones](https://github.com/suguru03/leetcode/tree/master/algorithms/485.Max%20Consecutive%20Ones)|
@@ -55,3 +56,4 @@ $ mocha test -t '001.Two Sum' --java
 |487|[Max Consecutive Ones II](https://github.com/suguru03/leetcode/tree/master/algorithms/487.Max%20Consecutive%20Ones%20II)|
 |488|[Zuma Game](https://github.com/suguru03/leetcode/tree/master/algorithms/488.Zuma%20Game)|
 |492|[Construct the rectangle](https://github.com/suguru03/leetcode/tree/master/algorithms/492.Construct%20the%20rectangle)|
+|500|[Keyboard Row](https://github.com/suguru03/leetcode/tree/master/algorithms/500.Keyboard%20Row)|

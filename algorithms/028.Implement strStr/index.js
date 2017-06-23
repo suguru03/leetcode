@@ -17,7 +17,7 @@ function strStr(haystack, needle) {
  * @return {number}
  */
 function strStr2(haystack, needle) {
-  if (!haystack && !needle) {
+  if (!needle) {
     return 0;
   }
   const nl = needle.length;
@@ -40,7 +40,7 @@ function strStr2(haystack, needle) {
  * @return {number}
  */
 function strStr3(haystack, needle) {
-  if (!haystack && !needle) {
+  if (!needle) {
     return 0;
   }
   const nl = needle.length;

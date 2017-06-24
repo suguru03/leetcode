@@ -51,6 +51,7 @@ $ mocha test -t '001.Two Sum' --java
 |088|[Merge Sorted Array](https://github.com/suguru03/leetcode/tree/master/algorithms/088.Merge%20Sorted%20Array)|
 |204|[Count Primes](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes)|
 |344|[Reverse String](https://github.com/suguru03/leetcode/tree/master/algorithms/344.Reverse%20String)|
+|412|[Fizz Buzz](https://github.com/suguru03/leetcode/tree/master/algorithms/412.Fizz%20Buzz)|
 |485|[Max Consecutive Ones](https://github.com/suguru03/leetcode/tree/master/algorithms/485.Max%20Consecutive%20Ones)|
 |486|[Predict the Winner](https://github.com/suguru03/leetcode/tree/master/algorithms/486.Predict%20the%20Winner)|
 |487|[Max Consecutive Ones II](https://github.com/suguru03/leetcode/tree/master/algorithms/487.Max%20Consecutive%20Ones%20II)|

@@ -2,9 +2,9 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { templete } = require('./');
+const { template } = require('./');
 
-describe('#templete', () => {
+describe('#template', () => {
 
   const tests = [{
     n: 1,
@@ -16,7 +16,7 @@ describe('#templete', () => {
 
   _.forEach(tests, ({ n, result }) => {
     it(`${n} -> ${result}`, () => {
-      assert.strictEqual(templete(n), result);
+      assert.strictEqual(template(n), result);
     });
   });
 });

@@ -1,12 +1,12 @@
 'use strict';
 
-module.exports = { templete, templete2 };
+module.exports = { template, template2 };
 
 /**
  * @param {number} n
  * @return {number}
  */
-function templete(n) {
+function template(n) {
   return n;
 }
 
@@ -14,6 +14,6 @@ function templete(n) {
  * @param {number} n
  * @return {number}
  */
-function templete2(n) {
+function template2(n) {
   return Number(n);
 }

@@ -58,3 +58,4 @@ $ mocha test -t '001.Two Sum' --java
 |488|[Zuma Game](https://github.com/suguru03/leetcode/tree/master/algorithms/488.Zuma%20Game)|
 |492|[Construct the rectangle](https://github.com/suguru03/leetcode/tree/master/algorithms/492.Construct%20the%20rectangle)|
 |500|[Keyboard Row](https://github.com/suguru03/leetcode/tree/master/algorithms/500.Keyboard%20Row)|
+|507|[Perfect Number](https://github.com/suguru03/leetcode/tree/master/algorithms/507.Perfect%20Number)|

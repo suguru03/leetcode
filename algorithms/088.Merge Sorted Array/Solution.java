@@ -14,9 +14,6 @@ public class Solution {
           j--;
         }
       }
-      while (i >= 0) {
-        nums1[--l] = nums1[i--];
-      }
       while (j >= 0) {
         nums1[--l] = nums2[j--];
       }

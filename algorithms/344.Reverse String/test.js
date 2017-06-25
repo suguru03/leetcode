@@ -9,6 +9,9 @@ describe('#reverseString', () => {
   const tests = [{
     s: 'hello',
     result: 'olleh'
+  }, {
+    s: 'hello!',
+    result: '!olleh'
   }];
 
   _.forEach(tests, ({ s, result }) => {

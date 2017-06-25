@@ -59,3 +59,4 @@ $ mocha test -t '001.Two Sum' --java
 |492|[Construct the rectangle](https://github.com/suguru03/leetcode/tree/master/algorithms/492.Construct%20the%20rectangle)|
 |500|[Keyboard Row](https://github.com/suguru03/leetcode/tree/master/algorithms/500.Keyboard%20Row)|
 |507|[Perfect Number](https://github.com/suguru03/leetcode/tree/master/algorithms/507.Perfect%20Number)|
+|566|[Reshape the Matrix](https://github.com/suguru03/leetcode/tree/master/algorithms/566.Reshape%20the%20Matrix)|

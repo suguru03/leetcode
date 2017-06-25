@@ -7,6 +7,6 @@ public class Solution {
     while (n % 2 == 0) {
       n /= 2;
     }
-    return n != num && num == n * (n + 1) / 2;
+    return num == n * (n + 1) / 2;
   }
 }

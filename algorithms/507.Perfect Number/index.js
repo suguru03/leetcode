@@ -14,5 +14,5 @@ function checkPerfectNumber(num) {
   while (n % 2 === 0) {
     n /= 2;
   }
-  return num !== n && num === n * ((n + 1) / 2);
+  return num === n * ((n + 1) / 2);
 }

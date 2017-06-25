@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { strStr, strStr2, strStr3 };
+module.exports = { strStr, strStr2, strStr3, strStr4 };
 
 /**
  * @param {string} haystack
@@ -57,6 +57,41 @@ function strStr3(haystack, needle) {
       }
     }
     return i;
+  }
+  return -1;
+}
+
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+function strStr4(haystack, needle) {
+  if (!needle) {
+    return 0;
+  }
+  const nl = needle.length;
+  const l = haystack.length - nl;
+  const initial = needle[0];
+  let i = 0;
+  check: while (i <= l) {
+    if (haystack[i] !== initial) {
+      i++;
+      continue;
+    }
+    let j = 0;
+    let index = i;
+    while (++j < nl) {
+      const c = haystack[index + j];
+      if (c === initial) {
+        i = index + j;
+      }
+      if (c !== needle[j]) {
+        i = Math.max(i, index + 1);
+        continue check;
+      }
+    }
+    return index;
   }
   return -1;
 }

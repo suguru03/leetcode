@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { template, template2 };
+module.exports = { template };
 
 /**
  * @param {number} n
@@ -8,12 +8,4 @@ module.exports = { template, template2 };
  */
 function template(n) {
   return n;
-}
-
-/**
- * @param {number} n
- * @return {number}
- */
-function template2(n) {
-  return Number(n);
 }

@@ -60,3 +60,4 @@ $ mocha test -t '001.Two Sum' --java
 |500|[Keyboard Row](https://github.com/suguru03/leetcode/tree/master/algorithms/500.Keyboard%20Row)|
 |507|[Perfect Number](https://github.com/suguru03/leetcode/tree/master/algorithms/507.Perfect%20Number)|
 |566|[Reshape the Matrix](https://github.com/suguru03/leetcode/tree/master/algorithms/566.Reshape%20the%20Matrix)|
+|628|[Maximum Product of Three Numbers](https://github.com/suguru03/leetcode/tree/master/algorithms/628.Maximum%20Product%20of%20Three%20Numbers)|

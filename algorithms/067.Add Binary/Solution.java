@@ -8,8 +8,8 @@ public class Solution {
       for (int i = 1; i <= max; i++) {
         int ai = al - i;
         int bi = bl - i;
-        int an = ai < 0 ? 0 : Integer.parseInt(a.substring(ai, ai + 1)) ;
-        int bn = bi < 0 ? 0 : Integer.parseInt(b.substring(bi, bi + 1));
+        int an = ai < 0 ? 0 : a.charAt(ai) == '0' ? 0 : 1;
+        int bn = bi < 0 ? 0 : b.charAt(bi) == '0' ? 0 : 1;
         int sum = an + bn + prev;
         prev = sum / 2;
         result = sum % 2 + result;

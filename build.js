@@ -32,7 +32,7 @@ const readme = _.reduce(tasks, (result, { num, name, url, js, java }) => {
   const solution = _.chain({ js, java })
     .omitBy(_.isEmpty)
     .map((url, key) => `[${key}](${url})`)
-    .join(',')
+    .join(', ')
     .value();
   return result + `\n|${num}|[${name}](${url})|${solution}|`;
 }, base + '\n## Links\n|#|Title|Solution|\n|---|---|---|');

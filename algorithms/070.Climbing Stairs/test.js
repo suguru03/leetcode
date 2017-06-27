@@ -7,6 +7,9 @@ const { climbStairs } = require('./');
 describe('#climbStairs', () => {
 
   const tests = [{
+    n: 0,
+    result: 0
+  }, {
     n: 1,
     result: 1
   }, {
@@ -15,6 +18,9 @@ describe('#climbStairs', () => {
   }, {
     n: 10,
     result: 89
+  }, {
+    n: 40,
+    result: 165580141
   }, {
     n: 100,
     result: 573147844013817200640

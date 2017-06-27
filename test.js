@@ -37,11 +37,15 @@ function createJavaTest(dirpath) {
   const solutionfile = fs.readFileSync(solutionpath, 'utf8');
   fs.writeFileSync(newsolutionpath, solutionfile, 'utf8');
 
+  // get function name
+  const jspath = path.resolve(dirpath, 'index.js');
+  const funcName = _.findKey(require(jspath));
+
   // get function name and args from Solution.java
-  const funcName = solutionfile.match(/.*\s([^\s].*)\(/)[1];
   const re = new RegExp(`public (.*) ${funcName}`);
   const resultType = solutionfile.match(re)[1];
-  const args = solutionfile.match(/.*\((.*)\)/)[1].split(',');
+  const argre = new RegExp(`${funcName}\\((.*)\\)`);
+  const args = solutionfile.match(argre)[1].split(',');
   const argMap = _.transform(args, (result, arg) => {
     const [type, key] = arg.trim().split(/\s/);
     result[key] = type;

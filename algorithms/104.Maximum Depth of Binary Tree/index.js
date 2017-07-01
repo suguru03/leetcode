@@ -14,13 +14,5 @@ module.exports = { maxDepth };
  * @return {number}
  */
 function maxDepth(root) {
-  return getDepth(root, 0);
-}
-
-function getDepth(node, depth) {
-  if (!node) {
-    return depth;
-  }
-  ++depth;
-  return Math.max(getDepth(node.left, depth), getDepth(node.right, depth));
+  return !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 }

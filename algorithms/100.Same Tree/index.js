@@ -20,7 +20,7 @@ function isSameTree(p, q) {
   if (nop && noq) {
     return true;
   }
-  if (!(!nop & !noq)) {
+  if (nop | noq) {
     return false;
   }
   if (p.val !== q.val) {

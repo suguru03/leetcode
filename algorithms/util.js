@@ -33,6 +33,7 @@ function makeLinkNodes(array) {
     .value();
 }
 
+// TODO This is wrong, #104
 function makeTreeNodes(array) {
   const l = array.length;
   if (!l) {

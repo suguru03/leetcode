@@ -2,7 +2,7 @@ rules:
   # Possible Errors
   no-console: 0
   comma-dangle: 2
-  no-constant-condition: 2
+  no-constant-condition: 0
   no-unreachable: 2
   no-cond-assign: 0
 

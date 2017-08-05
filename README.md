@@ -88,4 +88,5 @@ $ mocha test -t '001.Two Sum' --java
 |628|[Maximum Product of Three Numbers](https://github.com/suguru03/leetcode/tree/master/algorithms/628.Maximum%20Product%20of%20Three%20Numbers)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/628.Maximum%20Product%20of%20Three%20Numbers/index.js)|
 |649|[Dota2 Senate](https://github.com/suguru03/leetcode/tree/master/algorithms/649.Dota2%20Senate)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/649.Dota2%20Senate/index.js)|
 |650|[2 Keys Keyboard](https://github.com/suguru03/leetcode/tree/master/algorithms/650.2%20Keys%20Keyboard)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/650.2%20Keys%20Keyboard/index.js)|
+|651|[4 Keys Keyboard](https://github.com/suguru03/leetcode/tree/master/algorithms/651.4%20Keys%20Keyboard)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/651.4%20Keys%20Keyboard/index.js)|
 |652|[Find Duplicate Subtrees](https://github.com/suguru03/leetcode/tree/master/algorithms/652.Find%20Duplicate%20Subtrees)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/652.Find%20Duplicate%20Subtrees/index.js)|

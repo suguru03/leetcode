@@ -2,8 +2,6 @@
 
 const _ = require('lodash');
 
-module.exports = { makeLinkNodes, makeTreeNodes };
-
 class LinkNode {
   constructor(val) {
     this.val = val;
@@ -18,6 +16,13 @@ class TreeNode {
     this.right = null;
   }
 }
+
+module.exports = {
+  LinkNode,
+  TreeNode,
+  makeLinkNodes,
+  makeTreeNodes
+};
 
 function makeLinkNodes(array) {
   return _.chain(array)

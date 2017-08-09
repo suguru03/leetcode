@@ -3,7 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { findTarget } = require('./');
-const { makeTreeNodes } = require('../util');
+const { makeTestTreeNodes } = require('../util');
 
 describe('#findTarget', () => {
 
@@ -17,11 +17,7 @@ describe('#findTarget', () => {
     result: false
   }];
 
-  _.forEach(tests, test => {
-    const { root } = test;
-    test.root = makeTreeNodes(root);
-    test._root = root;
-  });
+  makeTestTreeNodes(tests);
 
   _.forEach(tests, ({ root, _root, k, result }) => {
     it(`[${_root}] -> ${result}`, () => {

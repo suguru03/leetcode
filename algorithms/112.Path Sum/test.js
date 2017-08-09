@@ -3,6 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { hasPathSum } = require('./');
+const { makeTestTreeNodes } = require('../util');
 
 describe('#hasPathSum', () => {
 
@@ -25,12 +26,13 @@ describe('#hasPathSum', () => {
   }, {
     root: [1, -2, -3, 1, 3, -2, null, -1],
     sum: -1,
-    result: false
+    result: true
   }];
+  makeTestTreeNodes(tests);
 
-  _.forEach(tests, ({ n, result }) => {
-    it(`${n} -> ${result}`, () => {
-      assert.strictEqual(hasPathSum(n), result);
+  _.forEach(tests, ({ root, _root, sum, result }) => {
+    it(`[${_root}] -> ${result}`, () => {
+      assert.strictEqual(hasPathSum(root, sum), result);
     });
   });
 });

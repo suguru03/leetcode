@@ -3,20 +3,23 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { isBalanced } = require('./');
+const { makeTestTreeNodes } = require('../util');
 
 describe('#isBalanced', () => {
 
   const tests = [{
-    n: 1,
-    result: 1
+    root: [1, 2, 3],
+    result: true
   }, {
-    n: 2,
-    result: 2
+    root: [1, 2, 3, 4, null, null, null, 5, null, 6],
+    result: false
   }];
 
-  _.forEach(tests, ({ n, result }) => {
-    it(`${n} -> ${result}`, () => {
-      assert.strictEqual(isBalanced(n), result);
+  makeTestTreeNodes(tests);
+
+  _.forEach(tests, ({ root, _root, result }) => {
+    it(`[${_root}] -> ${result}`, () => {
+      assert.strictEqual(isBalanced(root), result);
     });
   });
 });

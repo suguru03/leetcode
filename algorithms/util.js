@@ -21,8 +21,27 @@ module.exports = {
   LinkNode,
   TreeNode,
   makeLinkNodes,
-  makeTreeNodes
+  makeTreeNodes,
+  makeTestLinkNodes,
+  makeTestTreeNodes
 };
+
+function makeTestLinkNodes(tests, name = 'root') {
+  makeTestNodes(makeLinkNodes, tests, name);
+}
+
+function makeTestTreeNodes(tests, name = 'root') {
+  makeTestNodes(makeTreeNodes, tests, name);
+}
+
+function makeTestNodes(iterator, tests, name = 'root') {
+  _.forEach(tests, test => {
+    const array = test[name];
+    const root = iterator(array);
+    test[name] = root;
+    test[`_${name}`] = array;
+  });
+}
 
 function makeLinkNodes(array) {
   return _.chain(array)
@@ -38,7 +57,6 @@ function makeLinkNodes(array) {
     .value();
 }
 
-// TODO This is wrong, #104
 function makeTreeNodes(array) {
   const l = array.length;
   if (!l) {

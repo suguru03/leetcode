@@ -4,7 +4,7 @@ const assert = require('assert');
 const _ = require('lodash');
 
 const { isSymmetric } = require('./');
-const { makeTreeNodes } = require('../util');
+const { makeTestTreeNodes } = require('../util');
 
 describe('#isSymmetric', () => {
 
@@ -21,12 +21,7 @@ describe('#isSymmetric', () => {
     root: [1, 2, 2, 4, null, null, 4],
     result: true
   }];
-
-  _.forEach(tests, test => {
-    const root = makeTreeNodes(test.root);
-    test._root = test.root;
-    test.root = root;
-  });
+  makeTestTreeNodes(tests);
 
   _.forEach(tests, ({ root, _root, result }) => {
     it(`[${_root}] -> ${result}`, () => {

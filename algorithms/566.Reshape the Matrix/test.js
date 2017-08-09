@@ -7,11 +7,6 @@ const { matrixReshape } = require('./');
 describe('#matrixReshape', () => {
 
   const tests = [{
-    nums: [],
-    r: 1,
-    c: 4,
-    result: []
-  }, {
     nums: [[1, 2], [3, 4]],
     r: 1,
     c: 4,

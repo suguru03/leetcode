@@ -3,7 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { minDepth } = require('./');
-const { makeTreeNodes } = require('../util');
+const { makeTestTreeNodes } = require('../util');
 
 describe('#minDepth', () => {
 
@@ -12,7 +12,7 @@ describe('#minDepth', () => {
     result: 0
   }, {
     root: [1, 2],
-    result: 1
+    result: 2
   }, {
     root: [1, 2, 3, 4, 5, 6, 7],
     result: 3
@@ -26,12 +26,7 @@ describe('#minDepth', () => {
     root: [1, 2, 3, 4, 5, 6, null, 8],
     result: 3
   }];
-
-  _.forEach(tests, test => {
-    const root = makeTreeNodes(test.root);
-    test._root = test.root;
-    test.root = root;
-  });
+  makeTestTreeNodes(tests);
 
   _.forEach(tests, ({ root, _root, result }) => {
     it(`[${_root}] -> ${result}`, () => {

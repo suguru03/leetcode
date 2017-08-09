@@ -3,7 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { hasCycle } = require('./');
-const { makeLinkNodes } = require('../util');
+const { makeTestLinkNodes } = require('../util');
 
 describe('#hasCycle', () => {
 
@@ -15,11 +15,7 @@ describe('#hasCycle', () => {
     result: false
   }];
 
-  _.forEach(tests, test => {
-    const head = test.head;
-    test._head = head;
-    test.head = makeLinkNodes(head);
-  });
+  makeTestLinkNodes(tests, 'head');
 
   _.forEach(tests, ({ head, _head, result }) => {
     it(`${_head} -> ${result}`, () => {

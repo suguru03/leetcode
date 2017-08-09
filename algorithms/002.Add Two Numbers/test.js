@@ -3,7 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const addTwoNumbers = require('./');
-const { makeLinkNodes } = require('../util');
+const { makeTestLinkNodes } = require('../util');
 
 describe('#addTwoNumbers', () => {
 
@@ -21,15 +21,12 @@ describe('#addTwoNumbers', () => {
     result: [5, 0, 0, 5, 6]
   }];
 
-  _.forEach(tests, test => {
-    const { l1, l2 } = test;
-    test._l1 = makeLinkNodes(l1);
-    test._l2 = makeLinkNodes(l2);
-  });
+  makeTestLinkNodes(tests, 'l1');
+  makeTestLinkNodes(tests, 'l2');
 
   _.forEach(tests, ({ l1, _l1, l2, _l2, result }) => {
-    it(`[${l1}] + [${l2}] = [${result}]`, () => {
-      assert.deepEqual(addTwoNumbers(_l1, _l2), result);
+    it(`[${_l1}] + [${_l2}] = [${result}]`, () => {
+      assert.deepEqual(addTwoNumbers(l1, l2), result);
     });
   });
 });

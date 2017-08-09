@@ -3,7 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { isSameTree } = require('./');
-const { makeTreeNodes } = require('../util');
+const { makeTestTreeNodes } = require('../util');
 
 describe('#isSameTree', () => {
 
@@ -29,14 +29,8 @@ describe('#isSameTree', () => {
     result: false
   }];
 
-  _.forEach(tests, test => {
-    const p = makeTreeNodes(test.p);
-    const q = makeTreeNodes(test.q);
-    test._p = test.p;
-    test._q = test.q;
-    test.p = p;
-    test.q = q;
-  });
+  makeTestTreeNodes(tests, 'p');
+  makeTestTreeNodes(tests, 'q');
 
   _.forEach(tests, ({ p, q, _p, _q, result }) => {
     it(`[${_p}], [${_q}] -> ${result}`, () => {

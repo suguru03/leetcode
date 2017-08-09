@@ -2,8 +2,8 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { makeLinkNodes } = require('../util');
 const { swapPairs } = require('./');
+const { makeTestLinkNodes } = require('../util');
 
 describe('#swapPairs', () => {
 
@@ -18,15 +18,12 @@ describe('#swapPairs', () => {
     result: []
   }];
 
-  _.forEach(tests, task => {
-    const { l, result } = task;
-    task._l = makeLinkNodes(l);
-    task._result = makeLinkNodes(result);
-  });
+  makeTestLinkNodes(tests, 'l');
+  makeTestLinkNodes(tests, 'result');
 
   _.forEach(tests, ({ l, _l, result, _result }) => {
-    it(`[${l}] -> [${result}]`, () => {
-      assert.deepEqual(swapPairs(_l), _result);
+    it(`[${_l}] -> [${_result}]`, () => {
+      assert.deepEqual(swapPairs(l), result);
     });
   });
 });

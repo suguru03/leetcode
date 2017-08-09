@@ -3,7 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { deleteDuplicates } = require('./');
-const { makeLinkNodes } = require('../util');
+const { makeTestLinkNodes } = require('../util');
 
 describe('#deleteDuplicates', () => {
 
@@ -27,14 +27,8 @@ describe('#deleteDuplicates', () => {
     result: [1, 2, 3]
   }];
 
-  _.forEach(tests, test => {
-    const head = makeLinkNodes(test.head);
-    const result = makeLinkNodes(test.result);
-    test._head = test.head;
-    test._result = test.result;
-    test.head = head;
-    test.result = result;
-  });
+  makeTestLinkNodes(tests, 'head');
+  makeTestLinkNodes(tests, 'result');
 
   _.forEach(tests, ({ head, _head, result, _result }) => {
     it(`[${_head}] -> [${_result}]`, () => {

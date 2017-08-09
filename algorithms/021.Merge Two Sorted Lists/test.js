@@ -2,8 +2,8 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { makeLinkNodes } = require('../util');
 const { mergeTwoLists } = require('./');
+const { makeTestLinkNodes } = require('../util');
 
 describe('#mergeTwoLists', () => {
 
@@ -21,16 +21,13 @@ describe('#mergeTwoLists', () => {
     result: [2, 4, 6]
   }];
 
-  _.forEach(tests, task => {
-    const { l1, l2, result } = task;
-    task._l1 = makeLinkNodes(l1);
-    task._l2 = makeLinkNodes(l2);
-    task._result = makeLinkNodes(result);
-  });
+  makeTestLinkNodes(tests, 'l1');
+  makeTestLinkNodes(tests, 'l2');
+  makeTestLinkNodes(tests, 'result');
 
   _.forEach(tests, ({ l1, _l1, l2, _l2, result, _result }) => {
-    it(`[${l1}] + [${l2}]-> [${result}]`, () => {
-      assert.deepEqual(mergeTwoLists(_l1, _l2), _result);
+    it(`[${_l1}] + [${_l2}]-> [${_result}]`, () => {
+      assert.deepEqual(mergeTwoLists(l1, l2), result);
     });
   });
 });

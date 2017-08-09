@@ -2,8 +2,8 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { makeLinkNodes } = require('../util');
 const { removeNthFromEnd } = require('./');
+const { makeTestLinkNodes } = require('../util');
 
 describe('#removeNthFromEnd', () => {
 
@@ -21,15 +21,12 @@ describe('#removeNthFromEnd', () => {
     result: []
   }];
 
-  _.forEach(tests, task => {
-    const { l, result } = task;
-    task._l = makeLinkNodes(l);
-    task._result = makeLinkNodes(result);
-  });
+  makeTestLinkNodes(tests, 'l');
+  makeTestLinkNodes(tests, 'result');
 
   _.forEach(tests, ({ l, _l, n, result, _result }) => {
-    it(`[${l}], n:${n} -> [${result}]`, () => {
-      assert.deepEqual(removeNthFromEnd(_l, n), _result);
+    it(`[${_l}], n:${n} -> [${_result}]`, () => {
+      assert.deepEqual(removeNthFromEnd(l, n), result);
     });
   });
 });

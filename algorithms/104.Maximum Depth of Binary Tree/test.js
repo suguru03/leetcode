@@ -4,7 +4,7 @@ const assert = require('assert');
 const _ = require('lodash');
 
 const { maxDepth } = require('./');
-const { makeTreeNodes } = require('../util');
+const { makeTestTreeNodes } = require('../util');
 
 describe('#maxDepth', () => {
 
@@ -22,11 +22,7 @@ describe('#maxDepth', () => {
     result: 5
   }];
 
-  _.forEach(tests, test => {
-    const root = makeTreeNodes(test.root);
-    test._root = test.root;
-    test.root = root;
-  });
+  makeTestTreeNodes(tests);
 
   _.forEach(tests, ({ root, _root, result }) => {
     it(`[${_root}] -> ${result}`, () => {

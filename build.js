@@ -13,7 +13,8 @@ const baseurl = 'https://github.com/suguru03/leetcode/tree/master/algorithms/';
 const solutionMap = {
   js: 'index.js',
   java: 'Solution.java',
-  ruby: 'solution.rb'
+  ruby: 'solution.rb',
+  sql: 'query.sql'
 };
 const tasks = _.chain(fs.readdirSync(basepath))
   .reject(dirname => re.test(dirname))

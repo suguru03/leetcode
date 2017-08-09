@@ -44,15 +44,30 @@ function makeTreeNodes(array) {
   if (!l) {
     return null;
   }
-  const nodes = _.map(array, n => new TreeNode(n));
-  for (let i = 1; i < l; i++) {
-    const node = nodes[i];
-    const target = nodes[(i - 1) / 2 | 0];
-    if (i % 2 === 0) {
-      target.left = node;
-    } else {
-      target.right = node;
+  let i = 0;
+  const root = new TreeNode(array[i++]);
+  makeTree([root]);
+  return root;
+
+  function makeTree(parents) {
+    if (i >= l) {
+      return;
     }
+    const children = [];
+    _.forEach(parents, parent => {
+      const left = array[i++];
+      const right = array[i++];
+      if (left !== null && left !== undefined) {
+        const node = new TreeNode(left);
+        parent.left = node;
+        children.push(node);
+      }
+      if (right !== null && right !== undefined) {
+        const node = new TreeNode(right);
+        parent.right = node;
+        children.push(node);
+      }
+    });
+    makeTree(children);
   }
-  return nodes[0];
 }

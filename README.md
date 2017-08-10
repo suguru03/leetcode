@@ -95,3 +95,4 @@ $ mocha test -t '001.Two Sum' --java
 |653|[Two Sum IV - Input is a BST](https://github.com/suguru03/leetcode/tree/master/algorithms/653.Two%20Sum%20IV%20-%20Input%20is%20a%20BST)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/653.Two%20Sum%20IV%20-%20Input%20is%20a%20BST/index.js)|
 |654|[Maximum Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/654.Maximum%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/654.Maximum%20Binary%20Tree/index.js)|
 |655|[Print Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/655.Print%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/655.Print%20Binary%20Tree/index.js)|
+|656|[Coin Path](https://github.com/suguru03/leetcode/tree/master/algorithms/656.Coin%20Path)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/656.Coin%20Path/index.js)|

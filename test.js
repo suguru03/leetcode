@@ -34,10 +34,10 @@ const re = new RegExp(`${target}`);
 function createJavaTest(dirpath) {
 
   // copy Solution.java
+  const testname = dirpath.match(/\d+/)[0];
   const newsolutionpath = path.resolve(__dirname, 'Solution.java');
   const solutionpath = path.resolve(dirpath, 'Solution.java');
   const solutionfile = fs.readFileSync(solutionpath, 'utf8');
-  fs.writeFileSync(newsolutionpath, solutionfile, 'utf8');
 
   // get function name
   const jspath = path.resolve(dirpath, 'index.js');
@@ -64,78 +64,61 @@ function createJavaTest(dirpath) {
   const template = fs.readFileSync(templatepath, 'utf8');
   const offset = '\n\t\t';
 
-  before(() => exec('javac Solution.java'));
-  after(() => exec('rm Solution.* Test.*'));
+  describe(`#${testname}`, () => {
 
-  let i = 0;
-  beforeEach(() => {
-    const task = tasks[i++];
-    const args = [];
-    let str = _.chain(task)
-      .omitBy((value, key) => /result/.test(key))
-      .reduce((result, value, key) => {
-        let s = '';
-        const type = argMap[key];
-        if (_.isInteger(value)) {
-          s = `${key} = ${value};`;
-        } else if (_.isNumber(value)) {
-          s = `${key} = ${value};`;
-        } else if (_.isString(value)) {
-          s = `${key} = "${value}";`;
-        } else if (_.isArray(value)) {
-          s = `${key} = {${value}};`;
-        }
-        args.push(key);
-        return `${result}${offset}${type} ${s}`.trim();
-      }, '')
-      .value();
+    before(() => {
+      fs.writeFileSync(newsolutionpath, solutionfile, 'utf8');
+      return exec('javac Solution.java');
+    });
+    after(() => exec('rm Solution.* Test.*'));
 
-    str += `${offset}${resultType} result = new Solution().${funcName}(${args});`;
-    switch (resultType) {
-    case 'int[]':
-      str += `${offset}System.out.println(Arrays.toString(result));`;
-      break;
-    default:
-      str += `${offset}System.out.println(result);`;
-      break;
-    }
-    const file = template.replace(/<% tasks %>/, str);
-    fs.writeFileSync(testpath, file, 'utf8');
-  });
-
-  _.forEach(tasks, task => {
-    const { result } = task;
-    const str = _.chain(task)
-      .omit('result')
-      .reduce((result, value, key) => {
-        return `${result} ${key}: ${value}`;
-      }, '')
-      .add(` -> ${result}`)
-      .value();
-
-    it(str, () => {
-      return exec('javac Test.java')
-        .then(() => exec('java Test'))
-        .then(res => {
-          const parts = res.split(/\n/g);
-          parts.pop();
-          res = parts.pop();
-          _.forEach(parts, log => console.log(log));
-          switch (typeof result) {
-          case 'string':
-            assert.strictEqual(res, result);
-            break;
-          case 'number':
-            assert.strictEqual(+res, result);
-            break;
-          case 'object':
-            assert.deepEqual(JSON.parse(res), result);
-            break;
-          default:
-            assert.fail();
-            break;
+    let i = 0;
+    beforeEach(() => {
+      const task = tasks[i++];
+      const args = [];
+      let str = _.chain(task)
+        .omitBy((value, key) => /result/.test(key))
+        .reduce((result, value, key) => {
+          let s = '';
+          const type = argMap[key];
+          if (_.isInteger(value)) {
+            s = `${key} = ${value};`;
+          } else if (_.isNumber(value)) {
+            s = `${key} = ${value};`;
+          } else if (_.isString(value)) {
+            s = `${key} = "${value}";`;
+          } else if (_.isArray(value)) {
+            s = `${key} = {${value}};`;
           }
-        });
+          args.push(key);
+          return `${result}${offset}${type} ${s}`.trim();
+        }, '')
+        .value();
+
+      str += `${offset}${resultType} result = new Solution().${funcName}(${args});`;
+      switch (resultType) {
+      case 'int[]':
+        str += `${offset}System.out.println(Arrays.toString(result));`;
+        break;
+      default:
+        str += `${offset}System.out.println(result);`;
+        break;
+      }
+      const file = template.replace(/<% tasks %>/, str);
+      fs.writeFileSync(testpath, file, 'utf8');
+    });
+
+    _.forEach(tasks, task => {
+      const { result } = task;
+      const str = _.chain(task)
+        .omit('result')
+        .reduce((result, value, key) => {
+          return `${result} ${key}: ${value}`;
+        }, '')
+        .add(` -> ${result}`)
+        .value();
+
+      it(str, async () => check(result, await exec('javac Test.java && java Test')));
     });
   });
 }
@@ -156,7 +139,7 @@ function createRubyTest(dirpath) {
   const testjspath = path.resolve(dirpath, 'test.js');
   const tasks = require('./lib/test').getTasks(testjspath);
 
-  describe(`${testname}`, () => {
+  describe(`#${testname}`, () => {
 
     beforeEach(() => {
       const task = tasks.shift();

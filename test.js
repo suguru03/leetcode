@@ -7,12 +7,11 @@ const cp = require('child_process');
 
 const _ = require('lodash');
 const Aigle = require('aigle');
-const exec = Aigle.promisify(cp.exec);
 
 const argv = require('minimist')(process.argv.slice(2));
 
 const target = argv.target || argv.t || '.*';
-const java = argv.java;
+const { java, ruby, debug } = argv;
 const mainpath = path.resolve(__dirname, 'algorithms');
 const re = new RegExp(`${target}`);
 
@@ -23,11 +22,14 @@ const re = new RegExp(`${target}`);
       return resolve(filepath);
     }
     if (/^test(.*).js$/.test(filename) && re.test(filepath)) {
-      java ? createJavaTest(dirpath) : require(filepath);
+      try {
+        java ? createJavaTest(dirpath) : ruby ? createRubyTest(dirpath) : require(filepath);
+      } catch(e) {
+        debug && console.error(e.message, filepath);
+      }
     }
   });
 })(mainpath);
-
 
 function createJavaTest(dirpath) {
 
@@ -138,3 +140,93 @@ function createJavaTest(dirpath) {
   });
 }
 
+function createRubyTest(dirpath) {
+
+  const testname = dirpath.match(/\d+/)[0];
+  const filepath = path.resolve(dirpath, 'solution.rb');
+  const testpath = path.resolve(__dirname, `${testname}.rb`);
+  const file = fs.readFileSync(filepath, 'utf8');
+  const [, funcName, argsStr] = file.match(/def (.*)\((.*)\)/);
+  const args = argsStr.split(',').map(s => s.trim());
+
+  const templatepath = path.resolve(__dirname, 'template', 'template.rb');
+  const template = fs.readFileSync(templatepath, 'utf8');
+
+  // get tasks from test.js
+  const testjspath = path.resolve(dirpath, 'test.js');
+  const tasks = require('./lib/test').getTasks(testjspath);
+
+  describe(`${testname}`, () => {
+
+    beforeEach(() => {
+      const task = tasks.shift();
+      const argsStr = _.chain(args)
+        .map(arg => {
+          const value = task[arg];
+          switch (typeof value) {
+          case 'string':
+            return `'${value}'`;
+          case 'object':
+            return `[${value}]`;
+          default:
+            return value;
+          }
+        })
+        .join(',')
+        .value();
+      const file = template.replace(/<% filepath %>/, `'${filepath}'`)
+        .replace(/<% func %>/, funcName)
+        .replace(/<% args %>/, argsStr);
+      fs.writeFileSync(testpath, file, 'utf8');
+    });
+
+    after(() => exec(`rm ${testpath}`));
+
+    _.forEach(tasks, task => {
+      const { result } = task;
+      const str = _.chain(task)
+        .omit('result')
+        .reduce((result, value, key) => {
+          return `${result} ${key}: ${value}`;
+        }, '')
+        .add(` -> ${result}`)
+        .value();
+      it(str, async () => check(result, await exec(`ruby ${testpath}`)));
+    });
+  });
+}
+
+function check(result, res) {
+  switch (typeof result) {
+  case 'boolean':
+    assert.strictEqual(/true/.test(res), result);
+    break;
+  case 'string':
+    assert.strictEqual(res, result);
+    break;
+  case 'number':
+    assert.strictEqual(+res, result);
+    break;
+  case 'object':
+    assert.deepEqual(JSON.parse(res), result);
+    break;
+  default:
+    assert.fail();
+    break;
+  }
+}
+
+function exec(command, args) {
+  command = !args ? command : _.reduce(args, (str, arg) => `${str} ${arg}`, command);
+  return execute(cp.exec, command);
+}
+
+function execute(func, command, args) {
+  return new Aigle((resolve, reject) => {
+    let result = '';
+    const task = func(command, args);
+    task.on('close', err => err ? reject(result) : resolve(result));
+    task.stdout.on('data', data => result += `${data}`);
+    task.stderr.on('data', data => result += `${data}`);
+  });
+}

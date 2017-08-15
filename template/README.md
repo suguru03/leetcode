@@ -18,3 +18,8 @@ $ mocha test -t Roman
 ```
 $ mocha test -t '001.Two Sum' --java
 ```
+
+## Test Ruby using mocha
+```
+$ mocha test -t '001.Two Sum' --ruby
+```

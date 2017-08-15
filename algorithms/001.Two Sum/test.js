@@ -14,6 +14,10 @@ describe('#twoSum', () => {
     nums: [3, 2, 4],
     target: 6,
     result: [1, 2]
+  }, {
+    nums: [-3, 4, 3, 90],
+    target: 0,
+    result: [0, 2]
   }];
 
   _.forEach(tests, ({ nums, target, result }) => {

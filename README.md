@@ -19,10 +19,15 @@ $ mocha test -t Roman
 $ mocha test -t '001.Two Sum' --java
 ```
 
+## Test Ruby using mocha
+```
+$ mocha test -t '001.Two Sum' --ruby
+```
+
 ## Links
 |#|Title|Solution|
 |---|---|---|
-|001|[Two Sum](https://github.com/suguru03/leetcode/tree/master/algorithms/001.Two%20Sum)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/001.Two%20Sum/index.js), [java](https://github.com/suguru03/leetcode/tree/master/algorithms/001.Two%20Sum/Solution.java)|
+|001|[Two Sum](https://github.com/suguru03/leetcode/tree/master/algorithms/001.Two%20Sum)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/001.Two%20Sum/index.js), [java](https://github.com/suguru03/leetcode/tree/master/algorithms/001.Two%20Sum/Solution.java), [ruby](https://github.com/suguru03/leetcode/tree/master/algorithms/001.Two%20Sum/solution.rb)|
 |002|[Add Two Numbers](https://github.com/suguru03/leetcode/tree/master/algorithms/002.Add%20Two%20Numbers)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/002.Add%20Two%20Numbers/index.js)|
 |003|[Longest Substring Without Repeating Characters](https://github.com/suguru03/leetcode/tree/master/algorithms/003.Longest%20Substring%20Without%20Repeating%20Characters)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/003.Longest%20Substring%20Without%20Repeating%20Characters/index.js)|
 |004|[Median of Two Sorted Arrays](https://github.com/suguru03/leetcode/tree/master/algorithms/004.Median%20of%20Two%20Sorted%20Arrays)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/004.Median%20of%20Two%20Sorted%20Arrays/index.js)|

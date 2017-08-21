@@ -12,6 +12,13 @@ describe('#rotate', () => {
     assert.deepEqual(nums, [5, 6, 7, 1, 2, 3, 4]);
   });
 
+  it('[1, 2, 3, 4, 5, 6, 7, 8, 9], k = 3', () => {
+    const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const k = 3;
+    rotate(nums, k);
+    assert.deepEqual(nums, [7, 8, 9, 1, 2, 3, 4, 5, 6]);
+  });
+
   it('[1, 2] k=3', () => {
     const nums = [1, 2];
     const k = 3;

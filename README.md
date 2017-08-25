@@ -111,3 +111,4 @@ $ mocha test -t '001.Two Sum' --ruby
 |659|[Split Array into Consecutive Subsequences](https://github.com/suguru03/leetcode/tree/master/algorithms/659.Split%20Array%20into%20Consecutive%20Subsequences)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/659.Split%20Array%20into%20Consecutive%20Subsequences/index.js)|
 |660|[Remove 9](https://github.com/suguru03/leetcode/tree/master/algorithms/660.Remove%209)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/660.Remove%209/index.js)|
 |661|[Image Smoother](https://github.com/suguru03/leetcode/tree/master/algorithms/661.Image%20Smoother)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/661.Image%20Smoother/index.js)|
+|662|[Maximum Width of Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/662.Maximum%20Width%20of%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/662.Maximum%20Width%20of%20Binary%20Tree/index.js)|

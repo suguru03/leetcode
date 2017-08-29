@@ -14,7 +14,8 @@ const solutionMap = {
   js: 'index.js',
   java: 'Solution.java',
   ruby: 'solution.rb',
-  sql: 'query.sql'
+  sql: 'query.sql',
+  bash: 'solution.bash'
 };
 const tasks = _.chain(fs.readdirSync(basepath))
   .reject(dirname => re.test(dirname))

@@ -87,6 +87,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |189|[Rotate Array](https://github.com/suguru03/leetcode/tree/master/algorithms/189.Rotate%20Array)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/189.Rotate%20Array/index.js)|
 |190|[Reverse Bits](https://github.com/suguru03/leetcode/tree/master/algorithms/190.Reverse%20Bits)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/190.Reverse%20Bits/index.js)|
 |191|[Number of 1 Bits](https://github.com/suguru03/leetcode/tree/master/algorithms/191.Number%20of%201%20Bits)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/191.Number%20of%201%20Bits/index.js)|
+|193|[Valid Phone Numbers](https://github.com/suguru03/leetcode/tree/master/algorithms/193.Valid%20Phone%20Numbers)|[bash](https://github.com/suguru03/leetcode/tree/master/algorithms/193.Valid%20Phone%20Numbers/solution.bash)|
 |204|[Count Primes](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes/index.js)|
 |344|[Reverse String](https://github.com/suguru03/leetcode/tree/master/algorithms/344.Reverse%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/344.Reverse%20String/index.js)|
 |412|[Fizz Buzz](https://github.com/suguru03/leetcode/tree/master/algorithms/412.Fizz%20Buzz)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/412.Fizz%20Buzz/index.js), [java](https://github.com/suguru03/leetcode/tree/master/algorithms/412.Fizz%20Buzz/Solution.java)|

@@ -1,0 +1,1 @@
+DELETE FROM Person WHERE id IN (SELECT Email FROM Person GROUP BY Email HAVING COUNT(Email) > 1);

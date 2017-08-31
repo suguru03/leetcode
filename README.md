@@ -91,6 +91,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |195|[Tenth Line](https://github.com/suguru03/leetcode/tree/master/algorithms/195.Tenth%20Line)|[bash](https://github.com/suguru03/leetcode/tree/master/algorithms/195.Tenth%20Line/solution.bash)|
 |196|[Delete Duplicate Emails](https://github.com/suguru03/leetcode/tree/master/algorithms/196.Delete%20Duplicate%20Emails)|[sql](https://github.com/suguru03/leetcode/tree/master/algorithms/196.Delete%20Duplicate%20Emails/query.sql)|
 |197|[Rising Temperature](https://github.com/suguru03/leetcode/tree/master/algorithms/197.Rising%20Temperature)|[sql](https://github.com/suguru03/leetcode/tree/master/algorithms/197.Rising%20Temperature/query.sql)|
+|198|[House Robber](https://github.com/suguru03/leetcode/tree/master/algorithms/198.House%20Robber)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/198.House%20Robber/index.js)|
 |204|[Count Primes](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes/index.js)|
 |344|[Reverse String](https://github.com/suguru03/leetcode/tree/master/algorithms/344.Reverse%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/344.Reverse%20String/index.js)|
 |412|[Fizz Buzz](https://github.com/suguru03/leetcode/tree/master/algorithms/412.Fizz%20Buzz)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/412.Fizz%20Buzz/index.js), [java](https://github.com/suguru03/leetcode/tree/master/algorithms/412.Fizz%20Buzz/Solution.java)|

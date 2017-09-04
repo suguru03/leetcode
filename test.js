@@ -180,6 +180,10 @@ function createRubyTest(dirpath) {
 }
 
 function check(result, res) {
+  const logs = res.split(/\n/g);
+  logs.pop();
+  res = logs.pop();
+  _.forEach(logs, log => console.log(log));
   switch (typeof result) {
   case 'boolean':
     assert.strictEqual(/true/.test(res), result);

@@ -143,4 +143,5 @@ $ mocha test -t '001.Two Sum' --ruby
 |678|[Valid Parenthesis String](https://github.com/suguru03/leetcode/tree/master/algorithms/678.Valid%20Parenthesis%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/678.Valid%20Parenthesis%20String/index.js)|
 |679|[24 Game](https://github.com/suguru03/leetcode/tree/master/algorithms/679.24%20Game)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/679.24%20Game/index.js)|
 |680|[Valid Palindrome II](https://github.com/suguru03/leetcode/tree/master/algorithms/680.Valid%20Palindrome%20II)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/680.Valid%20Palindrome%20II/index.js)|
+|681|[Next Closest Time](https://github.com/suguru03/leetcode/tree/master/algorithms/681.Next%20Closest%20Time)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/681.Next%20Closest%20Time/index.js)|
 |682|[Baseball Game](https://github.com/suguru03/leetcode/tree/master/algorithms/682.Baseball%20Game)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/682.Baseball%20Game/index.js)|

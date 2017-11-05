@@ -42,7 +42,6 @@ function findPairs2(nums, k) {
   if (k < 0) {
     return 0;
   }
-  nums.sort((n1, n2) => n1 - n2);
   const l = nums.length;
   const hash = {};
   for (let i = 0; i < l; i++) {
@@ -50,15 +49,13 @@ function findPairs2(nums, k) {
     hash[n] = ++hash[n] || 1;
   }
   let result = 0;
-  let prev;
+  const answer = k === 0 ? 2 : 1;
   for (let i = 0; i < l; i++) {
     const n = nums[i];
-    if (n === prev) {
-      continue;
-    }
-    prev = n;
-    if (k === 0 && hash[n] >= 2 || k !== 0 && hash[n - k] >= 1) {
+    const d = n - k;
+    if (hash[d] >= answer) {
       result++;
+      hash[d] = 0;
     }
   }
   return result;

@@ -170,3 +170,4 @@ $ mocha test -t '001.Two Sum' --ruby
 |682|[Baseball Game](https://github.com/suguru03/leetcode/tree/master/algorithms/682.Baseball%20Game)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/682.Baseball%20Game/index.js)|
 |746|[Min Cost Climbing Stairs](https://github.com/suguru03/leetcode/tree/master/algorithms/746.Min%20Cost%20Climbing%20Stairs)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/746.Min%20Cost%20Climbing%20Stairs/index.js)|
 |748|[Shortest Completing Word](https://github.com/suguru03/leetcode/tree/master/algorithms/748.Shortest%20Completing%20Word)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/748.Shortest%20Completing%20Word/index.js)|
+|750|[Number Of Corner Rectangles](https://github.com/suguru03/leetcode/tree/master/algorithms/750.Number%20Of%20Corner%20Rectangles)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/750.Number%20Of%20Corner%20Rectangles/index.js)|

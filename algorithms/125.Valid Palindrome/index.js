@@ -2,25 +2,11 @@
 
 module.exports = { isPalindrome };
 
-const map = 'abcdefghijklmnopqrstuvwxyz0123456789'.split('').reduce((memo, str) => {
-  memo[str] = str;
-  return memo;
-}, {});
-
 function isPalindrome(s) {
-  let li = 0;
-  let ri = s.length - 1;
-  let lc;
-  let rc;
-  while (li <= ri) {
-    lc = s[li++].toLowerCase();
-    if (!map[lc]) {
-      continue;
-    }
-    do {
-      rc = s[ri--].toLocaleLowerCase();
-    } while (!map[rc]);
-    if (lc !== rc) {
+  s = s.toLowerCase().replace(/\W/g, '');
+  const l = s.length;
+  for (let i = 0; i < l / 2 | 0; i++) {
+    if (s[i] !== s[l - i - 1]) {
       return false;
     }
   }

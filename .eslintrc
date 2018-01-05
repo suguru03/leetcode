@@ -19,6 +19,7 @@ rules:
   eqeqeq: "error"
   no-proto: "error"
   no-case-declarations: "off"
+  no-constant-condition: 0
 
   # Strict Mode
   strict: ["error", "global"]

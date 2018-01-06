@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha test",
-    "benchmark": "node benchmark"
+    "benchmark": "node benchmark",
+    "prepare": "cp ./template/pre-commit ./.git/hooks/pre-commit"
   },
   "devDependencies": {
     "aigle": "^1.4.2",

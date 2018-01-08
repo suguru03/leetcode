@@ -16,7 +16,7 @@ describe('#template', () => {
 
   _.forEach(tests, ({ n, result }) => {
     it(`${n} -> ${result}`, () => {
-      assert.strictEqual(template(n), result);
+      assert.deepStrictEqual(template(n), result);
     });
   });
 });

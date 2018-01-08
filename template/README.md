@@ -1,6 +1,16 @@
 # leetcode
 
+## Create a new problem
+
+```
+$ gulp init
+prompt: num: <number>
+```
+
+It will generate a folder and files automatically.
+
 ## Benchmark
+
 ```
 $ npm run benchmark
 $ node benchmark

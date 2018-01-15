@@ -61,7 +61,7 @@ async function init() {
 
   // create README
   const url = `${base}/problems/${slug}`;
-  const readme = `## ${id}. ${title}\n\n${url}\n\n${text}`;
+  const readme = `## ${id}. ${title}\n\n${url}\n${text}`;
   const readmepath = path.resolve(dirpath, 'README.md');
   fs.writeFileSync(readmepath, readme);
 

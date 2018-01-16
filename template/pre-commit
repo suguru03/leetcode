@@ -1,6 +1,0 @@
-#!/bin/sh
-
-echo "building README..."
-
-node build
-git add README.md

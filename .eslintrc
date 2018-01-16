@@ -29,7 +29,6 @@ rules:
 
   # Stylistic Issues
   camelcase: "error"
-  comma-dangle: ["error", "never"]
   comma-spacing: "error"
   indent: ["error", 2]
   key-spacing: "error"

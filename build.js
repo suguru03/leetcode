@@ -40,6 +40,7 @@ const tasks = _.chain(fs.readdirSync(basepath))
     );
   })
   .filter()
+  .reverse()
   .value();
 
 if (_.isEmpty(tasks)) {

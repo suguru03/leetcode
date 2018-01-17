@@ -30,7 +30,6 @@ rules:
   # Stylistic Issues
   camelcase: "error"
   comma-spacing: "error"
-  indent: ["error", 2]
   key-spacing: "error"
   linebreak-style: ["error", "unix"]
   new-cap: "error"

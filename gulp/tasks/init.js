@@ -9,10 +9,14 @@ const Aigle = require('aigle');
 const prompt = require('prompt');
 const puppeteer = require('puppeteer');
 const request = require('request-promise');
+const prettier = require('prettier');
+const config = require('../../package');
 
 Aigle.promisifyAll(prompt);
 
 gulp.task('init', init);
+
+const base = 'https://leetcode.com';
 
 const schema = {
   properties: {
@@ -28,7 +32,6 @@ async function init() {
   prompt.start();
   const { num } = await prompt.getAsync(schema);
 
-  const base = 'https://leetcode.com';
   const body = await request({
     uri: `${base}/api/problems/all/`,
     json: true,
@@ -40,32 +43,67 @@ async function init() {
   if (!item) {
     throw new Error(`${num} is not found`);
   }
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  await setLanguage(page, item.stat);
+
+  // load the problem page, it may need to adjust the timeout
+  await createProblem(page, item.stat);
+  await browser.close();
+}
+
+function assignDefault(map, { type, key }) {
+  key = key || 'result';
+  switch (type) {
+    case 'number':
+      map[key] = 0;
+      break;
+    case 'string':
+      map[key] = '';
+      break;
+    case 'boolean':
+      map[key] = true;
+      break;
+    default:
+      if (/\[\]$/.test(type)) {
+        map[key] = [];
+      } else {
+        map[key] = '';
+      }
+      break;
+  }
+}
+
+async function setLanguage(page) {
+  // set logal storage
+  await page.goto(`${base}`);
+  await page.evaluate(() => localStorage.setItem('global_lang', 'javascript'));
+}
+
+async function createProblem(page, stat) {
   const {
     question_id: id,
     question__title: title,
     question__title_slug: slug,
-  } = item.stat;
-
+  } = stat;
+  const url = `${base}/problems/${slug}`;
+  await page.goto(url);
   console.log(`Reading leetcode page... id: ${id}, title: ${title}`);
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
 
-  // set logal storage
-  await page.goto(`${base}`);
-  await page.evaluate(() => localStorage.setItem('global_lang', 'javascript'));
-
-  // load the problem page, it may need to adjust the timeout
-  await page.goto(`${base}/problems/${slug}`);
-  await Aigle.delay(2000);
+  // wait until page is loaded
+  const iterator = () =>
+    page.evaluate(() => {
+      const dom = document.querySelector('.question-description');
+      return dom && dom.textContent;
+    });
+  const tester = text => (text ? true : Aigle.delay(100, false));
+  const text = await Aigle.doUntil(iterator, tester);
 
   // get description
-  const text = await page.evaluate(
-    () => document.querySelector('.question-description').textContent,
-  );
-  const codeInfo = await page.evaluate(
+  let code = await page.evaluate(
     () => document.querySelector('.CodeMirror-code').textContent,
   );
-  await browser.close();
 
   console.log('Creating files...');
 
@@ -74,18 +112,23 @@ async function init() {
   fs.mkdirSync(dirpath);
 
   // create README
-  const url = `${base}/problems/${slug}`;
   const readme = `## ${id}. ${title}\n\n${url}\n\n${text}`;
   const readmepath = path.resolve(dirpath, 'README.md');
   fs.writeFileSync(readmepath, readme);
 
   const funcRe = /var (.+) = function/;
-  const funcName = codeInfo.match(funcRe)[1];
+  const funcName = code.match(funcRe)[1];
   // if fails, it needs to be fixed.
-  const code = codeInfo
-    .replace(/\d+/g, '\n')
-    .replace(funcRe, 'function $1')
-    .replace(/(;|%)/g, '');
+  let line = 0;
+  while (++line) {
+    const re = new RegExp(line);
+    if (!re.test(code)) {
+      break;
+    }
+    code = code.replace(re, '\n');
+  }
+  code = code.replace(funcRe, 'function $1').replace(/(;|%)/g, '');
+  code = prettier.format(code, config.prettier);
 
   // create index.js
   const tempIndexPath = path.resolve(__dirname, '../template/index');
@@ -122,31 +165,10 @@ async function init() {
       .replace(/\$2/, argStr ? `${argStr},` : '')
       .replace(/\$3/, keys.map(key => `$\{${key}}`).join(', '))
       .replace(/\$4/, argStr);
+    testFile = prettier.format(testFile, config.prettier);
   } catch (e) {
     console.log('You need to make test cases');
   }
   const testpath = path.resolve(dirpath, 'test.js');
   fs.writeFileSync(testpath, testFile);
-}
-
-function assignDefault(map, { type, key }) {
-  key = key || 'result';
-  switch (type) {
-    case 'number':
-      map[key] = 0;
-      break;
-    case 'string':
-      map[key] = '';
-      break;
-    case 'boolean':
-      map[key] = true;
-      break;
-    default:
-      if (/\[\]$/.test(type)) {
-        map[key] = [];
-      } else {
-        map[key] = '';
-      }
-      break;
-  }
 }

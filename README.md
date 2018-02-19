@@ -38,7 +38,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |#|Title|Solution|
 |---|---|---|
 |787|[Cheapest Flights Within K Stops](https://github.com/suguru03/leetcode/tree/master/algorithms/787.Cheapest%20Flights%20Within%20K%20Stops)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/787.Cheapest%20Flights%20Within%20K%20Stops/index.js)|
-|785|[Is Graph Bipartite?](https://github.com/suguru03/leetcode/tree/master/algorithms/785.Is%20Graph%20Bipartite?)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/785.Is%20Graph%20Bipartite?/index.js)|
+|785|[Is Graph Bipartite](https://github.com/suguru03/leetcode/tree/master/algorithms/785.Is%20Graph%20Bipartite)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/785.Is%20Graph%20Bipartite/index.js)|
 |784|[Letter Case Permutation](https://github.com/suguru03/leetcode/tree/master/algorithms/784.Letter%20Case%20Permutation)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/784.Letter%20Case%20Permutation/index.js)|
 |783|[Minimum Distance Between BST Nodes](https://github.com/suguru03/leetcode/tree/master/algorithms/783.Minimum%20Distance%20Between%20BST%20Nodes)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/783.Minimum%20Distance%20Between%20BST%20Nodes/index.js)|
 |779|[K-th Symbol in Grammar](https://github.com/suguru03/leetcode/tree/master/algorithms/779.K-th%20Symbol%20in%20Grammar)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/779.K-th%20Symbol%20in%20Grammar/index.js)|

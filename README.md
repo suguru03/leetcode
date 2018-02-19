@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|784|[Letter Case Permutation](https://github.com/suguru03/leetcode/tree/master/algorithms/784.Letter%20Case%20Permutation)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/784.Letter%20Case%20Permutation/index.js)|
 |783|[Minimum Distance Between BST Nodes](https://github.com/suguru03/leetcode/tree/master/algorithms/783.Minimum%20Distance%20Between%20BST%20Nodes)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/783.Minimum%20Distance%20Between%20BST%20Nodes/index.js)|
 |779|[K-th Symbol in Grammar](https://github.com/suguru03/leetcode/tree/master/algorithms/779.K-th%20Symbol%20in%20Grammar)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/779.K-th%20Symbol%20in%20Grammar/index.js)|
 |771|[Jewels and Stones](https://github.com/suguru03/leetcode/tree/master/algorithms/771.Jewels%20and%20Stones)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/771.Jewels%20and%20Stones/index.js)|

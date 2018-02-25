@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|791|[Custom Sort String](https://github.com/suguru03/leetcode/tree/master/algorithms/791.Custom%20Sort%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/791.Custom%20Sort%20String/index.js)|
 |789|[Escape The Ghosts](https://github.com/suguru03/leetcode/tree/master/algorithms/789.Escape%20The%20Ghosts)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/789.Escape%20The%20Ghosts/index.js)|
 |788|[Rotated Digits](https://github.com/suguru03/leetcode/tree/master/algorithms/788.Rotated%20Digits)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/788.Rotated%20Digits/index.js)|
 |787|[Cheapest Flights Within K Stops](https://github.com/suguru03/leetcode/tree/master/algorithms/787.Cheapest%20Flights%20Within%20K%20Stops)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/787.Cheapest%20Flights%20Within%20K%20Stops/index.js)|

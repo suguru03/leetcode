@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|796|[Rotate String](https://github.com/suguru03/leetcode/tree/master/algorithms/796.Rotate%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/796.Rotate%20String/index.js)|
 |791|[Custom Sort String](https://github.com/suguru03/leetcode/tree/master/algorithms/791.Custom%20Sort%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/791.Custom%20Sort%20String/index.js)|
 |789|[Escape The Ghosts](https://github.com/suguru03/leetcode/tree/master/algorithms/789.Escape%20The%20Ghosts)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/789.Escape%20The%20Ghosts/index.js)|
 |788|[Rotated Digits](https://github.com/suguru03/leetcode/tree/master/algorithms/788.Rotated%20Digits)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/788.Rotated%20Digits/index.js)|

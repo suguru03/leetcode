@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|799|[Champagne Tower](https://github.com/suguru03/leetcode/tree/master/algorithms/799.Champagne%20Tower)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/799.Champagne%20Tower/index.js)|
 |797|[All Paths From Source to Target](https://github.com/suguru03/leetcode/tree/master/algorithms/797.All%20Paths%20From%20Source%20to%20Target)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/797.All%20Paths%20From%20Source%20to%20Target/index.js)|
 |796|[Rotate String](https://github.com/suguru03/leetcode/tree/master/algorithms/796.Rotate%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/796.Rotate%20String/index.js)|
 |791|[Custom Sort String](https://github.com/suguru03/leetcode/tree/master/algorithms/791.Custom%20Sort%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/791.Custom%20Sort%20String/index.js)|

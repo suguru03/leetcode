@@ -28,7 +28,6 @@ rules:
   # Variables
 
   # Stylistic Issues
-  camelcase: "error"
   comma-spacing: "error"
   key-spacing: "error"
   linebreak-style: ["error", "unix"]

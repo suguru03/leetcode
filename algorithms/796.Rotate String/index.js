@@ -9,15 +9,13 @@ module.exports = { rotateString, rotateString2 };
  */
 function rotateString(A, B) {
   const l = A.length;
-  const map = {};
+  const t = B[0];
   for (let i = 0; i < l; i++) {
     const c = A[i];
-    map[c] = map[c] || [];
-    map[c].push(i);
-  }
-  const arr = map[B[0]] || [];
-  for (const index of arr) {
-    const str = A.substr(index) + A.substr(0, index);
+    if (c !== t) {
+      continue;
+    }
+    const str = A.substr(i) + A.substr(0, i);
     if (str === B) {
       return true;
     }

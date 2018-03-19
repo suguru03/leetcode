@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|801|[Minimum Swaps To Make Sequences Increasing](https://github.com/suguru03/leetcode/tree/master/algorithms/801.Minimum%20Swaps%20To%20Make%20Sequences%20Increasing)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/801.Minimum%20Swaps%20To%20Make%20Sequences%20Increasing/index.js)|
 |800|[Similar RGB Color](https://github.com/suguru03/leetcode/tree/master/algorithms/800.Similar%20RGB%20Color)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/800.Similar%20RGB%20Color/index.js)|
 |799|[Champagne Tower](https://github.com/suguru03/leetcode/tree/master/algorithms/799.Champagne%20Tower)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/799.Champagne%20Tower/index.js)|
 |797|[All Paths From Source to Target](https://github.com/suguru03/leetcode/tree/master/algorithms/797.All%20Paths%20From%20Source%20to%20Target)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/797.All%20Paths%20From%20Source%20to%20Target/index.js)|

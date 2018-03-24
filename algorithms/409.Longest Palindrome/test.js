@@ -12,7 +12,7 @@ describe('#longestPalindrome', () => {
     },
     {
       s: 'aabbccccdd',
-      result: 7,
+      result: 10,
     },
   ];
 

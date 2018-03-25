@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "test": "mocha test",
+    "test": "mocha --timeout=10000 test",
     "benchmark": "node benchmark"
   },
   "devDependencies": {

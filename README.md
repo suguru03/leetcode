@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|806|[Number of Lines To Write String](https://github.com/suguru03/leetcode/tree/master/algorithms/806.Number%20of%20Lines%20To%20Write%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/806.Number%20of%20Lines%20To%20Write%20String/index.js)|
 |802|[Find Eventual Safe States](https://github.com/suguru03/leetcode/tree/master/algorithms/802.Find%20Eventual%20Safe%20States)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/802.Find%20Eventual%20Safe%20States/index.js)|
 |801|[Minimum Swaps To Make Sequences Increasing](https://github.com/suguru03/leetcode/tree/master/algorithms/801.Minimum%20Swaps%20To%20Make%20Sequences%20Increasing)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/801.Minimum%20Swaps%20To%20Make%20Sequences%20Increasing/index.js)|
 |800|[Similar RGB Color](https://github.com/suguru03/leetcode/tree/master/algorithms/800.Similar%20RGB%20Color)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/800.Similar%20RGB%20Color/index.js)|

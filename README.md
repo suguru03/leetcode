@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|807|[Max Increase to Keep City Skyline](https://github.com/suguru03/leetcode/tree/master/algorithms/807.Max%20Increase%20to%20Keep%20City%20Skyline)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/807.Max%20Increase%20to%20Keep%20City%20Skyline/index.js)|
 |806|[Number of Lines To Write String](https://github.com/suguru03/leetcode/tree/master/algorithms/806.Number%20of%20Lines%20To%20Write%20String)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/806.Number%20of%20Lines%20To%20Write%20String/index.js)|
 |804|[Unique Morse Code Words](https://github.com/suguru03/leetcode/tree/master/algorithms/804.Unique%20Morse%20Code%20Words)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/804.Unique%20Morse%20Code%20Words/index.js)|
 |802|[Find Eventual Safe States](https://github.com/suguru03/leetcode/tree/master/algorithms/802.Find%20Eventual%20Safe%20States)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/802.Find%20Eventual%20Safe%20States/index.js)|

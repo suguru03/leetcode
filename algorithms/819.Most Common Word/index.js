@@ -18,8 +18,7 @@ function mostCommonWord(paragraph, banned) {
     if (bannedMap[word] || !word.length) {
       return;
     }
-    map[word] = map[word] || 0;
-    map[word]++;
+    map[word] = ++map[word] || 1;
   });
 
   let max = 0;

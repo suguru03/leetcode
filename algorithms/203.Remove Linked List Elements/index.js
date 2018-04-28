@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { removeElements, removeElements2 };
+module.exports = { removeElements, removeElements2, removeElements3 };
 
 /**
  * Definition for singly-linked list.
@@ -52,4 +52,18 @@ function removeElements2(head, val) {
   }
   head.next = removeElements2(head.next, val);
   return head.val === val ? head.next : head;
+}
+
+function removeElements3(head, val) {
+  let node = new ListNode();
+  const result = node;
+  while (head) {
+    if (head.val !== val) {
+      node = node.next = head;
+    } else {
+      node.next = head.next;
+    }
+    head = head.next;
+  }
+  return result.next;
 }

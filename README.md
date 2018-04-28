@@ -39,6 +39,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |---|---|---|
 |822|[Card Flipping Game](https://github.com/suguru03/leetcode/tree/master/algorithms/822.Card%20Flipping%20Game)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/822.Card%20Flipping%20Game/index.js)|
 |821|[Shortest Distance to a Character](https://github.com/suguru03/leetcode/tree/master/algorithms/821.Shortest%20Distance%20to%20a%20Character)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/821.Shortest%20Distance%20to%20a%20Character/index.js)|
+|820|[Short Encoding of Words](https://github.com/suguru03/leetcode/tree/master/algorithms/820.Short%20Encoding%20of%20Words)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/820.Short%20Encoding%20of%20Words/index.js)|
 |819|[Most Common Word](https://github.com/suguru03/leetcode/tree/master/algorithms/819.Most%20Common%20Word)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/819.Most%20Common%20Word/index.js)|
 |817|[Linked List Components](https://github.com/suguru03/leetcode/tree/master/algorithms/817.Linked%20List%20Components)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/817.Linked%20List%20Components/index.js)|
 |816|[Ambiguous Coordinates](https://github.com/suguru03/leetcode/tree/master/algorithms/816.Ambiguous%20Coordinates)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/816.Ambiguous%20Coordinates/index.js)|

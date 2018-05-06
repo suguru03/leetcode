@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|831|[Masking Personal Information](https://github.com/suguru03/leetcode/tree/master/algorithms/831.Masking%20Personal%20Information)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/831.Masking%20Personal%20Information/index.js)|
 |830|[Positions of Large Groups](https://github.com/suguru03/leetcode/tree/master/algorithms/830.Positions%20of%20Large%20Groups)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/830.Positions%20of%20Large%20Groups/index.js)|
 |826|[Most Profit Assigning Work](https://github.com/suguru03/leetcode/tree/master/algorithms/826.Most%20Profit%20Assigning%20Work)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/826.Most%20Profit%20Assigning%20Work/index.js)|
 |825|[Friends Of Appropriate Ages](https://github.com/suguru03/leetcode/tree/master/algorithms/825.Friends%20Of%20Appropriate%20Ages)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/825.Friends%20Of%20Appropriate%20Ages/index.js)|

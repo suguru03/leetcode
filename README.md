@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|824|[Goat Latin](https://github.com/suguru03/leetcode/tree/master/algorithms/824.Goat%20Latin)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/824.Goat%20Latin/index.js)|
 |822|[Card Flipping Game](https://github.com/suguru03/leetcode/tree/master/algorithms/822.Card%20Flipping%20Game)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/822.Card%20Flipping%20Game/index.js)|
 |821|[Shortest Distance to a Character](https://github.com/suguru03/leetcode/tree/master/algorithms/821.Shortest%20Distance%20to%20a%20Character)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/821.Shortest%20Distance%20to%20a%20Character/index.js)|
 |820|[Short Encoding of Words](https://github.com/suguru03/leetcode/tree/master/algorithms/820.Short%20Encoding%20of%20Words)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/820.Short%20Encoding%20of%20Words/index.js)|

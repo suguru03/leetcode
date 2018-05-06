@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|825|[Friends Of Appropriate Ages](https://github.com/suguru03/leetcode/tree/master/algorithms/825.Friends%20Of%20Appropriate%20Ages)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/825.Friends%20Of%20Appropriate%20Ages/index.js)|
 |824|[Goat Latin](https://github.com/suguru03/leetcode/tree/master/algorithms/824.Goat%20Latin)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/824.Goat%20Latin/index.js)|
 |822|[Card Flipping Game](https://github.com/suguru03/leetcode/tree/master/algorithms/822.Card%20Flipping%20Game)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/822.Card%20Flipping%20Game/index.js)|
 |821|[Shortest Distance to a Character](https://github.com/suguru03/leetcode/tree/master/algorithms/821.Shortest%20Distance%20to%20a%20Character)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/821.Shortest%20Distance%20to%20a%20Character/index.js)|

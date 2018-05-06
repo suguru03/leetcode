@@ -38,7 +38,7 @@ async function init() {
   });
   const item = _.find(
     body.stat_status_pairs,
-    item => item.stat.question_id === num,
+    item => item.stat.frontend_question_id === num,
   );
   if (!item) {
     throw new Error(`${num} is not found`);
@@ -83,7 +83,7 @@ async function setLanguage(page) {
 
 async function createProblem(page, stat) {
   const {
-    question_id: id,
+    frontend_question_id: id,
     question__title: title,
     question__title_slug: slug,
   } = stat;

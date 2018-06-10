@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|845|[Longest Mountain in Array](https://github.com/suguru03/leetcode/tree/master/algorithms/845.Longest%20Mountain%20in%20Array)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/845.Longest%20Mountain%20in%20Array/index.js)|
 |844|[Backspace String Compare](https://github.com/suguru03/leetcode/tree/master/algorithms/844.Backspace%20String%20Compare)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/844.Backspace%20String%20Compare/index.js)|
 |831|[Masking Personal Information](https://github.com/suguru03/leetcode/tree/master/algorithms/831.Masking%20Personal%20Information)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/831.Masking%20Personal%20Information/index.js)|
 |830|[Positions of Large Groups](https://github.com/suguru03/leetcode/tree/master/algorithms/830.Positions%20of%20Large%20Groups)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/830.Positions%20of%20Large%20Groups/index.js)|

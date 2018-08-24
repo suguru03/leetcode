@@ -14,7 +14,7 @@ function countPrimes(n) {
       continue;
     }
     count++;
-    for (let j = i; j < n; j += i) {
+    for (let j = i * i; j < n; j += i) {
       nums[j] = true;
     }
   }

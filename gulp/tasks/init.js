@@ -94,16 +94,30 @@ async function createProblem(page, stat) {
   // wait until page is loaded
   const iterator = () =>
     page.evaluate(() => {
-      const dom = document.querySelector('.question-description');
-      return dom && dom.textContent;
+      const classeNames = [
+        '.question-description__3U1T',
+        '.content-wrapper__3A6n',
+      ];
+      for (const className of classeNames) {
+        const dom = document.querySelector(className);
+        if (dom) {
+          return dom.textContent;
+        }
+      }
     });
   const tester = text => (text ? true : Aigle.delay(100, false));
   const text = await Aigle.doUntil(iterator, tester);
 
   // get description
-  let code = await page.evaluate(
-    () => document.querySelector('.CodeMirror-code').textContent,
-  );
+  let code = await page.evaluate(() => {
+    const classeNames = ['.CodeMirror-code', '.CodeMirror-lines'];
+    for (const className of classeNames) {
+      const dom = document.querySelector(className);
+      if (dom) {
+        return dom.textContent;
+      }
+    }
+  });
 
   console.log('Creating files...');
 

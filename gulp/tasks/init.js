@@ -94,10 +94,7 @@ async function createProblem(page, stat) {
   // wait until page is loaded
   const iterator = () =>
     page.evaluate(() => {
-      const classeNames = [
-        '.question-description__3U1T',
-        '.content-wrapper__3A6n',
-      ];
+      const classeNames = ['.description__3vkv', '.content-wrapper__3A6n'];
       for (const className of classeNames) {
         const dom = document.querySelector(className);
         if (dom) {

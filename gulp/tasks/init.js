@@ -92,17 +92,19 @@ async function createProblem(page, stat) {
   console.log(`Reading leetcode page... id: ${id}, title: ${title}`);
 
   // wait until page is loaded
-  const iterator = () =>
-    page.evaluate(() => {
-      const classeNames = ['.description__3vkv', '.content-wrapper__3A6n'];
-      for (const className of classeNames) {
-        const dom = document.querySelector(className);
-        if (dom) {
-          return dom.textContent;
-        }
+  let count = 0;
+  const iterator = () => {
+    if (++count > 10) {
+      throw new Error('class not found');
+    }
+    return page.evaluate(() => {
+      const dom = document.querySelector('.question-content');
+      if (dom) {
+        return dom.children[1].textContent;
       }
     });
-  const tester = text => (text ? true : Aigle.delay(100, false));
+  };
+  const tester = text => (text ? true : Aigle.delay(1000, false));
   const text = await Aigle.doUntil(iterator, tester);
 
   // get description

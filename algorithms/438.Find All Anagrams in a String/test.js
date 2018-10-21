@@ -21,6 +21,16 @@ describe('#findAnagrams', () => {
       p: 'abc',
       result: [0, 2],
     },
+    {
+      s: 'abcdabcd',
+      p: 'bcd',
+      result: [1, 5],
+    },
+    {
+      s: 'eklpyqrbgjdwtcaxzsnifvhmoueklpyqrbgjdwtcaxzsnifvhmoueklp',
+      p: 'yqrbgjdwtcaxzsnifvhmou',
+      result: [4, 30],
+    },
   ];
 
   _.forEach(tests, ({ s, p, result }) => {

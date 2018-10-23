@@ -99,9 +99,13 @@ async function createProblem(page, stat) {
       throw new Error('class not found');
     }
     return page.evaluate(() => {
-      const dom = document.querySelector('.question-content');
+      let dom = document.querySelector('.question-content');
       if (dom) {
         return dom.children[1].textContent;
+      }
+      dom = document.querySelector('.ant-tabs-content > div > div');
+      if (dom) {
+        return dom.textContent;
       }
     });
   };

@@ -103,7 +103,7 @@ async function createProblem(page, stat) {
       if (dom) {
         return dom.children[1].textContent;
       }
-      dom = document.querySelector('.ant-tabs-content > div > div');
+      dom = document.querySelector('.description__3vkv > div');
       if (dom) {
         return dom.textContent;
       }

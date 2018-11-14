@@ -103,9 +103,11 @@ async function createProblem(page, stat) {
       if (dom) {
         return dom.children[1].textContent;
       }
-      dom = document.querySelector('.description__3vkv > div');
+      dom = document.querySelector(
+        '#main-container > div > div > div > div > div > div',
+      );
       if (dom) {
-        return dom.textContent;
+        return dom.children[1].firstChild.children[1].textContent;
       }
     });
   };

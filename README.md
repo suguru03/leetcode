@@ -38,6 +38,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |#|Title|Solution|
 |---|---|---|
 |944|[Delete Columns to Make Sorted](https://github.com/suguru03/leetcode/tree/master/algorithms/944.Delete%20Columns%20to%20Make%20Sorted)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/944.Delete%20Columns%20to%20Make%20Sorted/index.js)|
+|942|[DI String Match](https://github.com/suguru03/leetcode/tree/master/algorithms/942.DI%20String%20Match)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/942.DI%20String%20Match/index.js)|
 |941|[Valid Mountain Array](https://github.com/suguru03/leetcode/tree/master/algorithms/941.Valid%20Mountain%20Array)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/941.Valid%20Mountain%20Array/index.js)|
 |848|[Shifting Letters](https://github.com/suguru03/leetcode/tree/master/algorithms/848.Shifting%20Letters)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/848.Shifting%20Letters/index.js)|
 |846|[Hand of Straights](https://github.com/suguru03/leetcode/tree/master/algorithms/846.Hand%20of%20Straights)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/846.Hand%20of%20Straights/index.js)|

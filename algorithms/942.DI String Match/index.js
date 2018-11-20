@@ -7,12 +7,12 @@ module.exports = { diStringMatch };
  * @return {number[]}
  */
 function diStringMatch(S) {
-  const arr = [];
   let i = -1;
   let l = 0;
   let h = S.length;
+  const arr = Array(h + 1);
   while (l <= h) {
-    arr.push(S[++i] === 'I' ? l++ : h--);
+    arr[++i] = S[i] === 'I' ? l++ : h--;
   }
   return arr;
 }

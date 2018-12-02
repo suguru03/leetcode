@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|949|[Largest Time for Given Digits](https://github.com/suguru03/leetcode/tree/master/algorithms/949.Largest%20Time%20for%20Given%20Digits)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/949.Largest%20Time%20for%20Given%20Digits/index.js)|
 |944|[Delete Columns to Make Sorted](https://github.com/suguru03/leetcode/tree/master/algorithms/944.Delete%20Columns%20to%20Make%20Sorted)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/944.Delete%20Columns%20to%20Make%20Sorted/index.js)|
 |943|[Find the Shortest Superstring](https://github.com/suguru03/leetcode/tree/master/algorithms/943.Find%20the%20Shortest%20Superstring)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/943.Find%20the%20Shortest%20Superstring/index.js)|
 |942|[DI String Match](https://github.com/suguru03/leetcode/tree/master/algorithms/942.DI%20String%20Match)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/942.DI%20String%20Match/index.js)|

@@ -95,7 +95,7 @@ async function createProblem(page, stat) {
   // wait until page is loaded
   let count = 0;
   const iterator = () => {
-    if (++count > 10) {
+    if (++count > 5) {
       throw new Error('class not found');
     }
     return page.evaluate(() => {
@@ -107,7 +107,11 @@ async function createProblem(page, stat) {
         '#main-container > div > div > div > div > div > div',
       );
       if (dom) {
-        return dom.children[1].firstChild.children[1].textContent;
+        try {
+          return dom.children[1].firstChild.children[1].textContent;
+        } catch (e) {
+          return '';
+        }
       }
     });
   };

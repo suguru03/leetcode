@@ -10,15 +10,15 @@ function solveNQueens(n) {
   const ans = [];
   const arr = Array(n);
   for (let i = 0; i < n; i++) {
-    find(i, 0, arr);
+    arr[i] = 0;
+    find(arr, 0);
+    arr[i] = undefined;
   }
   return ans;
 
-  function find(index, cur, arr) {
-    arr[index] = cur++;
-    if (cur === n) {
+  function find(arr, row) {
+    if (++row === n) {
       ans.push(createResult(arr));
-      arr[index] = undefined;
       return;
     }
     loop: for (let i = 0; i < n; i++) {
@@ -29,15 +29,16 @@ function solveNQueens(n) {
         if (j === i) {
           continue;
         }
-        const d1 = cur - arr[j];
+        const d1 = row - arr[j];
         const d2 = Math.abs(j - i);
         if (d1 === d2) {
           continue loop;
         }
       }
-      find(i, cur, arr);
+      arr[i] = row;
+      find(arr, row);
+      arr[i] = undefined;
     }
-    arr[index] = undefined;
   }
 }
 

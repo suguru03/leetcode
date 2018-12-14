@@ -27,18 +27,16 @@ function bitCount(x) {
  * @return {number[]}
  */
 function countBits2(num) {
-  const arr = Array(num);
-  arr[0] = 0;
-  let bit = 0;
-  let max = 0;
+  const arr = [0];
+  let bit = 1;
+  let next = 2;
   for (let i = 1; i <= num; i++) {
-    const n = i.toString(2);
-    if (n.length > max) {
-      arr[i] = 1;
-      max = n.length;
-      bit = i;
-    } else {
+    if (i < next) {
       arr[i] = 1 + arr[i - bit];
+    } else {
+      arr[i] = 1;
+      bit = next;
+      next *= 2;
     }
   }
   return arr;

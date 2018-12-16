@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|958|[Check Completeness of a Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/958.Check%20Completeness%20of%20a%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/958.Check%20Completeness%20of%20a%20Binary%20Tree/index.js)|
 |951|[Flip Equivalent Binary Trees](https://github.com/suguru03/leetcode/tree/master/algorithms/951.Flip%20Equivalent%20Binary%20Trees)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/951.Flip%20Equivalent%20Binary%20Trees/index.js)|
 |950|[Reveal Cards In Increasing Order](https://github.com/suguru03/leetcode/tree/master/algorithms/950.Reveal%20Cards%20In%20Increasing%20Order)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/950.Reveal%20Cards%20In%20Increasing%20Order/index.js)|
 |949|[Largest Time for Given Digits](https://github.com/suguru03/leetcode/tree/master/algorithms/949.Largest%20Time%20for%20Given%20Digits)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/949.Largest%20Time%20for%20Given%20Digits/index.js)|

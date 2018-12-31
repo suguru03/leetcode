@@ -99,19 +99,12 @@ async function createProblem(page, stat) {
       throw new Error('class not found');
     }
     return page.evaluate(() => {
-      let dom = document.querySelector('.question-content');
-      if (dom) {
-        return dom.children[1].textContent;
-      }
-      dom = document.querySelector(
-        '#main-container > div > div > div > div > div > div',
-      );
-      if (dom) {
-        try {
-          return dom.children[1].firstChild.children[1].textContent;
-        } catch (e) {
-          return '';
-        }
+      try {
+        return document
+          .querySelector('#question-detail-main-tabs')
+          .children[1].querySelector('div').children[1].textContent;
+      } catch (e) {
+        return '';
       }
     });
   };

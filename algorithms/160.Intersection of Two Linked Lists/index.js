@@ -16,13 +16,13 @@ module.exports = { getIntersectionNode, getIntersectionNode2 };
  * @return {ListNode}
  */
 function getIntersectionNode(headA, headB) {
-  const map = new Map();
+  const set = new Set();
   while (headA) {
-    map.set(headA, headA);
+    set.add(headA);
     headA = headA.next;
   }
   while (headB) {
-    if (map.has(headB)) {
+    if (set.has(headB)) {
       return headB;
     }
     headB = headB.next;

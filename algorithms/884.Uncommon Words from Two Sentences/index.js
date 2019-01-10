@@ -28,11 +28,11 @@ function uncommonFromSentences(A, B) {
 function uncommonFromSentences2(A, B) {
   const set = new Set();
   const result = new Set();
-  resolve(A);
-  resolve(B);
+  check(A);
+  check(B);
   return Array.from(result);
 
-  function resolve(str) {
+  function check(str) {
     for (const word of str.split(' ')) {
       if (set.has(word)) {
         result.delete(word);

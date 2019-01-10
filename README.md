@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|965|[Univalued Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/965.Univalued%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/965.Univalued%20Binary%20Tree/index.js)|
 |958|[Check Completeness of a Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/958.Check%20Completeness%20of%20a%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/958.Check%20Completeness%20of%20a%20Binary%20Tree/index.js)|
 |957|[Prison Cells After N Days](https://github.com/suguru03/leetcode/tree/master/algorithms/957.Prison%20Cells%20After%20N%20Days)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/957.Prison%20Cells%20After%20N%20Days/index.js)|
 |951|[Flip Equivalent Binary Trees](https://github.com/suguru03/leetcode/tree/master/algorithms/951.Flip%20Equivalent%20Binary%20Trees)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/951.Flip%20Equivalent%20Binary%20Trees/index.js)|

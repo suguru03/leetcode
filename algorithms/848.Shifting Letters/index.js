@@ -17,7 +17,7 @@ function shiftingLetters(S, shifts) {
   const result = [];
   for (let i = 0; i < S.length; i++) {
     const code = S[i].charCodeAt() - base;
-    result.push(String.fromCharCode((code + x) % cnum + base));
+    result.push(String.fromCharCode(((code + x) % cnum) + base));
     x = (x - shifts[i]) % cnum;
     x = x >= 0 ? x : x + cnum;
   }

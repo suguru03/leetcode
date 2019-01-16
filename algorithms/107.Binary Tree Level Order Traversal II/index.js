@@ -63,10 +63,7 @@ function resolveResult(node, result, depth) {
     result.unshift([]);
   }
   result[result.length - depth].push(node.val);
-  return (
-    resolveResult(node.left, result, depth) &&
-    resolveResult(node.right, result, depth)
-  );
+  return resolveResult(node.left, result, depth) && resolveResult(node.right, result, depth);
 }
 
 /**

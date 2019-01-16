@@ -12,7 +12,7 @@ function searchInsert1(nums, target) {
   let left = 0;
   let right = nums.length - 1;
   while (right >= left) {
-    i = (left + right) / 2 | 0;
+    i = ((left + right) / 2) | 0;
     const n = nums[i];
     if (target === n) {
       return i;

@@ -4,7 +4,6 @@ const assert = require('assert');
 const { MapSum } = require('./');
 
 describe('#MapSum', () => {
-
   it('should work', () => {
     const mapSum = new MapSum();
     mapSum.insert('apple', 3);

@@ -17,7 +17,7 @@ function addStrings(num1, num2) {
     const n1 = --l1 < 0 ? 0 : num1[l1];
     const n2 = --l2 < 0 ? 0 : num2[l2];
     const n = prev + +n1 + +n2;
-    result = n % 10 + result;
+    result = (n % 10) + result;
     prev = (n / 10) | 0;
   }
   return prev ? prev + result : result;

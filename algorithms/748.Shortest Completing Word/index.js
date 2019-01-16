@@ -13,8 +13,7 @@ function shortestCompletingWord(licensePlate, words) {
   const keys = Object.keys(map);
   const kl = keys.length;
   let answer;
-  loop:
-  for (let i = 0; i < words.length; i++) {
+  loop: for (let i = 0; i < words.length; i++) {
     const word = words[i];
     const m = createMap(word);
     for (let j = 0; j < kl; j++) {

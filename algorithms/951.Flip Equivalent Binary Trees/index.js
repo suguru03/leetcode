@@ -22,7 +22,6 @@ function flipEquiv(root1, root2) {
   const { val: v2, left: l2, right: r2 } = root2;
   return (
     v1 === v2 &&
-    ((flipEquiv(r1, l2) && flipEquiv(l1, r2)) ||
-      (flipEquiv(r1, r2) && flipEquiv(l1, l2)))
+    ((flipEquiv(r1, l2) && flipEquiv(l1, r2)) || (flipEquiv(r1, r2) && flipEquiv(l1, l2)))
   );
 }

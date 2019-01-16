@@ -24,10 +24,7 @@ describe('#maxProfitAssignment', () => {
 
   _.forEach(tests, ({ difficulty, profit, worker, result }) => {
     it(`difficulty: ${difficulty}, profit: ${profit}, worker: ${worker} => ${result}`, () => {
-      assert.deepStrictEqual(
-        maxProfitAssignment(difficulty, profit, worker),
-        result,
-      );
+      assert.deepStrictEqual(maxProfitAssignment(difficulty, profit, worker), result);
     });
   });
 });

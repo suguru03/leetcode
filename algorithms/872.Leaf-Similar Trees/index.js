@@ -19,10 +19,7 @@ function leafSimilar(root1, root2) {
   const leaves2 = [];
   find(root1, leaves1);
   find(root2, leaves2);
-  return (
-    leaves1.length === leaves2.length &&
-    leaves1.every((n, i) => n === leaves2[i])
-  );
+  return leaves1.length === leaves2.length && leaves1.every((n, i) => n === leaves2[i]);
 
   function find(node, arr) {
     if (!node) {

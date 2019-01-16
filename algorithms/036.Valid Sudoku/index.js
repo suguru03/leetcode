@@ -37,4 +37,3 @@ function isValidSudoku(board) {
   }
   return true;
 }
-

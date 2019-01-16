@@ -34,9 +34,7 @@ function largestTimeFromDigits(A) {
   if (max < 0) {
     return '';
   }
-  const [h, m] = [(max / 60) | 0, max % 60].map(n =>
-    n.toString().padStart(2, 0),
-  );
+  const [h, m] = [(max / 60) | 0, max % 60].map(n => n.toString().padStart(2, 0));
   return `${h}:${m}`;
 }
 

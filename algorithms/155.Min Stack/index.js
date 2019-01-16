@@ -1,7 +1,6 @@
 'use strict';
 
 class Node {
-
   constructor(value, next) {
     this.value = value;
     this.next = next;
@@ -9,7 +8,6 @@ class Node {
 }
 
 class MinStack {
-
   constructor() {
     this._head = null;
   }
@@ -47,7 +45,6 @@ class MinStack {
 }
 
 class MinStack2 {
-
   constructor() {
     this._min = Infinity;
     this._array = [];
@@ -79,7 +76,6 @@ class MinStack2 {
 }
 
 class MinStack3 {
-
   constructor() {
     this._min = Infinity;
     this._head = null;

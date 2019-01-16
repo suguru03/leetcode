@@ -24,7 +24,7 @@ function trap(height) {
       currentHeightIndex = i;
       secondHeightest = 0;
     } else {
-      water += (currentHeight - h);
+      water += currentHeight - h;
       secondHeightest = Math.max(secondHeightest, h);
     }
   }

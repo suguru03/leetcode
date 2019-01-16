@@ -6,28 +6,33 @@ const { isSameTree } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
 describe('#isSameTree', () => {
-
-  const tests = [{
-    p: [1, 2, 3, 4, 5],
-    q: [1, 2, 3, 4, 5],
-    result: true
-  }, {
-    p: [1, 2, 3, 4, 5, 6],
-    q: [1, 2, 3, 4, 5],
-    result: false
-  }, {
-    p: [],
-    q: [],
-    result: true
-  }, {
-    p: [1],
-    q: [1],
-    result: true
-  }, {
-    p: [2, 1],
-    q: [1, 2],
-    result: false
-  }];
+  const tests = [
+    {
+      p: [1, 2, 3, 4, 5],
+      q: [1, 2, 3, 4, 5],
+      result: true,
+    },
+    {
+      p: [1, 2, 3, 4, 5, 6],
+      q: [1, 2, 3, 4, 5],
+      result: false,
+    },
+    {
+      p: [],
+      q: [],
+      result: true,
+    },
+    {
+      p: [1],
+      q: [1],
+      result: true,
+    },
+    {
+      p: [2, 1],
+      q: [1, 2],
+      result: false,
+    },
+  ];
 
   makeTestTreeNodes(tests, 'p');
   makeTestTreeNodes(tests, 'q');

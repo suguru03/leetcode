@@ -25,7 +25,7 @@ function solution(isBadVersion) {
     let start = 1;
     let end = n;
     while (start < end) {
-      const mid = start + (end - start) / 2 | 0;
+      const mid = (start + (end - start) / 2) | 0;
       if (isBadVersion(mid)) {
         end = mid;
       } else {

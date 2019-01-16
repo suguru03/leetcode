@@ -5,7 +5,7 @@ module.exports = { isValid };
 const hash = {
   ')': '(',
   '}': '{',
-  ']': '['
+  ']': '[',
 };
 
 /**

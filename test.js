@@ -24,7 +24,7 @@ const re = new RegExp(`${target}`);
     if (/^test(.*).js$/.test(filename) && re.test(filepath)) {
       try {
         java ? createJavaTest(dirpath) : ruby ? createRubyTest(dirpath) : require(filepath);
-      } catch(e) {
+      } catch (e) {
         debug && console.error(e.message, filepath);
       }
     }
@@ -32,7 +32,6 @@ const re = new RegExp(`${target}`);
 })(mainpath);
 
 function createJavaTest(dirpath) {
-
   // copy Solution.java
   const testname = dirpath.match(/\d+/)[0];
   const newsolutionpath = path.resolve(__dirname, 'Solution.java');
@@ -48,10 +47,14 @@ function createJavaTest(dirpath) {
   const resultType = solutionfile.match(re)[1];
   const argre = new RegExp(`${funcName}\\((.*)\\)`);
   const args = solutionfile.match(argre)[1].split(',');
-  const argMap = _.transform(args, (result, arg) => {
-    const [type, key] = arg.trim().split(/\s/);
-    result[key] = type;
-  }, {});
+  const argMap = _.transform(
+    args,
+    (result, arg) => {
+      const [type, key] = arg.trim().split(/\s/);
+      result[key] = type;
+    },
+    {},
+  );
 
   // get tasks from test.js
   const testjspath = path.resolve(dirpath, 'test.js');
@@ -65,7 +68,6 @@ function createJavaTest(dirpath) {
   const offset = '\n\t\t';
 
   describe(`#${testname}`, () => {
-
     before(() => {
       fs.writeFileSync(newsolutionpath, solutionfile, 'utf8');
       return exec('javac Solution.java');
@@ -97,12 +99,12 @@ function createJavaTest(dirpath) {
 
       str += `${offset}${resultType} result = new Solution().${funcName}(${args});`;
       switch (resultType) {
-      case 'int[]':
-        str += `${offset}System.out.println(Arrays.toString(result));`;
-        break;
-      default:
-        str += `${offset}System.out.println(result);`;
-        break;
+        case 'int[]':
+          str += `${offset}System.out.println(Arrays.toString(result));`;
+          break;
+        default:
+          str += `${offset}System.out.println(result);`;
+          break;
       }
       const file = template.replace(/<% tasks %>/, str);
       fs.writeFileSync(testpath, file, 'utf8');
@@ -124,7 +126,6 @@ function createJavaTest(dirpath) {
 }
 
 function createRubyTest(dirpath) {
-
   const testname = dirpath.match(/\d+/)[0];
   const filepath = path.resolve(dirpath, 'solution.rb');
   const testpath = path.resolve(__dirname, `${testname}.rb`);
@@ -140,24 +141,24 @@ function createRubyTest(dirpath) {
   const tasks = require('./lib/test').getTasks(testjspath);
 
   describe(`#${testname}`, () => {
-
     beforeEach(() => {
       const task = tasks.shift();
       const argsStr = _.chain(args)
         .map(arg => {
           const value = task[arg];
           switch (typeof value) {
-          case 'string':
-            return `'${value}'`;
-          case 'object':
-            return `[${value}]`;
-          default:
-            return value;
+            case 'string':
+              return `'${value}'`;
+            case 'object':
+              return `[${value}]`;
+            default:
+              return value;
           }
         })
         .join(',')
         .value();
-      const file = template.replace(/<% filepath %>/, `'${filepath}'`)
+      const file = template
+        .replace(/<% filepath %>/, `'${filepath}'`)
         .replace(/<% func %>/, funcName)
         .replace(/<% args %>/, argsStr);
       fs.writeFileSync(testpath, file, 'utf8');
@@ -185,21 +186,21 @@ function check(result, res) {
   res = logs.pop();
   _.forEach(logs, log => console.log(log));
   switch (typeof result) {
-  case 'boolean':
-    assert.strictEqual(/true/.test(res), result);
-    break;
-  case 'string':
-    assert.strictEqual(res, result);
-    break;
-  case 'number':
-    assert.strictEqual(+res, result);
-    break;
-  case 'object':
-    assert.deepEqual(JSON.parse(res), result);
-    break;
-  default:
-    assert.fail();
-    break;
+    case 'boolean':
+      assert.strictEqual(/true/.test(res), result);
+      break;
+    case 'string':
+      assert.strictEqual(res, result);
+      break;
+    case 'number':
+      assert.strictEqual(+res, result);
+      break;
+    case 'object':
+      assert.deepEqual(JSON.parse(res), result);
+      break;
+    default:
+      assert.fail();
+      break;
   }
 }
 
@@ -212,8 +213,8 @@ function execute(func, command, args) {
   return new Aigle((resolve, reject) => {
     let result = '';
     const task = func(command, args);
-    task.on('close', err => err ? reject(result) : resolve(result));
-    task.stdout.on('data', data => result += `${data}`);
-    task.stderr.on('data', data => result += `${data}`);
+    task.on('close', err => (err ? reject(result) : resolve(result)));
+    task.stdout.on('data', data => (result += `${data}`));
+    task.stderr.on('data', data => (result += `${data}`));
   });
 }

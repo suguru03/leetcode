@@ -6,7 +6,6 @@ const { getIntersectionNode } = require('./');
 const { makeLinkNodes } = require('../util');
 
 describe('#getIntersectionNode', () => {
-
   it('should work', () => {
     const headA = makeLinkNodes([1, 2, 3]);
     const headB = makeLinkNodes([4, 5]);

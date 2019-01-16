@@ -46,5 +46,3 @@ function hasCycle2(head) {
   }
   return true;
 }
-
-

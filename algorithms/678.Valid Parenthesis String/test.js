@@ -5,29 +5,36 @@ const _ = require('lodash');
 const { checkValidString } = require('./');
 
 describe('#checkValidString', () => {
-
-  const tests = [{
-    s: '()',
-    result: true
-  }, {
-    s: '*)',
-    result: true
-  }, {
-    s: '()()',
-    result: true
-  }, {
-    s: '(*()',
-    result: true
-  }, {
-    s: '(*))',
-    result: true
-  }, {
-    s: '(((******))',
-    result: true
-  }, {
-    s: '((*)(*)())((()())((()))(*',
-    result: false
-  }];
+  const tests = [
+    {
+      s: '()',
+      result: true,
+    },
+    {
+      s: '*)',
+      result: true,
+    },
+    {
+      s: '()()',
+      result: true,
+    },
+    {
+      s: '(*()',
+      result: true,
+    },
+    {
+      s: '(*))',
+      result: true,
+    },
+    {
+      s: '(((******))',
+      result: true,
+    },
+    {
+      s: '((*)(*)())((()())((()))(*',
+      result: false,
+    },
+  ];
 
   _.forEach(tests, ({ s, result }) => {
     it(`${s} -> ${result}`, () => {

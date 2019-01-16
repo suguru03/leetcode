@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha --timeout=10000 test",
+    "prettier": "prettier --write \"./**/*.js\"",
     "benchmark": "node benchmark"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     ]
   },
   "prettier": {
+    "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "all"
   }

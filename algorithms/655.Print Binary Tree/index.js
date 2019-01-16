@@ -20,7 +20,7 @@ function printTree(root) {
   for (let i = 0; i < height; i++) {
     result[i] = Array(width).fill('');
   }
-  const rootc = width / 2 | 0;
+  const rootc = (width / 2) | 0;
   fill(root, rootc, 0);
   return result;
 
@@ -30,12 +30,12 @@ function printTree(root) {
     }
     const { val, left, right } = node;
     result[level][c] = val + '';
-    const diff = (rootc + 1) / Math.pow(2, ++level) | 0;
+    const diff = ((rootc + 1) / Math.pow(2, ++level)) | 0;
     fill(left, c - diff, level);
     fill(right, c + diff, level);
   }
 }
 
 function getHeight(root) {
-  return !root ? 0 : 1 + Math.max(getHeight(root.left),  getHeight(root.right));
+  return !root ? 0 : 1 + Math.max(getHeight(root.left), getHeight(root.right));
 }

@@ -9,7 +9,7 @@ module.exports = { trailingZeroes, trailingZeroes2 };
 function trailingZeroes(n) {
   let result = 0;
   while (n > 0) {
-    n = n / 5 | 0;
+    n = (n / 5) | 0;
     result += n;
   }
   return result;
@@ -20,6 +20,6 @@ function trailingZeroes(n) {
  * @return {number}
  */
 function trailingZeroes2(n) {
-  n = n / 5 | 0;
+  n = (n / 5) | 0;
   return n === 0 ? 0 : n + trailingZeroes2(n);
 }

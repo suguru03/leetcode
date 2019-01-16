@@ -16,8 +16,8 @@ function imageSmoother(M) {
       let sum = 0;
       let count = 0;
       for (let i = 0; i < 9; i++) {
-        const x = i % 3 - 1 + w;
-        const y = (i / 3 | 0) - 1 + h;
+        const x = (i % 3) - 1 + w;
+        const y = ((i / 3) | 0) - 1 + h;
         if (x < 0 || x >= width || y < 0 || y >= height) {
           continue;
         }

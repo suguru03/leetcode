@@ -4,7 +4,7 @@ module.exports = {
   findDisappearedNumbers,
   findDisappearedNumbers2,
   findDisappearedNumbers3,
-  findDisappearedNumbers4
+  findDisappearedNumbers4,
 };
 
 /**

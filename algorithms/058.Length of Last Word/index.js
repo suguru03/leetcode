@@ -18,7 +18,6 @@ function lengthOfLastWord(s) {
   return 0;
 }
 
-
 /**
  * @param {string} s
  * @return {number}

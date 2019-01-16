@@ -4,7 +4,6 @@ const assert = require('assert');
 const { NumArray } = require('./');
 
 describe('#NumArray', () => {
-
   it('[-2, 0, 3, -5, 2, -1] (0, 2) -> 1', () => {
     const array = [-2, 0, 3, -5, 2, -1];
     const numArray = new NumArray(array);

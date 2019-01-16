@@ -5,23 +5,28 @@ const _ = require('lodash');
 const { isPowerOfTwo } = require('./');
 
 describe('#isPowerOfTwo', () => {
-
-  const tests = [{
-    n: 1,
-    result: true
-  }, {
-    n: 2,
-    result: true
-  }, {
-    n: 4,
-    result: true
-  }, {
-    n: 6,
-    result: false
-  }, {
-    n: 8,
-    result: true
-  }];
+  const tests = [
+    {
+      n: 1,
+      result: true,
+    },
+    {
+      n: 2,
+      result: true,
+    },
+    {
+      n: 4,
+      result: true,
+    },
+    {
+      n: 6,
+      result: false,
+    },
+    {
+      n: 8,
+      result: true,
+    },
+  ];
 
   _.forEach(tests, ({ n, result }) => {
     it(`${n} -> ${result}`, () => {

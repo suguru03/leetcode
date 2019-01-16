@@ -6,20 +6,23 @@ const { removeNthFromEnd } = require('./');
 const { makeTestLinkNodes } = require('../util');
 
 describe('#removeNthFromEnd', () => {
-
-  const tests = [{
-    l: [1, 2, 3, 4, 5],
-    n: 2,
-    result: [1, 2, 3, 5]
-  }, {
-    l: [1, 2, 3, 4, 5],
-    n: 5,
-    result: [2, 3, 4, 5]
-  }, {
-    l: [1],
-    n: 1,
-    result: []
-  }];
+  const tests = [
+    {
+      l: [1, 2, 3, 4, 5],
+      n: 2,
+      result: [1, 2, 3, 5],
+    },
+    {
+      l: [1, 2, 3, 4, 5],
+      n: 5,
+      result: [2, 3, 4, 5],
+    },
+    {
+      l: [1],
+      n: 1,
+      result: [],
+    },
+  ];
 
   makeTestLinkNodes(tests, 'l');
   makeTestLinkNodes(tests, 'result');

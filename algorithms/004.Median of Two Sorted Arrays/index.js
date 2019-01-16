@@ -8,7 +8,6 @@ module.exports = { findMedianSortedArrays, findMedianSortedArrays2 };
  * @return {number}
  */
 function findMedianSortedArrays(nums1, nums2) {
-
   let l1 = nums1.length;
   let l2 = nums2.length;
   let l = l1 + l2;
@@ -43,7 +42,6 @@ function findMedianSortedArrays(nums1, nums2) {
  * @return {number}
  */
 function findMedianSortedArrays2(nums1, nums2) {
-
   const nums = nums1.concat(nums2);
   const l = nums.length;
   const m = l / 2;

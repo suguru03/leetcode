@@ -12,21 +12,21 @@ function calPoints(ops) {
   for (let i = 0; i < ops.length; i++) {
     let n = ops[i];
     switch (n) {
-    case 'D':
-      n = (valid[0] || 0) * 2;
-      valid.unshift(n);
-      break;
-    case 'C':
-      n = -valid.shift();
-      break;
-    case '+':
-      n = (valid[0] || 0) + (valid[1] || 0);
-      valid.unshift(n);
-      break;
-    default:
-      n = +n;
-      valid.unshift(n);
-      break;
+      case 'D':
+        n = (valid[0] || 0) * 2;
+        valid.unshift(n);
+        break;
+      case 'C':
+        n = -valid.shift();
+        break;
+      case '+':
+        n = (valid[0] || 0) + (valid[1] || 0);
+        valid.unshift(n);
+        break;
+      default:
+        n = +n;
+        valid.unshift(n);
+        break;
     }
     result += n;
   }

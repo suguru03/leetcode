@@ -32,7 +32,7 @@ function widthOfBinaryTree(root) {
     if (prev) {
       i -= prev.left;
     }
-    const info = memo[d] = memo[d] || { left: i, right: i };
+    const info = (memo[d] = memo[d] || { left: i, right: i });
     info.left = Math.min(info.left, i);
     info.right = Math.max(info.right, i);
     fill(node.left, ++d, 2 * i);

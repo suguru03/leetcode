@@ -3,7 +3,6 @@
 module.exports = { sortedArrayToBST };
 
 class TreeNode {
-
   constructor(val) {
     this.val = val;
     this.left = null;
@@ -27,7 +26,7 @@ function sortedArrayToBST(nums) {
   if (!l) {
     return null;
   }
-  const index = (l - 1) / 2 | 0;
+  const index = ((l - 1) / 2) | 0;
   const node = new TreeNode(nums[index]);
   node.left = sortedArrayToBST(nums.slice(0, index));
   node.right = sortedArrayToBST(nums.slice(index + 1));

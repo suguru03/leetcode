@@ -12,18 +12,18 @@ function judgeCircle(moves) {
   let l = moves.length;
   while (l--) {
     switch (moves[l]) {
-    case 'U':
-      y++;
-      break;
-    case 'D':
-      y--;
-      break;
-    case 'R':
-      x++;
-      break;
-    case 'L':
-      x--;
-      break;
+      case 'U':
+        y++;
+        break;
+      case 'D':
+        y--;
+        break;
+      case 'R':
+        x++;
+        break;
+      case 'L':
+        x--;
+        break;
     }
   }
   return x === 0 && y === 0;

@@ -23,7 +23,7 @@ function matrixReshape(nums, r, c) {
     const row = nums[i];
     for (let j = 0; j < rl; j++) {
       const sum = i * rl + j;
-      const ci = sum / c | 0;
+      const ci = (sum / c) | 0;
       const ri = sum % c;
       result[ci][ri] = row[j];
     }

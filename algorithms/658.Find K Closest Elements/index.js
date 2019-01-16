@@ -38,11 +38,13 @@ function findClosestElements(arr, k, x) {
  * @return {number[]}
  */
 function findClosestElements2(arr, k, x) {
-  return arr.sort(compare).slice(0, k).sort((n1, n2) => n1 - n2);
+  return arr
+    .sort(compare)
+    .slice(0, k)
+    .sort((n1, n2) => n1 - n2);
   function compare(n1, n2) {
     const a1 = Math.abs(x - n1);
     const a2 = Math.abs(x - n2);
     return a1 === a2 ? n1 - n2 : a1 - a2;
   }
 }
-

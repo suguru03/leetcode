@@ -6,17 +6,20 @@ const { swapPairs } = require('./');
 const { makeTestLinkNodes } = require('../util');
 
 describe('#swapPairs', () => {
-
-  const tests = [{
-    l: [1, 2, 3, 4],
-    result: [2, 1, 4, 3]
-  }, {
-    l: [1, 2, 3, 4, 5],
-    result: [2, 1, 4, 3, 5]
-  }, {
-    l: [],
-    result: []
-  }];
+  const tests = [
+    {
+      l: [1, 2, 3, 4],
+      result: [2, 1, 4, 3],
+    },
+    {
+      l: [1, 2, 3, 4, 5],
+      result: [2, 1, 4, 3, 5],
+    },
+    {
+      l: [],
+      result: [],
+    },
+  ];
 
   makeTestLinkNodes(tests, 'l');
   makeTestLinkNodes(tests, 'result');

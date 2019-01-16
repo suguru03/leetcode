@@ -33,15 +33,7 @@ describe('#shortestSuperstring', () => {
       // result: 'pfkwelkpbcbab',
     },
     {
-      A: [
-        'kwteuapmmy',
-        'zuzsskwt',
-        'kxrmmpo',
-        'uapmmyexv',
-        'pmmyexvdj',
-        'wnouzuzss',
-        'djbkxrmm',
-      ],
+      A: ['kwteuapmmy', 'zuzsskwt', 'kxrmmpo', 'uapmmyexv', 'pmmyexvdj', 'wnouzuzss', 'djbkxrmm'],
       result: 'wnouzuzsskwteuapmmyexvdjbkxrmmpo',
     },
     {
@@ -55,8 +47,7 @@ describe('#shortestSuperstring', () => {
         'pjwnjfjehefpipub',
         'ifiolejwstzucldko',
       ],
-      result:
-        'vpmafqkvixcumugpqtifawzoessrpjwnjfjehefpipubizjxtifiolejwstzucldkoizjhyat',
+      result: 'vpmafqkvixcumugpqtifawzoessrpjwnjfjehefpipubizjxtifiolejwstzucldkoizjhyat',
     },
   ];
 

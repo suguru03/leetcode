@@ -47,11 +47,7 @@ describe('#MyCalendarTwo', () => {
       const calender = new MyCalendarTwo();
       for (let i = 0; i < input.length; i++) {
         const [start, end] = input[i];
-        assert.strictEqual(
-          calender.book(start, end),
-          result[i],
-          `start: ${start}, end: ${end}`,
-        );
+        assert.strictEqual(calender.book(start, end), result[i], `start: ${start}, end: ${end}`);
       }
     });
   });

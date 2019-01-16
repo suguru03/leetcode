@@ -4,7 +4,6 @@ const assert = require('assert');
 const { MyStack } = require('./');
 
 describe('#MyStack', () => {
-
   it('should work', () => {
     const stack = new MyStack();
     assert.strictEqual(stack.empty(), true);

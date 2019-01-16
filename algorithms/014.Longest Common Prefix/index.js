@@ -57,4 +57,3 @@ function getPrefixLength2(s1, s2) {
   }
   return i;
 }
-

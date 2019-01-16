@@ -30,7 +30,7 @@ function addTwoNumbers(l1, l2) {
       l2 = l2.next;
     }
     const v = next + v1 + v2;
-    next = v / 10 | 0;
+    next = (v / 10) | 0;
     result[result.length] = v % 10;
   }
   if (next !== 0) {

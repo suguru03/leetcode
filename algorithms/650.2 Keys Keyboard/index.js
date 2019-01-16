@@ -21,4 +21,3 @@ function minSteps(n) {
     return Math.min(t1, t2);
   }
 }
-

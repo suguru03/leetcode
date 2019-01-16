@@ -13,7 +13,7 @@ function plusOne(digits) {
   while (l--) {
     const sum = digits[l] + prev;
     result[l] = sum % 10;
-    prev =  sum / 10 | 0;
+    prev = (sum / 10) | 0;
   }
   if (prev) {
     result.unshift(prev);

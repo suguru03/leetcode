@@ -6,14 +6,16 @@ const { isBalanced } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
 describe('#isBalanced', () => {
-
-  const tests = [{
-    root: [1, 2, 3],
-    result: true
-  }, {
-    root: [1, 2, 3, 4, null, null, null, 5, null, 6],
-    result: false
-  }];
+  const tests = [
+    {
+      root: [1, 2, 3],
+      result: true,
+    },
+    {
+      root: [1, 2, 3, 4, null, null, null, 5, null, 6],
+      result: false,
+    },
+  ];
 
   makeTestTreeNodes(tests);
 

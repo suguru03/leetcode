@@ -1,6 +1,10 @@
 'use strict';
 
-module.exports = { constructRectangle, constructRectangle2, constructRectangle3 };
+module.exports = {
+  constructRectangle,
+  constructRectangle2,
+  constructRectangle3,
+};
 
 /**
  * @param {number} area

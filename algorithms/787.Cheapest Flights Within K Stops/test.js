@@ -26,10 +26,7 @@ describe('#findCheapestPrice', () => {
 
   _.forEach(tests, ({ n, flights, src, dst, K, result }) => {
     it(`${n}, ${flights}, ${src}, ${dst}, ${K} -> ${result}`, () => {
-      assert.deepStrictEqual(
-        findCheapestPrice(n, flights, src, dst, K),
-        result,
-      );
+      assert.deepStrictEqual(findCheapestPrice(n, flights, src, dst, K), result);
     });
   });
 });

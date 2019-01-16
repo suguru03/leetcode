@@ -19,4 +19,3 @@ function moveZeroes(nums) {
     nums[pos++] = 0;
   }
 }
-

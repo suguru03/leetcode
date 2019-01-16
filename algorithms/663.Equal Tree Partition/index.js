@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { checkEqualTree, checkEqualTree2};
+module.exports = { checkEqualTree, checkEqualTree2 };
 
 /**
  * Definition for a binary tree node.

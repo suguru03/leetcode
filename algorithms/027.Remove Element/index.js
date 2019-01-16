@@ -1,6 +1,11 @@
 'use strict';
 
-module.exports = { removeElement, removeElement2, removeElement3, removeElement4 };
+module.exports = {
+  removeElement,
+  removeElement2,
+  removeElement3,
+  removeElement4,
+};
 
 /**
  * @param {number[]} nums

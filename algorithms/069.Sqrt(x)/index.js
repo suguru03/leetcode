@@ -7,7 +7,7 @@ module.exports = { mySqrt };
  * @return {number}
  */
 function mySqrt(x) {
-  if (x <=  0) {
+  if (x <= 0) {
     return x;
   }
   let prev = 0;

@@ -5,26 +5,32 @@ const _ = require('lodash');
 const { isValid } = require('./');
 
 describe('#isValid', () => {
-
-  const tests = [{
-    s: '()',
-    result: true
-  }, {
-    s: '()[]{}',
-    result: true
-  }, {
-    s: '(]',
-    result: false
-  }, {
-    s: '([])]',
-    result: false
-  }, {
-    s: '({[}])',
-    result: false
-  }, {
-    s: '(([[{}]{}{}]))',
-    result: true
-  }];
+  const tests = [
+    {
+      s: '()',
+      result: true,
+    },
+    {
+      s: '()[]{}',
+      result: true,
+    },
+    {
+      s: '(]',
+      result: false,
+    },
+    {
+      s: '([])]',
+      result: false,
+    },
+    {
+      s: '({[}])',
+      result: false,
+    },
+    {
+      s: '(([[{}]{}{}]))',
+      result: true,
+    },
+  ];
 
   _.forEach(tests, ({ s, result }) => {
     it(`${s} -> ${result}`, () => {

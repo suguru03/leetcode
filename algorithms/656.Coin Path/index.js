@@ -20,8 +20,7 @@ function cheapestJump(A, B) {
       continue;
     }
     let min = { val: Infinity, path: [] };
-    j:
-    for (let j = 1; j <= B; j++) {
+    j: for (let j = 1; j <= B; j++) {
       const data = memo[i - j];
       if (!data || data.val > min.val) {
         continue;
@@ -44,7 +43,7 @@ function cheapestJump(A, B) {
     }
     memo[i] = {
       val: min.val + A[i],
-      path: min.path.concat(i + 1)
+      path: min.path.concat(i + 1),
     };
   }
   const last = memo[la - 1];

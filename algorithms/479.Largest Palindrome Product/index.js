@@ -18,11 +18,10 @@ function largestPalindrome(n) {
   const lower = Math.pow(10, n - 1);
   const max = Math.pow(upper, 2);
 
-  let half = max / upper | 0;
+  let half = (max / upper) | 0;
 
   let palindrom = 0;
-  first:
-  while (half) {
+  first: while (half) {
     palindrom = createPalindrom(half--);
     for (let i = upper; i >= lower; i--) {
       if (i * i < palindrom) {
@@ -41,8 +40,8 @@ function createPalindrom(half) {
   let num = 0;
   let digit = 0;
   while (h > 0) {
-    num = num * 10 + h % 10;
-    h = h / 10 | 0;
+    num = num * 10 + (h % 10);
+    h = (h / 10) | 0;
     digit++;
   }
   return num + half * Math.pow(10, digit);

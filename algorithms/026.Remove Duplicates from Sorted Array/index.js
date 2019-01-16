@@ -5,7 +5,7 @@ module.exports = {
   removeDuplicates2,
   removeDuplicates3,
   removeDuplicates4,
-  removeDuplicates5
+  removeDuplicates5,
 };
 
 /**

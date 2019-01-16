@@ -9,7 +9,7 @@ const hash = {
   L: 50,
   C: 100,
   D: 500,
-  M: 1000
+  M: 1000,
 };
 const keys = ['M', 'D', 'C', 'L', 'X', 'V', 'I'];
 
@@ -29,9 +29,9 @@ function intToRoman(num) {
       continue;
     }
     let prefixKey;
-    if (ik % 2 === 0 && num + val / 10 >= val)  {
+    if (ik % 2 === 0 && num + val / 10 >= val) {
       prefixKey = keys[ik + 2];
-    } else if (ik % 2 === 1 && num + val / 5 >= val)  {
+    } else if (ik % 2 === 1 && num + val / 5 >= val) {
       prefixKey = keys[ik + 1];
     }
     if (prefixKey) {

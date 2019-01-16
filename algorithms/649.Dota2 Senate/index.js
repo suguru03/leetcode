@@ -17,16 +17,16 @@ function round(senate) {
   for (let i = 0; i < senate.length; i++) {
     const c = senate.charAt(i);
     switch (c) {
-    case 'R':
-      if (banned++ >= 0) {
-        str += c;
-      }
-      break;
-    case 'D':
-      if (banned-- <= 0) {
-        str += c;
-      }
-      break;
+      case 'R':
+        if (banned++ >= 0) {
+          str += c;
+        }
+        break;
+      case 'D':
+        if (banned-- <= 0) {
+          str += c;
+        }
+        break;
     }
     result = result === c ? result : '';
   }

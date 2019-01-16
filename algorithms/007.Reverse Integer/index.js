@@ -13,7 +13,7 @@ function reverse(x) {
   let result = 0;
   while (x !== 0) {
     result = result * 10 + (x % 10 | 0);
-    x = x / 10 | 0;
+    x = (x / 10) | 0;
   }
   if (result > MAX || result < MIN) {
     return 0;

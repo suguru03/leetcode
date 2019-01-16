@@ -5,7 +5,6 @@ const _ = require('lodash');
 const { MinStack } = require('./');
 
 describe('#MinStack', () => {
-
   it('should work push and  top', () => {
     const minStack = new MinStack();
     const n = 1;
@@ -61,5 +60,4 @@ describe('#MinStack', () => {
     _.times(10, n => minStack.push(n + 1));
     assert.strictEqual(minStack.getMin(), 1);
   });
-
 });

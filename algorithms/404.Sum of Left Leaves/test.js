@@ -6,11 +6,12 @@ const { sumOfLeftLeaves } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
 describe('#sumOfLeftLeaves', () => {
-
-  const tests = [{
-    root: [3, 9, 20, null, null, 15, 7],
-    result: 24
-  }];
+  const tests = [
+    {
+      root: [3, 9, 20, null, null, 15, 7],
+      result: 24,
+    },
+  ];
   makeTestTreeNodes(tests);
 
   _.forEach(tests, ({ root, _root, result }) => {

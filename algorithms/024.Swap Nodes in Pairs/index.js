@@ -16,7 +16,7 @@ module.exports = { swapPairs };
 function swapPairs(head) {
   let prev = { next: null };
   const result = prev;
-  while (head && head.next)  {
+  while (head && head.next) {
     const _head = head.next;
     const _next = head;
     head = _head.next;

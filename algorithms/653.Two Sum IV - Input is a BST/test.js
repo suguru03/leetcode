@@ -6,16 +6,18 @@ const { findTarget } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
 describe('#findTarget', () => {
-
-  const tests = [{
-    root: [5, 3, 6, 2, 4, 7],
-    k: 9,
-    result: true
-  }, {
-    root: [5, 3, 6, 2, 4, 7],
-    k: 28,
-    result: false
-  }];
+  const tests = [
+    {
+      root: [5, 3, 6, 2, 4, 7],
+      k: 9,
+      result: true,
+    },
+    {
+      root: [5, 3, 6, 2, 4, 7],
+      k: 28,
+      result: false,
+    },
+  ];
 
   makeTestTreeNodes(tests);
 

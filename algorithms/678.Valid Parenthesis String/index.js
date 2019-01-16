@@ -14,22 +14,22 @@ function checkValidString(s) {
   for (let i = 0; i < l; i++) {
     const c = array[i];
     switch (c) {
-    case '(':
-      count++;
-      break;
-    case ')':
-      if (count > 0) {
-        count--;
-        continue;
-      }
-      if (!a.length) {
-        return false;
-      }
-      array[a.shift()] = '(';
-      break;
-    case '*':
-      a.push(i);
-      break;
+      case '(':
+        count++;
+        break;
+      case ')':
+        if (count > 0) {
+          count--;
+          continue;
+        }
+        if (!a.length) {
+          return false;
+        }
+        array[a.shift()] = '(';
+        break;
+      case '*':
+        a.push(i);
+        break;
     }
   }
   count = 0;
@@ -37,22 +37,22 @@ function checkValidString(s) {
   while (l--) {
     const c = array[l];
     switch (c) {
-    case ')':
-      count++;
-      break;
-    case '(':
-      if (count > 0) {
-        count--;
-        continue;
-      }
-      if (ca > 0) {
-        ca--;
-        continue;
-      }
-      return false;
-    case '*':
-      ca++;
-      break;
+      case ')':
+        count++;
+        break;
+      case '(':
+        if (count > 0) {
+          count--;
+          continue;
+        }
+        if (ca > 0) {
+          ca--;
+          continue;
+        }
+        return false;
+      case '*':
+        ca++;
+        break;
     }
   }
   return true;

@@ -36,10 +36,7 @@ async function init() {
     uri: `${base}/api/problems/all/`,
     json: true,
   });
-  const item = _.find(
-    body.stat_status_pairs,
-    item => item.stat.frontend_question_id === num,
-  );
+  const item = _.find(body.stat_status_pairs, item => item.stat.frontend_question_id === num);
   if (!item) {
     throw new Error(`${num} is not found`);
   }
@@ -82,11 +79,7 @@ async function setLanguage(page) {
 }
 
 async function createProblem(page, stat) {
-  const {
-    frontend_question_id: qid,
-    question__title: title,
-    question__title_slug: slug,
-  } = stat;
+  const { frontend_question_id: qid, question__title: title, question__title_slug: slug } = stat;
   const id = `${qid}`.padStart(3, 0);
   const url = `${base}/problems/${slug}`;
   await page.goto(url);
@@ -100,9 +93,8 @@ async function createProblem(page, stat) {
     }
     return page.evaluate(() => {
       try {
-        return document
-          .querySelector('#question-detail-main-tabs')
-          .children[1].querySelector('div').children[1].textContent;
+        return document.querySelector('#question-detail-main-tabs').children[1].querySelector('div')
+          .children[1].textContent;
       } catch (e) {
         return '';
       }
@@ -149,32 +141,23 @@ async function createProblem(page, stat) {
 
   // create index.js
   const tempIndexPath = path.resolve(__dirname, '../template/index');
-  const indexFile =
-    fs.readFileSync(tempIndexPath, 'utf8').replace(/template/g, funcName) +
-    code;
+  const indexFile = fs.readFileSync(tempIndexPath, 'utf8').replace(/template/g, funcName) + code;
   const indexpath = path.resolve(dirpath, 'index.js');
   fs.writeFileSync(indexpath, indexFile);
 
   // create test.js
   const tempTestPath = path.resolve(__dirname, '../template/test');
-  let testFile = fs
-    .readFileSync(tempTestPath, 'utf8')
-    .replace(/template/g, funcName);
+  let testFile = fs.readFileSync(tempTestPath, 'utf8').replace(/template/g, funcName);
   try {
     const info = _.chain(code)
       .split(/\n/g)
       .map(line => {
-        const [, info, type, key] =
-          line.match(/@(param|return) {(.+)} ?(.*)/) || [];
+        const [, info, type, key] = line.match(/@(param|return) {(.+)} ?(.*)/) || [];
         return !info ? null : { info, type, key };
       })
       .filter()
       .value();
-    const testExample = _.transform(
-      info,
-      (map, info) => assignDefault(map, info),
-      {},
-    );
+    const testExample = _.transform(info, (map, info) => assignDefault(map, info), {});
     const keys = Object.keys(_.omit(testExample, 'result'));
     const argStr = keys.join(', ');
     testFile = testFile

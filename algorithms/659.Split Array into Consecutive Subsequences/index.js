@@ -11,7 +11,7 @@ function isPossible(nums) {
   for (let i = 0; i < nums.length; i++) {
     const n = nums[i];
     const prev = hash[n - 1];
-    const array = hash[n] = hash[n] || [];
+    const array = (hash[n] = hash[n] || []);
     if (!prev || !prev.length) {
       array.push(1);
       continue;

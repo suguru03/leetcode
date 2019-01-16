@@ -25,12 +25,12 @@ function isPalindrome2(x) {
   }
   let size = getSize(x);
   while (x !== 0) {
-    const n1 = x / size | 0;
+    const n1 = (x / size) | 0;
     const n2 = x % 10;
     if (n1 !== n2) {
       return false;
     }
-    x = Math.floor(x % size / 10);
+    x = Math.floor((x % size) / 10);
     size /= 100;
   }
   return true;

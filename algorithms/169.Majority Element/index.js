@@ -9,12 +9,12 @@ module.exports = { majorityElement, majorityElement2 };
 function majorityElement(nums) {
   const map = {};
   let l = nums.length;
-  const half = l / 2 | 0;
+  const half = (l / 2) | 0;
   let max = 0;
   let maxN = 0;
   while (l--) {
     const n = nums[l];
-    const value = map[n] = ++map[n] || 1;
+    const value = (map[n] = ++map[n] || 1);
     if (value > half) {
       return n;
     }
@@ -32,7 +32,7 @@ function majorityElement(nums) {
  */
 function majorityElement2(nums) {
   let l = nums.length;
-  const half = l / 2 | 0;
+  const half = (l / 2) | 0;
   let maxN = 0;
   let count = 0;
   while (l--) {

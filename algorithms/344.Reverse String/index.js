@@ -28,7 +28,7 @@ function reverseString2(s) {
   if (even) {
     s += 'a';
   }
-  l = l / 2 | 0;
+  l = (l / 2) | 0;
   let middle = l;
   let result = s[l];
   while (l--) {

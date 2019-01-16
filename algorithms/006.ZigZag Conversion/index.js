@@ -8,7 +8,6 @@ module.exports = convert;
  * @return {string}
  */
 function convert(s, numRows) {
-
   const ha = numRows - 1;
   const a = 2 * ha;
   if (a <= 1) {
@@ -25,4 +24,3 @@ function convert(s, numRows) {
   }
   return result.join('');
 }
-

@@ -1,7 +1,6 @@
 'use strict';
 
 class Data {
-
   constructor(val, head) {
     this.val = val;
     this.head = head;
@@ -13,7 +12,6 @@ class Data {
 }
 
 class MyQueue {
-
   constructor() {
     this._head = null;
     this._tail = null;
@@ -46,4 +44,3 @@ class MyQueue {
 }
 
 module.exports = { MyQueue };
-

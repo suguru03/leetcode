@@ -20,7 +20,7 @@ function prisonAfterNDays(cells, N) {
     if (cache.has(bit)) {
       const d = cache.get(bit);
       const t = i - d;
-      const index = (N - d) % t + d;
+      const index = ((N - d) % t) + d;
       return list[index];
     }
     cache.set(bit, i);

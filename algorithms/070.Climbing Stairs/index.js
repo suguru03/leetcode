@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { climbStairs, climbStairs2};
+module.exports = { climbStairs, climbStairs2 };
 
 const map = {};
 const steps = [1, 2];

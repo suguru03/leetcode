@@ -18,9 +18,7 @@ MyCalendarTwo.prototype.book = function(start, end) {
   }
   for (const event of this.events) {
     if (start < event.end && end > event.start) {
-      this.dup.push(
-        new Event(Math.max(start, event.start), Math.min(end, event.end)),
-      );
+      this.dup.push(new Event(Math.max(start, event.start), Math.min(end, event.end)));
     }
   }
   this.events.push(new Event(start, end));

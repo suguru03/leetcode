@@ -10,8 +10,8 @@ function convertToBase7(num) {
   let result = '';
   let n = Math.abs(num);
   do {
-    result = n % 7 + result;
-    n = n / 7 | 0;
+    result = (n % 7) + result;
+    n = (n / 7) | 0;
   } while (n);
   return num < 0 ? `-${result}` : `${result}`;
 }

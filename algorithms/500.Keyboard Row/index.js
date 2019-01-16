@@ -5,7 +5,7 @@ module.exports = { findWords };
 const info = [
   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-  ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+  ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
 ].reduce((result, array, index) => {
   array.forEach(c => {
     result[c] = index;
@@ -20,8 +20,7 @@ const info = [
  */
 function findWords(words) {
   const result = [];
-  first:
-  for (let i = 0; i < words.length; i++) {
+  first: for (let i = 0; i < words.length; i++) {
     const word = words[i];
     let l = word.length;
     let index = info[word[--l]];

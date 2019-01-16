@@ -10,9 +10,9 @@ function longestPalindrome(s) {
   const ds = `#${s.split('').join('#')}#`;
   const n = ds.length;
   const rad = Array(n);
-  for (let i = 0, j = 0; i < n;) {
+  for (let i = 0, j = 0; i < n; ) {
     let li, ri;
-    while (0 <=  (li = i - j) && (ri = i + j) < n && ds[li] === ds[ri]) {
+    while (0 <= (li = i - j) && (ri = i + j) < n && ds[li] === ds[ri]) {
       j++;
     }
     rad[i] = j;

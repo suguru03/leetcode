@@ -11,7 +11,7 @@ function newInteger(n) {
   while (n >= 9) {
     const d = n % 9;
     str = d + str;
-    n = n / 9 | 0;
+    n = (n / 9) | 0;
   }
   return +(n + str);
 }

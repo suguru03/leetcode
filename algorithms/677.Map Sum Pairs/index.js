@@ -4,7 +4,6 @@
  * Initialize your data structure here.
  */
 class MapSum {
-
   constructor() {
     this._map = {};
   }

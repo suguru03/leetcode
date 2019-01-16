@@ -20,7 +20,10 @@ function validPalindrome(s, changed) {
     if (changed) {
       return false;
     }
-    return validPalindrome(s.substring(left++, right++), true) || validPalindrome(s.substring(left, right), true);
+    return (
+      validPalindrome(s.substring(left++, right++), true) ||
+      validPalindrome(s.substring(left, right), true)
+    );
   }
   return true;
 }

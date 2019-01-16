@@ -16,8 +16,8 @@ function addBinary(a, b) {
     const na = +a[--la] || 0;
     const nb = +b[--lb] || 0;
     const sum = na + nb + prev;
-    result = sum % 2 + result;
-    prev = sum / 2 | 0;
+    result = (sum % 2) + result;
+    prev = (sum / 2) | 0;
   }
   if (prev) {
     result = prev + result;

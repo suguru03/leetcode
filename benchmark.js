@@ -18,7 +18,7 @@ const re = {
   funcArgs: /^(function)?\s*[^\(]*\(\s*([^\)]*)\)/m,
   funcArgSplit: /,/,
   funcArg: /(=.+)?(\s*)$/,
-  stripComments: /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg
+  stripComments: /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/gm,
 };
 
 const targets = {};
@@ -80,25 +80,27 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
     suite.add(name, () => func.apply(null, args));
   });
 
-  suite.on('complete', ({ currentTarget }) => {
-    const nameLength = _.chain(currentTarget)
-      .map(({ name }) => name.length)
-      .max()
-      .value();
+  suite
+    .on('complete', ({ currentTarget }) => {
+      const nameLength = _.chain(currentTarget)
+        .map(({ name }) => name.length)
+        .max()
+        .value();
 
-    _.chain(currentTarget)
-      .map(({ name, stats, error }) => {
-        const { mean } = stats;
-        return { name, mean, error };
-      })
-      .sortBy('mean')
-      .forEach(({ name, mean, error }, index) => {
-        console.log(`[${++index}]${name}${Array(nameLength - name.length + 2).join(' ')}${error||mean}`);
-      })
-      .value();
-
-  })
-  .run();
+      _.chain(currentTarget)
+        .map(({ name, stats, error }) => {
+          const { mean } = stats;
+          return { name, mean, error };
+        })
+        .sortBy('mean')
+        .forEach(({ name, mean, error }, index) => {
+          console.log(
+            `[${++index}]${name}${Array(nameLength - name.length + 2).join(' ')}${error || mean}`,
+          );
+        })
+        .value();
+    })
+    .run();
 });
 
 function parseArgs(code) {

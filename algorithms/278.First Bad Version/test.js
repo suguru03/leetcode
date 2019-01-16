@@ -5,7 +5,6 @@ const _ = require('lodash');
 const { solution } = require('./');
 
 describe('#solution', () => {
-
   it('should work', () => {
     const isBadVersion = function(n) {
       return n > 10;

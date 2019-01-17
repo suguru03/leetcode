@@ -38,11 +38,7 @@ function searchBST(root, val) {
  */
 function searchBST2(root, val) {
   while (root && root.val !== val) {
-    if (root.val > val) {
-      root = root.left;
-    } else {
-      root = root.right;
-    }
+    root = root.val > val ? root.left : root.right;
   }
   return root;
 }

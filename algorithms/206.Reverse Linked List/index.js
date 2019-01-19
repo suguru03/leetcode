@@ -14,15 +14,14 @@ module.exports = { reverseList, reverseList2 };
  * @return {ListNode}
  */
 function reverseList(head) {
-  let prev = null;
-  let current = head;
-  while (current) {
-    const node = current.next;
-    current.next = prev;
-    prev = current;
-    current = node;
+  let node = null;
+  while (head) {
+    const { next } = head;
+    head.next = node;
+    node = head;
+    head = next;
   }
-  return prev;
+  return node;
 }
 
 /**

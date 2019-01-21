@@ -15,23 +15,19 @@ module.exports = { binaryTreePaths };
  */
 function binaryTreePaths(root) {
   const paths = [];
-  if (!root) {
-    return paths;
-  }
-  pathResolve(root, []);
+  dfs(root);
   return paths;
 
-  function pathResolve(node, path) {
+  function dfs(node, cur) {
+    if (!node) {
+      return;
+    }
     const { val, left, right } = node;
+    cur = cur ? `${cur}->${val}` : `${val}`;
     if (!left && !right) {
-      path.push(val);
-      return paths.push(path.join('->'));
+      return paths.push(cur);
     }
-    if (left) {
-      pathResolve(left, path.concat(val));
-    }
-    if (right) {
-      pathResolve(right, path.concat(val));
-    }
+    dfs(left, cur);
+    dfs(right, cur);
   }
 }

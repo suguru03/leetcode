@@ -11,6 +11,10 @@ describe('#binaryTreePaths', () => {
       root: [1, 2, 3, null, 5],
       result: ['1->2->5', '1->3'],
     },
+    {
+      root: [1],
+      result: ['1'],
+    },
   ];
   makeTestTreeNodes(tests);
 

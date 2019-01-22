@@ -16,7 +16,7 @@ function isIsomorphic(s, t) {
     if (ms[cs] !== mt[ct]) {
       return false;
     }
-    ms[cs] = mt[ct] = i + 1;
+    ms[cs] = mt[ct] = i;
   }
   return true;
 }

@@ -12,25 +12,28 @@ module.exports = { findCheapestPrice };
  */
 function findCheapestPrice(n, flights, src, dst, K) {
   const map = [];
-  flights.forEach(([s, d, p]) => {
+  for (const [s, d, p] of flights) {
     map[s] = map[s] || [];
-    map[s][d] = p;
-  });
+    map[s].push({ d, p });
+  }
   let min = Infinity;
-  const p = find(src, 0, 0);
-  return p === Infinity ? -1 : p;
+  find(src, 0, Array(flights.length), 0);
+  return min === Infinity ? -1 : min;
 
-  function find(s, p, c) {
+  function find(s, price, mark, step) {
     if (s === dst) {
-      return p;
+      min = Math.min(min, price);
+      return;
     }
-    const l = map[s];
-    if (c > K || p > min || !l) {
-      return Infinity;
+    const list = map[s];
+    if (step > K || price > min || !list || mark[s]) {
+      return;
     }
-    l.forEach((p1, d) => {
-      min = Math.min(min, find(d, p + p1, c + 1));
-    });
-    return min;
+    mark[s] = true;
+    step++;
+    for (const { d, p } of list) {
+      find(d, price + p, mark, step);
+    }
+    mark[s] = false;
   }
 }

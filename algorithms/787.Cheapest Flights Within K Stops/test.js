@@ -22,6 +22,14 @@ describe('#findCheapestPrice', () => {
       K: 0,
       result: 500,
     },
+    {
+      n: 5,
+      flights: [[4, 1, 1], [1, 2, 3], [0, 3, 2], [0, 4, 10], [3, 1, 1], [1, 4, 3]],
+      src: 2,
+      dst: 1,
+      K: 1,
+      result: -1,
+    },
   ];
 
   _.forEach(tests, ({ n, flights, src, dst, K, result }) => {

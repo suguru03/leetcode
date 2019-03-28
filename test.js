@@ -132,6 +132,8 @@ function createRubyTest(dirpath) {
   const file = fs.readFileSync(filepath, 'utf8');
   const [, funcName, argsStr] = file.match(/def (.*)\((.*)\)/);
   const args = argsStr.split(',').map(s => s.trim());
+  const optionals = args.map(arg => /.+=.+/.test(arg));
+  const Optional = Symbol('optional');
 
   const templatepath = path.resolve(__dirname, 'template', 'template.rb');
   const template = fs.readFileSync(templatepath, 'utf8');
@@ -144,9 +146,11 @@ function createRubyTest(dirpath) {
     beforeEach(() => {
       const task = tasks.shift();
       const argsStr = _.chain(args)
-        .map(arg => {
+        .map((arg, index) => {
           const value = task[arg];
           switch (typeof value) {
+            case 'undefined':
+              return optionals[index] ? Optional : 'nil';
             case 'string':
               return `'${value}'`;
             case 'object':
@@ -155,6 +159,7 @@ function createRubyTest(dirpath) {
               return value;
           }
         })
+        .filter(v => v !== Optional)
         .join(',')
         .value();
       const file = template

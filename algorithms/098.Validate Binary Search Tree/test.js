@@ -28,9 +28,11 @@ describe('#isValidBST', () => {
       root: [0, null, 1],
       result: true,
     },
+    {
+      root: [1, 1],
+      result: false,
+    },
   ];
-  // tests.splice(0, 4);
-  // tests.splice(1);
   makeTestTreeNodes(tests);
 
   _.forEach(tests, ({ root, _root, result }) => {

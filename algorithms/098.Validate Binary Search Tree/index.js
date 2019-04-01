@@ -14,18 +14,18 @@ module.exports = { isValidBST, isValidBST2 };
  */
 function isValidBST(root) {
   let cur;
-  return check(root);
+  return dfs(root);
 
-  function check(node) {
+  function dfs(node) {
     if (!node) {
       return true;
     }
     const { val, left, right } = node;
-    if (!check(right) || cur <= val) {
+    if (!dfs(right) || cur <= val) {
       return false;
     }
     cur = val;
-    return check(left);
+    return dfs(left);
   }
 }
 

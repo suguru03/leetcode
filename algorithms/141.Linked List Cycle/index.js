@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { hasCycle, hasCycle2 };
+module.exports = { hasCycle, hasCycle2, hasCycle3 };
 
 /**
  * Definition for singly-linked list.
@@ -10,20 +10,35 @@ module.exports = { hasCycle, hasCycle2 };
  * }
  */
 
-const map = new Map();
-
 /**
  * @param {ListNode} head
  * @return {boolean}
  */
 function hasCycle(head) {
+  const set = new Set();
+  while (head) {
+    if (set.has(head)) {
+      return true;
+    }
+    set.add(head);
+    head = head.next;
+  }
+  return false;
+}
+
+const set = new Set();
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+function hasCycle2(head) {
   if (!head) {
     return false;
   }
-  if (map.has(head)) {
+  if (set.has(head)) {
     return true;
   }
-  map.set(head, true);
+  set.add(head);
   return hasCycle(head.next);
 }
 
@@ -31,7 +46,7 @@ function hasCycle(head) {
  * @param {ListNode} head
  * @return {boolean}
  */
-function hasCycle2(head) {
+function hasCycle3(head) {
   if (!head || !head.next) {
     return false;
   }

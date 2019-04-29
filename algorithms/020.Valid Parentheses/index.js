@@ -2,10 +2,10 @@
 
 module.exports = { isValid };
 
-const hash = {
-  ')': '(',
-  '}': '{',
-  ']': '[',
+const map = {
+  '(': ')',
+  '[': ']',
+  '{': '}',
 };
 
 /**
@@ -13,19 +13,17 @@ const hash = {
  * @return {boolean}
  */
 function isValid(s) {
-  const list = [];
+  const stack = [];
   let l = s.length;
   while (l--) {
     const c = s[l];
-    const pair = hash[c];
-    if (pair) {
-      list.push(pair);
+    if (!map[c]) {
+      stack.push(c);
       continue;
     }
-    const p = list.pop();
-    if (p !== c) {
+    if (map[c] !== stack.pop()) {
       return false;
     }
   }
-  return !list.length;
+  return stack.length === 0;
 }

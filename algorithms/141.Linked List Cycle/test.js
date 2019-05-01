@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-// const { hasCycle } = require('./');
+const { hasCycle } = require('./');
 const { makeTestLinkNodes } = require('../util');
 
 describe('#hasCycle', () => {

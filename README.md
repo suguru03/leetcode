@@ -212,6 +212,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |204|[Count Primes](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/204.Count%20Primes/index.js)|
 |203|[Remove Linked List Elements](https://github.com/suguru03/leetcode/tree/master/algorithms/203.Remove%20Linked%20List%20Elements)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/203.Remove%20Linked%20List%20Elements/index.js)|
 |202|[Happy Number](https://github.com/suguru03/leetcode/tree/master/algorithms/202.Happy%20Number)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/202.Happy%20Number/index.js)|
+|200|[Number of Islands](https://github.com/suguru03/leetcode/tree/master/algorithms/200.Number%20of%20Islands)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/200.Number%20of%20Islands/index.js)|
 |198|[House Robber](https://github.com/suguru03/leetcode/tree/master/algorithms/198.House%20Robber)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/198.House%20Robber/index.js)|
 |197|[Rising Temperature](https://github.com/suguru03/leetcode/tree/master/algorithms/197.Rising%20Temperature)|[sql](https://github.com/suguru03/leetcode/tree/master/algorithms/197.Rising%20Temperature/query.sql)|
 |196|[Delete Duplicate Emails](https://github.com/suguru03/leetcode/tree/master/algorithms/196.Delete%20Duplicate%20Emails)|[sql](https://github.com/suguru03/leetcode/tree/master/algorithms/196.Delete%20Duplicate%20Emails/query.sql)|

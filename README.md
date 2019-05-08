@@ -188,6 +188,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |338|[Counting Bits](https://github.com/suguru03/leetcode/tree/master/algorithms/338.Counting%20Bits)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/338.Counting%20Bits/index.js)|
 |326|[Power of Three](https://github.com/suguru03/leetcode/tree/master/algorithms/326.Power%20of%20Three)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/326.Power%20of%20Three/index.js)|
 |303|[Range Sum Query - Immutable](https://github.com/suguru03/leetcode/tree/master/algorithms/303.Range%20Sum%20Query%20-%20Immutable)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/303.Range%20Sum%20Query%20-%20Immutable/index.js)|
+|300|[Longest Increasing Subsequence](https://github.com/suguru03/leetcode/tree/master/algorithms/300.Longest%20Increasing%20Subsequence)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/300.Longest%20Increasing%20Subsequence/index.js)|
 |292|[Nim Game](https://github.com/suguru03/leetcode/tree/master/algorithms/292.Nim%20Game)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/292.Nim%20Game/index.js)|
 |290|[Word Pattern](https://github.com/suguru03/leetcode/tree/master/algorithms/290.Word%20Pattern)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/290.Word%20Pattern/index.js)|
 |283|[Move Zeroes](https://github.com/suguru03/leetcode/tree/master/algorithms/283.Move%20Zeroes)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/283.Move%20Zeroes/index.js)|

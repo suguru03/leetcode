@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { searchInsert1: searchInsert } = require('./');
+const { searchInsert } = require('./');
 
 describe('#searchInsert', () => {
   const tests = [
@@ -25,6 +25,16 @@ describe('#searchInsert', () => {
       nums: [1, 3, 5, 6],
       target: 0,
       result: 0,
+    },
+    {
+      nums: [1, 3],
+      target: 2,
+      result: 1,
+    },
+    {
+      nums: [1, 3, 5, 6],
+      target: 7,
+      result: 4,
     },
   ];
 

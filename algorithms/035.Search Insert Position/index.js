@@ -1,29 +1,28 @@
 'use strict';
 
-module.exports = { searchInsert1, searchInsert2 };
+module.exports = { searchInsert, searchInsert2 };
 
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number}
  */
-function searchInsert1(nums, target) {
-  let i = 0;
-  let left = 0;
-  let right = nums.length - 1;
-  while (right >= left) {
-    i = ((left + right) / 2) | 0;
+function searchInsert(nums, target) {
+  let l = 0;
+  let r = nums.length - 1;
+  while (l <= r) {
+    const i = ((l + r) / 2) | 0;
     const n = nums[i];
-    if (target === n) {
+    if (n === target) {
       return i;
     }
-    if (target < n) {
-      right = i - 1;
+    if (n > target) {
+      r = i - 1;
     } else {
-      left = i + 1;
+      l = i + 1;
     }
   }
-  return left > right ? left : i;
+  return l;
 }
 
 /**

@@ -7,15 +7,11 @@ module.exports = { moveZeroes };
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 function moveZeroes(nums) {
-  const l = nums.length;
-  let pos = 0;
-  for (let i = 0; i < l; i++) {
-    const n = nums[i];
-    if (n !== 0) {
-      nums[pos++] = n;
+  let j = 0;
+  for (const [i, n] of nums.entries()) {
+    if (n === 0) {
+      continue;
     }
-  }
-  while (pos < l) {
-    nums[pos++] = 0;
+    [nums[i], nums[j++]] = [nums[j], n];
   }
 }

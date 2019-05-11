@@ -14,18 +14,17 @@ module.exports = { deleteDuplicates };
  * @return {ListNode}
  */
 function deleteDuplicates(head) {
-  if (!head) {
-    return head;
-  }
-  const result = head;
+  const set = new Set();
   let prev = head;
-  while (head.next) {
-    head = head.next;
-    if (prev.val === head.val) {
-      prev.next = head.next;
+  let node = head;
+  while (node) {
+    if (set.has(node.val)) {
+      prev.next = node.next;
     } else {
-      prev = prev.next;
+      set.add(node.val);
+      prev = node;
     }
+    node = node.next;
   }
-  return result;
+  return head;
 }

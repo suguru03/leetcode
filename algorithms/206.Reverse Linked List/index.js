@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { reverseList, reverseList2 };
+module.exports = { reverseList, reverseList2, reverseList3 };
 
 /**
  * Definition for singly-linked list.
@@ -18,8 +18,7 @@ function reverseList(head) {
   while (head) {
     const { next } = head;
     head.next = node;
-    node = head;
-    head = next;
+    [node, head] = [head, next];
   }
   return node;
 }
@@ -52,4 +51,34 @@ function reverseList2(head) {
   }
   head.next = null;
   return root;
+}
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+function reverseList3(head) {
+  if (!head) {
+    return null;
+  }
+  const result = { next: null };
+  loop(head);
+  head.next = null;
+  return result.next;
+
+  function loop(node) {
+    if (!node) {
+      return result;
+    }
+    const head = loop(node.next);
+    head.next = node;
+    return node;
+  }
 }

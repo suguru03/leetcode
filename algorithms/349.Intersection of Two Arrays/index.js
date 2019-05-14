@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { intersection };
+module.exports = { intersection, intersection2 };
 
 /**
  * @param {number[]} nums1
@@ -23,4 +23,20 @@ function intersection(nums1, nums2) {
     }
   }
   return result;
+}
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+function intersection2(nums1, nums2) {
+  const set = new Set(nums1);
+  const result = new Set();
+  for (const n of nums2) {
+    if (set.has(n)) {
+      result.add(n);
+    }
+  }
+  return Array.from(result);
 }

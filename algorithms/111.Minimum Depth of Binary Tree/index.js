@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { minDepth };
+module.exports = { minDepth, minDepth2 };
 
 /**
  * Definition for a binary tree node.
@@ -14,6 +14,25 @@ module.exports = { minDepth };
  * @return {number}
  */
 function minDepth(root) {
+  return root ? dfs(root, 1) : 0;
+
+  function dfs(node, depth) {
+    if (!node) {
+      return Infinity;
+    }
+    const { left, right } = node;
+    if (!left && !right) {
+      return depth;
+    }
+    return Math.min(dfs(left, ++depth), dfs(right, depth));
+  }
+}
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+function minDepth2(root) {
   if (!root) {
     return 0;
   }

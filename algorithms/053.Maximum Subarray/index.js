@@ -8,18 +8,12 @@ module.exports = { maxSubArray, maxSubArray2 };
  */
 function maxSubArray(nums) {
   let sum = 0;
-  let min = Infinity;
+  let min = 0;
   let max = -Infinity;
-  let i = -1;
-  while (++i < nums.length) {
-    const n = nums[i];
+  for (const n of nums) {
     sum += n;
+    max = Math.max(max, sum - min, n);
     min = Math.min(min, sum);
-    max = Math.max(max, sum, n);
-    const diff = sum - min;
-    if (diff !== 0) {
-      max = Math.max(max, diff);
-    }
   }
   return max;
 }

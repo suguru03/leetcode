@@ -7,18 +7,19 @@ const { reverseString } = require('./');
 describe('#reverseString', () => {
   const tests = [
     {
-      s: 'hello',
-      result: 'olleh',
+      s: ['h', 'e', 'l', 'l', 'o'],
+      result: ['o', 'l', 'l', 'e', 'h'],
     },
     {
-      s: 'hello!',
-      result: '!olleh',
+      s: ['H', 'a', 'n', 'n', 'a', 'h'],
+      result: ['h', 'a', 'n', 'n', 'a', 'H'],
     },
   ];
 
   _.forEach(tests, ({ s, result }) => {
     it(`${s} -> ${result}`, () => {
-      assert.strictEqual(reverseString(s), result);
+      reverseString(s);
+      assert.deepStrictEqual(s, result);
     });
   });
 });

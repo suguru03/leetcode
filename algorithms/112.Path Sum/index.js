@@ -18,9 +18,7 @@ function hasPathSum(root, sum) {
   if (!root) {
     return false;
   }
-  sum -= root.val;
-  if (sum === 0 && !root.left && !root.right) {
-    return true;
-  }
-  return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
+  const { left, right, val } = root;
+  sum -= val;
+  return (!left && !right && sum === 0) || hasPathSum(left, sum) || hasPathSum(right, sum);
 }

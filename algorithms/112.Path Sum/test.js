@@ -13,6 +13,16 @@ describe('#hasPathSum', () => {
       result: false,
     },
     {
+      root: [],
+      sum: 0,
+      result: false,
+    },
+    {
+      root: [1, 2],
+      sum: 1,
+      result: false,
+    },
+    {
       root: [5, 4, 8, 11, 13, 4, 7, 2, null, 1],
       sum: 22,
       result: true,

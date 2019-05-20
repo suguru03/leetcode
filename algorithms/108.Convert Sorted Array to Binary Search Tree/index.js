@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { sortedArrayToBST };
+module.exports = { sortedArrayToBST, sortedArrayToBST2 };
 
 class TreeNode {
   constructor(val) {
@@ -31,4 +31,23 @@ function sortedArrayToBST(nums) {
   node.left = sortedArrayToBST(nums.slice(0, index));
   node.right = sortedArrayToBST(nums.slice(index + 1));
   return node;
+}
+
+function sortedArrayToBST2(nums) {
+  return dfs(0, nums.length);
+
+  function dfs(start, end) {
+    if (start === end) {
+      return null;
+    }
+    const m = ((end + start) / 2) | 0;
+    const n = nums[m];
+    if (n === undefined) {
+      return null;
+    }
+    const node = new TreeNode(n);
+    node.left = dfs(start, m);
+    node.right = dfs(m + 1, end);
+    return node;
+  }
 }

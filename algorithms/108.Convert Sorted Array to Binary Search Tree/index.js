@@ -41,11 +41,7 @@ function sortedArrayToBST2(nums) {
       return null;
     }
     const m = ((end + start) / 2) | 0;
-    const n = nums[m];
-    if (n === undefined) {
-      return null;
-    }
-    const node = new TreeNode(n);
+    const node = new TreeNode(nums[m]);
     node.left = dfs(start, m);
     node.right = dfs(m + 1, end);
     return node;

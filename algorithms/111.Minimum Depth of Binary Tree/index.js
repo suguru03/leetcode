@@ -36,7 +36,7 @@ function minDepth2(root) {
   if (!root) {
     return 0;
   }
-  const left = minDepth(root.left);
-  const right = minDepth(root.right);
+  const left = minDepth2(root.left);
+  const right = minDepth2(root.right);
   return (left && right ? Math.min(left, right) : left + right) + 1;
 }

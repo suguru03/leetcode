@@ -7,14 +7,13 @@ module.exports = { maxProfit };
  * @return {number}
  */
 function maxProfit(prices) {
-  let sum = 0;
-  let prev = prices[0];
-  for (let i = 1; i < prices.length; i++) {
-    const n = prices[i];
-    if (prev < n) {
-      sum += n - prev;
+  let min = Infinity;
+  let max = 0;
+  for (const p of prices) {
+    if (p >= min) {
+      max += p - min;
     }
-    prev = n;
+    min = p;
   }
-  return sum;
+  return max;
 }

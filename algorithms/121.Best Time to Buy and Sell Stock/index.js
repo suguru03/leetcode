@@ -6,16 +6,14 @@ module.exports = { maxProfit };
  * @param {number[]} prices
  * @return {number}
  */
-function maxProfit(n) {
+function maxProfit(prices) {
   let min = Infinity;
   let max = 0;
-  for (let i = 0; i < n.length; i++) {
-    const num = n[i];
-    const diff = num - min;
-    if (diff > 0) {
-      max = Math.max(max, diff);
+  for (const p of prices) {
+    if (p < min) {
+      min = p;
     } else {
-      min = num;
+      max = Math.max(max, p - min);
     }
   }
   return max;

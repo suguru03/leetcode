@@ -22,6 +22,10 @@ describe('#rob', () => {
       nums: [1, 1, 5, 1, 1, 1, 10, 1],
       result: 17,
     },
+    {
+      nums: [],
+      result: 0,
+    },
   ];
 
   _.forEach(tests, ({ nums, result }) => {

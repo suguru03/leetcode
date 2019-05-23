@@ -20,8 +20,8 @@ function rob(nums) {
  * @return {number}
  */
 function rob2(nums) {
-  let l = nums.length - 2;
-  while (l-- > 0) {
+  let l = nums.length - 1;
+  while (--l >= 0) {
     nums[l] += Math.max(nums[l + 2] || 0, nums[l + 3] || 0);
   }
   return Math.max(nums[0] || 0, nums[1] || 0);

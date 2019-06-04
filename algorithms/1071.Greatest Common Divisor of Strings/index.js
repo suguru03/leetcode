@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { gcdOfStrings };
+module.exports = { gcdOfStrings, gcdOfStrings2 };
 
 /**
  * @param {string} str1
@@ -33,4 +33,24 @@ function check(str, x) {
     }
   }
   return true;
+}
+
+/**
+ * @param {string} str1
+ * @param {string} str2
+ * @return {string}
+ */
+function gcdOfStrings2(str1, str2) {
+  const l1 = str1.length;
+  const l2 = str2.length;
+  if (l1 < l2) {
+    return gcdOfStrings(str2, str1);
+  }
+  if (l2 === 0) {
+    return str1;
+  }
+  if (str1.slice(0, l2) !== str2) {
+    return '';
+  }
+  return gcdOfStrings(str1.slice(l2), str2);
 }

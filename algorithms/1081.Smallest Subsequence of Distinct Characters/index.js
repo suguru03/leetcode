@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { smallestSubsequence };
+module.exports = { smallestSubsequence, smallestSubsequence2 };
 
 /**
  * @param {string} text
@@ -49,4 +49,31 @@ function smallestSubsequence(text) {
     }
   }
   return Array.from(result).join('');
+}
+
+/**
+ * @param {string} text
+ * @return {string}
+ */
+function smallestSubsequence2(text) {
+  const l = text.length;
+  const lastMap = new Map();
+  for (let i = 0; i < l; i++) {
+    lastMap.set(text[i], i);
+  }
+  const stack = [];
+  const seen = new Set();
+  for (let i = 0; i < l; i++) {
+    const c = text[i];
+    if (seen.has(c)) {
+      continue;
+    }
+    let last;
+    while ((last = stack[stack.length - 1]) && c < last && i < lastMap.get(last)) {
+      seen.delete(stack.pop());
+    }
+    stack.push(c);
+    seen.add(c);
+  }
+  return stack.join('');
 }

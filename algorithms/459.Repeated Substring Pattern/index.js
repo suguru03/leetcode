@@ -8,16 +8,15 @@ module.exports = { repeatedSubstringPattern };
  */
 function repeatedSubstringPattern(s) {
   const l = s.length;
-  let div = 2;
-  loop: while (div <= l) {
-    const size = l / div++;
-    if (size % 1 !== 0) {
+  let i = l;
+  loop: while (--i) {
+    if (l % i !== 0) {
       continue;
     }
-    const str = s.substr(0, size);
-    for (let i = size; i < l; i += size) {
-      const ts = s.substr(i, size);
-      if (str !== ts) {
+    const cur = s.slice(l - i, l);
+    const size = cur.length;
+    for (let j = 0; j < l - 1; j += size) {
+      if (s.slice(j, j + size) !== cur) {
         continue loop;
       }
     }

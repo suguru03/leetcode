@@ -8,7 +8,8 @@ module.exports = { reverseBits };
  */
 function reverseBits(n) {
   let result = new Uint32Array(1);
-  for (let i = 0; i < 32; i++) {
+  let count = 32;
+  while (count--) {
     result[0] <<= 1;
     result[0] |= n & 1;
     n >>= 1;

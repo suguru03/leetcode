@@ -8,29 +8,25 @@ module.exports = { findRestaurant };
  * @return {string[]}
  */
 function findRestaurant(list1, list2) {
-  const map = {};
-  list1.forEach((shop, index) => (map[shop] = index));
-
-  let min = Infinity;
+  const map = new Map();
+  for (const [index, item] of list1.entries()) {
+    map.set(item, index);
+  }
+  let max = Infinity;
   const result = [];
-  for (let i = 0; i < list2.length; i++) {
-    if (i > min) {
-      break;
-    }
-    const shop = list2[i];
-    const j = map[shop];
-    if (j === undefined) {
+  for (const [index, item] of list2.entries()) {
+    if (!map.has(item)) {
       continue;
     }
-    const sum = i + j;
-    if (sum > min) {
+    const sum = map.get(item) + index;
+    if (sum > max) {
       continue;
     }
-    if (sum < min) {
-      min = sum;
+    if (sum < max) {
+      max = sum;
       result.length = 0;
     }
-    result.push(shop);
+    result.push(item);
   }
   return result;
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { longestCommonPrefix, longestCommonPrefix2 };
+module.exports = { longestCommonPrefix, longestCommonPrefix2, longestCommonPrefix3 };
 
 /**
  * @param {string[]} strs
@@ -56,4 +56,23 @@ function getPrefixLength2(s1, s2) {
     }
   }
   return i;
+}
+
+function longestCommonPrefix3(strs) {
+  const l = strs.length;
+  const [str = ''] = strs;
+  if (l <= 1) {
+    return str;
+  }
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    const c = str[i];
+    for (let j = 1; j < l; j++) {
+      if (strs[j][i] !== c) {
+        return result;
+      }
+    }
+    result += c;
+  }
+  return result;
 }

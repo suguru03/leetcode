@@ -30,6 +30,14 @@ describe('#LongestCommonPrefix', () => {
       strs: ['aca', 'cba'],
       result: '',
     },
+    {
+      strs: [],
+      result: '',
+    },
+    {
+      strs: ['a'],
+      result: 'a',
+    },
   ];
 
   _.forEach(tests, ({ strs, result }) => {

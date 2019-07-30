@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { validPalindrome };
+module.exports = { validPalindrome, validPalindrome2 };
 
 /**
  * @param {string} s
@@ -24,6 +24,21 @@ function validPalindrome(s, changed) {
       validPalindrome(s.substring(left++, right++), true) ||
       validPalindrome(s.substring(left, right), true)
     );
+  }
+  return true;
+}
+
+function validPalindrome2(s, l = 0, r = s.length - 1, del = false) {
+  while (l < r) {
+    if (s[l] === s[r]) {
+      l++;
+      r--;
+      continue;
+    }
+    if (del) {
+      return false;
+    }
+    return validPalindrome2(s, l + 1, r, true) || validPalindrome2(s, l, r - 1, true);
   }
   return true;
 }

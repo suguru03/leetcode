@@ -20,5 +20,5 @@ function hasPathSum(root, sum) {
   }
   const { left, right, val } = root;
   sum -= val;
-  return (!left && !right && sum === 0) || hasPathSum(left, sum) || hasPathSum(right, sum);
+  return (left === right && sum === 0) || hasPathSum(left, sum) || hasPathSum(right, sum);
 }

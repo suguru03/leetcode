@@ -8,11 +8,11 @@ module.exports = { rotatedDigits };
  */
 function rotatedDigits(N) {
   let count = 0;
-  for (let n = 1; n <= N; n++) {
-    if (isGoodNum(n)) {
+  do {
+    if (isGoodNum(N)) {
       count++;
     }
-  }
+  } while (--N);
   return count;
 }
 

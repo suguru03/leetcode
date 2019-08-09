@@ -9,35 +9,32 @@ module.exports = { kSmallestPairs };
  * @return {number[][]}
  */
 function kSmallestPairs(nums1, nums2, k) {
+  const result = [];
   const l1 = nums1.length;
   const l2 = nums2.length;
   if (!l1 || !l2) {
-    return [];
+    return result;
   }
   const used = Array.from(nums1, () => Array(l2));
   const queue = new PriorityQueue([[0, 0]], (a1, a2) => sum(...a1) < sum(...a2));
-  const result = [];
-  while (!queue.isEmpty()) {
-    const [x, y] = queue.pop();
-    result.push([nums1[x], nums2[y]]);
-    if (result.length === k) {
-      break;
-    }
-    add(x + 1, y);
-    add(x, y + 1);
+  while (!queue.isEmpty() && result.length < k) {
+    const [i1, i2] = queue.pop();
+    result.push([nums1[i1], nums2[i2]]);
+    add(i1 + 1, i2);
+    add(i1, i2 + 1);
   }
   return result;
 
-  function sum(x, y) {
-    return nums1[x] + nums2[y];
+  function sum(i1, i2) {
+    return nums1[i1] + nums2[i2];
   }
 
-  function add(x, y) {
-    if (x === l1 || y === l2 || used[x][y]) {
+  function add(i1, i2) {
+    if (i1 === l1 || i2 === l2 || used[i1][i2]) {
       return;
     }
-    used[x][y] = true;
-    queue.push([x, y]);
+    used[i1][i2] = true;
+    queue.push([i1, i2]);
   }
 }
 

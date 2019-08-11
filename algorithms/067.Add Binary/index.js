@@ -11,16 +11,16 @@ function addBinary(a, b) {
   let la = a.length;
   let lb = b.length;
   let prev = 0;
-  let result = '';
+  let res = '';
   while (la > 0 || lb > 0) {
     const na = +a[--la] || 0;
     const nb = +b[--lb] || 0;
-    const sum = na + nb + prev;
-    result = (sum % 2) + result;
-    prev = (sum / 2) | 0;
+    const s = na + nb + prev;
+    res = (s % 2) + res;
+    prev = (s / 2) | 0;
   }
   if (prev) {
-    result = prev + result;
+    res = prev + res;
   }
-  return result;
+  return res;
 }

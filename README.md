@@ -247,6 +247,7 @@ $ mocha test -t '001.Two Sum' --ruby
 |160|[Intersection of Two Linked Lists](https://github.com/suguru03/leetcode/tree/master/algorithms/160.Intersection%20of%20Two%20Linked%20Lists)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/160.Intersection%20of%20Two%20Linked%20Lists/index.js)|
 |155|[Min Stack](https://github.com/suguru03/leetcode/tree/master/algorithms/155.Min%20Stack)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/155.Min%20Stack/index.js)|
 |152|[Maximum Product Subarray](https://github.com/suguru03/leetcode/tree/master/algorithms/152.Maximum%20Product%20Subarray)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/152.Maximum%20Product%20Subarray/index.js)|
+|146|[LRU Cache](https://github.com/suguru03/leetcode/tree/master/algorithms/146.LRU%20Cache)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/146.LRU%20Cache/index.js)|
 |141|[Linked List Cycle](https://github.com/suguru03/leetcode/tree/master/algorithms/141.Linked%20List%20Cycle)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/141.Linked%20List%20Cycle/index.js)|
 |136|[Single Number](https://github.com/suguru03/leetcode/tree/master/algorithms/136.Single%20Number)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/136.Single%20Number/index.js)|
 |125|[Valid Palindrome](https://github.com/suguru03/leetcode/tree/master/algorithms/125.Valid%20Palindrome)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/125.Valid%20Palindrome/index.js)|

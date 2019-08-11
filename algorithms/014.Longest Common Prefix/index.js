@@ -1,6 +1,11 @@
 'use strict';
 
-module.exports = { longestCommonPrefix, longestCommonPrefix2, longestCommonPrefix3 };
+module.exports = {
+  longestCommonPrefix,
+  longestCommonPrefix2,
+  longestCommonPrefix3,
+  longestCommonPrefix4,
+};
 
 /**
  * @param {string[]} strs
@@ -75,4 +80,32 @@ function longestCommonPrefix3(strs) {
     result += c;
   }
   return result;
+}
+
+/**
+ * @see https://github.com/axross/leetcode-typescript/blob/master/solutions/longestCommonPrefix.ts
+ */
+function longestCommonPrefix4(strs) {
+  if (strs.length === 0) {
+    return '';
+  }
+
+  const base = strs[0];
+  const others = strs.slice(1);
+  let searchFrom = 0;
+  let searchTo = base.length;
+
+  // do binary search
+  while (searchFrom < searchTo) {
+    const middle = Math.ceil((searchFrom + searchTo) / 2);
+    const compareTarget = base.slice(0, middle);
+
+    if (others.every(str => str.slice(0, middle) === compareTarget)) {
+      searchFrom = middle;
+    } else {
+      searchTo = middle - 1;
+    }
+  }
+
+  return base.slice(0, searchFrom);
 }

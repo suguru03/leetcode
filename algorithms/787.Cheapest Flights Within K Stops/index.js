@@ -48,14 +48,14 @@ function findCheapestPrice(n, flights, src, dst, K) {
  */
 function findCheapestPrice2(n, flights, src, dst, K) {
   let prev;
-  let curr = Array(n).fill(Infinity);
-  curr[src] = 0;
-  for (let i = 0; i <= K; i++) {
-    [curr, prev] = [[...curr], curr];
-    for (const [s, d, c] of flights) {
-      curr[d] = Math.min(curr[d], prev[s] + c);
+  let cur = Array(n).fill(Infinity);
+  cur[src] = 0;
+  do {
+    [cur, prev] = [[...cur], cur];
+    for (const [s, e, c] of flights) {
+      cur[e] = Math.min(cur[e], prev[s] + c);
     }
-  }
-  const cost = curr[dst];
+  } while (K--);
+  const cost = cur[dst];
   return cost === Infinity ? -1 : cost;
 }

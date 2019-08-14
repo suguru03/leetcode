@@ -14,6 +14,10 @@ describe('#isPowerOfThree', () => {
       n: 6,
       result: false,
     },
+    {
+      n: 1,
+      result: true,
+    },
   ];
 
   _.forEach(tests, ({ n, result }) => {

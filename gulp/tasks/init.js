@@ -80,7 +80,7 @@ async function setLanguage(page) {
 
 async function createProblem(page, stat) {
   const { frontend_question_id: qid, question__title: title, question__title_slug: slug } = stat;
-  const id = `${qid}`.padStart(3, 0);
+  const id = `${qid}`.padStart(4, '0');
   const url = `${base}/problems/${slug}`;
   await page.goto(url);
   console.log(`Reading leetcode page... id: ${id}, title: ${title}`);

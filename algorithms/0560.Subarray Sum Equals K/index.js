@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { subarraySum };
+module.exports = { subarraySum, subarraySum2 };
 
 /**
  * @param {number[]} nums
@@ -18,6 +18,26 @@ function subarraySum(nums, k) {
         count++;
       }
     }
+  }
+  return count;
+}
+
+/**
+ * @see https://leetcode.com/problems/subarray-sum-equals-k/
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+function subarraySum2(nums, k) {
+  let sum = 0;
+  let count = 0;
+  const map = new Map();
+  map.set(0, 1);
+  for (const n of nums) {
+    sum += n;
+    const diff = sum - k;
+    count += map.get(diff) || 0;
+    map.set(sum, ~~map.get(sum) + 1);
   }
   return count;
 }

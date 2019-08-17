@@ -11,6 +11,11 @@ describe('#subarraySum', () => {
       k: 2,
       result: 2,
     },
+    {
+      nums: [1],
+      k: 1,
+      result: 1,
+    },
   ];
 
   _.forEach(tests, ({ nums, k, result }) => {

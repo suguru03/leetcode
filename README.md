@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|1161|[Maximum Level Sum of a Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/1161.Maximum%20Level%20Sum%20of%20a%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1161.Maximum%20Level%20Sum%20of%20a%20Binary%20Tree/index.js)|
 |1160|[Find Words That Can Be Formed by Characters](https://github.com/suguru03/leetcode/tree/master/algorithms/1160.Find%20Words%20That%20Can%20Be%20Formed%20by%20Characters)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1160.Find%20Words%20That%20Can%20Be%20Formed%20by%20Characters/index.js)|
 |1156|[Swap For Longest Repeated Character Substring](https://github.com/suguru03/leetcode/tree/master/algorithms/1156.Swap%20For%20Longest%20Repeated%20Character%20Substring)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1156.Swap%20For%20Longest%20Repeated%20Character%20Substring/index.js)|
 |1155|[Number of Dice Rolls With Target Sum](https://github.com/suguru03/leetcode/tree/master/algorithms/1155.Number%20of%20Dice%20Rolls%20With%20Target%20Sum)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1155.Number%20of%20Dice%20Rolls%20With%20Target%20Sum/index.js)|

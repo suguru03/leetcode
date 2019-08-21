@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { fizzBuzz };
+module.exports = { fizzBuzz, fizzBuzz2 };
 
 /**
  * @param {number} n
@@ -21,4 +21,15 @@ function fizzBuzz(n) {
     }
   }
   return result;
+}
+
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+function fizzBuzz2(n) {
+  return Array.from(
+    { length: n },
+    (_, i) => `${++i % 3 === 0 ? 'Fizz' : ''}${i % 5 === 0 ? 'Buzz' : ''}` || i.toString(),
+  );
 }

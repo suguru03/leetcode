@@ -37,6 +37,7 @@ $ mocha test -t '001.Two Sum' --ruby
 ## Links
 |#|Title|Solution|
 |---|---|---|
+|1163|[Last Substring in Lexicographical Order](https://github.com/suguru03/leetcode/tree/master/algorithms/1163.Last%20Substring%20in%20Lexicographical%20Order)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1163.Last%20Substring%20in%20Lexicographical%20Order/index.js)|
 |1162|[As Far from Land as Possible](https://github.com/suguru03/leetcode/tree/master/algorithms/1162.As%20Far%20from%20Land%20as%20Possible)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1162.As%20Far%20from%20Land%20as%20Possible/index.js)|
 |1161|[Maximum Level Sum of a Binary Tree](https://github.com/suguru03/leetcode/tree/master/algorithms/1161.Maximum%20Level%20Sum%20of%20a%20Binary%20Tree)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1161.Maximum%20Level%20Sum%20of%20a%20Binary%20Tree/index.js)|
 |1160|[Find Words That Can Be Formed by Characters](https://github.com/suguru03/leetcode/tree/master/algorithms/1160.Find%20Words%20That%20Can%20Be%20Formed%20by%20Characters)|[js](https://github.com/suguru03/leetcode/tree/master/algorithms/1160.Find%20Words%20That%20Can%20Be%20Formed%20by%20Characters/index.js)|

@@ -1,3 +1,3 @@
 'use strict';
 
-Object.assign(exports, ...['./prime', './priorityQueue', './tree'].map(require));
+Object.assign(exports, ...['./prime', './priorityQueue', './tree', './quickSort'].map(require));

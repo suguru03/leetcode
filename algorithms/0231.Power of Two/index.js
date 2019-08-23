@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { isPowerOfTwo, isPowerOfTwo2, isPowerOfTwo3 };
+module.exports = { isPowerOfTwo, isPowerOfTwo2, isPowerOfTwo3, isPowerOfTwo4 };
 
 /**
  * @param {number} n
@@ -31,4 +31,12 @@ function isPowerOfTwo2(n) {
  */
 function isPowerOfTwo3(n) {
   return (Math.log10(n) / Math.log10(2)) % 1 === 0;
+}
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+function isPowerOfTwo4(n) {
+  return Math.log2(n) % 1 === 0;
 }

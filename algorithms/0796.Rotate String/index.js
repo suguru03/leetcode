@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { rotateString, rotateString2 };
+module.exports = { rotateString, rotateString2, rotateString3 };
 
 /**
  * @param {string} A
@@ -31,4 +31,13 @@ function rotateString(A, B) {
  */
 function rotateString2(A, B) {
   return A.length === B.length && (A + A).indexOf(B) >= 0;
+}
+
+/**
+ * @param {string} A
+ * @param {string} B
+ * @return {boolean}
+ */
+function rotateString3(A, B) {
+  return A.length === B.length && (A + A).includes(B);
 }

@@ -37,12 +37,13 @@ function rangeSumBST(root, L, R) {
   }
 }
 
-function rangeSumBST2(root, L, R) {
-  if (!root) {
+function rangeSumBST2(node, L, R) {
+  if (!node) {
     return 0;
   }
-  const { left, right, val } = root;
-  let sum = val > L ? rangeSumBST(left, L, R) : 0;
-  sum += val >= L && val <= R ? val : 0;
-  return sum + (val < R ? rangeSumBST(right, L, R) : 0);
+  const { val, left, right } = node;
+  const m = val >= L && val <= R ? val : 0;
+  const l = val < L ? 0 : rangeSumBST2(left, L, R);
+  const r = val > R ? 0 : rangeSumBST2(right, L, R);
+  return m + l + r;
 }

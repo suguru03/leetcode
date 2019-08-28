@@ -49,13 +49,7 @@ function intersection2(nums1, nums2) {
 function intersection3(nums1, nums2) {
   const s1 = new Set(nums1);
   const s2 = new Set(nums2);
-  const res = [];
-  for (const n of s2) {
-    if (s1.has(n)) {
-      res.push(n);
-    }
-  }
-  return res;
+  return Array.from(s2).filter(num => s1.has(num));
 }
 
 /**

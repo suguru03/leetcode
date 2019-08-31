@@ -3,40 +3,28 @@
 module.exports = { numRollsToTarget };
 
 /**
- * @param {number} d
- * @param {number} f
+ * @param {number} diceNum
+ * @param {number} faceNum
  * @param {number} target
  * @return {number}
  */
-function numRollsToTarget(d, f, target) {
+function numRollsToTarget(diceNum, faceNum, target) {
   const mod = 10 ** 9 + 7;
   const dp = Array(target).fill(0);
-  for (let i = 0; i < f; i++) {
-    dp[i] = 1;
+  for (let face = 0; face < faceNum; face++) {
+    dp[face] = 1;
   }
-  for (let i = 1; i < d; i++) {
-    for (let j = target - 1; j >= 0; j--) {
-      dp[j] = 0;
-      for (let k = 1; k <= f; k++) {
-        const l = j - k;
-        if (l < 0) {
+  for (let dice = 1; dice < diceNum; dice++) {
+    for (let sum = target - 1; sum >= 0; sum--) {
+      dp[sum] = 0;
+      for (let face = 1; face <= faceNum; face++) {
+        const prev = sum - face;
+        if (prev < 0) {
           break;
         }
-        dp[j] += dp[l] % mod;
+        dp[sum] += dp[prev] % mod;
       }
     }
   }
   return dp[target - 1] % mod;
 }
-
-function init(d, target) {
-  return Array.from({ length: d }, () => Array(target).fill(0));
-}
-
-/**
- * @param {number} d
- * @param {number} f
- * @param {number} target
- * @return {number}
- */
-function numRollsToTarget(d, f, target, dp = init(d, target)) {}

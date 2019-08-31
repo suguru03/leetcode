@@ -1,20 +1,15 @@
-'use strict';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as _ from 'lodash';
+import Aigle from 'aigle';
+import * as prompt from 'prompt';
+import * as puppeteer from 'puppeteer';
+import * as request from 'request-promise';
+import * as prettier from 'prettier';
 
-const fs = require('fs');
-const path = require('path');
-
-const _ = require('lodash');
-const gulp = require('gulp');
-const Aigle = require('aigle');
-const prompt = require('prompt');
-const puppeteer = require('puppeteer');
-const request = require('request-promise');
-const prettier = require('prettier');
-const config = require('../../package');
+import * as config from '../../package.json';
 
 Aigle.promisifyAll(prompt);
-
-gulp.task('init', init);
 
 const base = 'https://leetcode.com';
 
@@ -28,7 +23,7 @@ const schema = {
   },
 };
 
-async function init() {
+export async function init() {
   prompt.start();
   const { num } = await prompt.getAsync(schema);
 
@@ -43,14 +38,14 @@ async function init() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  await setLanguage(page, item.stat);
+  await setLanguage(page);
 
   // load the problem page, it may need to adjust the timeout
   await createProblem(page, item.stat);
   await browser.close();
 }
 
-function assignDefault(map, { type, key }) {
+function assignDefault(map: any, { type, key }) {
   key = key || 'result';
   switch (type) {
     case 'number':
@@ -72,13 +67,13 @@ function assignDefault(map, { type, key }) {
   }
 }
 
-async function setLanguage(page) {
+async function setLanguage(page: any) {
   // set logal storage
   await page.goto(`${base}`);
   await page.evaluate(() => localStorage.setItem('global_lang', 'javascript'));
 }
 
-async function createProblem(page, stat) {
+async function createProblem(page: any, stat: any) {
   const { frontend_question_id: qid, question__title: title, question__title_slug: slug } = stat;
   const id = `${qid}`.padStart(4, '0');
   const url = `${base}/problems/${slug}`;
@@ -112,6 +107,7 @@ async function createProblem(page, stat) {
         return dom.textContent;
       }
     }
+    return '';
   });
 
   console.log('Creating files...');
@@ -130,7 +126,7 @@ async function createProblem(page, stat) {
   // if fails, it needs to be fixed.
   let line = 0;
   while (++line) {
-    const re = new RegExp(line);
+    const re = new RegExp(line.toString());
     if (!re.test(code)) {
       break;
     }

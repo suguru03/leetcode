@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["es6", "es2017", "dom"],
+    "target": "es6",
+    "noEmit": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noImplicitReturns": true
+  }
+}

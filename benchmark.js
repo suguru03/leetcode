@@ -94,9 +94,7 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
         })
         .sortBy('mean')
         .forEach(({ name, mean, error }, index) => {
-          console.log(
-            `[${++index}]${name}${Array(nameLength - name.length + 2).join(' ')}${error || mean}`,
-          );
+          console.log(`[${++index}]${name}${Array(nameLength - name.length + 2).join(' ')}${error || mean}`);
         })
         .value();
     })

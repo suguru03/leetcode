@@ -93,9 +93,8 @@ async function createProblem(page, stat) {
     }
     return page.evaluate(() => {
       try {
-        return document
-          .querySelector('*[data-cy=question-detail-main-tabs]')
-          .children[1].querySelector('div').children[1].textContent;
+        return document.querySelector('*[data-cy=question-detail-main-tabs]').children[1].querySelector('div')
+          .children[1].textContent;
       } catch (e) {
         return '';
       }

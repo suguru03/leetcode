@@ -2,9 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as _ from 'lodash';
 import Aigle from 'aigle';
+import axios from 'axios';
 import * as prompt from 'prompt';
 import * as puppeteer from 'puppeteer';
-import * as request from 'request-promise';
 import * as prettier from 'prettier';
 
 import * as config from '../../package.json';
@@ -27,11 +27,8 @@ export async function init() {
   prompt.start();
   const { num } = await prompt.getAsync(schema);
 
-  const body = await request({
-    uri: `${base}/api/problems/all/`,
-    json: true,
-  });
-  const item = _.find(body.stat_status_pairs, item => item.stat.frontend_question_id === num);
+  const { data } = await axios(`${base}/api/problems/all/`);
+  const item = _.find(data.stat_status_pairs, item => item.stat.frontend_question_id === num);
   if (!item) {
     throw new Error(`${num} is not found`);
   }
@@ -58,7 +55,7 @@ function assignDefault(map: any, { type, key }) {
       map[key] = true;
       break;
     default:
-      if (/\[\]$/.test(type)) {
+      if (/\[]$/.test(type)) {
         map[key] = [];
       } else {
         map[key] = '';
@@ -132,7 +129,7 @@ async function createProblem(page: any, stat: any) {
     }
     code = code.replace(re, '\n');
   }
-  code = code.replace(funcRe, 'function $1').replace(/(;|%)/g, '');
+  code = code.replace(funcRe, 'function $1').replace(/[;%]/g, '');
   code = prettier.format(code, config.prettier);
 
   // create index.js

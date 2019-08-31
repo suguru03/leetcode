@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@types/gulp": "^4.0.6",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.7.3",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
@@ -22,7 +23,7 @@
     "lint-staged": "^9.2.5",
     "lodash": "^4.17.15",
     "minimist": "^1.2.0",
-    "mocha": "^3.1.2",
+    "mocha": "^6.2.0",
     "prettier": "^1.18.2",
     "prompt": "^1.0.0",
     "puppeteer": "^1.19.0",

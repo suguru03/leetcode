@@ -19,7 +19,7 @@ describe('#intersection', () => {
     {
       nums1: [4, 9, 5],
       nums2: [9, 4, 9, 8, 4],
-      result: [9, 4],
+      result: [4, 9],
     },
   ];
 

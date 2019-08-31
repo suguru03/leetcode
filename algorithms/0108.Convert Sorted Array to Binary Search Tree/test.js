@@ -18,7 +18,7 @@ describe('#sortedArrayToBST', () => {
     },
     {
       nums: [0, 1, 2, 3, 4, 5, 6, 7],
-      result: [4, 2, 6, 1, 3, 5, 7, 0],
+      result: [3, 1, 5, 0, 2, 4, 6, null, null, null, null, null, null, null, 7],
     },
   ];
 
@@ -26,7 +26,7 @@ describe('#sortedArrayToBST', () => {
 
   _.forEach(tests, ({ nums, result, _result }) => {
     it(`[${nums}] -> [${_result}]`, () => {
-      assert.deepEqual(sortedArrayToBST(nums), result);
+      assert.deepStrictEqual(sortedArrayToBST(nums), result);
     });
   });
 });

@@ -1,14 +1,8 @@
 'use strict';
 
-module.exports = { sortedArrayToBST, sortedArrayToBST2 };
+const { TreeNode } = require('../utils');
 
-class TreeNode {
-  constructor(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
-  }
-}
+module.exports = { sortedArrayToBST, sortedArrayToBST2 };
 
 /**
  * Definition for a binary tree node.

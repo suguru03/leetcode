@@ -8,7 +8,7 @@
   "scripts": {
     "build:doc": "gulp buildDoc",
     "test": "mocha --timeout=10000 test",
-    "benchmark": "node benchmark",
+    "benchmark": "ts-node benchmark",
     "lint-staged": "lint-staged"
   },
   "devDependencies": {

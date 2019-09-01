@@ -1,13 +1,13 @@
-'use strict';
+import * as vm from 'vm';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as _ from 'lodash';
+import { Suite } from 'benchmark';
+import * as minimist from 'minimist';
 
-const vm = require('vm');
-const fs = require('fs');
-const path = require('path');
-const _ = require('lodash');
-const { Suite } = require('benchmark');
-const util = require('./algorithms/util');
+import * as util from './algorithms/util';
 
-const argv = require('minimist')(process.argv.slice(2));
+const argv = minimist(process.argv.slice(2));
 const target = argv.target || argv.t;
 const index = argv.index || argv.i;
 const baseReStr = `(?=.*${__dirname})` + (target ? `(?=.*${target})` : '');
@@ -15,15 +15,16 @@ const re = {
   target: new RegExp(baseReStr),
   trace: new RegExp(`${baseReStr}(?=.*test.js)`),
   match: /^.*algorithms\/(.*)\/test.js/,
-  funcArgs: /^(function)?\s*[^\(]*\(\s*([^\)]*)\)/m,
+  funcArgs: /^(function)?\s*[^(]*\(\s*([^)]*)\)/m,
   funcArgSplit: /,/,
   funcArg: /(=.+)?(\s*)$/,
   stripComments: /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/gm,
 };
 
 const targets = {};
-global.__dirname = __dirname;
-global.require = name => {
+const context: any = global;
+context.__dirname = __dirname;
+context.require = name => {
   const file = require(name);
   if (re.target.test(name)) {
     const key = _.get(name.match(re.match), [1]);
@@ -37,7 +38,7 @@ global.require = name => {
   return file;
 };
 
-global.describe = (name, func) => {
+context.describe = (name, func) => {
   const str = `(${func.toString()})()`;
   const forEach = (tasks, iterator) => {
     _.forEach(tasks, iterator);
@@ -57,7 +58,7 @@ global.describe = (name, func) => {
 };
 
 const testpath = path.resolve(__dirname, 'test.js');
-vm.runInThisContext(fs.readFileSync(testpath));
+vm.runInNewContext(fs.readFileSync(testpath, 'utf8'), context);
 
 _.forOwn(targets, ({ tasks, funcs }, name) => {
   if (!_.isPlainObject(funcs) || _.size(funcs) < 2) {
@@ -101,7 +102,7 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
     .run();
 });
 
-function parseArgs(code) {
+function parseArgs(code: any) {
   code = code.replace(re.stripComments, '');
   code = code.match(re.funcArgs)[2].replace(' ', '');
   code = code ? code.split(re.funcArgSplit) : [];

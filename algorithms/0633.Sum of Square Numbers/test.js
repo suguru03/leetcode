@@ -19,6 +19,10 @@ describe('#judgeSquareSum', () => {
       result: true,
     },
     {
+      c: 2,
+      result: true,
+    },
+    {
       c: 0,
       result: true,
     },

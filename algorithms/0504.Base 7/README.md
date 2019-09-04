@@ -1,5 +1,7 @@
 ## 504. Base 7
 
+https://leetcode.com/problems/base-7/
+
 Given an integer, return its base 7 string representation.
 
 Example 1:

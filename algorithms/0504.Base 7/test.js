@@ -19,6 +19,10 @@ describe('#convertToBase7', () => {
       result: '-10',
     },
     {
+      num: -22321,
+      result: '-122035',
+    },
+    {
       num: 0,
       result: '0',
     },

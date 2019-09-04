@@ -7,13 +7,13 @@ module.exports = { convertToBase7, convertToBase72 };
  * @return {string}
  */
 function convertToBase7(num) {
-  let result = '';
+  let res = '';
   let n = Math.abs(num);
   do {
-    result = (n % 7) + result;
+    res = (n % 7) + res;
     n = (n / 7) | 0;
-  } while (n);
-  return num < 0 ? `-${result}` : `${result}`;
+  } while (n !== 0);
+  return num < 0 ? `-${res}` : res;
 }
 
 /**

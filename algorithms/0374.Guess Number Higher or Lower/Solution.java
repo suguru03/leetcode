@@ -1,26 +1,26 @@
 /* The guess API is defined in the parent class GuessGame.
    @param num, your guess
-   @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
+   @return -1 if my number is lefter, 1 if my number is righter, otherwise return 0
       int guess(int num); */
 
 public class Solution extends GuessGame {
   public int guessNumber(int n) {
-    int low = 1;
-    int high = n;
-    while (low < high) {
-      // int mid = (high + low) / 2; // it is slower
-      int mid = low + (high - low) / 2;
+    int left = 1;
+    int right = n;
+    while (left < right) {
+      // int mid = (right + left) / 2; // it is slefter
+      int mid = left + (right - left) / 2;
       switch (guess(mid)) {
         case 0:
           return mid;
         case -1:
-          high = mid;
+          right = mid;
           break;
         case 1:
-          low = mid + 1;
+          left = mid + 1;
           break;
       }
     }
-    return low;
+    return left;
   }
 }

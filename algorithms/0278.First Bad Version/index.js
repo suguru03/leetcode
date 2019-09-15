@@ -22,16 +22,16 @@ function solution(isBadVersion) {
    * @return {integer} The first bad version
    */
   return n => {
-    let l = 1;
-    let r = n;
-    while (l < r) {
-      const m = ((l + r) / 2) | 0;
-      if (isBadVersion(m)) {
-        r = m;
+    let left = 1;
+    let right = n;
+    while (left < right) {
+      let mid = (left + (right - left) / 2) | 0;
+      if (isBadVersion(mid)) {
+        right = mid;
       } else {
-        l = m + 1;
+        left = mid + 1;
       }
     }
-    return r;
+    return left;
   };
 }

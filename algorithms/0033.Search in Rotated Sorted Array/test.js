@@ -38,8 +38,8 @@ describe.only('#search', () => {
     },
     {
       nums: [5, 1, 2, 3, 4],
-      target: 1,
-      result: 1,
+      target: 4,
+      result: 4,
     },
     {
       nums: [2, 4, 7, 9, 0],

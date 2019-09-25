@@ -113,4 +113,42 @@ class MinStack3 {
   }
 }
 
-module.exports = { MinStack, MinStack2, MinStack3 };
+class Node2 {
+  constructor(value, min, next) {
+    this.value = value;
+    this.min = min;
+    this.next = next;
+  }
+}
+
+class MinStack4 {
+  constructor() {
+    this._head = null;
+  }
+
+  push(x) {
+    const min = Math.min(x, this._head ? this._head.min : Infinity);
+    this._head = new Node2(x, min, this._head);
+  }
+
+  pop() {
+    const { _head } = this;
+    if (!_head) {
+      return null;
+    }
+    const { value, next } = _head;
+    this._head = next;
+    return value;
+  }
+
+  top() {
+    const { _head } = this;
+    return _head ? _head.value : null;
+  }
+
+  getMin() {
+    return this._head ? this._head.min : null;
+  }
+}
+
+module.exports = { MinStack, MinStack2, MinStack3, MinStack4 };

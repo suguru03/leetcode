@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { minDepth, minDepth2 };
+module.exports = { minDepth, minDepth2, minDepth3 };
 
 /**
  * Definition for a binary tree node.
@@ -39,4 +39,32 @@ function minDepth2(root) {
   const left = minDepth2(root.left);
   const right = minDepth2(root.right);
   return (left && right ? Math.min(left, right) : left + right) + 1;
+}
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+function minDepth3(root) {
+  if (!root) {
+    return 0;
+  }
+  const queue = [root];
+  let depth = 1;
+  while (true) {
+    let l = queue.length;
+    while (l--) {
+      const { left, right } = queue.shift();
+      if (left === right) {
+        return depth;
+      }
+      if (left) {
+        queue.push(left);
+      }
+      if (right) {
+        queue.push(right);
+      }
+    }
+    depth++;
+  }
 }

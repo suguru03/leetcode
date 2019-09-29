@@ -4,6 +4,12 @@ const assert = require('assert');
 const _ = require('lodash');
 const { majorityElement } = require('./');
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function majorityElement(nums) {}
+
 describe('#majorityElement', () => {
   const tests = [
     {

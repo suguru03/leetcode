@@ -21,7 +21,7 @@ const re = {
   stripComments: /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/gm,
 };
 
-const targets = {};
+const targets: any = {};
 const context: any = global;
 context.__dirname = __dirname;
 context.require = name => {

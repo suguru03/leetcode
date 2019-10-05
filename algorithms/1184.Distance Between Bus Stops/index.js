@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { distanceBetweenBusStops };
+module.exports = { distanceBetweenBusStops, distanceBetweenBusStops2 };
 
 /**
  * @param {number[]} distance
@@ -25,4 +25,25 @@ function distanceBetweenBusStops(distance, start, destination) {
     }
   }
   return Math.min(leftSum, rightSum);
+}
+
+/**
+ * @param {number[]} distance
+ * @param {number} start
+ * @param {number} destination
+ * @return {number}
+ */
+function distanceBetweenBusStops2(distance, start, destination) {
+  if (start > destination) {
+    [start, destination] = [destination, start];
+  }
+  let sum = 0;
+  let total = 0;
+  for (const [i, d] of distance.entries()) {
+    if (i >= start && i < destination) {
+      sum += d;
+    }
+    total += d;
+  }
+  return Math.min(sum, total - sum);
 }

@@ -8,15 +8,15 @@ module.exports = { findMin };
  */
 function findMin(nums) {
   let left = 0;
-  let right = nums.length - 1;
-  const last = nums[right];
+  let right = nums.length;
+  const last = nums[right - 1];
   while (left < right) {
     const mid = ((left + right) / 2) | 0;
-    if (nums[mid] < last) {
-      right = mid;
-    } else {
+    if (nums[mid] > last) {
       left = mid + 1;
+    } else {
+      right = mid;
     }
   }
-  return nums[right];
+  return nums[left];
 }

@@ -7,18 +7,19 @@ module.exports = { findLHS, findLHS2, findLHS3 };
  * @return {number}
  */
 function findLHS(nums) {
-  const map = {};
   let max = 0;
-  let l = nums.length;
-  while (l--) {
-    const n = nums[l];
-    map[n] = ++map[n] || 1;
-    if (map[n - 1]) {
-      max = Math.max(max, map[n] + map[n - 1]);
+  const map = new Map();
+  for (const n of nums) {
+    const count = map.has(n) ? map.get(n) + 1 : 1;
+    const prev = map.get(n - 1);
+    const next = map.get(n + 1);
+    if (prev) {
+      max = Math.max(max, prev + count);
     }
-    if (map[n + 1]) {
-      max = Math.max(max, map[n] + map[n + 1]);
+    if (next) {
+      max = Math.max(max, next + count);
     }
+    map.set(n, count);
   }
   return max;
 }

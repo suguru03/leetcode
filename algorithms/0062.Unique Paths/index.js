@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { uniquePaths };
+module.exports = { uniquePaths, uniquePaths2 };
 
 /**
  * @param {number} m
@@ -15,4 +15,21 @@ function uniquePaths(m, n) {
     }
   }
   return dp[n - 1];
+}
+
+/**
+ * @param {number} m
+ * @param {number} n
+ * @return {number}
+ */
+function uniquePaths2(m, n) {
+  return factorial(--m + --n) / (factorial(m) * factorial(n));
+}
+
+function factorial(n) {
+  let sum = 1;
+  while (n > 0) {
+    sum *= n--;
+  }
+  return sum;
 }

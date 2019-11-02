@@ -6,21 +6,19 @@ module.exports = { generate };
  * @param {number} numRows
  * @return {number[][]}
  */
-function generate(numRows) {
-  const result = Array(numRows);
-  if (!numRows) {
-    return result;
-  }
-  for (let i = 0; i < numRows; i++) {
-    const array = Array(i + 1);
-    result[i] = array;
-    array[0] = 1;
-    const prev = result[i - 1];
-    for (let j = 1; j <= i; j++) {
-      const n0 = prev[j - 1];
-      const n1 = prev[j] || 0;
-      array[j] = n0 + n1;
+function generate(n) {
+  const result = [];
+  for (let i = 1; i <= n; i++) {
+    const prev = result[result.length - 1] || [];
+    const next = [];
+    for (let j = 0; j < i; j++) {
+      if (j === 0 || j === i - 1) {
+        next.push(1);
+        continue;
+      }
+      next.push(prev[j] + prev[j - 1]);
     }
+    result.push(next);
   }
   return result;
 }

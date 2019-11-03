@@ -18,6 +18,10 @@ describe('#uniquePathsWithObstacles', () => {
       obstacleGrid: [[0, 1]],
       result: 0,
     },
+    {
+      obstacleGrid: [[1]],
+      result: 0,
+    },
   ];
 
   _.forEach(tests, ({ obstacleGrid, result }) => {

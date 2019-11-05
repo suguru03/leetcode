@@ -7,28 +7,26 @@ module.exports = { calPoints };
  * @return {number}
  */
 function calPoints(ops) {
-  let result = 0;
-  const valid = [];
-  for (let i = 0; i < ops.length; i++) {
-    let n = ops[i];
-    switch (n) {
+  const nums = [];
+  for (const c of ops) {
+    switch (c) {
+      case '+':
+        nums.push(get(nums.length - 1) + get(nums.length - 2));
+        break;
       case 'D':
-        n = (valid[0] || 0) * 2;
-        valid.unshift(n);
+        nums.push(get(nums.length - 1) * 2);
         break;
       case 'C':
-        n = -valid.shift();
-        break;
-      case '+':
-        n = (valid[0] || 0) + (valid[1] || 0);
-        valid.unshift(n);
+        nums.pop();
         break;
       default:
-        n = +n;
-        valid.unshift(n);
+        nums.push(+c);
         break;
     }
-    result += n;
   }
-  return result;
+  return nums.reduce((sum, num) => sum + num);
+
+  function get(index) {
+    return nums[index] || 0;
+  }
 }

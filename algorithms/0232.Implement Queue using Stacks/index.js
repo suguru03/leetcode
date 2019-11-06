@@ -1,6 +1,6 @@
 'use strict';
 
-class Data {
+class Node {
   constructor(val, head) {
     this.val = val;
     this.head = head;
@@ -10,36 +10,32 @@ class Data {
     }
   }
 }
-
 class MyQueue {
   constructor() {
-    this._head = null;
-    this._tail = null;
+    this.head = null;
+    this.tail = null;
   }
 
-  push(x) {
-    const data = new Data(x, this._tail);
-    if (!this._head) {
-      this._head = data;
-    }
-    this._tail = data;
+  push(val) {
+    this.tail = new Node(val, this.tail);
+    this.head = this.head || this.tail;
   }
 
   pop() {
-    const { _head } = this;
-    if (!_head) {
+    const { head } = this;
+    if (!head) {
       return null;
     }
-    this._head = _head.tail;
-    return _head.val;
+    this.head = head.tail;
+    return head.val;
   }
 
   peek() {
-    return this._head ? this._head.val : null;
+    return this.head ? this.head.val : 0;
   }
 
   empty() {
-    return !this._head;
+    return this.head === null;
   }
 }
 

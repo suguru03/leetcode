@@ -45,9 +45,8 @@ function judgeSquareSum2(c) {
  * @return {boolean}
  */
 function judgeSquareSum3(c) {
-  for (let n1 = 0; n1 <= Math.sqrt(c); n1++) {
-    const n2 = Math.sqrt(c - n1 ** 2);
-    if (n2 % 1 === 0) {
+  for (let n = 0; n <= Math.sqrt(c); n++) {
+    if (Math.sqrt(c - n ** 2) % 1 === 0) {
       return true;
     }
   }

@@ -26,6 +26,10 @@ describe('#judgeSquareSum', () => {
       c: 0,
       result: true,
     },
+    {
+      c: 101,
+      result: true,
+    },
   ];
 
   _.forEach(tests, ({ c, result }) => {

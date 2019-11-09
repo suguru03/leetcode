@@ -7,24 +7,17 @@ module.exports = lengthOfLongestSubstring;
  * @return {number}
  */
 function lengthOfLongestSubstring(s) {
-  let l = s.length;
   let max = 0;
-  let last = l - 1;
-  let hash = {};
-  while (l--) {
-    const c = s[l];
-    let n;
-    if (hash[c] === undefined) {
-      n = last - l + 1;
-    } else {
-      const i = hash[c];
-      n = i - l;
-      while (last >= i) {
-        hash[s[last--]] = undefined;
-      }
+  let left = 0;
+  const set = new Set();
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    while (set.has(c)) {
+      const c1 = s[left++];
+      set.delete(c1);
     }
-    hash[c] = l;
-    max = max > n ? max : n;
+    set.add(c);
+    max = Math.max(max, i - left + 1);
   }
   return max;
 }

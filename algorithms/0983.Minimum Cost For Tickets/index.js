@@ -8,6 +8,7 @@ module.exports = { mincostTickets };
  * @return {number}
  */
 function mincostTickets(days, costs) {
+  const [c1, c7, c30] = costs;
   const max = Math.max(...days);
   const dp = Array(max).fill(0);
   const daySet = new Set(days.map(d => d - 1));
@@ -16,10 +17,10 @@ function mincostTickets(days, costs) {
       dp[d] = get(d - 1);
       continue;
     }
-    const c1 = get(d - 1) + costs[0];
-    const c7 = get(d - 7) + costs[1];
-    const c30 = get(d - 30) + costs[2];
-    dp[d] = Math.min(c1, c7, c30);
+    const s1 = get(d - 1) + c1;
+    const s7 = get(d - 7) + c7;
+    const s30 = get(d - 30) + c30;
+    dp[d] = Math.min(s1, s7, s30);
   }
 
   return dp[dp.length - 1];

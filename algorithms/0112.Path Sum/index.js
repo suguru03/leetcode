@@ -10,15 +10,15 @@ module.exports = { hasPathSum };
  * }
  */
 /**
- * @param {TreeNode} root
+ * @param {TreeNode} node
  * @param {number} sum
  * @return {boolean}
  */
-function hasPathSum(root, sum) {
-  if (!root) {
+function hasPathSum(node, sum) {
+  if (!node) {
     return false;
   }
-  const { left, right, val } = root;
+  const { left, right, val } = node;
   sum -= val;
   return (left === right && sum === 0) || hasPathSum(left, sum) || hasPathSum(right, sum);
 }

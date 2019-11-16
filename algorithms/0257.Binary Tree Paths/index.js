@@ -15,7 +15,7 @@ module.exports = { binaryTreePaths };
  */
 function binaryTreePaths(root) {
   const paths = [];
-  dfs(root);
+  dfs(root, '');
   return paths;
 
   function dfs(node, cur) {
@@ -23,9 +23,9 @@ function binaryTreePaths(root) {
       return;
     }
     const { val, left, right } = node;
-    cur = cur ? `${cur}->${val}` : `${val}`;
-    if (!left && !right) {
-      return paths.push(cur);
+    cur = cur ? `${cur}->${val}` : val.toString();
+    if (left === right) {
+      paths.push(cur);
     }
     dfs(left, cur);
     dfs(right, cur);

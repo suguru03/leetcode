@@ -20,7 +20,7 @@ describe('#binaryTreePaths', () => {
 
   _.forEach(tests, ({ root, _root, result }) => {
     it(`[${_root}] -> ${result}`, () => {
-      assert.deepEqual(binaryTreePaths(root), result);
+      assert.deepStrictEqual(binaryTreePaths(root), result);
     });
   });
 });

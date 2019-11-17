@@ -20,6 +20,13 @@ describe('#floodFill', () => {
       newColor: 1,
       result: [[0, 0, 0], [0, 1, 1]],
     },
+    {
+      image: [[0, 0, 0], [1, 0, 0]],
+      sr: 1,
+      sc: 0,
+      newColor: 2,
+      result: [[0, 0, 0], [2, 0, 0]],
+    },
   ];
 
   _.forEach(tests, ({ image, sr, sc, newColor, result }) => {

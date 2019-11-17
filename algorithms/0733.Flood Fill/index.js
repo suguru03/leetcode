@@ -10,25 +10,21 @@ module.exports = { floodFill };
  * @return {number[][]}
  */
 function floodFill(image, sr, sc, newColor) {
-  const t = image[sr][sc];
-  if (t !== newColor) {
-    fill(sr, sc);
+  const color = image[sr][sc];
+  if (color !== newColor) {
+    dfs(sc, sr);
   }
   return image;
 
-  function fill(sr, sc) {
-    const row = image[sr];
-    if (!row) {
+  function dfs(x, y) {
+    const row = image[y];
+    if (!row || row[x] !== color) {
       return;
     }
-    const n = row[sc];
-    if (n !== t) {
-      return;
-    }
-    image[sr][sc] = newColor;
-    fill(sr - 1, sc);
-    fill(sr + 1, sc);
-    fill(sr, sc - 1);
-    fill(sr, sc + 1);
+    row[x] = newColor;
+    dfs(x - 1, y);
+    dfs(x + 1, y);
+    dfs(x, y - 1);
+    dfs(x, y + 1);
   }
 }

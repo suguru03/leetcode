@@ -8,26 +8,26 @@ module.exports = { numIslands };
  */
 function numIslands(grid) {
   let count = 0;
-  for (let i = 0; i < grid.length; i++) {
-    const row = grid[i];
-    for (let j = 0; j < row.length; j++) {
-      if (row[j] !== '1') {
+  for (let y = 0; y < grid.length; y++) {
+    for (let x = 0; x < grid[y].length; x++) {
+      if (grid[y][x] === '0') {
         continue;
       }
+      dfs(x, y);
       count++;
-      mark(grid, i, j);
     }
   }
   return count;
-}
 
-function mark(grid, i, j) {
-  if (!grid[i] || grid[i][j] !== '1') {
-    return;
+  function dfs(x, y) {
+    const row = grid[y];
+    if (!row || row[x] !== '1') {
+      return;
+    }
+    row[x] = '0';
+    dfs(x - 1, y);
+    dfs(x + 1, y);
+    dfs(x, y - 1);
+    dfs(x, y + 1);
   }
-  grid[i][j] = '0';
-  mark(grid, i - 1, j);
-  mark(grid, i + 1, j);
-  mark(grid, i, j - 1);
-  mark(grid, i, j + 1);
 }

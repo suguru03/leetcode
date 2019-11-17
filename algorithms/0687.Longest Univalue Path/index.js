@@ -15,16 +15,17 @@ module.exports = { longestUnivaluePath };
  */
 function longestUnivaluePath(root) {
   let max = 0;
-  dfs(root);
+  dfs(root, Infinity);
   return max;
-  function dfs(node, cur) {
+
+  function dfs(node, prev) {
     if (!node) {
       return 0;
     }
     const { val, left, right } = node;
-    const l = dfs(left, val);
-    const r = dfs(right, val);
-    max = Math.max(max, l + r);
-    return val === cur ? Math.max(l, r) + 1 : 0;
+    const lv = dfs(left, val);
+    const rv = dfs(right, val);
+    max = Math.max(max, lv + rv);
+    return prev === val ? Math.max(lv, rv) + 1 : 0;
   }
 }

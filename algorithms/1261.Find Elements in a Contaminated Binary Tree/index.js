@@ -10,25 +10,21 @@
  */
 class FindElements {
   constructor(root) {
-    this.set = new Set();
     root.val = 0;
+    this.set = new Set();
     this.dfs(root);
   }
 
-  dfs(node) {
-    if (!node) {
-      return;
-    }
-    const { val, left, right } = node;
+  dfs({ val, left, right }) {
     this.set.add(val);
     if (left) {
       left.val = 2 * val + 1;
+      this.dfs(left);
     }
     if (right) {
       right.val = 2 * val + 2;
+      this.dfs(right);
     }
-    this.dfs(left);
-    this.dfs(right);
   }
   /**
    * @param {number} target

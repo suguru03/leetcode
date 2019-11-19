@@ -7,9 +7,6 @@ module.exports = { isBoomerang };
  * @return {boolean}
  */
 function isBoomerang(points) {
-  const [a, b, c] = points;
-  const [ax, ay] = a;
-  const [bx, by] = b;
-  const [cx, cy] = c;
+  const [[ax, ay], [bx, by], [cx, cy]] = points;
   return (by - ay) * (cx - bx) !== (bx - ax) * (cy - by);
 }

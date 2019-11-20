@@ -9,7 +9,6 @@ module.exports = { detectCycle };
  *     this.next = null;
  * }
  */
-
 /**
  * @param {ListNode} head
  * @return {ListNode}
@@ -27,8 +26,17 @@ function detectCycle(head) {
   if (slow !== fast) {
     return null;
   }
-  while (head !== slow) {
+  while (slow !== head) {
     slow = slow.next;
+    head = head.next;
+  }
+  return head;
+}
+
+function detectCycle(head) {
+  const set = new Set();
+  while (head && !set.has(head)) {
+    set.add(head);
     head = head.next;
   }
   return head;

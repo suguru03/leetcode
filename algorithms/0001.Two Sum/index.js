@@ -8,16 +8,13 @@ module.exports = { twoSum, twoSum2 };
  * @return {number[]}
  */
 function twoSum(nums, target) {
-  let l = nums.length;
-  const hash = [];
-  while (l--) {
-    const n = nums[l];
+  const hash = new Map();
+  for (const [i, n] of nums.entries()) {
     const diff = target - n;
-    const i = hash[diff];
-    if (i !== undefined) {
-      return [l, i];
+    if (hash.has(diff)) {
+      return [hash.get(diff), i];
     }
-    hash[n] = l;
+    hash.set(n, i);
   }
 }
 
@@ -27,12 +24,20 @@ function twoSum(nums, target) {
  * @return {number[]}
  */
 function twoSum2(nums, target) {
-  const hash = new Map();
-  for (const [i, n] of nums.entries()) {
-    const diff = target - n;
-    if (hash.has(diff)) {
-      return [hash.get(diff), i];
+  let left = 0;
+  let right = nums.length - 1;
+  const arr = nums.map((num, index) => ({ num, index })).sort((n1, n2) => n1.num - n2.num);
+  while (left < right) {
+    const l = arr[left];
+    const r = arr[right];
+    const sum = l.num + r.num;
+    if (sum === target) {
+      return [l.index, r.index];
     }
-    hash.set(n, i);
+    if (sum < target) {
+      left++;
+    } else {
+      right--;
+    }
   }
 }

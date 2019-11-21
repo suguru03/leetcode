@@ -19,16 +19,9 @@ const hash = {
 function romanToInt(s) {
   let l = s.length;
   let sum = 0;
-  let prev = 0;
   while (l--) {
-    const c = s[l];
-    const n = hash[c];
-    if (prev > n) {
-      sum -= n;
-    } else {
-      sum += n;
-    }
-    prev = n;
+    const n = hash[s[l]];
+    sum += hash[s[l + 1]] > n ? -n : n;
   }
   return sum;
 }

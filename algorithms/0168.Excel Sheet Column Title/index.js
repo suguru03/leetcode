@@ -8,7 +8,6 @@ module.exports = { convertToTitle };
  */
 function convertToTitle(n) {
   let str = '';
-  // 1
   while (n > 0) {
     const charCode = n % 26 || 26;
     str = String.fromCharCode(64 + charCode) + str;

@@ -76,7 +76,6 @@ _.forOwn(targets, ({ tasks, funcs }, name) => {
       .toArray()
       .value();
     if (!_.isEqual(func.apply(null, args), result)) {
-      console.log('ｷﾀ ━━━ヽ(´ω`)ﾉ ━━━!!', result);
       console.log(func.apply(null, args));
       throw new Error(`Failed ${name}`);
     }

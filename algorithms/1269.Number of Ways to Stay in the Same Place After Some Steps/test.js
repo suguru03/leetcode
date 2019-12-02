@@ -32,8 +32,6 @@ describe('#numWays', () => {
       result: 483475137,
     },
   ];
-  tests.splice(0, 3);
-  tests.splice(1);
 
   _.forEach(tests, ({ steps, arrLen, result }) => {
     it(`${steps}, ${arrLen} -> ${result}`, () => {

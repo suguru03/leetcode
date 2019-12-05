@@ -19,18 +19,15 @@ function rotate(nums, k) {
  */
 function rotate2(nums, k) {
   const l = nums.length;
-  k = k % l;
+  let index = -1;
   let count = 0;
-  for (let i = 0; count < l; i++) {
-    let current = i;
-    let prev = nums[i];
+  while (count < l) {
+    let current = ++index;
+    let prev = nums[current];
     do {
       const next = (current + k) % l;
-      const temp = nums[next];
-      nums[next] = prev;
-      prev = temp;
-      current = next;
+      [nums[next], prev, current] = [prev, nums[next], next];
       count++;
-    } while (i !== current);
+    } while (index !== current);
   }
 }

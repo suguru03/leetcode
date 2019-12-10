@@ -1,25 +1,34 @@
 'use strict';
 
-module.exports = { longestPalindrome };
+module.exports = { longestPalindrome, longestPalindrome2 };
 
 /**
  * @param {string} s
  * @return {number}
  */
 function longestPalindrome(s) {
-  let count = 0;
-  const map = {};
-  for (let i = 0; i < s.length; i++) {
-    const c = s[i];
-    count += map[c] & 1;
-    map[c] = map[c] ^ 1;
+  const map = new Map();
+  for (const c of s) {
+    map.set(c, ~~map.get(c) + 1);
   }
-  count *= 2;
-  const keys = Object.keys(map);
-  for (let i = 0; i < keys.length; i++) {
-    if (map[keys[i]]) {
-      return count + 1;
-    }
+  let count = 0;
+  for (const num of map.values()) {
+    count |= num & 1;
+    count += num - (num % 2);
   }
   return count;
+}
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+function longestPalindrome2(s) {
+  let count = 0;
+  const set = new Set();
+  for (const c of s) {
+    count += set.has(c) << 1;
+    set.has(c) ? set.delete(c) : set.add(c);
+  }
+  return count + (!set.size ^ 1);
 }

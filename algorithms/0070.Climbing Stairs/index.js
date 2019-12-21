@@ -1,16 +1,40 @@
 'use strict';
 
-module.exports = { climbStairs };
+module.exports = { climbStairs, climbStairs2 };
 
 /**
+ * Bottom up
+ * @param n
+ * @returns {number}
+ */
+function climbStairs(n) {
+  let [prev, cur] = [0, 1];
+  while (n--) {
+    [prev, cur] = [cur, cur + prev];
+  }
+  return cur;
+}
+
+/**
+ * Top down
  * @param {number} n
  * @return {number}
  */
-function climbStairs(n) {
-  let prev = 1;
-  let cur = n < 2 ? n : 2;
-  while (--n > 1) {
-    [cur, prev] = [cur + prev, cur];
+function climbStairs2(n) {
+  const memo = new Map();
+  return climb(n);
+  function climb(cur) {
+    if (memo.has(cur)) {
+      return memo.get(cur);
+    }
+    if (cur < 0) {
+      return 0;
+    }
+    if (cur === 0) {
+      return 1;
+    }
+    const count = climb(cur - 1) + climb(cur - 2);
+    memo.set(cur, count);
+    return count;
   }
-  return cur;
 }

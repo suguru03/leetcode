@@ -8,7 +8,7 @@ describe('#climbStairs', () => {
   const tests = [
     {
       n: 0,
-      result: 0,
+      result: 1,
     },
     {
       n: 1,

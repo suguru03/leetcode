@@ -5,3 +5,12 @@ yarn-error.log
 .idea
 
 contest
+
+
+#Added by cargo
+#
+#already existing elements are commented out
+
+/target
+**/*.rs.bk
+src

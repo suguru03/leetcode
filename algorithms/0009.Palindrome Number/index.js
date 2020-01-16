@@ -3,16 +3,16 @@
 module.exports = { isPalindrome, isPalindrome2 };
 
 function isPalindrome(x) {
-  if (x < 0 || x % 1 !== 0) {
+  if (x < 0) {
     return false;
   }
-  const num = x;
-  let result = 0;
-  while (x !== 0) {
-    result = result * 10 + Math.floor(x % 10);
-    x = Math.floor(x / 10);
+  let n1 = x;
+  let n2 = 0;
+  while (n1) {
+    n2 = n2 * 10 + (n1 % 10);
+    n1 = Math.floor(n1 / 10);
   }
-  return num === result;
+  return n2 === x;
 }
 
 /**

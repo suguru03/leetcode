@@ -7,11 +7,11 @@ module.exports = { getNoZeroIntegers };
  * @return {number[]}
  */
 function getNoZeroIntegers(n) {
-  for (let i = 1; i < n; i++) {
-    const n2 = n - i;
-    if (/0/.test(i.toString()) || /0/.test(n2.toString())) {
+  for (let n1 = 1; n1 < n; n1++) {
+    const n2 = n - n1;
+    if (n1.toString().includes('0') || n2.toString().includes('0')) {
       continue;
     }
-    return [i, n2];
+    return [n1, n2];
   }
 }

@@ -63,3 +63,23 @@ function findLHS3(nums) {
   }
   return max;
 }
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function findLHS4(nums) {
+  let max = 0;
+  const map = new Map();
+  const diff = [-1, 1];
+  for (const n of nums) {
+    const count = map.has(n) ? map.get(n) + 1 : 1;
+    map.set(n, count);
+    for (const d of diff) {
+      if (map.has(n + d)) {
+        max = Math.max(max, count + map.get(n + d));
+      }
+    }
+  }
+  return max;
+}

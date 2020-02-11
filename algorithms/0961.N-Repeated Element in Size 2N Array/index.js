@@ -1,15 +1,30 @@
 'use strict';
 
-module.exports = { repeatedNTimes };
+module.exports = { repeatedNTimes, repeatedNTimes2, repeatedNTimes3 };
 
 /**
  * @param {number[]} A
  * @return {number}
  */
 function repeatedNTimes(A) {
+  const set = new Set();
+  for (const n of A) {
+    if (set.has(n)) {
+      return n;
+    }
+    set.add(n);
+  }
+}
+
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+function repeatedNTimes2(A) {
+  let i = (Math.random() * A.length) | 0;
+  let j = i;
   while (true) {
-    const i = (Math.random() * A.length) | 0;
-    const j = (Math.random() * A.length) | 0;
+    [i, j] = [j, (Math.random() * A.length) | 0];
     if (i === j) {
       continue;
     }
@@ -24,7 +39,7 @@ function repeatedNTimes(A) {
  * @param {number[]} A
  * @return {number}
  */
-function repeatedNTimes2(A) {
+function repeatedNTimes3(A) {
   for (let i = 2; i < A.length; i++) {
     if (A[i] === A[i - 1] || A[i] === A[i - 2]) {
       return A[i];

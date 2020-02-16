@@ -3,25 +3,24 @@
 class LRUCache {
   constructor(capacity) {
     this.capacity = capacity;
-    this.cache = new Map();
+    this.map = new Map();
   }
   get(key) {
-    if (!this.cache.has(key)) {
+    if (!this.map.has(key)) {
       return -1;
     }
-    const n = this.cache.get(key);
-    this.cache.delete(key);
-    this.cache.set(key, n);
-    return n;
+    const val = this.map.get(key);
+    this.put(key, val);
+    return val;
   }
-  put(key, value) {
-    if (this.cache.has(key)) {
-      this.cache.delete(key);
-    } else if (this.cache.size === this.capacity) {
-      const { value } = this.cache.keys().next();
-      this.cache.delete(value);
+
+  put(key, val) {
+    this.map.delete(key);
+    this.map.set(key, val);
+    if (this.map.size <= this.capacity) {
+      return;
     }
-    this.cache.set(key, value);
+    this.map.delete(this.map.keys().next().value);
   }
 }
 

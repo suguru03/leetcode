@@ -7,20 +7,13 @@ module.exports = { sortedSquares };
  * @return {number[]}
  */
 function sortedSquares(A) {
-  const result = Array(A.length);
-  let index = A.length;
+  const nums = A.map(num => num ** 2);
   let left = 0;
-  let right = A.length - 1;
-  while (--index >= 0) {
-    const l = A[left] ** 2;
-    const r = A[right] ** 2;
-    if (l > r) {
-      result[index] = l;
-      left++;
-    } else {
-      result[index] = r;
-      right--;
-    }
+  let right = nums.length - 1;
+  let index = nums.length - 1;
+  const result = Array(nums.length);
+  while (index >= 0) {
+    result[index--] = nums[left] > nums[right] ? nums[left++] : nums[right--];
   }
   return result;
 }

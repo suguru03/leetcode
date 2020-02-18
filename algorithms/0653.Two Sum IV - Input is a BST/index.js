@@ -10,24 +10,19 @@ module.exports = { findTarget };
  * }
  */
 /**
- * @param {TreeNode} root
+ * @param {TreeNode} node
  * @param {number} k
+ * @param {Set<number>} [set]
  * @return {boolean}
  */
-function findTarget(root, k) {
-  const map = {};
-  return find(root);
-
-  function find(node) {
-    if (!node) {
-      return false;
-    }
-    const { val } = node;
-    const diff = k - val;
-    if (map[diff]) {
-      return true;
-    }
-    map[val] = true;
-    return find(node.right) || find(node.left);
+function findTarget(node, k, set = new Set()) {
+  if (!node) {
+    return false;
   }
+  const { val, left, right } = node;
+  if (set.has(val)) {
+    return true;
+  }
+  set.add(k - val);
+  return findTarget(left, k, set) || findTarget(right, k, set);
 }

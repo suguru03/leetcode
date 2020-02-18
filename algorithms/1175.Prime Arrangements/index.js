@@ -2,7 +2,7 @@
 
 module.exports = { numPrimeArrangements };
 
-const mod = 10e9 + 7;
+const mod = 1e9 + 7;
 
 /**
  * @param {number} n

@@ -4,7 +4,7 @@ const assert = require('assert');
 const _ = require('lodash');
 const { searchRange } = require('./');
 
-describe.only('#searchRange', () => {
+describe('#searchRange', () => {
   const tests = [
     {
       nums: [5, 7, 7, 8, 8, 10],

@@ -14,7 +14,7 @@ describe('#minHeightShelves', () => {
     {
       books: [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]],
       shelf_width: 4,
-      result: 6,
+      result: 2,
     },
   ];
 

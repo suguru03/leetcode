@@ -2,27 +2,19 @@
 
 module.exports = { dayOfYear };
 
+const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
 /**
- * @param {string} date
+ * @param {string} str
  * @return {number}
  */
-function dayOfYear(date) {
-  let [year, month, days] = date.split('-').map(n => +n);
-  while (--month) {
-    switch (month) {
-      case 2:
-        days += year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0) ? 29 : 28;
-        break;
-      case 4:
-      case 6:
-      case 9:
-      case 11:
-        days += 30;
-        break;
-      default:
-        days += 31;
-        break;
-    }
+function dayOfYear(str) {
+  let [year, month, date] = str.split('-').map(n => Number(n));
+  if (month > 2 && year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+    date++;
   }
-  return days;
+  while (--month) {
+    date += days[month - 1];
+  }
+  return date;
 }

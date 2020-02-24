@@ -15,23 +15,17 @@ module.exports = { removeElements, removeElements2, removeElements3 };
  * @return {ListNode}
  */
 function removeElements(head, val) {
-  let root = null;
-  let h;
+  const result = new ListNode();
+  let prev = result;
   while (head) {
     if (head.val === val) {
-      head = head.next;
-      continue;
-    }
-    if (!root) {
-      root = head;
+      prev.next = head.next;
     } else {
-      h.next = head;
+      [prev.next, prev] = [head, head];
     }
-    h = head;
     head = head.next;
-    h.next = null;
   }
-  return root;
+  return result.next;
 }
 
 /**
@@ -52,18 +46,4 @@ function removeElements2(head, val) {
   }
   head.next = removeElements2(head.next, val);
   return head.val === val ? head.next : head;
-}
-
-function removeElements3(head, val) {
-  let node = new ListNode();
-  const result = node;
-  while (head) {
-    if (head.val !== val) {
-      node = node.next = head;
-    } else {
-      node.next = head.next;
-    }
-    head = head.next;
-  }
-  return result.next;
 }

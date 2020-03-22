@@ -10,6 +10,10 @@ describe('#sumFourDivisors', () => {
       nums: [21, 4, 7],
       result: 32,
     },
+    {
+      nums: [16, 2401],
+      result: 0,
+    },
   ];
 
   _.forEach(tests, ({ nums, result }) => {

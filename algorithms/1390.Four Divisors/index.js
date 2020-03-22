@@ -36,12 +36,13 @@ function sumFourDivisors2(nums) {
   let result = 0;
   loop: for (const num of nums) {
     let n = Math.sqrt(num) | 0;
-    if (n ** 2 === num) {
+    if (n * n === num) {
       continue;
     }
+    n++;
     let sum = 0;
     let count = 0;
-    for (; n >= 1; n--) {
+    while (--n > 0) {
       if (num % n !== 0) {
         continue;
       }

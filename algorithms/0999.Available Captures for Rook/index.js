@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { numRookCaptures, numRookCaptures2 };
+module.exports = { numRookCaptures, numRookCaptures2, numRookCaptures3 };
 
 /**
  * @param {character[][]} board
@@ -71,5 +71,35 @@ function numRookCaptures2(board) {
       n += d;
     }
     return prev + pawn;
+  }
+}
+
+/**
+ * @param {character[][]} board
+ * @return {number}
+ */
+function numRookCaptures3(board) {
+  const size = 8;
+  const total = size ** 2;
+  let n = 0;
+  while (board[(n / size) | 0][n % size] !== 'R') {
+    n = (Math.random() * total) | 0;
+  }
+  const x = n % size;
+  const y = (n / size) | 0;
+  const delta = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+  return delta.reduce((sum, [dx, dy]) => sum + count(x + dx, y + dy, dx, dy), 0);
+  function count(x, y, dx, dy) {
+    if (x < 0 || x >= size || y < 0 || y >= size) {
+      return 0;
+    }
+    switch (board[y][x]) {
+      case 'B':
+        return 0;
+      case 'p':
+        return 1;
+      default:
+        return count(x + dx, y + dy, dx, dy);
+    }
   }
 }

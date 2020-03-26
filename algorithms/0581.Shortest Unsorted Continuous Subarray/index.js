@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { findUnsortedSubarray: findUnsortedSubarray3 };
+module.exports = { findUnsortedSubarray, findUnsortedSubarray2, findUnsortedSubarray3, findUnsortedSubarray4 };
 
 /**
  * @param {number[]} nums
@@ -85,4 +85,30 @@ function findUnsortedSubarray3(nums) {
     }
   }
   return r - l + 1;
+}
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function findUnsortedSubarray4(nums) {
+  let left = -1;
+  let right = -1;
+  let min = Infinity;
+  let max = -Infinity;
+  for (const [i, n1] of nums.entries()) {
+    const j = nums.length - i - 1;
+    const n2 = nums[j];
+    if (n1 < max) {
+      right = i;
+    } else {
+      max = n1;
+    }
+    if (n2 > min) {
+      left = j;
+    } else {
+      min = n2;
+    }
+  }
+  return left === right ? 0 : right - left + 1;
 }

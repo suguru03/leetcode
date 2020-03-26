@@ -2,7 +2,33 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { findUnsortedSubarray } = require('./');
+// const { findUnsortedSubarray } = require('./');
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function findUnsortedSubarray(nums) {
+  let left = -1;
+  let right = -1;
+  let min = Infinity;
+  let max = -Infinity;
+  for (const [i, n1] of nums.entries()) {
+    const j = nums.length - i - 1;
+    const n2 = nums[j];
+    if (n1 < max) {
+      right = i;
+    } else {
+      max = n1;
+    }
+    if (n2 > min) {
+      left = j;
+    } else {
+      min = n2;
+    }
+  }
+  return left === right ? 0 : right - left + 1;
+}
 
 describe('#findUnsortedSubarray', () => {
   const tests = [

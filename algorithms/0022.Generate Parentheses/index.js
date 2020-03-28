@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { generateParenthesis };
+module.exports = { generateParenthesis, generateParenthesis2 };
 
 /**
  * @param {number} n
@@ -8,19 +8,32 @@ module.exports = { generateParenthesis };
  */
 function generateParenthesis(n) {
   const result = [];
-  backtrack('', 0, 0);
+  dfs('', 0);
   return result;
-
-  function backtrack(cur, left, right) {
+  function dfs(cur, count) {
     if (cur.length === n * 2) {
       result.push(cur);
       return;
     }
-    if (left < n) {
-      backtrack(cur + '(', left + 1, right);
+    if (count < n) {
+      dfs(`${cur}(`, count + 1);
     }
-    if (right < left) {
-      backtrack(cur + ')', left, right + 1);
+    if (cur.length < count * 2) {
+      dfs(`${cur})`, count);
     }
+  }
+}
+
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+function generateParenthesis2(n) {
+  return dfs('', 0);
+  function dfs(cur, count) {
+    if (cur.length === n * 2) {
+      return [cur];
+    }
+    return [...(count < n ? dfs(`${cur}(`, count + 1) : []), ...(cur.length < count * 2 ? dfs(`${cur})`, count) : [])];
   }
 }

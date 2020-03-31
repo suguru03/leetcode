@@ -7,11 +7,11 @@ module.exports = { escapeGhosts };
  * @param {number[]} target
  * @return {boolean}
  */
-function escapeGhosts(ghosts, target) {
-  const distance = getDistance([0, 0], target);
-  return ghosts.every(ghost => distance < getDistance(ghost, target));
+function escapeGhosts(ghosts, [tx, ty]) {
+  const distance = getDistance(tx, ty);
+  return ghosts.every(([x, y]) => distance < getDistance(tx - x, ty - y));
 }
 
-function getDistance([x1, y1], [x2, y2]) {
-  return Math.abs(x2 - x1) + Math.abs(y2 - y1);
+function getDistance(dx, dy) {
+  return Math.abs(dx) + Math.abs(dy);
 }

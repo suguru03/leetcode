@@ -8,16 +8,10 @@ module.exports = { escapeGhosts };
  * @return {boolean}
  */
 function escapeGhosts(ghosts, target) {
-  const size = getSize([0, 0], target);
-  for (const g of ghosts) {
-    const s = getSize(g, target);
-    if (s <= size) {
-      return false;
-    }
-  }
-  return true;
+  const distance = getDistance([0, 0], target);
+  return ghosts.every(ghost => distance < getDistance(ghost, target));
 }
 
-function getSize([x0, y0], [x1, y1]) {
-  return Math.abs(x1 - x0) + Math.abs(y1 - y0);
+function getDistance([x1, y1], [x2, y2]) {
+  return Math.abs(x2 - x1) + Math.abs(y2 - y1);
 }

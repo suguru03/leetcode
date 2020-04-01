@@ -8,17 +8,17 @@ module.exports = { findRestaurant };
  * @return {string[]}
  */
 function findRestaurant(list1, list2) {
-  const map = new Map();
-  for (const [index, item] of list1.entries()) {
-    map.set(item, index);
+  const scoreMap = new Map();
+  for (const [score, restaurant] of list1.entries()) {
+    scoreMap.set(restaurant, score);
   }
   let min = Infinity;
   const result = [];
-  for (const [index, item] of list2.entries()) {
-    if (!map.has(item)) {
+  for (const [score, restaurant] of list2.entries()) {
+    if (!scoreMap.has(restaurant)) {
       continue;
     }
-    const sum = map.get(item) + index;
+    const sum = score + scoreMap.get(restaurant);
     if (sum > min) {
       continue;
     }
@@ -26,7 +26,7 @@ function findRestaurant(list1, list2) {
       min = sum;
       result.length = 0;
     }
-    result.push(item);
+    result.push(restaurant);
   }
   return result;
 }

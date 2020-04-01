@@ -1,45 +1,59 @@
 'use strict';
 
-module.exports = { reverseVowels };
-
-const map = ['a', 'e', 'i', 'o', 'u'].reduce((map, c) => {
-  map[c] = map[c.toUpperCase()] = true;
-  return map;
-}, {});
+module.exports = { reverseVowels, reverseVowels2 };
 
 /**
  * @param {string} s
  * @return {string}
  */
 function reverseVowels(s) {
-  let left = 0;
-  let right = s.length - 1;
-  if (right <= left) {
-    return s;
-  }
-  let sl = '';
-  let sr = '';
-  while (left <= right) {
-    let cl = '';
-    while (left <= right) {
-      cl = s[left++];
-      if (map[cl]) {
-        break;
-      }
-      sl += cl;
-      cl = '';
+  const re = /[aeiou]/i;
+  const chars = s.split('');
+  let left = -1;
+  let right = s.length;
+  while (++left < --right) {
+    if (!re.test(chars[left])) {
+      right++;
+      continue;
     }
-    let cr = '';
-    while (left <= right) {
-      cr = s[right--];
-      if (map[cr]) {
-        break;
-      }
-      sr = `${cr}${sr}`;
-      cr = '';
+    if (!re.test(chars[right])) {
+      left--;
+      continue;
     }
-    sl += cr;
-    sr = `${cl}${sr}`;
+    [chars[right], chars[left]] = [chars[left], chars[right]];
   }
-  return `${sl}${sr}`;
+  return chars.join('');
+}
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+function reverseVowels2(s) {
+  const re = /[aeiou]/i;
+  let left = -1;
+  let right = s.length;
+  let prefix = '';
+  let suffix = '';
+  while (++left <= --right) {
+    const c1 = s[left];
+    if (!re.test(c1)) {
+      prefix += c1;
+      right++;
+      continue;
+    }
+    const c2 = s[right];
+    if (!re.test(c2)) {
+      suffix = c2 + suffix;
+      left--;
+      continue;
+    }
+    if (left === right) {
+      prefix += c1;
+      break;
+    }
+    prefix += c2;
+    suffix = c1 + suffix;
+  }
+  return prefix + suffix;
 }

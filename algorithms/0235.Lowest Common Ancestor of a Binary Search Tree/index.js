@@ -19,13 +19,10 @@ function lowestCommonAncestor(node, p, q) {
   if (!node) {
     return null;
   }
-  const vn = node.val;
-  const vp = p.val;
-  const vq = q.val;
-  if (vn > Math.max(vp, vq)) {
+  if (node.val > Math.max(p.val, q.val)) {
     return lowestCommonAncestor(node.left, p, q);
   }
-  if (vn < Math.min(vp, vq)) {
+  if (node.val < Math.min(p.val, q.val)) {
     return lowestCommonAncestor(node.right, p, q);
   }
   return node;

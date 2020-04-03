@@ -10,6 +10,8 @@ const re = /^(?!\d)/;
 const baseurl = 'https://github.com/suguru03/leetcode/tree/master/algorithms/';
 const solutionMap = {
   js: 'index.js',
+  go: 'solution.go',
+  rust: 'solution.rs',
   java: 'Solution.java',
   ruby: 'solution.rb',
   sql: 'query.sql',
@@ -55,4 +57,3 @@ export async function buildDoc() {
   );
   fs.writeFileSync(path.resolve(rootdir, 'README.md'), readme, 'utf8');
 }
-

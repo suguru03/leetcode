@@ -7,20 +7,19 @@ module.exports = { isHappy, isHappy2 };
  * @return {boolean}
  */
 function isHappy(n) {
-  const memo = {};
-  while (!memo[n]) {
-    if (n === 1) {
-      return true;
-    }
-    memo[n] = true;
-    let s = 0;
+  const memo = new Set([1]);
+  while (!memo.has(n)) {
+    memo.add(n);
+    let next = 0;
     while (n > 0) {
-      s += Math.pow(n % 10 | 0, 2);
+      const rem = n % 10;
+      next += Math.pow(rem, 2);
+      n -= rem;
       n /= 10;
     }
-    n = s;
+    n = next;
   }
-  return false;
+  return n === 1;
 }
 
 /**

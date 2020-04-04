@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('assert');
+
 const { rotate } = require('./');
 
 describe('#rotate', () => {

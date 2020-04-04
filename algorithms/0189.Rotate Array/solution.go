@@ -8,10 +8,7 @@ func rotate(nums []int, k int) {
 		prev := nums[from]
 		for {
 			to := (from + k) % size
-			next := nums[to]
-			nums[to] = prev
-			from = to
-			prev = next
+			nums[to], prev, from = prev, nums[to], to
 			count++
 			if count >= size || start == from {
 				break

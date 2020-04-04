@@ -40,11 +40,11 @@ function maxSubArray2(nums) {
  * @return {number}
  */
 function maxSubArray3(nums) {
-  let prev = -Infinity;
-  let max = prev;
-  for (const num of nums) {
-    prev = Math.max(num, num + prev);
-    max = Math.max(max, prev);
+  let cur = 0;
+  let max = -Infinity;
+  for (const n of nums) {
+    cur = Math.max(cur + n, n);
+    max = Math.max(max, cur);
   }
   return max;
 }

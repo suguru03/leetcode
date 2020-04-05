@@ -11,6 +11,7 @@ const baseurl = 'https://github.com/suguru03/leetcode/tree/master/algorithms/';
 const solutionMap = {
   js: 'index.js',
   go: 'solution.go',
+  python: 'solution.py',
   rust: 'solution.rs',
   java: 'Solution.java',
   ruby: 'solution.rb',

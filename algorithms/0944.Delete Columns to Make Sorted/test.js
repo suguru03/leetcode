@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { minDeletionSize } = require('./');
 
 describe('#minDeletionSize', () => {

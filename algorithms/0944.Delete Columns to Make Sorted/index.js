@@ -7,14 +7,16 @@ module.exports = { minDeletionSize };
  * @return {number}
  */
 function minDeletionSize(A) {
-  let c = 0;
-  for (let i = 0; i < A[0].length; i++) {
-    for (let j = 1; j < A.length; j++) {
-      if (A[j][i] < A[j - 1][i]) {
-        c++;
-        break;
+  const size = A[0].length;
+  let result = 0;
+  for (let c = 0; c < size; c++) {
+    for (let r = 1; r < A.length; r++) {
+      if (A[r][c] >= A[r - 1][c]) {
+        continue;
       }
+      result++;
+      break;
     }
   }
-  return c;
+  return result;
 }

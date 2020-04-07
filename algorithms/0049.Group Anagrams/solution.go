@@ -1,20 +1,13 @@
 package main
 
-import "fmt"
-
 func groupAnagrams(strs []string) [][]string {
-	groupMap := map[string][]string{}
+	groupMap := make(map[[26]int][]string)
 	for _, str := range strs {
 		var counts [26]int
 		for _, char := range str {
 			counts[char-'a']++
 		}
-		key := fmt.Sprint(counts)
-		if group, ok := groupMap[key]; ok {
-			groupMap[key] = append(group, str)
-		} else {
-			groupMap[key] = []string{str}
-		}
+		groupMap[counts] = append(groupMap[counts], str)
 	}
 	var result [][]string
 	for _, group := range groupMap {

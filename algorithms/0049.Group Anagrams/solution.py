@@ -9,4 +9,4 @@ class Solution:
                 counts[ord(c) - 97] += 1
             key = ','.join(map(str, counts))
             groupMap[key] = groupMap.get(key, []) + [s]
-        return groupMap.values()
+        return list(groupMap.values())

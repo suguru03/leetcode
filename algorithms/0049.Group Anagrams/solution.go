@@ -7,7 +7,7 @@ func groupAnagrams(strs []string) [][]string {
 	for _, str := range strs {
 		var counts [26]int
 		for _, char := range str {
-			counts[char-97]++
+			counts[char-'a']++
 		}
 		key := fmt.Sprint(counts)
 		if group, ok := groupMap[key]; ok {
@@ -16,7 +16,7 @@ func groupAnagrams(strs []string) [][]string {
 			groupMap[key] = []string{str}
 		}
 	}
-	result := [][]string{}
+	var result [][]string
 	for _, group := range groupMap {
 		result = append(result, group)
 	}

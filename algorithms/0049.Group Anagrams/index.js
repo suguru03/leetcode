@@ -7,15 +7,16 @@ module.exports = { groupAnagrams };
  * @return {string[][]}
  */
 function groupAnagrams(strs) {
-  const map = new Map();
+  const groupMap = new Map();
   for (const str of strs) {
-    const sorted = str
-      .split('')
-      .sort((c1, c2) => c1.localeCompare(c2))
-      .join('');
-    const list = map.get(sorted) || [];
-    list.push(str);
-    map.set(sorted, list);
+    const counts = Array(26).fill(0);
+    for (const c of str) {
+      counts[c.charCodeAt() - 97]++;
+    }
+    const code = counts.join();
+    const group = groupMap.get(code) || [];
+    groupMap.set(code, group);
+    group.push(str);
   }
-  return Array.from(map.values());
+  return Array.from(groupMap.values());
 }

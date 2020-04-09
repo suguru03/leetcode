@@ -15,6 +15,7 @@ const solutionMap = {
   rust: 'solution.rs',
   java: 'Solution.java',
   ruby: 'solution.rb',
+  cpp: 'solution.cpp',
   sql: 'query.sql',
   bash: 'solution.bash',
 };

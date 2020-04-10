@@ -18,6 +18,27 @@ describe('#backspaceCompare', () => {
       T: 'c#d#',
       result: true,
     },
+    {
+      S: 'a#c',
+      T: 'b',
+      result: false,
+    },
+    {
+      S: 'xywrrmp',
+      T: 'xywrrmu#p',
+      result: true,
+    },
+
+    {
+      S: 'bxj##tw',
+      T: 'bxj###tw',
+      result: false,
+    },
+    {
+      S: 'a##c',
+      T: '#a#c',
+      result: true,
+    },
   ];
 
   _.forEach(tests, ({ S, T, result }) => {

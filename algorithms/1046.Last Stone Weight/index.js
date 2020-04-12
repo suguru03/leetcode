@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { lastStoneWeight, lastStoneWeight2, lastStoneWeight3 };
+module.exports = { lastStoneWeight, lastStoneWeight2, lastStoneWeight3, lastStoneWeight4, lastStoneWeight5 };
 
 /**
  * @param {number[]} stones
@@ -148,4 +148,76 @@ class PriorityQueue {
       node = maxChild;
     }
   }
+}
+
+function lastStoneWeight4(stones) {
+  const counts = Array(1001).fill(0);
+  let heaviest = 0;
+  for (const stone of stones) {
+    heaviest = Math.max(heaviest, stone);
+    counts[stone]++;
+  }
+  let size = stones.length;
+  while (size > 1) {
+    while (counts[heaviest] === 0) {
+      heaviest--;
+    }
+    const c1 = counts[heaviest];
+    if (c1 > 1) {
+      const n1 = 2 * ((c1 / 2) | 0);
+      size -= n1;
+      counts[heaviest] -= n1;
+      if (size === 1 || c1 % 2 === 0) {
+        continue;
+      }
+    }
+    let next = heaviest - 1;
+    while (counts[next] === 0) {
+      next--;
+    }
+    size--;
+    counts[next]--;
+    counts[heaviest]--;
+    counts[heaviest - next]++;
+  }
+  if (size === 0) {
+    return 0;
+  }
+  while (counts[heaviest] === 0) {
+    heaviest--;
+  }
+  return heaviest;
+}
+
+function lastStoneWeight5(stones) {
+  let heaviest = 1000;
+  const counts = Array(heaviest + 1).fill(0);
+  for (const stone of stones) {
+    counts[stone]++;
+  }
+  let size = stones.length;
+  while (size > 1) {
+    while (counts[heaviest] === 0) {
+      heaviest--;
+    }
+    size--;
+    counts[heaviest]--;
+    let next = heaviest;
+    while (counts[next] === 0) {
+      next--;
+    }
+    counts[next]--;
+    if (heaviest === next) {
+      size--;
+      continue;
+    }
+    counts[heaviest - next]++;
+  }
+  if (size === 0) {
+    return 0;
+  }
+  while (counts[heaviest] === 0) {
+    heaviest--;
+  }
+  return heaviest;
 }

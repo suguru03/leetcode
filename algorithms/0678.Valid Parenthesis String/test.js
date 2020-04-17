@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { checkValidString } = require('./');
 
 describe('#checkValidString', () => {
@@ -33,6 +34,26 @@ describe('#checkValidString', () => {
     {
       s: '((*)(*)())((()())((()))(*',
       result: false,
+    },
+    {
+      s: '(())(())(((()*()()()))()((()()(*()())))(((*)()',
+      result: false,
+    },
+    {
+      s: '(*)',
+      result: true,
+    },
+    {
+      s: '((*)(*))((*',
+      result: false,
+    },
+    {
+      s: '((((()(()()()*()(((((*)()*(**(())))))(())()())(((())())())))))))(((((())*)))()))(()((*()*(*)))(*)()',
+      result: true,
+    },
+    {
+      s: '**)())',
+      result: true,
     },
   ];
 

@@ -7,21 +7,15 @@ module.exports = { minPathSum };
  * @return {number}
  */
 function minPathSum(grid) {
-  const r = grid.length;
-  const c = grid[0].length;
-  const dp = Array(c).fill(0);
-  for (let i = 0; i < r; i++) {
-    const row = grid[i];
-    for (let j = 0; j < c; j++) {
-      const n = row[j];
-      if (j === 0) {
-        dp[j] += n;
-      } else if (i === 0) {
-        dp[j] = dp[j - 1] + n;
-      } else {
-        dp[j] = Math.min(dp[j - 1] + n, dp[j] + n);
+  const m = grid.length - 1;
+  const n = grid[m].length - 1;
+  for (let y = 0; y <= m; y++) {
+    for (let x = 0; x <= n; x++) {
+      if (x === 0 && y === 0) {
+        continue;
       }
+      grid[y][x] += Math.min(x === 0 ? Infinity : grid[y][x - 1], y === 0 ? Infinity : grid[y - 1][x]);
     }
   }
-  return dp[c - 1];
+  return grid[m][n];
 }

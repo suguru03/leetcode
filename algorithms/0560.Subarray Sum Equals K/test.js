@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { subarraySum } = require('./');
 
 describe('#subarraySum', () => {
@@ -15,6 +16,16 @@ describe('#subarraySum', () => {
       nums: [1],
       k: 1,
       result: 1,
+    },
+    {
+      nums: [-1, -1, 1],
+      k: 0,
+      result: 1,
+    },
+    {
+      nums: [-1, -1, 1, -1],
+      k: 0,
+      result: 2,
     },
   ];
 

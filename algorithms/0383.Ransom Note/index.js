@@ -8,22 +8,15 @@ module.exports = { canConstruct };
  * @return {boolean}
  */
 function canConstruct(ransomNote, magazine) {
-  const map = {};
-  let lm = magazine.length;
-  while (lm--) {
-    const c = magazine.charAt(lm);
-    if (map[c]) {
-      map[c]++;
-    } else {
-      map[c] = 1;
-    }
+  const map = new Map();
+  for (const c of magazine) {
+    map.set(c, ~~map.get(c) + 1);
   }
-  let lr = ransomNote.length;
-  while (lr--) {
-    const c = ransomNote.charAt(lr);
-    if (!map[c]--) {
+  for (const c of ransomNote) {
+    if (!map.get(c)) {
       return false;
     }
+    map.set(c, map.get(c) - 1);
   }
   return true;
 }

@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { firstUniqChar } = require('./');
 
 describe('#firstUniqChar', () => {
@@ -13,6 +14,14 @@ describe('#firstUniqChar', () => {
     {
       s: 'loveleetcode',
       result: 2,
+    },
+    {
+      s: '',
+      result: -1,
+    },
+    {
+      s: 'dddccdbba',
+      result: 8,
     },
   ];
 

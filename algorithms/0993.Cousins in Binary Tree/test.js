@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { isCousins } = require('./');
 const { makeTestTreeNodes } = require('../util');
 

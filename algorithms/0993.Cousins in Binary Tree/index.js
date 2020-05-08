@@ -117,49 +117,37 @@ function dfs3(node, v) {
  *     this.left = this.right = null
  * }
  */
-/**
- * @param {TreeNode} root
- * @param {number} x
- * @param {number} y
- * @return {boolean}
- */
 function isCousins4(root, x, y) {
-  if (!root) {
-    return false;
-  }
-  root.parent = {};
-  let queue = [root];
+  const queue = [new Node(root)];
   while (queue.length) {
-    let px;
-    let py;
-    let { length } = queue;
-    for (let i = 0; i < length; i++) {
-      const node = queue.shift();
+    const next = [];
+    let cousinParent = null;
+    while (queue.length) {
+      const { node, parent } = queue.shift();
       if (!node) {
         continue;
       }
-      const { val, left, right, parent } = node;
-      if (val === x) {
-        px = parent;
+      const { val, left, right } = node;
+      if (val === x || val === y) {
+        if (cousinParent) {
+          return cousinParent !== parent;
+        }
+        cousinParent = parent;
+        continue;
       }
-      if (val === y) {
-        py = parent;
-      }
-      if (left) {
-        left.parent = node;
-        queue.push(left);
-      }
-      if (right) {
-        right.parent = node;
-        queue.push(right);
-      }
+      next.push(new Node(left, node), new Node(right, node));
     }
-    if (px && py) {
-      return px !== py;
-    }
-    if (!px ^ !py) {
+    if (cousinParent) {
       return false;
     }
+    queue.push(...next);
   }
   return false;
+}
+
+class Node {
+  constructor(node, parent) {
+    this.node = node;
+    this.parent = parent;
+  }
 }

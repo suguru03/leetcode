@@ -19,6 +19,7 @@ class TreeNode {
 
 Object.assign(exports, {
   LinkNode,
+  ListNode: LinkNode,
   TreeNode,
   makeLinkNodes,
   makeTreeNodes,
@@ -38,7 +39,7 @@ function makeTestNodes(iterator, tests, name = 'root') {
   _.forEach(tests, test => {
     const array = test[name];
     const root = iterator(array);
-    test[name] = root;
+    test[name] = root || null;
     test[`_${name}`] = array;
   });
 }

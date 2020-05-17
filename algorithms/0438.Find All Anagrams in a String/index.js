@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { findAnagrams, findAnagrams2 };
+module.exports = { findAnagrams };
 
 /**
  * @param {string} s
@@ -8,85 +8,28 @@ module.exports = { findAnagrams, findAnagrams2 };
  * @return {number[]}
  */
 function findAnagrams(s, p) {
-  const map = {};
-  const ls = s.length;
-  const lp = p.length;
-  for (let i = 0; i < lp; i++) {
-    const c = p[i];
-    map[c] = ++map[c] || 1;
+  const chars = Array(26).fill(0);
+  for (const c of p) {
+    chars[charCodeAt(c, 0)]++;
   }
-  let t;
-  let memo = {};
-  const cache = [];
+  let left = -1;
   const result = [];
-  for (let i = 0; i < ls; i++) {
-    const c = s[i];
-    if (!map[c]) {
-      cache.length = 0;
-      memo = {};
-      continue;
+  const current = Array(26).fill(0);
+  for (let right = 0; right < s.length; right++) {
+    const code = charCodeAt(s, right);
+    while (current[code] >= chars[code] && left < right) {
+      current[charCodeAt(s, ++left)]--;
     }
-    while (map[c] === memo[c] || cache.length === lp) {
-      memo[cache.shift()]--;
-      t++;
+    if (current[code] < chars[code]) {
+      current[code]++;
     }
-    if (cache.length === 0) {
-      t = i;
-    }
-    cache.push(c);
-    memo[c] = ++memo[c] || 1;
-    if (cache.length === lp) {
-      result.push(t);
-    }
-  }
-  return result;
-}
-
-/**
- * @param {string} s
- * @param {string} p
- * @return {number[]}
- */
-function findAnagrams2(s, p) {
-  const list = Array(26).fill(0);
-  const ls = s.length;
-  const lp = p.length;
-  for (let i = 0; i < lp; i++) {
-    list[getIndex(p[i])]++;
-  }
-  let t = 0;
-  let count = 0;
-  const memo = Array(26).fill(0);
-  const result = [];
-  for (let i = 0; i < ls; i++) {
-    const c = getIndex(s[i]);
-    if (!list[c]) {
-      while (count > 0) {
-        reset();
-      }
-      continue;
-    }
-    while (list[c] === memo[c] || count === lp) {
-      reset();
-    }
-    if (count <= 0) {
-      t = i;
-      count = 0;
-    }
-    count++;
-    memo[c]++;
-    if (count === lp) {
-      result.push(t);
+    if (right - left === p.length) {
+      result.push(left + 1);
     }
   }
   return result;
 
-  function reset() {
-    memo[getIndex(s[t++])]--;
-    count--;
+  function charCodeAt(str, index) {
+    return str.charCodeAt(index) - 97;
   }
-}
-
-function getIndex(c) {
-  return c.charCodeAt() - 97;
 }

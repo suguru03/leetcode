@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { bstFromPreorder };
+module.exports = { bstFromPreorder, bstFromPreorder2 };
 
 const { TreeNode } = require('../util');
 
@@ -47,7 +47,7 @@ function bstFromPreorder(preorder) {
  * @param {number[]} preorder
  * @return {TreeNode}
  */
-function bstFromPreorder(preorder) {
+function bstFromPreorder2(preorder) {
   return dfs(0, preorder.length);
 
   function dfs(from, to) {
@@ -58,7 +58,7 @@ function bstFromPreorder(preorder) {
     let left = ++from;
     let right = to;
     while (left < right) {
-      const mid = ((left + right) / 2) | 0;
+      const mid = (right + (left - right) / 2) | 0;
       if (preorder[mid] > val) {
         right = mid;
       } else {

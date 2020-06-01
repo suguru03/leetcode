@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { invertTree } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
@@ -17,7 +18,7 @@ describe('#invertTree', () => {
 
   _.forEach(tests, ({ root, _root, result, _result }) => {
     it(`[${_root}] -> [${_result}]`, () => {
-      assert.deepEqual(invertTree(root), result);
+      assert.deepStrictEqual(invertTree(root), result);
     });
   });
 });

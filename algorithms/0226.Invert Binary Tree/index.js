@@ -10,15 +10,15 @@ module.exports = { invertTree };
  * }
  */
 /**
- * @param {TreeNode} root
+ * @param {TreeNode} node
  * @return {TreeNode}
  */
-function invertTree(root) {
-  if (!root) {
+function invertTree(node) {
+  if (!node) {
     return null;
   }
-  const { right, left } = root;
-  root.left = invertTree(right);
-  root.right = invertTree(left);
-  return root;
+  const { left, right } = node;
+  node.right = invertTree(left);
+  node.left = invertTree(right);
+  return node;
 }

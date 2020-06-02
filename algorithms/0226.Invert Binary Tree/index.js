@@ -17,8 +17,6 @@ function invertTree(node) {
   if (!node) {
     return null;
   }
-  const { left, right } = node;
-  node.right = invertTree(left);
-  node.left = invertTree(right);
+  [node.right, node.left] = [invertTree(node.left), invertTree(node.right)];
   return node;
 }

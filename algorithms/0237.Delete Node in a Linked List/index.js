@@ -25,3 +25,11 @@ function deleteNode(node) {
 function deleteNode2(node) {
   Object.assign(node, node.next);
 }
+
+/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+function deleteNode(node) {
+  [node.val, node.next] = [node.next.val, node.next.next];
+}

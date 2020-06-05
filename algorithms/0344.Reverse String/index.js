@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = { reverseString, reverseString2 };
+const _ = require('lodash');
+
+module.exports = { reverseString, reverseString2, reverseString3 };
 
 /**
  * @param {character[]} s
@@ -26,4 +28,15 @@ function reverseString2(s) {
     [s[i], s[j]] = [s[j], s[i]];
     reverse(++i);
   }
+}
+
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+function reverseString3(s) {
+  _.times(s.length / 2, i => {
+    const j = s.length - i - 1;
+    [s[i], s[j]] = [s[j], s[i]];
+  });
 }

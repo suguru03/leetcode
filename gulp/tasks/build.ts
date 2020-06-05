@@ -10,6 +10,7 @@ const re = /^(?!\d)/;
 const baseurl = 'https://github.com/suguru03/leetcode/tree/master/algorithms/';
 const solutionMap = {
   js: 'index.js',
+  ts: 'index.ts',
   go: 'solution.go',
   python: 'solution.py',
   rust: 'solution.rs',

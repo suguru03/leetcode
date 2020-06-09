@@ -26,6 +26,10 @@ describe('#isPowerOfTwo', () => {
       n: 8,
       result: true,
     },
+    {
+      n: -2147483648,
+      result: false,
+    },
   ];
 
   _.forEach(tests, ({ n, result }) => {

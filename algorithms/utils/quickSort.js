@@ -16,7 +16,7 @@ function sort(arr, comparator, left, right, x, y) {
   }
   let l = left;
   let r = right;
-  const m = ((l + r) / 2) | 0;
+  const m = (r + (l - r) / 2) | 0;
   const pivot = arr[m];
   while (true) {
     while (comparator(arr[l], l, pivot, m) < 0) {

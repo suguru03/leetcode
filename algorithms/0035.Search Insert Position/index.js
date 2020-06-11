@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = { searchInsert, searchInsert2 };
+const _ = require('lodash');
+
+module.exports = { searchInsert, searchInsert2, searchInsert3 };
 
 /**
  * @param {number[]} nums
@@ -35,4 +37,13 @@ function searchInsert2(nums, target) {
   const l = nums.length;
   while (++i < l && nums[i] < target) {}
   return i;
+}
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+function searchInsert3(nums, target) {
+  return _.sortedIndex(nums, target);
 }

@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { levelOrderBottom } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
@@ -17,7 +18,7 @@ describe('#levelOrderBottom', () => {
 
   _.forEach(tests, ({ root, _root, result }) => {
     it(`[${_root}] -> ${result}`, () => {
-      assert.deepEqual(levelOrderBottom(root), result);
+      assert.deepStrictEqual(levelOrderBottom(root), result);
     });
   });
 });

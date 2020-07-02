@@ -11,8 +11,7 @@ module.exports = {
  * Definition for a binary tree node.
  * function TreeNode(val) {
  *     this.val = val;
- *     this.left = this.right = null;
- * }
+ *     this.left = this.right = null; * }
  */
 /**
  * @param {TreeNode} root
@@ -92,24 +91,21 @@ function levelOrderBottom3(root) {
  */
 function levelOrderBottom4(root) {
   const result = [];
-  if (!root) {
-    return result;
-  }
-  let level = -1;
-  let list = [root];
-  while (list.length) {
-    result[++level] = [];
-    const queue = [];
-    for (const node of list) {
+  const queue = [root];
+  while (queue.length) {
+    const row = [];
+    let size = queue.length;
+    while (--size >= 0) {
+      const node = queue.shift();
       if (!node) {
         continue;
       }
-      const { val, left, right } = node;
-      result[level].push(val);
-      left && queue.push(left);
-      right && queue.push(right);
+      row.push(node.val);
+      queue.push(node.left, node.right);
     }
-    list = queue;
+    if (row.length) {
+      result.unshift(row);
+    }
   }
-  return result.reverse();
+  return result;
 }

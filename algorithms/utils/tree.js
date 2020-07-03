@@ -45,17 +45,19 @@ function makeTestNodes(iterator, tests, name = 'root') {
 }
 
 function makeLinkNodes(array) {
-  return _.chain(array)
-    .map(n => new LinkNode(n))
-    .reduce((result, node) => {
-      let target = result;
-      while (target.next) {
-        target = target.next;
-      }
-      target.next = node;
-      return result;
-    })
-    .value();
+  return (
+    _.chain(array)
+      .map(n => new LinkNode(n))
+      .reduce((result, node) => {
+        let target = result;
+        while (target.next) {
+          target = target.next;
+        }
+        target.next = node;
+        return result;
+      })
+      .value() || null
+  );
 }
 
 function makeTreeNodes(array) {

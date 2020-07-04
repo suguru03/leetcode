@@ -12,20 +12,20 @@ function prisonAfterNDays(cells, N) {
   const cache = new Map();
   for (let i = 0; i < N; i++) {
     let bit = 0;
-    const next = Array(8);
-    for (let j = 0; j < 8; j++) {
+    const next = Array(cells.length);
+    for (let j = 0; j < cells.length; j++) {
       bit += cells[j] << j;
       next[j] = Number(cells[j - 1] === cells[j + 1]);
     }
-    if (cache.has(bit)) {
-      const d = cache.get(bit);
-      const t = i - d;
-      const index = ((N - d) % t) + d;
-      return list[index];
+    if (!cache.has(bit)) {
+      cache.set(bit, i);
+      [list[i], cells] = [cells, next];
+      continue;
     }
-    cache.set(bit, i);
-    list[i] = cells;
-    cells = next;
+    const d = cache.get(bit);
+    const t = i - d;
+    const index = ((N - d) % t) + d;
+    return list[index];
   }
   return cells;
 }

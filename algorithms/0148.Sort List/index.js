@@ -1,5 +1,35 @@
 'use strict';
 
+const { ListNode } = require('../util');
+
+module.exports = { sortList };
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+function sortList(head) {
+  const queue = new PriorityQueue((t1, t2) => t1.val - t2.val);
+  while (head) {
+    queue.push(head);
+    head = head.next;
+  }
+  head = new ListNode();
+  let node = head;
+  while (queue.size()) {
+    const next = queue.pop();
+    [next.next, node.next, node] = [null, next, next];
+  }
+  return head.next;
+}
+
 const top = 0;
 const parent = i => ((i + 1) >>> 1) - 1;
 const left = i => (i << 1) + 1;
@@ -53,7 +83,7 @@ class PriorityQueue {
   }
   _siftUp() {
     let node = this.size() - 1;
-    while (node > top && this._greater(node, parent(node))) {
+    while (node > top && this._less(node, parent(node))) {
       this._swap(node, parent(node));
       node = parent(node);
     }
@@ -64,7 +94,7 @@ class PriorityQueue {
       (left(node) < this.size() && this._less(left(node), node)) ||
       (right(node) < this.size() && this._less(right(node), node))
     ) {
-      let maxChild = right(node) < this.size() && this._greater(right(node), left(node)) ? right(node) : left(node);
+      let maxChild = right(node) < this.size() && this._less(right(node), left(node)) ? right(node) : left(node);
       this._swap(node, maxChild);
       node = maxChild;
     }

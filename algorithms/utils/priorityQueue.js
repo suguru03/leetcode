@@ -9,7 +9,7 @@ const right = i => (i + 1) << 1;
  * @see https://stackoverflow.com/questions/42919469/efficient-way-to-implement-priority-queue-in-javascript/42919752
  */
 class PriorityQueue {
-  constructor(comparator = (a, b) => a - b) {
+  constructor(comparator = (a, b) => a > b) {
     this._heap = [];
     this._comparator = comparator;
   }
@@ -45,8 +45,8 @@ class PriorityQueue {
     this._siftDown();
     return replacedValue;
   }
-  _less(i, j) {
-    return this._comparator(this._heap[i], this._heap[j]) < 0;
+  _greater(i, j) {
+    return this._comparator(this._heap[i], this._heap[j]);
   }
   _swap(i, j) {
     [this._heap[i], this._heap[j]] = [this._heap[j], this._heap[i]];
@@ -61,12 +61,13 @@ class PriorityQueue {
   _siftDown() {
     let node = top;
     while (
-      (left(node) < this.size() && this._less(left(node), node)) ||
-      (right(node) < this.size() && this._less(right(node), node))
-    ) {
+      (left(node) < this.size() && this._greater(left(node), node)) ||
+      (right(node) < this.size() && this._greater(right(node), node))
+      ) {
       let maxChild = right(node) < this.size() && this._greater(right(node), left(node)) ? right(node) : left(node);
       this._swap(node, maxChild);
       node = maxChild;
     }
   }
 }
+

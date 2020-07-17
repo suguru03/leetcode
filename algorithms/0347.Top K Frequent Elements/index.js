@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { topKFrequent, topKFrequent2 };
+module.exports = { topKFrequent };
 
 /**
  * @param {number[]} nums
@@ -8,43 +8,22 @@ module.exports = { topKFrequent, topKFrequent2 };
  * @return {number[]}
  */
 function topKFrequent(nums, k) {
-  const map = {};
-  for (const n of nums) {
-    map[n] = ++map[n] || 1;
-  }
-  const elems = Object.entries(map).sort(([, n1], [, n2]) => n2 - n1);
-  const ans = Array(k);
-  for (let i = 0; i < k; i++) {
-    ans[i] = +elems[i][0];
-  }
-  return ans;
-}
-
-/**
- * @param {number[]} nums
- * @param {number} k
- * @return {number[]}
- */
-function topKFrequent2(nums, k) {
-  const map = new Map();
-  for (const n of nums) {
-    const prev = map.get(n) || 0;
-    map.set(n, prev + 1);
-  }
   const countMap = new Map();
-  for (const [n, sum] of map.entries()) {
-    const nums = countMap.get(sum) || [];
-    nums.push(n);
-    countMap.set(sum, nums);
+  for (const num of nums) {
+    countMap.set(num, ~~countMap.get(num) + 1);
   }
-
-  const sums = Array.from(countMap.keys()).sort((n1, n2) => n2 - n1);
-  const ans = [];
-  for (let i = 0; i < sums.length; i++) {
-    ans.push(...countMap.get(sums[i]));
-    if (ans.length >= k) {
+  const counts = Array.from({ length: nums.length + 1 }, () => []);
+  for (const [num, count] of countMap) {
+    counts[count].push(num);
+  }
+  const result = [];
+  for (let count = nums.length; count > 0; count--) {
+    if (counts[count].length === 0) {
+      continue;
+    }
+    if (result.push(...counts[count]) >= k) {
       break;
     }
   }
-  return ans;
+  return result.slice(0, k);
 }

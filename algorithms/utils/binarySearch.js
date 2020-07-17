@@ -1,22 +1,28 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-function binarySearch(nums, target) {
-  let l = 0;
-  let r = nums.length - 1;
-  while (l <= r) {
-    const m = ((l + r) / 2) | 0;
-    const n = nums[m];
-    if (n === target) {
-      return m;
-    }
-    if (n < target) {
-      l = m + 1;
+
+function binarySearchList(list, iter) {
+  let left = 0;
+  let right = list.length;
+  while (left < right) {
+    const mid = (left + (right - left) / 2) | 0;
+    if (iter(list[mid], mid)) {
+      right = mid;
     } else {
-      r = m - 1;
+      left = mid + 1;
     }
   }
-  return -1;
+  return list[left];
+}
+
+function binarySearchNum(n, iter) {
+  let left = 0;
+  let right = n;
+  while (left < right) {
+    const mid = (left + (right - left) / 2) | 0;
+    if (iter(mid, mid)) {
+      right = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+  return left;
 }

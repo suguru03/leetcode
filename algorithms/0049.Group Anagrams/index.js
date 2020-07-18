@@ -13,10 +13,9 @@ function groupAnagrams(strs) {
     for (const c of str) {
       counts[c.charCodeAt() - 97]++;
     }
-    const code = counts.join();
-    const group = groupMap.get(code) || [];
-    groupMap.set(code, group);
-    group.push(str);
+    const code = counts.join('');
+    groupMap.set(code, groupMap.get(code) || []);
+    groupMap.get(code).push(str);
   }
   return Array.from(groupMap.values());
 }

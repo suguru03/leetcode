@@ -15,6 +15,10 @@ describe('#canJump', () => {
       nums: [3, 2, 1, 0, 4],
       result: false,
     },
+    {
+      nums: [0],
+      result: true,
+    },
   ];
 
   _.forEach(tests, ({ nums, result }) => {

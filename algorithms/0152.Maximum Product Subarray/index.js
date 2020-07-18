@@ -46,3 +46,28 @@ function maxProduct2(nums) {
   }
   return max;
 }
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function maxProduct3(nums) {
+  let cur = 1;
+  let max = -Infinity;
+  let negative = Infinity;
+  for (const num of nums) {
+    cur *= num;
+    max = Math.max(max, num, cur);
+    if (num === 0) {
+      negative = Infinity;
+      cur = 1;
+      continue;
+    }
+    if (negative !== Infinity) {
+      max = Math.max(max, cur / negative);
+    } else if (num < 0) {
+      negative = cur;
+    }
+  }
+  return max;
+}

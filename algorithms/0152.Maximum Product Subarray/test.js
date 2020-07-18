@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { maxProduct } = require('./');
 
 describe('#maxProduct', () => {
@@ -21,6 +22,10 @@ describe('#maxProduct', () => {
     {
       nums: [2, -5, -2, -4, 3],
       result: 24,
+    },
+    {
+      nums: [-2],
+      result: -2,
     },
   ];
 

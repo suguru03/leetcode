@@ -2,7 +2,8 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const { trap2: trap } = require('./');
+
+const { trap } = require('./');
 
 describe('#trap', () => {
   const tests = [
@@ -13,6 +14,10 @@ describe('#trap', () => {
     {
       height: [2, 1, 2, 1],
       result: 1,
+    },
+    {
+      height: [0, 3, 0, 2],
+      result: 2,
     },
     {
       height: [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1],

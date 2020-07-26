@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { trap, trap2 };
+module.exports = { trap, trap2, trap3 };
 
 /**
  * @param {number[]} height
@@ -67,4 +67,49 @@ function trap2(height) {
     sum += prevHeight - h;
   }
   return sum;
+}
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+function trap3(height) {
+  let water = 0;
+  const stack = [];
+  for (const [i, h] of height.entries()) {
+    while (stack.length > 1 && h > stack[stack.length - 1].height) {
+      const mid = stack.pop();
+      const left = stack[stack.length - 1];
+      const width = i - left.index - 1;
+      const height = Math.max(0, Math.min(h, left.height) - mid.height);
+      water += width * height;
+    }
+    stack.push({ index: i, height: h });
+  }
+  return water;
+}
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+function trap4(height) {
+  let left = 0;
+  let right = height.length - 1;
+  const max = { left: 0, right: 0 };
+  let result = 0;
+  while (left <= right) {
+    const hl = height[left];
+    const hr = height[right];
+    if (hl <= hr) {
+      max.left = Math.max(max.left, hl);
+      result += max.left - hl;
+      left++;
+    } else {
+      max.right = Math.max(max.right, hr);
+      result += max.right - hr;
+      right--;
+    }
+  }
+  return result;
 }

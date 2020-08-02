@@ -2,15 +2,12 @@
 
 module.exports = { detectCapitalUse };
 
-const re1 = /^([a-z]|\s)*$/;
-const re2 = /^(([a-z]|\s)*|([A-Z]|\s)*)$/;
-
-/**
- * @param {string} word
- * @return {boolean}
- */
 function detectCapitalUse(word) {
-  const first = word[0];
-  const rest = word.substr(1);
-  return /[a-z]/.test(first) ? re1.test(rest) : re2.test(rest);
+  let count = 0;
+  for (let i = 0; i < word.length; i++) {
+    if (word.charAt(i) <= 'Z') {
+      count++;
+    }
+  }
+  return count === 0 || count === word.length || (count === 1 && word.charAt(0) <= 'Z');
 }

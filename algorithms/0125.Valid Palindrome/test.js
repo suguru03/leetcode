@@ -42,6 +42,10 @@ describe('#isPalindrome', () => {
       s: '0P',
       result: false,
     },
+    {
+      s: 'ab_a',
+      result: true,
+    },
   ];
 
   _.forEach(tests, ({ s, result }) => {

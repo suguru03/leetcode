@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { mergeTwoLists } = require('./');
 const { makeTestLinkNodes } = require('../util');
 
@@ -11,6 +12,11 @@ describe('#mergeTwoLists', () => {
       l1: [],
       l2: [],
       result: [],
+    },
+    {
+      l1: [1, 2, 4],
+      l2: [1, 3, 4],
+      result: [1, 1, 2, 3, 4, 4],
     },
     {
       l1: [1, 3, 5],

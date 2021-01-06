@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { findKthPositive };
+module.exports = { findKthPositive, findKthPositive2 };
 
 /**
  * @param {number[]} arr
@@ -20,4 +20,22 @@ function findKthPositive(arr, k) {
     }
   }
   return k + left;
+}
+
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number}
+ */
+function findKthPositive2(arr, k) {
+  let missing = 0;
+  for (let i = 0; i < arr.length; i++) {
+    const n = arr[i];
+    missing += n - i - 1 - missing;
+    if (missing < k) {
+      continue;
+    }
+    return n - (missing - k + 1);
+  }
+  return arr[arr.length - 1] + k - missing;
 }

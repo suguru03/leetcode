@@ -27,6 +27,11 @@ describe('#findKthPositive', () => {
       k: 2,
       result: 3,
     },
+    {
+      arr: Array.from({ length: 1000 }, (_, i) => i + 1),
+      k: 100,
+      result: 1100,
+    },
   ];
 
   _.forEach(tests, ({ arr, k, result }) => {

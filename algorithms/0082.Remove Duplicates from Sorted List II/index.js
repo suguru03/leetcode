@@ -1,33 +1,33 @@
 'use strict';
 
+const { ListNode } = require('../util');
+
 module.exports = { deleteDuplicates };
 
 /**
  * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val
- *     this.next = null
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
  * }
  */
 /**
- * @param {ListNode} head
+ * @param {ListNode} node
  * @return {ListNode}
  */
-function deleteDuplicates(head) {
-  const res = { next: null };
-  let cur = res;
-  while (head) {
-    const node = head;
-    const { val, next } = head;
+function deleteDuplicates(node) {
+  const head = new ListNode();
+  let prev = head;
+  while (node) {
+    const cur = node;
     do {
-      head = head.next;
-    } while (head && head.val === val);
-    if (head !== next) {
+      node = node.next;
+    } while (cur.val === node?.val);
+    if (cur.next !== node) {
       continue;
     }
-    cur.next = node;
-    cur = node;
+    [prev.next, prev] = [cur, cur];
   }
-  cur.next = null;
-  return res.next;
+  prev.next = null;
+  return head.next;
 }

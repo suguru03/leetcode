@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { deleteDuplicates } = require('./');
 const { makeTestLinkNodes } = require('../util');
 
@@ -10,6 +11,10 @@ describe('#deleteDuplicates', () => {
     {
       head: [1, 2, 3, 3, 4, 4, 5],
       result: [1, 2, 5],
+    },
+    {
+      head: [1, 2, 2],
+      result: [1],
     },
   ];
   makeTestLinkNodes(tests, 'head');

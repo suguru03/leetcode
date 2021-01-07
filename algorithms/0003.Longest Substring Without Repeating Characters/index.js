@@ -1,23 +1,22 @@
 'use strict';
 
-module.exports = lengthOfLongestSubstring;
+module.exports = { lengthOfLongestSubstring };
 
 /**
  * @param {string} s
  * @return {number}
  */
 function lengthOfLongestSubstring(s) {
+  const indexMap = new Map();
+  let left = -1;
   let max = 0;
-  let left = 0;
-  const set = new Set();
   for (let i = 0; i < s.length; i++) {
-    const c = s[i];
-    while (set.has(c)) {
-      const c1 = s[left++];
-      set.delete(c1);
+    const char = s.charAt(i);
+    if (indexMap.has(char)) {
+      left = Math.max(left, indexMap.get(char));
     }
-    set.add(c);
-    max = Math.max(max, i - left + 1);
+    max = Math.max(max, i - left);
+    indexMap.set(char, i);
   }
   return max;
 }

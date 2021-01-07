@@ -2,7 +2,8 @@
 
 const assert = require('assert');
 const _ = require('lodash');
-const lengthOfLongestSubstring = require('./');
+
+const { lengthOfLongestSubstring } = require('./');
 
 describe('#lengthOfLongestSubstring', () => {
   const tests = [

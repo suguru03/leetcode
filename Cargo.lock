@@ -3,3 +3,7 @@
 [[package]]
 name = "best-time-to-buy-and-sell-stock"
 version = "0.1.0"
+
+[[package]]
+name = "two-sum"
+version = "0.1.0"

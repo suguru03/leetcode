@@ -1,17 +1,26 @@
+import * as _ from 'lodash';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as _ from 'lodash';
-import Aigle from 'aigle';
-import axios from 'axios';
+import * as prettier from 'prettier';
 import * as prompt from 'prompt';
 import * as puppeteer from 'puppeteer';
-import * as prettier from 'prettier';
+import Aigle from 'aigle';
+import axios from 'axios';
+import { execSync } from 'child_process';
 
 import * as config from '../../package.json';
 
 Aigle.promisifyAll(prompt);
 
 const base = 'https://leetcode.com';
+enum Language {
+  JavaScript = 'js',
+  Rust = 'rust',
+}
+const langMap: Record<Language, string> = {
+  [Language.JavaScript]: 'javascript',
+  [Language.Rust]: 'rust',
+};
 
 const schema = {
   properties: {
@@ -20,12 +29,16 @@ const schema = {
       message: 'put a problem number',
       required: true,
     },
+    language: {
+      type: 'string',
+      message: `put a language [${Object.values(Language)}]`,
+    },
   },
 };
 
 export async function init() {
   prompt.start();
-  const { num } = await prompt.getAsync(schema);
+  const { num, language = Language.JavaScript } = await prompt.getAsync(schema);
 
   const { data } = await axios(`${base}/api/problems/all/`);
   const item = _.find(data.stat_status_pairs, item => item.stat.frontend_question_id === num);
@@ -35,10 +48,10 @@ export async function init() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  await setLanguage(page);
+  await setLanguage(page, language);
 
   // load the problem page, it may need to adjust the timeout
-  await createProblem(page, item.stat);
+  await createProblem(page, item.stat, language);
   await browser.close();
 }
 
@@ -64,18 +77,18 @@ function assignDefault(map: any, { type, key }) {
   }
 }
 
-async function setLanguage(page: any) {
-  // set logal storage
+async function setLanguage(page: any, lang: Language) {
+  // set local storage
   await page.goto(`${base}`);
-  await page.evaluate(() => localStorage.setItem('global_lang', 'javascript'));
+  await page.evaluate((language: string) => localStorage.setItem('global_lang', language), langMap[lang]);
 }
 
-async function createProblem(page: any, stat: any) {
+async function createProblem(page: any, stat: any, lang: Language) {
   const { frontend_question_id: qid, question__title: title, question__title_slug: slug } = stat;
   const id = `${qid}`.padStart(4, '0');
   const url = `${base}/problems/${slug}`;
   await page.goto(url);
-  console.log(`Reading leetcode page... id: ${id}, title: ${title}`);
+  console.log(`Reading leetcode page... id: ${id}, title: ${title}, language: ${lang}`);
 
   // wait until page is loaded
   let count = 0;
@@ -94,53 +107,58 @@ async function createProblem(page: any, stat: any) {
   };
   const tester = text => (text ? true : Aigle.delay(1000, false));
   const text = await Aigle.doUntil(iterator, tester);
-
-  // get description
-  let code = await page.evaluate(() => {
-    const classeNames = ['.CodeMirror-code', '.CodeMirror-lines'];
-    for (const className of classeNames) {
-      const dom = document.querySelector(className);
-      if (dom) {
-        return dom.textContent;
-      }
-    }
-    return '';
-  });
-
-  console.log('Creating files...');
-
   const dirname = `${id}.${title}`;
-  const dirpath = path.resolve(__dirname, '../../algorithms', dirname);
-  fs.mkdirSync(dirpath);
+  const relativeDirPath = path.join('algorithms', dirname);
+  const dirPath = path.resolve(__dirname, '../..', relativeDirPath);
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath);
+  }
 
   // create README
   const readme = `## ${id}. ${title}\n\n${url}\n\n${text}`;
-  const readmepath = path.resolve(dirpath, 'README.md');
-  fs.writeFileSync(readmepath, readme);
+  const readmepath = path.resolve(dirPath, 'README.md');
+  if (!fs.existsSync(readmepath)) {
+    fs.writeFileSync(readmepath, readme);
+  }
 
-  const funcRe = /var (.+) = function/;
-  const funcName = code.match(funcRe)[1];
-  // if fails, it needs to be fixed.
-  let line = 0;
-  while (++line) {
-    const re = new RegExp(line.toString());
-    if (!re.test(code)) {
+  // get description
+  let code = await page.evaluate(() => {
+    const dom = document.querySelectorAll('.CodeMirror-line');
+    return Array.from(dom, element => element.textContent).join('\n');
+  });
+  code = code.replace(/ /g, '');
+
+  console.log(`Creating files... language: ${lang}`);
+  switch (lang) {
+    case Language.JavaScript: {
+      createJavaScript(code, dirPath);
       break;
     }
-    code = code.replace(re, '\n');
+    case Language.Rust: {
+      createRust(code, title, dirPath, relativeDirPath);
+      break;
+    }
   }
+}
+
+function createJavaScript(code: string, dirPath: string) {
+  const funcRe = /var (.+) = function/;
+  const funcName = code.match(funcRe)[1];
   code = code.replace(funcRe, 'function $1').replace(/[;%]/g, '');
   code = prettier.format(code, config.prettier);
 
   // create index.js
-  const tempIndexPath = path.resolve(__dirname, '../template/index');
-  const indexFile = fs.readFileSync(tempIndexPath, 'utf8').replace(/template/g, funcName) + code;
-  const indexpath = path.resolve(dirpath, 'index.js');
-  fs.writeFileSync(indexpath, indexFile);
+  const tplIndexPath = path.resolve(__dirname, '../template/js/index.js.tpl');
+  const indexFile = fs.readFileSync(tplIndexPath, 'utf8').replace(/template/g, funcName) + code;
+  const indexPath = path.resolve(dirPath, 'index.js');
+  if (fs.existsSync(indexPath)) {
+    throw new Error('Already exists');
+  }
+  fs.writeFileSync(indexPath, indexFile);
 
   // create test.js
-  const tempTestPath = path.resolve(__dirname, '../template/test');
-  let testFile = fs.readFileSync(tempTestPath, 'utf8').replace(/template/g, funcName);
+  const tplTestPath = path.resolve(__dirname, '../template/js/test.js.tpl');
+  let testFile = fs.readFileSync(tplTestPath, 'utf8').replace(/template/g, funcName);
   try {
     const info = _.chain(code)
       .split(/\n/g)
@@ -162,6 +180,36 @@ async function createProblem(page: any, stat: any) {
   } catch (e) {
     console.log('You need to make test cases');
   }
-  const testpath = path.resolve(dirpath, 'test.js');
+  const testpath = path.resolve(dirPath, 'test.js');
   fs.writeFileSync(testpath, testFile);
+}
+
+function createRust(code: string, title: string, dirPath: string, relativeDirPath: string) {
+  const cargoFile = fs
+    .readFileSync(path.resolve(__dirname, '../template/rust/Cargo.toml.tpl'), 'utf8')
+    .replace(/\$1/, _.kebabCase(title))
+    .replace(/\$2/, _.snakeCase(title));
+  const cargoPath = path.resolve(dirPath, 'Cargo.toml');
+  if (fs.existsSync(cargoPath)) {
+    throw new Error('Already exists');
+  }
+  fs.writeFileSync(cargoPath, cargoFile);
+  const solutionFile = fs
+    .readFileSync(path.resolve(__dirname, '../template/rust/solution.rs.tpl'), 'utf8')
+    .replace(/\$1/, code);
+  const solutionPath = path.resolve(dirPath, 'solution.rs');
+  fs.writeFileSync(solutionPath, solutionFile);
+
+  // update members
+  const rootCargoFilePath = path.resolve(__dirname, '../../', 'Cargo.toml');
+  const rootCargo = fs.readFileSync(rootCargoFilePath, 'utf8');
+  const regex = /(members = )(\[[\s\S]*])/;
+  const [, , str] = rootCargo.match(regex);
+  const members = JSON.parse(str);
+  members.push(relativeDirPath);
+  members.sort();
+  fs.writeFileSync(rootCargoFilePath, rootCargo.replace(regex, `$1${JSON.stringify(members, null, 2)}`));
+  const command = `cargo test --lib -p '${_.kebabCase(title)}'`;
+  console.log(`test command [ctrl+v]: ${command}`);
+  execSync(`echo "${command}" | pbcopy`);
 }

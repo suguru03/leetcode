@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@types/gulp": "^4.0.6",
+    "@types/lodash": "^4.14.167",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.7.3",
     "@types/puppeteer": "^1.19.1",
@@ -25,7 +26,7 @@
     "gulp": "^4.0.2",
     "husky": "^3.0.4",
     "lint-staged": "^9.2.5",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "minimist": "^1.2.3",
     "mocha": "^6.2.0",
     "prettier": "^1.18.2",

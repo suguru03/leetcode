@@ -1,4 +1,5 @@
 [workspace]
 members = [
+  "algorithms/0001.Two Sum",
   "algorithms/0121.Best Time to Buy and Sell Stock"
 ]

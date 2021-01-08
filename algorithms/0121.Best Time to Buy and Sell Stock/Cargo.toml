@@ -1,0 +1,13 @@
+[package]
+name = "best-time-to-buy-and-sell-stock"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[lib]
+name = "best_time_to_buy_and_sell_stock"
+path = "solution.rs"

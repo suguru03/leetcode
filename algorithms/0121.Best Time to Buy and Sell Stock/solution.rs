@@ -1,6 +1,6 @@
 use std::cmp;
 
-struct Solution;
+pub struct Solution;
 
 impl Solution {
     pub fn max_profit(prices: Vec<i32>) -> i32 {
@@ -26,11 +26,6 @@ impl Solution {
     //     }
     //     return max(prices.len - 1)
     // }
-}
-
-fn main() {
-    let val = Solution::max_profit(vec![7, 1, 5, 3, 6, 4]);
-    println!("{}", val);
 }
 
 #[test]

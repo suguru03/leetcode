@@ -5,6 +5,7 @@
 ```
 gulp init
 prompt: num: <number>
+prompt: language: [js|rust]
 ```
 
 It will generate a folder and files automatically.

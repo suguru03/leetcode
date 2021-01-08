@@ -116,9 +116,10 @@ async function createProblem(page: any, stat: any, lang: Language) {
 
   // create README
   const readme = `## ${id}. ${title}\n\n${url}\n\n${text}`;
-  const readmepath = path.resolve(dirPath, 'README.md');
-  if (!fs.existsSync(readmepath)) {
-    fs.writeFileSync(readmepath, readme);
+  const regex = / /g;
+  const readmePath = path.resolve(dirPath, 'README.md');
+  if (!fs.existsSync(readmePath)) {
+    fs.writeFileSync(readmePath, readme.replace(regex, ''));
   }
 
   // get description
@@ -126,7 +127,7 @@ async function createProblem(page: any, stat: any, lang: Language) {
     const dom = document.querySelectorAll('.CodeMirror-line');
     return Array.from(dom, element => element.textContent).join('\n');
   });
-  code = code.replace(/ /g, '');
+  code = code.replace(regex, '');
 
   console.log(`Creating files... language: ${lang}`);
   switch (lang) {

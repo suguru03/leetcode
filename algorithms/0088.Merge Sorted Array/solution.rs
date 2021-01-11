@@ -5,15 +5,14 @@ const MIN: i32 = std::i32::MIN;
 impl Solution {
     pub fn merge(nums1: &mut Vec<i32>, mut m: i32, nums2: &mut Vec<i32>, mut n: i32) {
         let to_usize = |num: i32| num as usize;
+        let get = |nums: &Vec<i32>, index: i32| match index {
+            0 => MIN,
+            m => nums[to_usize(m - 1)],
+        };
+
         while m + n > 0 {
-            let n1 = match m {
-                0 => MIN,
-                m => nums1[to_usize(m - 1)],
-            };
-            let n2 = match n {
-                0 => MIN,
-                n => nums2[to_usize(n - 1)],
-            };
+            let n1 = get(nums1, m);
+            let n2 = get(nums2, n);
             let index = to_usize(m + n - 1);
             if n1 > n2 {
                 nums1[index] = n1;

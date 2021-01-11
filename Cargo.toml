@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "algorithms/0001.Two Sum",
+  "algorithms/0088.Merge Sorted Array",
   "algorithms/0121.Best Time to Buy and Sell Stock",
   "algorithms/1649.Create Sorted Array through Instructions",
   "algorithms/1662.Check If Two String Arrays are Equivalent"

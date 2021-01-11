@@ -7,4 +7,3 @@ fn test() {
     assert_eq!();
 }
 
-// rustc solution.rs

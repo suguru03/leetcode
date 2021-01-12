@@ -1,0 +1,12 @@
+[package]
+name = "add-two-numbers"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+utils = { path = "../utils" }
+
+[lib]
+name = "add_two_numbers"
+path = "solution.rs"

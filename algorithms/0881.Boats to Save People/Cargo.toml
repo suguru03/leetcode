@@ -1,0 +1,11 @@
+[package]
+name = "boats-to-save-people"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "boats_to_save_people"
+path = "solution.rs"

@@ -20,3 +20,18 @@ pub fn to_list(vec: Vec<i32>) -> Option<Box<ListNode>> {
     }
     head
 }
+
+#[macro_export]
+macro_rules! list {
+    () => (
+       ListNode::new(0)
+    );
+    ($($x:expr),+ $(,)?) => (
+        to_list(<[_]>::into_vec(Box::new([$($x),+])))
+    );
+}
+
+#[test]
+fn test() {
+    assert_eq!(to_list(vec![1, 2, 3]), list![1, 2, 3]);
+}

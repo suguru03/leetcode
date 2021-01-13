@@ -1,3 +1,5 @@
+#[macro_use]
+extern crate utils;
 use utils::{to_list, ListNode};
 
 pub struct Solution;
@@ -34,26 +36,20 @@ impl Solution {
 #[test]
 fn test1() {
     assert_eq!(
-        Solution::add_two_numbers(to_list(vec![2, 4, 3]), to_list(vec![5, 6, 4])),
-        to_list(vec![7, 0, 8])
+        Solution::add_two_numbers(list![2, 4, 3], list![5, 6, 4]),
+        list![7, 0, 8]
     );
 }
 
 #[test]
 fn test2() {
-    assert_eq!(
-        Solution::add_two_numbers(to_list(vec![0]), to_list(vec![0])),
-        to_list(vec![0])
-    );
+    assert_eq!(Solution::add_two_numbers(list![0], list![0]), list![0]);
 }
 
 #[test]
 fn test3() {
     assert_eq!(
-        Solution::add_two_numbers(
-            to_list(vec![9, 9, 9, 9, 9, 9, 9]),
-            to_list(vec![9, 9, 9, 9])
-        ),
-        to_list(vec![8, 9, 9, 9, 0, 0, 0, 1])
+        Solution::add_two_numbers(list![9, 9, 9, 9, 9, 9, 9], list![9, 9, 9, 9]),
+        list![8, 9, 9, 9, 0, 0, 0, 1]
     );
 }

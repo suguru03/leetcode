@@ -28,6 +28,10 @@ name = "merge-sorted-array"
 version = "0.1.0"
 
 [[package]]
+name = "minimum-operations-to-reduce-x-to-zero"
+version = "0.1.0"
+
+[[package]]
 name = "two-sum"
 version = "0.1.0"
 

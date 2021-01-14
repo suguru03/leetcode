@@ -41,7 +41,7 @@ export async function init() {
   const { num, language = Language.JavaScript } = await prompt.getAsync(schema);
 
   const { data } = await axios(`${base}/api/problems/all/`);
-  const item = _.find(data.stat_status_pairs, item => item.stat.frontend_question_id === num);
+  const item = _.find(data.stat_status_pairs, (item) => item.stat.frontend_question_id === num);
   if (!item) {
     throw new Error(`${num} is not found`);
   }
@@ -105,7 +105,7 @@ async function createProblem(page: any, stat: any, lang: Language) {
       }
     });
   };
-  const tester = text => (text ? true : Aigle.delay(1000, false));
+  const tester = (text) => (text ? true : Aigle.delay(1000, false));
   const text = await Aigle.doUntil(iterator, tester);
   const dirname = `${id}.${title}`;
   const relativeDirPath = path.join('algorithms', dirname);
@@ -125,7 +125,7 @@ async function createProblem(page: any, stat: any, lang: Language) {
   // get description
   let code = await page.evaluate(() => {
     const dom = document.querySelectorAll('.CodeMirror-line');
-    return Array.from(dom, element => element.textContent).join('\n');
+    return Array.from(dom, (element) => element.textContent).join('\n');
   });
   code = code.replace(regex, '');
 
@@ -163,7 +163,7 @@ function createJavaScript(code: string, dirPath: string) {
   try {
     const info = _.chain(code)
       .split(/\n/g)
-      .map(line => {
+      .map((line) => {
         const [, info, type, key] = line.match(/@(param|return) {(.+)} ?(.*)/) || [];
         return !info ? null : { info, type, key };
       })
@@ -175,7 +175,7 @@ function createJavaScript(code: string, dirPath: string) {
     testFile = testFile
       .replace(/\$1/, JSON.stringify(testExample, null, 2))
       .replace(/\$2/, argStr ? `${argStr},` : '')
-      .replace(/\$3/, keys.map(key => `$\{${key}}`).join(', '))
+      .replace(/\$3/, keys.map((key) => `$\{${key}}`).join(', '))
       .replace(/\$4/, argStr);
     testFile = prettier.format(testFile, config.prettier);
   } catch (e) {
@@ -195,9 +195,14 @@ function createRust(code: string, title: string, dirPath: string, relativeDirPat
     throw new Error('Already exists');
   }
   fs.writeFileSync(cargoPath, cargoFile);
+  const [, functionName] = code.match(/pub fn (.+)\(/) ?? [];
+  if (!functionName) {
+    throw new Error('Function name not found');
+  }
   const solutionFile = fs
     .readFileSync(path.resolve(__dirname, '../template/rust/solution.rs.tpl'), 'utf8')
-    .replace(/\$1/, code);
+    .replace(/\$1/, code)
+    .replace(/\$2/, `Solution::${functionName}()`);
   const solutionPath = path.resolve(dirPath, 'solution.rs');
   fs.writeFileSync(solutionPath, solutionFile);
 

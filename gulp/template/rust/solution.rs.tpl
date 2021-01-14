@@ -4,6 +4,6 @@ $1
 
 #[test]
 fn test() {
-    assert_eq!();
+    assert_eq!($2);
 }
 

@@ -1,0 +1,11 @@
+[package]
+name = "get-maximum-in-generated-array"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "get_maximum_in_generated_array"
+path = "solution.rs"

@@ -24,6 +24,10 @@ name = "create-sorted-array-through-instructions"
 version = "0.1.0"
 
 [[package]]
+name = "get-maximum-in-generated-array"
+version = "0.1.0"
+
+[[package]]
 name = "merge-sorted-array"
 version = "0.1.0"
 

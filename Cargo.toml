@@ -5,6 +5,7 @@ members = [
   "algorithms/0088.Merge Sorted Array",
   "algorithms/0121.Best Time to Buy and Sell Stock",
   "algorithms/0881.Boats to Save People",
+  "algorithms/1646.Get Maximum in Generated Array",
   "algorithms/1649.Create Sorted Array through Instructions",
   "algorithms/1658.Minimum Operations to Reduce X to Zero",
   "algorithms/1658.Minimum Operations to Reduce X to Zero",

@@ -1,0 +1,11 @@
+[package]
+name = "minimum-operations-to-reduce-x-to-zero"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "minimum_operations_to_reduce_x_to_zero"
+path = "solution.rs"

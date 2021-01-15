@@ -6,15 +6,14 @@ impl Solution {
             return n;
         }
         let n = n as usize + 1;
-        let mut nums = Vec::with_capacity(n);
-        nums.insert(0, 0);
-        nums.insert(1, 1);
+        let mut nums = vec![0; n];
+        nums[1] = 1;
         for i in 2..n {
             let j = i / 2;
-            if i % 2 == 0 {
-                nums.insert(i, nums[j]);
+            nums[i] = if i % 2 == 0 {
+                nums[j]
             } else {
-                nums.insert(i, nums[j] + nums[j + 1]);
+                nums[j] + nums[j + 1]
             }
         }
         *nums.iter().max().unwrap()

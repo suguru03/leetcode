@@ -28,6 +28,10 @@ name = "get-maximum-in-generated-array"
 version = "0.1.0"
 
 [[package]]
+name = "kth-largest-element-in-an-array"
+version = "0.1.0"
+
+[[package]]
 name = "merge-sorted-array"
 version = "0.1.0"
 

@@ -1,0 +1,11 @@
+[package]
+name = "kth-largest-element-in-an-array"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "kth_largest_element_in_an_array"
+path = "solution.rs"

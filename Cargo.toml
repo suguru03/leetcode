@@ -6,6 +6,7 @@ members = [
   "algorithms/0121.Best Time to Buy and Sell Stock",
   "algorithms/0215.Kth Largest Element in an Array",
   "algorithms/0881.Boats to Save People",
+  "algorithms/1641.Count Sorted Vowel Strings",
   "algorithms/1646.Get Maximum in Generated Array",
   "algorithms/1649.Create Sorted Array through Instructions",
   "algorithms/1658.Minimum Operations to Reduce X to Zero",

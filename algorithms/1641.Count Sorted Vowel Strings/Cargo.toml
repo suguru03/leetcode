@@ -1,0 +1,11 @@
+[package]
+name = "count-sorted-vowel-strings"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "count_sorted_vowel_strings"
+path = "solution.rs"

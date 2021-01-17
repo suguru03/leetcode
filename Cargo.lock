@@ -20,6 +20,10 @@ name = "check-if-two-string-arrays-are-equivalent"
 version = "0.1.0"
 
 [[package]]
+name = "count-sorted-vowel-strings"
+version = "0.1.0"
+
+[[package]]
 name = "create-sorted-array-through-instructions"
 version = "0.1.0"
 

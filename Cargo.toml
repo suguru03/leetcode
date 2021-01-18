@@ -12,5 +12,6 @@ members = [
   "algorithms/1658.Minimum Operations to Reduce X to Zero",
   "algorithms/1658.Minimum Operations to Reduce X to Zero",
   "algorithms/1662.Check If Two String Arrays are Equivalent",
+  "algorithms/1679.Max Number of K-Sum Pairs",
   "algorithms/utils"
 ]

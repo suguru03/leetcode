@@ -1,0 +1,11 @@
+[package]
+name = "max-number-of-k-sum-pairs"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "max_number_of_k_sum_pairs"
+path = "solution.rs"

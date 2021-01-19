@@ -36,6 +36,10 @@ name = "kth-largest-element-in-an-array"
 version = "0.1.0"
 
 [[package]]
+name = "longest-palindromic-substring"
+version = "0.1.0"
+
+[[package]]
 name = "max-number-of-k-sum-pairs"
 version = "0.1.0"
 

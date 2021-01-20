@@ -1,0 +1,11 @@
+[package]
+name = "valid-parentheses"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "valid_parentheses"
+path = "solution.rs"

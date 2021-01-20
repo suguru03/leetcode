@@ -3,6 +3,7 @@ members = [
   "algorithms/0001.Two Sum",
   "algorithms/0002.Add Two Numbers",
   "algorithms/0005.Longest Palindromic Substring",
+  "algorithms/0020.Valid Parentheses",
   "algorithms/0088.Merge Sorted Array",
   "algorithms/0121.Best Time to Buy and Sell Stock",
   "algorithms/0215.Kth Largest Element in an Array",

@@ -15,7 +15,7 @@ Aigle.promisifyAll(prompt);
 const base = 'https://leetcode.com';
 enum Language {
   JavaScript = 'js',
-  Rust = 'rust',
+  Rust = 'rs',
 }
 const langMap: Record<Language, string> = {
   [Language.JavaScript]: 'javascript',

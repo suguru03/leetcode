@@ -1,23 +1,21 @@
 pub struct Solution;
 
+const CHAR_SIZE: usize = 26;
+
 impl Solution {
     pub fn close_strings(word1: String, word2: String) -> bool {
         let mut counts1 = Solution::count(word1);
         let mut counts2 = Solution::count(word2);
-        if counts1
-            .iter()
-            .enumerate()
-            .any(|(i, c1)| (*c1 == 0) != (counts2[i] == 0))
-        {
+        if (0..counts1.len()).any(|i| (counts1[i] > 0) != (counts2[i] > 0)) {
             return false;
         }
-        counts1.sort();
-        counts2.sort();
+        counts1.sort_unstable();
+        counts2.sort_unstable();
         counts1 == counts2
     }
 
-    fn count(word: String) -> [i32; 26] {
-        let mut counts = [0; 26];
+    fn count(word: String) -> [i32; CHAR_SIZE] {
+        let mut counts = [0; CHAR_SIZE];
         for c in word.bytes() {
             counts[(c - b'a') as usize] += 1;
         }

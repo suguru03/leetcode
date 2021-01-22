@@ -1,0 +1,11 @@
+[package]
+name = "determine-if-two-strings-are-close"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "determine_if_two_strings_are_close"
+path = "solution.rs"

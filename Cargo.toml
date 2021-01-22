@@ -11,6 +11,7 @@ members = [
   "algorithms/1641.Count Sorted Vowel Strings",
   "algorithms/1646.Get Maximum in Generated Array",
   "algorithms/1649.Create Sorted Array through Instructions",
+  "algorithms/1657.Determine if Two Strings Are Close",
   "algorithms/1658.Minimum Operations to Reduce X to Zero",
   "algorithms/1658.Minimum Operations to Reduce X to Zero",
   "algorithms/1662.Check If Two String Arrays are Equivalent",

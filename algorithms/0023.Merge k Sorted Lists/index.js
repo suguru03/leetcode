@@ -18,18 +18,20 @@ module.exports = { mergeKLists };
 function mergeKLists(lists) {
   const queue = new PriorityQueue((n1, n2) => n1.val < n2.val);
   for (const node of lists) {
-    if (node) {
-      queue.push(node);
+    if (!node) {
+      continue;
     }
+    queue.push(node);
   }
   const head = new ListNode();
   let node = head;
   while (queue.size()) {
-    const cur = queue.pop();
-    [node.next, node] = [cur, cur];
-    if (cur.next) {
-      queue.push(cur.next);
+    const next = queue.pop();
+    [node.next, node] = [next, next];
+    if (!node.next) {
+      continue;
     }
+    queue.push(node.next);
   }
   return head.next;
 }

@@ -7,8 +7,8 @@ module.exports = { mergeKLists };
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
+ * this.val = (val===undefined ? 0 : val)
+ * this.next = (next===undefined ? null : next)
  * }
  */
 /**
@@ -18,28 +18,26 @@ module.exports = { mergeKLists };
 function mergeKLists(lists) {
   const queue = new PriorityQueue((n1, n2) => n1.val < n2.val);
   for (const node of lists) {
-    if (!node) {
-      continue;
+    if (node) {
+      queue.push(node);
     }
-    queue.push(node);
   }
-  let head = new ListNode();
+  const head = new ListNode();
   let node = head;
   while (queue.size()) {
-    node.next = queue.pop();
-    node = node.next;
-    if (!node.next) {
-      continue;
+    const cur = queue.pop();
+    [node.next, node] = [cur, cur];
+    if (cur.next) {
+      queue.push(cur.next);
     }
-    queue.push(node.next);
   }
   return head.next;
 }
 
 const top = 0;
-const parent = i => ((i + 1) >>> 1) - 1;
-const left = i => (i << 1) + 1;
-const right = i => (i + 1) << 1;
+const parent = (i) => ((i + 1) >>> 1) - 1;
+const left = (i) => (i << 1) + 1;
+const right = (i) => (i + 1) << 1;
 
 /**
  * @see https://stackoverflow.com/questions/42919469/efficient-way-to-implement-priority-queue-in-javascript/42919752

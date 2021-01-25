@@ -1,0 +1,11 @@
+[package]
+name = "check-if-all-1-s-are-at-least-length-k-places-away"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "check_if_all_1_s_are_at_least_length_k_places_away"
+path = "solution.rs"

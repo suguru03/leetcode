@@ -9,6 +9,7 @@ members = [
   "algorithms/0215.Kth Largest Element in an Array",
   "algorithms/0881.Boats to Save People",
   "algorithms/1329.Sort the Matrix Diagonally",
+  "algorithms/1437.Check If All 1's Are at Least Length K Places Away",
   "algorithms/1641.Count Sorted Vowel Strings",
   "algorithms/1646.Get Maximum in Generated Array",
   "algorithms/1649.Create Sorted Array through Instructions",

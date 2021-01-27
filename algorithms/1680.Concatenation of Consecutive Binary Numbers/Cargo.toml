@@ -1,0 +1,11 @@
+[package]
+name = "concatenation-of-consecutive-binary-numbers"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "concatenation_of_consecutive_binary_numbers"
+path = "solution.rs"

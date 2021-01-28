@@ -1,0 +1,11 @@
+[package]
+name = "smallest-string-with-a-given-numeric-value"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "smallest_string_with_a_given_numeric_value"
+path = "solution.rs"

@@ -1,0 +1,12 @@
+[package]
+name = "vertical-order-traversal-of-a-binary-tree"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+utils = { path = "../utils" }
+
+[lib]
+name = "vertical_order_traversal_of_a_binary_tree"
+path = "solution.rs"

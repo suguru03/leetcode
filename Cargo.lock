@@ -86,3 +86,10 @@ version = "0.1.0"
 [[package]]
 name = "valid-parentheses"
 version = "0.1.0"
+
+[[package]]
+name = "vertical-order-traversal-of-a-binary-tree"
+version = "0.1.0"
+dependencies = [
+ "utils",
+]

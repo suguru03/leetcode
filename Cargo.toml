@@ -6,6 +6,7 @@ members = [
   "algorithms/0020.Valid Parentheses",
   "algorithms/0088.Merge Sorted Array",
   "algorithms/0121.Best Time to Buy and Sell Stock",
+  "algorithms/0191.Number of 1 Bits",
   "algorithms/0215.Kth Largest Element in an Array",
   "algorithms/0314.Vertical Order Traversal of a Binary Tree",
   "algorithms/0881.Boats to Save People",

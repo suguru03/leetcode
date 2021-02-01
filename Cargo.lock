@@ -64,6 +64,10 @@ name = "minimum-operations-to-reduce-x-to-zero"
 version = "0.1.0"
 
 [[package]]
+name = "number-of-1-bits"
+version = "0.1.0"
+
+[[package]]
 name = "path-with-minimum-effort"
 version = "0.1.0"
 

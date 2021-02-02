@@ -10,22 +10,22 @@ module.exports = { trimBST };
  * }
  */
 /**
- * @param {TreeNode} root
+ * @param {TreeNode} node
  * @param {number} L
  * @param {number} R
  * @return {TreeNode}
  */
-function trimBST(root, L, R) {
-  if (!root) {
+function trimBST(node, L, R) {
+  if (!node) {
     return null;
   }
-  const { val, left, right } = root;
+  const { val, left, right } = node;
   const tl = trimBST(left, L, R);
   const tr = trimBST(right, L, R);
   if (val < L || val > R) {
     return tl || tr;
   }
-  root.left = tl;
-  root.right = tr;
-  return root;
+  node.left = tl;
+  node.right = tr;
+  return node;
 }

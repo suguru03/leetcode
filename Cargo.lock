@@ -48,6 +48,10 @@ name = "kth-largest-element-in-an-array"
 version = "0.1.0"
 
 [[package]]
+name = "longest-harmonious-subsequence"
+version = "0.1.0"
+
+[[package]]
 name = "longest-palindromic-substring"
 version = "0.1.0"
 

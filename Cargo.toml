@@ -9,6 +9,7 @@ members = [
   "algorithms/0191.Number of 1 Bits",
   "algorithms/0215.Kth Largest Element in an Array",
   "algorithms/0314.Vertical Order Traversal of a Binary Tree",
+  "algorithms/0594.Longest Harmonious Subsequence",
   "algorithms/0881.Boats to Save People",
   "algorithms/1329.Sort the Matrix Diagonally",
   "algorithms/1437.Check If All 1's Are at Least Length K Places Away",

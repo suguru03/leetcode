@@ -8,13 +8,9 @@ impl Solution {
         for n in nums {
             *count_map.entry(n).or_default() += 1;
         }
-        let mut max = 0;
-        for (num, c1) in count_map.iter() {
-            if let Some((_, c2)) = count_map.get_key_value(&(num + 1)) {
-                max = std::cmp::max(max, c1 + c2);
-            }
-        }
-        max
+        count_map.iter().fold(0, |acc, (num, c1)| {
+            count_map.get(&(num + 1)).map_or(acc, |c2| acc.max(c1 + c2))
+        })
     }
 }
 

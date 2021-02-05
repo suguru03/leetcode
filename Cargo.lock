@@ -76,6 +76,10 @@ name = "path-with-minimum-effort"
 version = "0.1.0"
 
 [[package]]
+name = "simplify-path"
+version = "0.1.0"
+
+[[package]]
 name = "smallest-string-with-a-given-numeric-value"
 version = "0.1.0"
 

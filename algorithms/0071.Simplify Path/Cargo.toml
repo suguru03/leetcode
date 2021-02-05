@@ -1,0 +1,11 @@
+[package]
+name = "simplify-path"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "simplify_path"
+path = "solution.rs"

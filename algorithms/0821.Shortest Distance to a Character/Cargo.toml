@@ -1,0 +1,11 @@
+[package]
+name = "shortest-distance-to-a-character"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "shortest_distance_to_a_character"
+path = "solution.rs"

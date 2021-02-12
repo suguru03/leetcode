@@ -15,6 +15,7 @@ members = [
   "algorithms/0821.Shortest Distance to a Character",
   "algorithms/0881.Boats to Save People",
   "algorithms/1329.Sort the Matrix Diagonally",
+  "algorithms/1342.Number of Steps to Reduce a Number to Zero",
   "algorithms/1437.Check If All 1's Are at Least Length K Places Away",
   "algorithms/1631.Path With Minimum Effort",
   "algorithms/1641.Count Sorted Vowel Strings",

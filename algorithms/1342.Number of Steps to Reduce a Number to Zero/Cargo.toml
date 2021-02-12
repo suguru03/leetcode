@@ -1,0 +1,11 @@
+[package]
+name = "number-of-steps-to-reduce-a-number-to-zero"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "number_of_steps_to_reduce_a_number_to_zero"
+path = "solution.rs"

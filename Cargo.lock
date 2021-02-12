@@ -72,6 +72,10 @@ name = "number-of-1-bits"
 version = "0.1.0"
 
 [[package]]
+name = "number-of-steps-to-reduce-a-number-to-zero"
+version = "0.1.0"
+
+[[package]]
 name = "path-with-minimum-effort"
 version = "0.1.0"
 

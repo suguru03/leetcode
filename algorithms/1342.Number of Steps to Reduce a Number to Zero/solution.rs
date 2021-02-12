@@ -2,7 +2,7 @@ pub struct Solution;
 
 impl Solution {
     pub fn number_of_steps(num: i32) -> i32 {
-        (num.count_ones() as i32) + (num.max(1) as f32).log2().floor() as i32
+        (num.count_ones() as i32) + (num.max(1) as f32).log2() as i32
     }
 }
 

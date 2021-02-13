@@ -1,12 +1,12 @@
 pub struct Solution;
 
-use std::collections::LinkedList;
+use std::collections::VecDeque;
 
 impl Solution {
     pub fn shortest_path_binary_matrix(grid: Vec<Vec<i32>>) -> i32 {
         let n = grid.len();
         let mut dp = vec![vec![std::i32::MAX; n]; n];
-        let mut queue = LinkedList::new();
+        let mut queue = VecDeque::new();
         queue.push_front((0, 0, 1));
         while let Some((x, y, c)) = queue.pop_front() {
             if x < 0 || y < 0 {

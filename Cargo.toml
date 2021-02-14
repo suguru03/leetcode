@@ -12,6 +12,7 @@ members = [
   "algorithms/0242.Valid Anagram",
   "algorithms/0314.Vertical Order Traversal of a Binary Tree",
   "algorithms/0594.Longest Harmonious Subsequence",
+  "algorithms/0785.Is Graph Bipartite?",
   "algorithms/0821.Shortest Distance to a Character",
   "algorithms/0881.Boats to Save People",
   "algorithms/1091.Shortest Path in Binary Matrix",

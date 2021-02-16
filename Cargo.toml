@@ -17,6 +17,7 @@ members = [
   "algorithms/0881.Boats to Save People",
   "algorithms/1091.Shortest Path in Binary Matrix",
   "algorithms/1329.Sort the Matrix Diagonally",
+  "algorithms/1337.The K Weakest Rows in a Matrix",
   "algorithms/1342.Number of Steps to Reduce a Number to Zero",
   "algorithms/1437.Check If All 1's Are at Least Length K Places Away",
   "algorithms/1631.Path With Minimum Effort",

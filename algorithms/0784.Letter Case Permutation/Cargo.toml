@@ -1,0 +1,11 @@
+[package]
+name = "letter-case-permutation"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "letter_case_permutation"
+path = "solution.rs"

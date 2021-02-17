@@ -7,17 +7,17 @@ module.exports = { maxArea };
  * @return {number}
  */
 function maxArea(height) {
-  let max = 0;
   let left = 0;
   let right = height.length - 1;
-  let n1, n2;
+  let max = 0;
   while (left < right) {
-    n1 = height[left];
-    n2 = height[right];
-    if (n1 < n2) {
-      max = Math.max(max, n1 * (right - left++));
+    const hl = height[left];
+    const hr = height[right];
+    max = Math.max(max, Math.min(hl, hr) * (right - left));
+    if (hl < hr) {
+      left++;
     } else {
-      max = Math.max(max, n2 * (right-- - left));
+      right--;
     }
   }
   return max;

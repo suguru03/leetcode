@@ -3,6 +3,7 @@ members = [
   "algorithms/0001.Two Sum",
   "algorithms/0002.Add Two Numbers",
   "algorithms/0005.Longest Palindromic Substring",
+  "algorithms/0011.Container With Most Water",
   "algorithms/0020.Valid Parentheses",
   "algorithms/0071.Simplify Path",
   "algorithms/0088.Merge Sorted Array",

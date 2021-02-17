@@ -28,6 +28,10 @@ name = "concatenation-of-consecutive-binary-numbers"
 version = "0.1.0"
 
 [[package]]
+name = "container-with-most-water"
+version = "0.1.0"
+
+[[package]]
 name = "count-sorted-vowel-strings"
 version = "0.1.0"
 

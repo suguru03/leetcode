@@ -84,6 +84,10 @@ name = "minimum-operations-to-reduce-x-to-zero"
 version = "0.1.0"
 
 [[package]]
+name = "minimum-remove-to-make-valid-parentheses"
+version = "0.1.0"
+
+[[package]]
 name = "number-of-1-bits"
 version = "0.1.0"
 

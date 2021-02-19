@@ -18,8 +18,7 @@ impl Solution {
         }
         s.chars()
             .enumerate()
-            .filter(|(i, _)| indices[*i])
-            .map(|(_, v)| v)
+            .filter_map(|(i, v)| if indices[i] { Some(v) } else { None })
             .collect()
     }
 }

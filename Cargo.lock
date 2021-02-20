@@ -100,6 +100,10 @@ name = "path-with-minimum-effort"
 version = "0.1.0"
 
 [[package]]
+name = "roman-to-integer"
+version = "0.1.0"
+
+[[package]]
 name = "shortest-distance-to-a-character"
 version = "0.1.0"
 

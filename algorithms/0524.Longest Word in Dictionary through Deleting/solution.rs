@@ -2,8 +2,7 @@ pub struct Solution;
 
 impl Solution {
     pub fn find_longest_word(s: String, mut d: Vec<String>) -> String {
-        d.sort_unstable_by(|a, b| a.cmp(&b));
-        d.sort_by(|a, b| b.len().cmp(&a.len()));
+        d.sort_unstable_by(|a, b| b.len().cmp(&a.len()).then(a.cmp(&b)));
 
         let bs = s.as_bytes();
         d.into_iter()

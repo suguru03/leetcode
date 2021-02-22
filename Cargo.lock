@@ -20,6 +20,10 @@ name = "boats-to-save-people"
 version = "0.1.0"
 
 [[package]]
+name = "broken-calculator"
+version = "0.1.0"
+
+[[package]]
 name = "check-if-all-1-s-are-at-least-length-k-places-away"
 version = "0.1.0"
 

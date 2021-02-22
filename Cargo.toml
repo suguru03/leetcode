@@ -14,6 +14,7 @@ members = [
   "algorithms/0242.Valid Anagram",
   "algorithms/0314.Vertical Order Traversal of a Binary Tree",
   "algorithms/0413.Arithmetic Slices",
+  "algorithms/0524.Longest Word in Dictionary through Deleting",
   "algorithms/0594.Longest Harmonious Subsequence",
   "algorithms/0784.Letter Case Permutation",
   "algorithms/0785.Is Graph Bipartite?",

@@ -76,6 +76,10 @@ name = "longest-palindromic-substring"
 version = "0.1.0"
 
 [[package]]
+name = "longest-word-in-dictionary-through-deleting"
+version = "0.1.0"
+
+[[package]]
 name = "max-number-of-k-sum-pairs"
 version = "0.1.0"
 

@@ -1,0 +1,11 @@
+[package]
+name = "search-a-2-d-matrix-ii"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "search_a_2_d_matrix_ii"
+path = "solution.rs"

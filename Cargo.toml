@@ -20,6 +20,7 @@ members = [
   "algorithms/0784.Letter Case Permutation",
   "algorithms/0785.Is Graph Bipartite?",
   "algorithms/0821.Shortest Distance to a Character",
+  "algorithms/0856.Score of Parentheses",
   "algorithms/0881.Boats to Save People",
   "algorithms/0991.Broken Calculator",
   "algorithms/1091.Shortest Path in Binary Matrix",

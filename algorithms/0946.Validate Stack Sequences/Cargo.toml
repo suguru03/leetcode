@@ -1,0 +1,11 @@
+[package]
+name = "validate-stack-sequences"
+version = "0.1.0"
+authors = ["Suguru Motegi <suguru.motegi@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[lib]
+name = "validate_stack_sequences"
+path = "solution.rs"

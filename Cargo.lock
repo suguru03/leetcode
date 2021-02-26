@@ -164,6 +164,10 @@ name = "valid-parentheses"
 version = "0.1.0"
 
 [[package]]
+name = "validate-stack-sequences"
+version = "0.1.0"
+
+[[package]]
 name = "vertical-order-traversal-of-a-binary-tree"
 version = "0.1.0"
 dependencies = [

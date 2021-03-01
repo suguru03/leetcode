@@ -52,6 +52,10 @@ name = "determine-if-two-strings-are-close"
 version = "0.1.0"
 
 [[package]]
+name = "distribute-candies"
+version = "0.1.0"
+
+[[package]]
 name = "get-maximum-in-generated-array"
 version = "0.1.0"
 

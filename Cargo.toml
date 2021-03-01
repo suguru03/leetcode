@@ -16,6 +16,7 @@ members = [
   "algorithms/0314.Vertical Order Traversal of a Binary Tree",
   "algorithms/0413.Arithmetic Slices",
   "algorithms/0524.Longest Word in Dictionary through Deleting",
+  "algorithms/0575.Distribute Candies",
   "algorithms/0581.Shortest Unsorted Continuous Subarray",
   "algorithms/0594.Longest Harmonious Subsequence",
   "algorithms/0784.Letter Case Permutation",

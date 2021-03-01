@@ -4,11 +4,11 @@ use std::collections::HashSet;
 
 impl Solution {
     pub fn distribute_candies(candy_type: Vec<i32>) -> i32 {
-        let mut hash_set = HashSet::new();
-        for t in &candy_type {
-            hash_set.insert(t);
-        }
-        hash_set.len().min(candy_type.len() / 2) as i32
+        candy_type
+            .iter()
+            .collect::<HashSet<_>>()
+            .len()
+            .min(candy_type.len() / 2) as i32
     }
 }
 

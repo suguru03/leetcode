@@ -19,6 +19,7 @@ members = [
   "algorithms/0575.Distribute Candies",
   "algorithms/0581.Shortest Unsorted Continuous Subarray",
   "algorithms/0594.Longest Harmonious Subsequence",
+  "algorithms/0645.Set Mismatch",
   "algorithms/0784.Letter Case Permutation",
   "algorithms/0785.Is Graph Bipartite?",
   "algorithms/0821.Shortest Distance to a Character",

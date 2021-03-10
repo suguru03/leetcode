@@ -10,10 +10,10 @@ class LinkNode {
 }
 
 class TreeNode {
-  constructor(val) {
+  constructor(val, left = null, right = null) {
     this.val = val;
-    this.left = null;
-    this.right = null;
+    this.left = left;
+    this.right = right;
   }
 }
 
@@ -36,7 +36,7 @@ function makeTestTreeNodes(tests, name = 'root') {
 }
 
 function makeTestNodes(iterator, tests, name = 'root') {
-  _.forEach(tests, test => {
+  _.forEach(tests, (test) => {
     const array = test[name];
     const root = iterator(array);
     test[name] = root || null;
@@ -47,7 +47,7 @@ function makeTestNodes(iterator, tests, name = 'root') {
 function makeLinkNodes(array) {
   return (
     _.chain(array)
-      .map(n => new LinkNode(n))
+      .map((n) => new LinkNode(n))
       .reduce((result, node) => {
         let target = result;
         while (target.next) {
@@ -75,7 +75,7 @@ function makeTreeNodes(array) {
       return;
     }
     const children = [];
-    _.forEach(parents, parent => {
+    _.forEach(parents, (parent) => {
       const left = array[i++];
       const right = array[i++];
       if (left !== null && left !== undefined) {

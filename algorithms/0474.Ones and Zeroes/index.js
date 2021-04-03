@@ -9,18 +9,16 @@ module.exports = { findMaxForm };
  * @return {number}
  */
 function findMaxForm(strs, m, n) {
-  let dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
   for (const str of strs) {
-    const next = Array.from(dp, (row) => [...row]);
     const [zeros, ones] = count(str);
-    for (let z = 0; z <= m - zeros; z++) {
-      for (let o = 0; o <= n - ones; o++) {
-        next[z + zeros][o + ones] = Math.max(next[z + zeros][o + ones], dp[z][o] + 1);
+    for (let z = m - zeros; z >= 0; z--) {
+      for (let o = n - ones; o >= 0; o--) {
+        dp[z + zeros][o + ones] = Math.max(dp[z + zeros][o + ones], dp[z][o] + 1);
       }
     }
-    dp = next;
   }
-  return Math.max(...dp.flat());
+  return dp[m][n];
 }
 
 function count(str) {

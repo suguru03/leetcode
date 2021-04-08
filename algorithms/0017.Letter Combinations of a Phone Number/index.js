@@ -18,29 +18,20 @@ const map = {
  * @return {string[]}
  */
 function letterCombinations(digits) {
-  const l = digits.length;
-  if (l === 0) {
-    return [];
+  const result = [];
+  if (digits.length !== 0) {
+    dfs('');
   }
-  const result = new Set();
-  dfs(0, '');
-  return Array.from(result);
+  return result;
 
-  function dfs(index, str) {
-    if (str.length === l) {
-      result.add(str);
+  function dfs(str) {
+    if (str.length === digits.length) {
+      result.push(str);
       return;
     }
-    for (let i = index; i < l; i++) {
-      const n = +digits[i];
-      if (!map[n]) {
-        continue;
-      }
-      const [start, end] = map[n];
-      for (let j = start; j <= end; j++) {
-        const c = String.fromCharCode(j);
-        dfs(i + 1, str + c);
-      }
+    const [from, to] = map[digits[str.length]];
+    for (let i = from; i <= to; i++) {
+      dfs(str + String.fromCharCode(i));
     }
   }
 }

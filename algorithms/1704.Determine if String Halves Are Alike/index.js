@@ -22,5 +22,5 @@ function halvesAreAlike(s) {
  * @return {boolean}
  */
 function halvesAreAlike2(s) {
-  return s.split('').reduce((sum, c, i) => sum + (((i < s.length >> 1) << 1) - 1) * ~~vowelSet.has(c), 0) === 0;
+  return s.split('').reduce((sum, c, i) => sum + (((i < s.length >> 1) << 1) - 1) * ~~/[aeiou]/i.test(c), 0) === 0;
 }

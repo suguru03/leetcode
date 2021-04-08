@@ -9,16 +9,18 @@ const vowelSet = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']);
  * @return {boolean}
  */
 function halvesAreAlike(s) {
-  let c1 = 0;
-  let c2 = 0;
+  let count = 0;
   const size = s.length >> 1;
   for (let i = 0; i < size; i++) {
-    if (vowelSet.has(s[i])) {
-      c1++;
-    }
-    if (vowelSet.has(s[i + size])) {
-      c2++;
-    }
+    count += ~~vowelSet.has(s[i]) - ~~vowelSet.has(s[i + size]);
   }
-  return c1 === c2;
+  return count === 0;
+}
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+function halvesAreAlike2(s) {
+  return s.split('').reduce((sum, c, i) => sum + (((i < s.length >> 1) << 1) - 1) * ~~vowelSet.has(c), 0) === 0;
 }

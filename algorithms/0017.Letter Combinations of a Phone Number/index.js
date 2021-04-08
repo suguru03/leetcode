@@ -30,8 +30,8 @@ function letterCombinations(digits) {
       return;
     }
     const [from, to] = map[digits[str.length]];
-    for (let i = from; i <= to; i++) {
-      dfs(str + String.fromCharCode(i));
+    for (let code = from; code <= to; code++) {
+      dfs(str + String.fromCharCode(code));
     }
   }
 }

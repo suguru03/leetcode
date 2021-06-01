@@ -2,12 +2,18 @@
 
 const assert = require('assert');
 const _ = require('lodash');
+
 const { maxAreaOfIsland } = require('./');
 
 describe('#maxAreaOfIsland', () => {
   const tests = [
     {
-      grid: [[1, 1, 0, 0, 0], [1, 1, 0, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]],
+      grid: [
+        [1, 1, 0, 0, 0],
+        [1, 1, 0, 0, 0],
+        [0, 0, 0, 1, 1],
+        [0, 0, 0, 1, 1],
+      ],
       result: 4,
     },
     {
@@ -25,11 +31,18 @@ describe('#maxAreaOfIsland', () => {
       result: 6,
     },
     {
-      grid: [[0, 1, 1], [1, 1, 1]],
+      grid: [
+        [0, 1, 1],
+        [1, 1, 1],
+      ],
       result: 5,
     },
     {
-      grid: [[0, 0, 1], [0, 1, 1], [1, 1, 1]],
+      grid: [
+        [0, 0, 1],
+        [0, 1, 1],
+        [1, 1, 1],
+      ],
       result: 6,
     },
     {

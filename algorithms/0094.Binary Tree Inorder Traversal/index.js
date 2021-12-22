@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { inorderTraversal, inorderTraversal2 };
+module.exports = { inorderTraversal, inorderTraversal2, inorderTraversal3 };
 
 /**
  * Definition for a binary tree node.
@@ -61,4 +61,31 @@ function inorderTraversal2(root) {
     }
   }
   return result;
+}
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+function inorderTraversal3(root) {
+  const result = [];
+  dfs(root);
+  return result;
+
+  function dfs(node) {
+    if (!node) {
+      return;
+    }
+    dfs(node.left);
+    result.push(node.val);
+    dfs(node.right);
+  }
 }

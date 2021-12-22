@@ -4,9 +4,10 @@ module.exports = { levelOrder, levelOrder2 };
 
 /**
  * Definition for a binary tree node.
- * function TreeNode(val) {
- *   this.val = val
- *   this.left = this.right = null
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
  * }
  */
 /**
@@ -15,20 +16,21 @@ module.exports = { levelOrder, levelOrder2 };
  */
 function levelOrder(root) {
   const result = [];
-  if (!root) {
-    return result;
-  }
-  let depth = 0;
   let queue = [root];
-  while (queue.length) {
-    const res = (result[depth++] = []);
+  while (queue.length !== 0) {
+    const row = [];
     const next = [];
-    for (const { val, left, right } of queue) {
-      res.push(val);
-      left && next.push(left);
-      right && next.push(right);
+    for (const node of queue) {
+      if (!node) {
+        continue;
+      }
+      row.push(node.val);
+      next.push(node.left, node.right);
     }
     queue = next;
+    if (row.length !== 0) {
+      result.push(row);
+    }
   }
   return result;
 }

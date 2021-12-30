@@ -9,17 +9,15 @@ describe('#constructMaximumBinaryTree', () => {
   const tests = [
     {
       root: [1, 2, 3, null, null, 4, 5],
-      result1: [1, 2, 3, null, null, 4, 5].toString(),
-      result2: [1, 2, 3, null, null, 4, 5],
+      result: [1, 2, 3, null, null, 4, 5],
     },
   ];
   makeTestTreeNodes(tests);
-  makeTestTreeNodes(tests, 'result2');
+  makeTestTreeNodes(tests, 'result');
 
-  for (const { root, _root, result1, result2 } of tests) {
+  for (const { root, _root, result } of tests) {
     it(`[${_root}]`, () => {
-      assert.deepStrictEqual(serialize(root), result1);
-      assert.deepStrictEqual(deserialize(result1), result2);
+      assert.deepStrictEqual(deserialize(serialize(root)), result);
     });
   }
 });

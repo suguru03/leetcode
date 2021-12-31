@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { constructRectangle2: constructRectangle } = require('./');
 
 describe('#constructRectangle', () => {
@@ -40,9 +40,9 @@ describe('#constructRectangle', () => {
     },
   ];
 
-  _.forEach(tests, ({ area, result }) => {
+  for (const { area, result } of tests) {
     it(`${area} -> ${result}`, () => {
-      assert.deepEqual(constructRectangle(area), result);
+      assert.deepStrictEqual(constructRectangle(area), result);
     });
-  });
+  }
 });

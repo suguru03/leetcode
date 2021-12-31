@@ -3,7 +3,7 @@
 const assert = require('assert');
 
 const { buildTree } = require('./');
-const { makeTestTreeNodes } = require('../util');
+const { makeTestTreeNodes } = require('../utils');
 
 describe('#buildTree', () => {
   const tests = [

@@ -1,14 +1,14 @@
 'use strict';
 
-module.exports = { bstFromPreorder, bstFromPreorder2 };
+module.exports = { bstFromPreorder, bstFromPreorder2, bstFromPreorder3 };
 
 const { TreeNode } = require('../util');
 
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
- *     this.val = val
- *     this.left = this.right = null
+ *   this.val = val
+ *   this.left = this.right = null
  * }
  */
 /**
@@ -39,8 +39,8 @@ function bstFromPreorder(preorder) {
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
- *     this.val = val
- *     this.left = this.right = null
+ *   this.val = val
+ *   this.left = this.right = null
  * }
  */
 /**
@@ -70,4 +70,25 @@ function bstFromPreorder2(preorder) {
     node.right = dfs(left, to);
     return node;
   }
+}
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {number[]} preorder
+ * @return {TreeNode}
+ */
+function bstFromPreorder3(preorder, max = Infinity) {
+  if (preorder.length === 0 || preorder[0] > max) {
+    return null;
+  }
+  const node = new TreeNode(preorder.shift());
+  node.left = bstFromPreorder(preorder, node.val);
+  node.right = bstFromPreorder(preorder, max);
+  return node;
 }

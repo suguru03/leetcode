@@ -1,10 +1,9 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { bstFromPreorder } = require('./');
-const { makeTestTreeNodes } = require('../util');
+const { makeTestTreeNodes } = require('../utils');
 
 describe('#bstFromPreorder', () => {
   const tests = [
@@ -19,9 +18,9 @@ describe('#bstFromPreorder', () => {
   ];
   makeTestTreeNodes(tests, 'result');
 
-  _.forEach(tests, ({ preorder, result, _result }) => {
+  for (const { preorder, result, _result } of tests) {
     it(`${preorder} -> ${_result}`, () => {
       assert.deepStrictEqual(bstFromPreorder(preorder), result);
     });
-  });
+  }
 });

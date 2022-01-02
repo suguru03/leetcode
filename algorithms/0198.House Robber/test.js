@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { rob } = require('./');
 
@@ -27,11 +26,15 @@ describe('#rob', () => {
       nums: [],
       result: 0,
     },
+    {
+      nums: [3, 1],
+      result: 3,
+    },
   ];
 
-  _.forEach(tests, ({ nums, result }) => {
+  for (const { nums, result } of tests) {
     it(`[${nums}] -> ${result}`, () => {
       assert.strictEqual(rob(nums), result);
     });
-  });
+  }
 });

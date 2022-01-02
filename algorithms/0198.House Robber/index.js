@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { rob, rob2, rob3 };
+module.exports = { rob, rob2, rob3, rob4 };
 
 /**
  * @param {number[]} nums
@@ -37,4 +37,19 @@ function rob3(nums) {
     [prev, curr] = [curr, Math.max(prev + n, curr)];
   }
   return curr;
+}
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function rob4(nums) {
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] += Math.max(get(i - 2), get(i - 3));
+  }
+  return Math.max(0, ...nums.slice(-2));
+
+  function get(index) {
+    return index < 0 ? 0 : nums[index];
+  }
 }

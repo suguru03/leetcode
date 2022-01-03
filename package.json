@@ -20,7 +20,7 @@
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
     "aigle": "^1.14.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "benchmark": "^2.1.4",
     "eslint": "^7.17.0",
     "gulp": "^4.0.2",

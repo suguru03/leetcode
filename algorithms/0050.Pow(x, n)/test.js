@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { myPow } = require('./');
 
@@ -24,9 +23,9 @@ describe('#myPow', () => {
     },
   ];
 
-  _.forEach(tests, ({ x, n, result }) => {
+  for (const { x, n, result } of tests) {
     it(`${x}, ${n} -> ${result}`, () => {
       assert.deepStrictEqual(myPow(x, n), result);
     });
-  });
+  }
 });

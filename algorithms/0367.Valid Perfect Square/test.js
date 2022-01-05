@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { isPerfectSquare } = require('./');
 
@@ -17,9 +16,9 @@ describe('#isPerfectSquare', () => {
     },
   ];
 
-  _.forEach(tests, ({ num, result }) => {
+  for (const { num, result } of tests) {
     it(`${num} -> ${result}`, () => {
       assert.strictEqual(isPerfectSquare(num), result);
     });
-  });
+  }
 });

@@ -7,21 +7,17 @@ module.exports = { isPerfectSquare, isPerfectSquare2 };
  * @return {boolean}
  */
 function isPerfectSquare(num) {
-  let left = 1;
-  let right = num;
-  while (left <= right) {
-    const mid = left + (((right - left) / 2) | 0);
-    const target = mid ** 2;
-    if (target === num) {
-      return true;
-    }
-    if (target > num) {
-      right = mid - 1;
+  let l = 0;
+  let r = num;
+  while (l < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (m ** 2 < num) {
+      l = m + 1;
     } else {
-      left = mid + 1;
+      r = m;
     }
   }
-  return false;
+  return l ** 2 === num;
 }
 
 /**

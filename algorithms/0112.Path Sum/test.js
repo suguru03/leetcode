@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { hasPathSum } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
@@ -45,9 +45,9 @@ describe('#hasPathSum', () => {
   ];
   makeTestTreeNodes(tests);
 
-  _.forEach(tests, ({ root, _root, sum, result }) => {
+  for (const { root, _root, sum, result } of tests) {
     it(`[${_root}] -> ${result}`, () => {
       assert.strictEqual(hasPathSum(root, sum), result);
     });
-  });
+  }
 });

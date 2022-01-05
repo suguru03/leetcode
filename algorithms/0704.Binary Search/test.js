@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { search } = require('./');
 
 describe('#search', () => {
@@ -18,9 +18,9 @@ describe('#search', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums, target, result }) => {
+  for (const { nums, target, result } of tests) {
     it(`${nums}, ${target} -> ${result}`, () => {
       assert.deepStrictEqual(search(nums, target), result);
     });
-  });
+  }
 });

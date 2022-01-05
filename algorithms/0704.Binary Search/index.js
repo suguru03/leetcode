@@ -9,9 +9,9 @@ module.exports = { search };
  */
 function search(nums, target) {
   let l = 0;
-  let r = nums.length - 1;
-  while (l <= r) {
-    const m = ((l + r) / 2) | 0;
+  let r = nums.length;
+  while (l < r) {
+    const m = (l + (r - l) / 2) | 0;
     const n = nums[m];
     if (n === target) {
       return m;
@@ -19,7 +19,7 @@ function search(nums, target) {
     if (n < target) {
       l = m + 1;
     } else {
-      r = m - 1;
+      r = m;
     }
   }
   return -1;

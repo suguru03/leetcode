@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { isSymmetric } = require('./');
 const { makeTestTreeNodes } = require('../util');
@@ -27,9 +26,9 @@ describe('#isSymmetric', () => {
   ];
   makeTestTreeNodes(tests);
 
-  _.forEach(tests, ({ root, _root, result }) => {
+  for (const { root, _root, result } of tests) {
     it(`[${_root}] -> ${result}`, () => {
       assert.strictEqual(isSymmetric(root), result);
     });
-  });
+  }
 });

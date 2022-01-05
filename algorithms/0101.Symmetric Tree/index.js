@@ -4,9 +4,10 @@ module.exports = { isSymmetric };
 
 /**
  * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
  * }
  */
 /**
@@ -14,20 +15,18 @@ module.exports = { isSymmetric };
  * @return {boolean}
  */
 function isSymmetric(root) {
-  if (!root) {
-    return true;
+  const queue = [root.left, root.right];
+  while (queue.length) {
+    const left = queue.shift();
+    const right = queue.pop();
+    if (left === right) {
+      continue;
+    }
+    if (left?.val !== right?.val) {
+      return false;
+    }
+    queue.unshift(left.right, left.left);
+    queue.push(right.right, right.left);
   }
-  return check(root.left, root.right);
-}
-
-function check(left, right) {
-  const nol = !left;
-  const nor = !right;
-  if (nol && nor) {
-    return true;
-  }
-  if (nol !== nor || left.val !== right.val) {
-    return false;
-  }
-  return check(left.left, right.right) && check(left.right, right.left);
+  return true;
 }

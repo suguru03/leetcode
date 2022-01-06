@@ -1,8 +1,48 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
-const { searchRange } = require('./');
+
+// const { searchRange } = require('./');
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+function searchRange(nums, target) {
+  const left = findLeft(nums, target);
+  return [left, findRight(nums, target, left)];
+}
+
+function findLeft(nums, target) {
+  let l = 0;
+  let r = nums.length;
+  while (l < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (nums[m] < target) {
+      l = m + 1;
+    } else {
+      r = m;
+    }
+  }
+  return nums[l] === target ? l : -1;
+}
+
+function findRight(nums, target, l) {
+  if (l === -1) {
+    return -1;
+  }
+  let r = nums.length;
+  while (l + 1 < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (nums[m] <= target) {
+      l = m;
+    } else {
+      r = m;
+    }
+  }
+  return l;
+}
 
 describe('#searchRange', () => {
   const tests = [
@@ -33,9 +73,9 @@ describe('#searchRange', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums, target, result }) => {
+  for (const { nums, target, result } of tests) {
     it(`${nums}, ${target} -> ${result}`, () => {
       assert.deepStrictEqual(searchRange(nums, target), result);
     });
-  });
+  }
 });

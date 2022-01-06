@@ -1,66 +1,43 @@
 'use strict';
 
-module.exports = { searchRange, searchRange2 };
+module.exports = { searchRange };
 
 /**
- * @see https://leetcode.com/explore/learn/card/binary-search/135/template-iii/936/
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
  */
 function searchRange(nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left < right) {
-    const mid = ((left + right) / 2) | 0;
-    if (nums[mid] <= target) {
-      left = mid + 1;
-    } else {
-      right = mid;
-    }
-  }
-  const end = nums[left] === target ? left : left - 1;
-  if (nums[end] !== target) {
-    return [-1, -1];
-  }
-  while (--left >= 0) {
-    if (nums[left] !== target) {
-      break;
-    }
-  }
-  return [left + 1, end];
+  const left = findLeft(nums, target);
+  return [left, findRight(nums, target, left)];
 }
 
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-function searchRange2(nums, target) {
-  // find the first target
-  let left = 0;
-  let right = nums.length - 1;
-  while (left + 1 < right) {
-    const mid = ((left + right) / 2) | 0;
-    if (nums[mid] < target) {
-      left = mid;
+function findLeft(nums, target) {
+  let l = 0;
+  let r = nums.length;
+  while (l < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (nums[m] < target) {
+      l = m + 1;
     } else {
-      right = mid;
+      r = m;
     }
   }
-  const start = nums[left] === target ? left : nums[right] === target ? right : -1;
+  return nums[l] === target ? l : -1;
+}
 
-  // find the last target
-  left = 0;
-  right = nums.length - 1;
-  while (left + 1 < right) {
-    const mid = ((left + right) / 2) | 0;
-    if (nums[mid] <= target) {
-      left = mid;
+function findRight(nums, target, l) {
+  if (l === -1) {
+    return -1;
+  }
+  let r = nums.length;
+  while (l + 1 < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (nums[m] <= target) {
+      l = m;
     } else {
-      right = mid;
+      r = m;
     }
   }
-  const end = nums[right] === target ? right : nums[left] === target ? left : -1;
-  return [start, end];
+  return l;
 }

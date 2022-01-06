@@ -8,21 +8,13 @@ module.exports = { carPooling };
  * @return {boolean}
  */
 function carPooling(trips, capacity) {
-  const map = {};
-  for (const [p, s, e] of trips) {
-    map[s] = map[s] || 0;
-    map[s] += p;
-    map[e] = map[e] || 0;
-    map[e] -= p;
+  const nums = Array(1001).fill(0);
+  for (const [num, from, to] of trips) {
+    nums[from] += num;
+    nums[to] -= num;
   }
-  for (let i = 0; i <= 1000; i++) {
-    if (!map[i]) {
-      continue;
-    }
-    capacity -= map[i];
-    if (capacity < 0) {
-      return false;
-    }
-  }
-  return true;
+  return nums.every((num) => {
+    capacity -= num;
+    return capacity >= 0;
+  });
 }

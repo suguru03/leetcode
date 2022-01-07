@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { findClosestElements } = require('./');
 
 describe('#findClosestElements', () => {
@@ -61,9 +61,10 @@ describe('#findClosestElements', () => {
       result: [1, 1, 2, 3, 3, 3],
     },
   ];
-  _.forEach(tests, ({ arr, k, x, result }) => {
+
+  for (const { arr, k, x, result } of tests) {
     it(`[${arr}], k: ${k}, x: ${x} -> [${result}]`, () => {
       assert.deepEqual(findClosestElements(arr, k, x), result);
     });
-  });
+  }
 });

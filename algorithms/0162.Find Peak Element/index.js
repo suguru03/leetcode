@@ -7,15 +7,15 @@ module.exports = { findPeakElement };
  * @return {number}
  */
 function findPeakElement(nums) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left < right) {
-    const mid = ((left + right) / 2) | 0;
-    if (nums[mid] > nums[mid + 1]) {
-      right = mid;
+  let l = 0;
+  let r = nums.length;
+  while (l < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (nums[m] <= nums[m + 1]) {
+      l = m + 1;
     } else {
-      left = mid + 1;
+      r = m;
     }
   }
-  return right;
+  return l;
 }

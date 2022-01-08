@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { findPeakElement } = require('./');
 
 describe('#findPeakElement', () => {
@@ -20,9 +20,9 @@ describe('#findPeakElement', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums, result }) => {
+  for (const { nums, result } of tests) {
     it(`${nums} -> ${result}`, () => {
       assert.deepStrictEqual(findPeakElement(nums), result);
     });
-  });
+  }
 });

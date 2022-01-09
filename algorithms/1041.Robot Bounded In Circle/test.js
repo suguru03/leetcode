@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { isRobotBounded } = require('./');
 
 describe('#isRobotBounded', () => {
@@ -32,9 +32,9 @@ describe('#isRobotBounded', () => {
     },
   ];
 
-  _.forEach(tests, ({ instructions, result }) => {
+  for (const { instructions, result } of tests) {
     it(`${instructions} -> ${result}`, () => {
       assert.deepStrictEqual(isRobotBounded(instructions), result);
     });
-  });
+  }
 });

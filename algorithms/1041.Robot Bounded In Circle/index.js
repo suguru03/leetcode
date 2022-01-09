@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { isRobotBounded, isRobotBounded2, isRobotBounded3 };
+module.exports = { isRobotBounded, isRobotBounded2, isRobotBounded3, isRobotBounded4 };
 
 /**
  * @param {string} instructions
@@ -105,4 +105,22 @@ function isRobotBounded3(instructions) {
     }
   }
   return (x === 0 && y === 0) || cur > 0;
+}
+
+/**
+ * @param {string} instructions
+ * @return {boolean}
+ */
+function isRobotBounded4(instructions) {
+  let direction = 1;
+  let positive = 1;
+  const nums = [0, 0];
+  for (const c of instructions) {
+    if (c === 'G') {
+      nums[direction] += positive ? 1 : -1;
+    } else {
+      [direction, positive] = [direction ^ 1, Number((direction === positive) === (c === 'L'))];
+    }
+  }
+  return nums.every((num) => num === 0) || direction !== 1 || positive !== 1;
 }

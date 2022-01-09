@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { nextGreatestLetter } = require('./');
 
 describe('#nextGreatestLetter', () => {
@@ -18,9 +18,9 @@ describe('#nextGreatestLetter', () => {
     },
   ];
 
-  _.forEach(tests, ({ letters, target, result }) => {
+  for (const { letters, target, result } of tests) {
     it(`${letters}, ${target} -> ${result}`, () => {
       assert.deepStrictEqual(nextGreatestLetter(letters, target), result);
     });
-  });
+  }
 });

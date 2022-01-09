@@ -8,5 +8,15 @@ module.exports = { nextGreatestLetter };
  * @return {character}
  */
 function nextGreatestLetter(letters, target) {
-  return letters.find(letter => letter > target) || letters[0];
+  let l = 0;
+  let r = letters.length;
+  while (l < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (letters[m] <= target) {
+      l = m + 1;
+    } else {
+      r = m;
+    }
+  }
+  return letters[l === letters.length ? 0 : l];
 }

@@ -7,16 +7,16 @@ module.exports = { findMin };
  * @return {number}
  */
 function findMin(nums) {
-  let left = 0;
-  let right = nums.length;
-  const last = nums[right - 1];
-  while (left < right) {
-    const mid = ((left + right) / 2) | 0;
-    if (nums[mid] > last) {
-      left = mid + 1;
+  let l = 0;
+  let r = nums.length;
+  const last = nums[r - 1];
+  while (l < r) {
+    const m = (l + (r - l) / 2) | 0;
+    if (nums[m] > last) {
+      l = m + 1;
     } else {
-      right = mid;
+      r = m;
     }
   }
-  return nums[left];
+  return nums[l];
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { findMin } = require('./');
 
 describe('#findMin', () => {
@@ -28,9 +28,9 @@ describe('#findMin', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums, result }) => {
+  for (const { nums, result } of tests) {
     it(`${nums} -> ${result}`, () => {
       assert.deepStrictEqual(findMin(nums), result);
     });
-  });
+  }
 });

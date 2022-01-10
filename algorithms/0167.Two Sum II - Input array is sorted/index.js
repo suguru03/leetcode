@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { twoSum, twoSum2 };
+module.exports = { twoSum, twoSum2, twoSum3 };
 
 /**
  * @param {number[]} numbers
@@ -37,6 +37,33 @@ function twoSum2(numbers, target) {
       return [map.get(diff) + 1, index + 1];
     }
     map.set(num, index);
+  }
+  return [0, 0];
+}
+
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+function twoSum3(numbers, target) {
+  const size = numbers.length;
+  for (let i = 0; i < size - 1; i++) {
+    const t = target - numbers[i];
+    let l = i + 1;
+    let r = size;
+    while (l < r) {
+      const m = (l + (r - l) / 2) | 0;
+      const n2 = numbers[m];
+      if (n2 === t) {
+        return [i + 1, m + 1];
+      }
+      if (n2 < t) {
+        l = m + 1;
+      } else {
+        r = m;
+      }
+    }
   }
   return [0, 0];
 }

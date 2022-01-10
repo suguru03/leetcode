@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { addBinary };
+module.exports = { addBinary, addBinary2 };
 
 /**
  * @param {string} a
@@ -23,4 +23,24 @@ function addBinary(a, b) {
     res = prev + res;
   }
   return res;
+}
+
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {string}
+ */
+function addBinary2(a, b) {
+  let la = a.length;
+  let lb = b.length;
+  const result = Array(Math.max(la, lb)).fill(0);
+  for (let i = 0; i < result.length; i++) {
+    result[i] += (a[la - i - 1] | 0) + (b[lb - i - 1] | 0);
+    if (result[i] <= 1) {
+      continue;
+    }
+    result[i] %= 2;
+    result[i + 1] = (result[i + 1] | 0) + 1;
+  }
+  return result.reverse().join('');
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { intersect } = require('./');
 
 describe('#intersect', () => {
@@ -13,9 +13,9 @@ describe('#intersect', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums1, nums2, result }) => {
+  for (const { nums1, nums2, result } of tests) {
     it(`${nums1}, ${nums2} -> ${result}`, () => {
-      assert.deepEqual(intersect(nums1, nums2), result);
+      assert.deepStrictEqual(intersect(nums1, nums2), result);
     });
-  });
+  }
 });

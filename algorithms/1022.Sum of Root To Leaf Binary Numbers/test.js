@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { sumRootToLeaf } = require('./');
 const { makeTestTreeNodes } = require('../util');
 
@@ -18,9 +18,9 @@ describe('#sumRootToLeaf', () => {
   ];
   makeTestTreeNodes(tests);
 
-  _.forEach(tests, ({ root, _root, result }) => {
+  for (const { root, _root, result } of tests) {
     it(`${_root} -> ${result}`, () => {
       assert.deepStrictEqual(sumRootToLeaf(root), result);
     });
-  });
+  }
 });

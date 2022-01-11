@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { findDuplicate } = require('./');
 
 describe('#findDuplicate', () => {
@@ -16,9 +16,9 @@ describe('#findDuplicate', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums, result }) => {
+  for (const { nums, result } of tests) {
     it(`${nums} -> ${result}`, () => {
       assert.deepStrictEqual(findDuplicate(nums), result);
     });
-  });
+  }
 });

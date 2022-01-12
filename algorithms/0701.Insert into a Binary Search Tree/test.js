@@ -1,10 +1,9 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { insertIntoBST } = require('./');
-const { makeTestTreeNodes } = require('../utils');
+const { TreeNode, makeTestTreeNodes } = require('../utils');
 
 describe('#insertIntoBST', () => {
   const tests = [
@@ -28,13 +27,18 @@ describe('#insertIntoBST', () => {
       val: 25,
       result: [40, 20, 60, 10, 30, 50, 70, null, null, 25],
     },
+    {
+      root: [],
+      val: 5,
+      result: [5],
+    },
   ];
   makeTestTreeNodes(tests);
   makeTestTreeNodes(tests, 'result');
 
-  _.forEach(tests, ({ root, _root, val, result, _result }) => {
+  for (const { root, _root, val, result, _result } of tests) {
     it(`${_root}, ${val} -> ${_result}`, () => {
       assert.deepStrictEqual(insertIntoBST(root, val), result);
     });
-  });
+  }
 });

@@ -3,7 +3,7 @@
 const assert = require('assert');
 
 const { insertIntoBST } = require('./');
-const { TreeNode, makeTestTreeNodes } = require('../utils');
+const { makeTestTreeNodes } = require('../utils');
 
 describe('#insertIntoBST', () => {
   const tests = [

@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { searchInsert } = require('./');
 
 describe('#searchInsert', () => {
@@ -38,9 +38,9 @@ describe('#searchInsert', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums, target, result }) => {
+  for (const { nums, target, result } of tests) {
     it(`[${nums}], ${target} -> ${result}`, () => {
       assert.strictEqual(searchInsert(nums, target), result);
     });
-  });
+  }
 });

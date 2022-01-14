@@ -1,8 +1,8 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
-const myAtoi = require('./');
+
+const { myAtoi } = require('./');
 
 describe('#StringToInteger', () => {
   const tests = [
@@ -26,11 +26,19 @@ describe('#StringToInteger', () => {
       str: '+10.5',
       result: 10,
     },
+    {
+      str: '00000-42a1234',
+      result: 0,
+    },
+    {
+      str: '.1',
+      result: 0,
+    },
   ];
 
-  _.forEach(tests, ({ str, result }) => {
+  for (const { str, result } of tests) {
     it(`[${str}] -> [${result}]`, () => {
       assert.strictEqual(myAtoi(str), result);
     });
-  });
+  }
 });

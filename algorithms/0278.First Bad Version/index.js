@@ -21,17 +21,17 @@ function solution(isBadVersion) {
    * @param {integer} n Total versions
    * @return {integer} The first bad version
    */
-  return n => {
-    let left = 1;
-    let right = n;
-    while (left < right) {
-      let mid = (left + (right - left) / 2) | 0;
-      if (isBadVersion(mid)) {
-        right = mid;
+  return (n) => {
+    let l = 1;
+    let r = n;
+    while (l < r) {
+      const m = (l + (r - l) / 2) | 0;
+      if (!isBadVersion(m)) {
+        l = m + 1;
       } else {
-        left = mid + 1;
+        r = m;
       }
     }
-    return left;
+    return l;
   };
 }

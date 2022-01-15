@@ -124,6 +124,10 @@ name = "search-a-2-d-matrix-ii"
 version = "0.1.0"
 
 [[package]]
+name = "search-insert-position"
+version = "0.1.0"
+
+[[package]]
 name = "set-mismatch"
 version = "0.1.0"
 

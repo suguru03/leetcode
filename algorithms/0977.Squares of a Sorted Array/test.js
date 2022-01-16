@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { sortedSquares } = require('./');
 
 describe('#sortedSquares', () => {
@@ -16,9 +16,9 @@ describe('#sortedSquares', () => {
     },
   ];
 
-  _.forEach(tests, ({ A, result }) => {
+  for (const { A, result } of tests) {
     it(`${A} -> ${result}`, () => {
       assert.deepStrictEqual(sortedSquares(A), result);
     });
-  });
+  }
 });

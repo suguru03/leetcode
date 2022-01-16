@@ -7,13 +7,13 @@ module.exports = { maxDistToClosest };
  * @return {number}
  */
 function maxDistToClosest(seats) {
-  let left = seats.indexOf(1);
-  let max = left;
-  for (let i = left + 1; i < seats.length; i++) {
-    if (seats[i] === 0) {
+  let l = seats.indexOf(1);
+  let max = l;
+  for (let r = l + 1; r < seats.length; r++) {
+    if (seats[r] === 0) {
       continue;
     }
-    [max, left] = [Math.max(max, ((i - left) / 2) | 0), i];
+    [max, l] = [Math.max(max, ((r - l) / 2) | 0), r];
   }
-  return Math.max(max, seats.length - left - 1);
+  return Math.max(max, seats.length - l - 1);
 }

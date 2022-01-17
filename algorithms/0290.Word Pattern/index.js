@@ -4,28 +4,20 @@ module.exports = { wordPattern };
 
 /**
  * @param {string} pattern
- * @param {string} str
+ * @param {string} s
  * @return {boolean}
  */
-function wordPattern(pattern, str) {
-  let l = pattern.length;
-  const words = str.split(/\s/g);
-  if (l !== words.length) {
-    return false;
-  }
-  const mp = {};
-  const mw = {};
-  while (l--) {
-    const p = pattern[l];
-    const w = words[l];
-    if (mp[p] === undefined && mw[w] === undefined) {
-      mp[p] = w;
-      mw[w] = p;
-      continue;
-    }
-    if (mp[p] !== w || mw[w] !== p) {
-      return false;
-    }
-  }
-  return true;
+function wordPattern(pattern, s) {
+  const wordMap = {};
+  const patternMap = {};
+  const list = s.split(' ');
+  return (
+    list.length === pattern.length &&
+    list.every((w, i) => {
+      const p = pattern[i];
+      wordMap[p] ??= w;
+      patternMap[w] ??= p;
+      return patternMap[w] === p && wordMap[p] === w;
+    })
+  );
 }

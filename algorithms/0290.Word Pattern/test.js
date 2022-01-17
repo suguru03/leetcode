@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { wordPattern } = require('./');
 
 describe('#wordPattern', () => {
@@ -26,11 +26,27 @@ describe('#wordPattern', () => {
       str: 'dog dog',
       result: false,
     },
+    {
+      pattern: 'jquery',
+      str: 'jquery',
+      result: false,
+    },
+    {
+      pattern: 'aba',
+      str: 'cat cat cat dog',
+      result: false,
+    },
+    {
+      pattern: 'aba',
+      str: 'dog cat cat',
+      result: false,
+    },
   ];
+  tests.splice(0, 6);
 
-  _.forEach(tests, ({ pattern, str, result }) => {
+  for (const { pattern, str, result } of tests) {
     it(`${pattern}, ${str} -> ${result}`, () => {
       assert.strictEqual(wordPattern(pattern, str), result);
     });
-  });
+  }
 });

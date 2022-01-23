@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { sequentialDigits } = require('./');
 
 describe('#sequentialDigits', () => {
@@ -18,9 +18,9 @@ describe('#sequentialDigits', () => {
     },
   ];
 
-  _.forEach(tests, ({ low, high, result }) => {
+  for (const { low, high, result } of tests) {
     it(`${low}, ${high} -> ${result}`, () => {
       assert.deepStrictEqual(sequentialDigits(low, high), result);
     });
-  });
+  }
 });

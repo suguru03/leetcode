@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { validMountainArray } = require('./');
 
 describe('#validMountainArray', () => {
@@ -30,11 +30,15 @@ describe('#validMountainArray', () => {
       A: [3, 2, 1],
       result: false,
     },
+    {
+      A: [1, 1, 1, 1, 1, 1, 1, 2, 1],
+      result: false,
+    },
   ];
 
-  _.forEach(tests, ({ A, result }) => {
+  for (const { A, result } of tests) {
     it(`${A} -> ${result}`, () => {
       assert.deepStrictEqual(validMountainArray(A), result);
     });
-  });
+  }
 });

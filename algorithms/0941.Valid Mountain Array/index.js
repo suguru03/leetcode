@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = { validMountainArray, validMountainArray2 };
+const _ = require('lodash');
+
+module.exports = { validMountainArray, validMountainArray2, validMountainArray3 };
 
 /**
  * @param {number[]} A
@@ -31,4 +33,14 @@ function validMountainArray2(A) {
   }
   while (++i < n && A[i - 1] > A[i]) {}
   return i === n;
+}
+
+/**
+ * @param {number[]} A
+ * @return {boolean}
+ */
+function validMountainArray3(A) {
+  const left = _.findIndex(A, (v, i) => v <= A[i - 1]) - 1;
+  const right = _.findLastIndex(A, (v, i) => v <= A[i + 1]) + 1;
+  return left === right && left > 0 && left < A.length;
 }

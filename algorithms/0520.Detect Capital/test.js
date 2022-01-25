@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { detectCapitalUse } = require('./');
 
@@ -25,9 +24,9 @@ describe('#detectCapitalUse', () => {
     },
   ];
 
-  _.forEach(tests, ({ word, result }) => {
+  for (const { word, result } of tests) {
     it(`${word} -> ${result}`, () => {
       assert.strictEqual(detectCapitalUse(word), result);
     });
-  });
+  }
 });

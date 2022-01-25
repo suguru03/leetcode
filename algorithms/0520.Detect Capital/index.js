@@ -2,6 +2,10 @@
 
 module.exports = { detectCapitalUse };
 
+/**
+ * @param {string} word
+ * @return {boolean}
+ */
 function detectCapitalUse(word) {
   let count = 0;
   for (let i = 0; i < word.length; i++) {

@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { getAllElements } = require('./');
 const { makeTestTreeNodes } = require('../util');
@@ -27,9 +26,9 @@ describe('#getAllElements', () => {
   makeTestTreeNodes(tests, 'root1');
   makeTestTreeNodes(tests, 'root2');
 
-  _.forEach(tests, ({ root1, _root1, root2, _root2, result }) => {
+  for (const { root1, _root1, root2, _root2, result } of tests) {
     it(`${_root1}, ${_root2} -> ${result}`, () => {
       assert.deepStrictEqual(getAllElements(root1, root2), result);
     });
-  });
+  }
 });

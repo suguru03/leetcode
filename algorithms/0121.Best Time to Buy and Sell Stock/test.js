@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { maxProfit } = require('./');
 
 describe('#maxProfit', () => {
@@ -36,9 +36,9 @@ describe('#maxProfit', () => {
     },
   ];
 
-  _.forEach(tests, ({ prices, result }) => {
+  for (const { prices, result } of tests) {
     it(`${prices} -> ${result}`, () => {
       assert.strictEqual(maxProfit(prices), result);
     });
-  });
+  }
 });

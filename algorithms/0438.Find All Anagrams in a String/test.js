@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
 
 const { findAnagrams } = require('./');
 
@@ -34,9 +33,9 @@ describe('#findAnagrams', () => {
     },
   ];
 
-  _.forEach(tests, ({ s, p, result }) => {
+  for (const { s, p, result } of tests) {
     it(`${s}, ${p} -> ${result}`, () => {
       assert.deepStrictEqual(findAnagrams(s, p), result);
     });
-  });
+  }
 });

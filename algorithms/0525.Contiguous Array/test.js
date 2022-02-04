@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const _ = require('lodash');
+
 const { findMaxLength } = require('./');
 
 describe('#findMaxLength', () => {
@@ -141,9 +141,9 @@ describe('#findMaxLength', () => {
     },
   ];
 
-  _.forEach(tests, ({ nums, result }) => {
+  for (const { nums, result } of tests) {
     it(`${nums} -> ${result}`, () => {
       assert.deepStrictEqual(findMaxLength(nums), result);
     });
-  });
+  }
 });

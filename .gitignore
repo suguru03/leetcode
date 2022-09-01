@@ -13,3 +13,9 @@ contest
 
 /target
 **/*.rs.bk
+
+.DS_Store
+Folder*
+bin
+obj
+packages

@@ -19,18 +19,19 @@ const solutionMap = {
   cpp: 'solution.cpp',
   sql: 'query.sql',
   bash: 'solution.bash',
+  cs: 'Solution.cs',
 };
 
 export async function buildDoc() {
   const tasks = _.chain(fs.readdirSync(basepath))
-    .reject(dirname => re.test(dirname))
-    .map(dirname => {
+    .reject((dirname) => re.test(dirname))
+    .map((dirname) => {
       const [num, name] = dirname.split('.');
       const url = `${baseurl}${dirname.replace(/\s/g, '%20')}`;
       const filenames = fs.readdirSync(path.resolve(basepath, dirname));
       const map = _.transform(filenames, (result, name) => (result[name] = name), {});
       const filepathMap = _.chain(solutionMap)
-        .mapValues(name => map[name] && `${url}/${name}`)
+        .mapValues((name) => map[name] && `${url}/${name}`)
         .omitBy(_.isUndefined)
         .value();
       return !_.isEmpty(filepathMap) && Object.assign({ num, name, url }, filepathMap);

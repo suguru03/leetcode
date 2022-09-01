@@ -16,10 +16,12 @@ const base = 'https://leetcode.com';
 enum Language {
   JavaScript = 'js',
   Rust = 'rs',
+  Csharp = 'cs',
 }
 const langMap: Record<Language, string> = {
   [Language.JavaScript]: 'javascript',
   [Language.Rust]: 'rust',
+  [Language.Csharp]: 'csharp',
 };
 
 const schema = {
@@ -138,6 +140,9 @@ async function createProblem(page: any, stat: any, lang: Language) {
     case Language.Rust: {
       createRust(code, title, dirPath, relativeDirPath);
       break;
+    }
+    default: {
+      throw new Error(`${lang} is not implemented`);
     }
   }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { isValid };
+module.exports = { isValid, isValid2 };
 
 const map = {
   '(': ')',
@@ -25,5 +25,21 @@ function isValid(s) {
       return false;
     }
   }
+  return stack.length === 0;
+}
+
+function isValid2(s) {
+  const stack = [];
+  for (const c of s) {
+    if (map[c]) {
+      stack.push(map[c]);
+      continue;
+    }
+
+    if (c !== stack.pop()) {
+      return false;
+    }
+  }
+
   return stack.length === 0;
 }

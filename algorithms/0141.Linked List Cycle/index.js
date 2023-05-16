@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { hasCycle, hasCycle2, hasCycle3 };
+module.exports = { hasCycle, hasCycle2, hasCycle3, hasCycle4 };
 
 /**
  * Definition for singly-linked list.
@@ -60,4 +60,19 @@ function hasCycle3(head) {
     fast = fast.next.next;
   }
   return true;
+}
+
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+function hasCycle4(head) {
+  let slow = head;
+  let fast = head?.next;
+  while (fast != null && slow !== fast) {
+    slow = slow.next;
+    fast = fast.next?.next;
+  }
+
+  return slow === fast;
 }

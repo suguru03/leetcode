@@ -3,7 +3,7 @@
 const assert = require('assert');
 const _ = require('lodash');
 const { swapPairs } = require('./');
-const { makeTestLinkNodes } = require('../util');
+const { makeTestLinkNodes, ListNode } = require('../util');
 
 describe('#swapPairs', () => {
   const tests = [
@@ -26,7 +26,7 @@ describe('#swapPairs', () => {
 
   _.forEach(tests, ({ l, _l, result, _result }) => {
     it(`[${_l}] -> [${_result}]`, () => {
-      assert.deepEqual(swapPairs(l), result);
+      assert.deepStrictEqual(swapPairs(l), result);
     });
   });
 });

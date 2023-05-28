@@ -27,17 +27,29 @@ function sortedArrayToBST(nums) {
   return node;
 }
 
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
 function sortedArrayToBST2(nums) {
   return dfs(0, nums.length);
-
-  function dfs(start, end) {
-    if (start === end) {
+  function dfs(left, right) {
+    if (left >= right) {
       return null;
     }
-    const m = ((end + start) / 2) | 0;
-    const node = new TreeNode(nums[m]);
-    node.left = dfs(start, m);
-    node.right = dfs(m + 1, end);
+
+    const mid = (left + (right - left) / 2) | 0;
+    const node = new TreeNode(nums[mid]);
+    node.left = dfs(left, mid);
+    node.right = dfs(mid + 1, right);
     return node;
   }
 }

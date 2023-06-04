@@ -10,21 +10,22 @@ module.exports = { searchInsert, searchInsert2 };
  * @return {number}
  */
 function searchInsert(nums, target) {
-  let l = 0;
-  let r = nums.length - 1;
-  while (l <= r) {
-    const i = ((l + r) / 2) | 0;
-    const n = nums[i];
-    if (n === target) {
-      return i;
+  let left = 0;
+  let right = nums.length;
+  while (left < right) {
+    const mid = ((right - left) / 2 + left) | 0;
+    const num = nums[mid];
+    if (num === target) {
+      return mid;
     }
-    if (n > target) {
-      r = i - 1;
+    if (num < target) {
+      left = mid + 1;
     } else {
-      l = i + 1;
+      right = mid;
     }
   }
-  return l;
+
+  return left;
 }
 
 /**

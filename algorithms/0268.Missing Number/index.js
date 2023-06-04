@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { missingNumber, missingNumber2, missingNumber3 };
+module.exports = { missingNumber, missingNumber2, missingNumber3, missingNumber4 };
 
 /**
  * @param {number[]} nums
@@ -46,4 +46,24 @@ function missingNumber3(nums) {
     res -= n;
   }
   return res;
+}
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+function missingNumber4(nums) {
+  nums.push(nums.length + 1);
+  for (let i = 0; i < nums.length; i++) {
+    nums[i]++;
+  }
+  for (let i = 0; i < nums.length - 1; i++) {
+    nums[Math.abs(nums[i]) - 1] *= -1;
+  }
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > 0) {
+      return i;
+    }
+  }
+  return -1;
 }

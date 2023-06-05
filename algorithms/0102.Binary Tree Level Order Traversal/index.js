@@ -48,7 +48,7 @@ function levelOrder2(root) {
       return;
     }
     const { val, left, right } = node;
-    result[depth] = result[depth] || [];
+    result[depth] ||= [];
     result[depth++].push(val);
     dfs(left, depth);
     dfs(right, depth);

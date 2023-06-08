@@ -19,6 +19,10 @@ describe('#canMakeArithmeticProgression', () => {
       arr: [1, 1, 1],
       result: true,
     },
+    {
+      arr: [2, 10, 7, 8, 3],
+      result: false,
+    },
   ];
 
   _.forEach(tests, ({ arr, result }) => {

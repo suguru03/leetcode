@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { canMakeArithmeticProgression };
+module.exports = { canMakeArithmeticProgression, canMakeArithmeticProgression2 };
 
 /**
  * @param {number[]} arr
@@ -23,5 +23,29 @@ function canMakeArithmeticProgression(arr) {
     }
     [arr[i], arr[j]] = [arr[j], num];
   }
+  return true;
+}
+
+/**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+function canMakeArithmeticProgression2(arr) {
+  const min = Math.min(...arr);
+  const max = Math.max(...arr);
+  const diff = (max - min) / (arr.length - 1);
+  if (diff === 0) {
+    return true;
+  }
+
+  const taken = new Set();
+  for (const n of arr) {
+    const div = (n - min) / diff;
+    if (div % 1 !== 0 || taken.has(div)) {
+      return false;
+    }
+    taken.add(div);
+  }
+
   return true;
 }

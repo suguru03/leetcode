@@ -13,7 +13,7 @@ function groupAnagrams(strs) {
     for (const c of str) {
       chars[c.charCodeAt(0) - 97]++;
     }
-    const key = chars.join(',');
+    const key = chars.toString();
     group.set(key, group.get(key) ?? []);
     group.get(key).push(str);
   }

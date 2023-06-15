@@ -4,9 +4,9 @@ module.exports = { reverseList, reverseList2, reverseList3 };
 
 /**
  * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
  * }
  */
 /**
@@ -14,13 +14,11 @@ module.exports = { reverseList, reverseList2, reverseList3 };
  * @return {ListNode}
  */
 function reverseList(head) {
-  let node = null;
+  let prev = null;
   while (head) {
-    const { next } = head;
-    head.next = node;
-    [node, head] = [head, next];
+    [head.next, prev, head] = [prev, head, head.next];
   }
-  return node;
+  return prev;
 }
 
 /**

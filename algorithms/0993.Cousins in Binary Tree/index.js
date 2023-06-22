@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { isCousins, isCousins2, isCousins3, isCousins4 };
+module.exports = { isCousins, isCousins2, isCousins3, isCousins4, isCousins5 };
 
 /**
  * Definition for a binary tree node.
@@ -150,4 +150,44 @@ class Node {
     this.node = node;
     this.parent = parent;
   }
+}
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} x
+ * @param {number} y
+ * @return {boolean}
+ */
+function isCousins5(root, x, y) {
+  const queue = [[root, null]];
+  let found = null;
+  while (queue.length !== 0 && found === null) {
+    let count = queue.length;
+    while (--count >= 0) {
+      const [node, parent] = queue.shift();
+      if (!node) {
+        continue;
+      }
+      queue.push([node.left, node], [node.right, node]);
+      if (node.val !== x && node.val !== y) {
+        continue;
+      }
+
+      if (found != null) {
+        return found !== parent;
+      }
+
+      found = parent;
+    }
+  }
+
+  return false;
 }

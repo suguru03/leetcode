@@ -40,6 +40,19 @@ describe('#countCompleteComponents', () => {
       ],
       result: 1,
     },
+    {
+      n: 2,
+      edges: [[1, 0]],
+      result: 1,
+    },
+    {
+      n: 3,
+      edges: [
+        [1, 0],
+        [2, 1],
+      ],
+      result: 0,
+    },
   ];
 
   _.forEach(tests, ({ n, edges, result }) => {

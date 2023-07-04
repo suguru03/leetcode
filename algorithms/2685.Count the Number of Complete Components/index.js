@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { countCompleteComponents };
+module.exports = { countCompleteComponents, countCompleteComponents2 };
 
 /**
  * @param {number} n
@@ -45,4 +45,63 @@ function countCompleteComponents(n, edges) {
   }
 
   return count;
+}
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number}
+ */
+function countCompleteComponents2(n, edges) {
+  const map = new Map();
+  for (const pair of edges) {
+    for (const [i, x] of pair.entries()) {
+      const y = pair[(i + 1) % pair.length];
+      const set = map.get(x) ?? new Set();
+      set.add(x);
+      set.add(y);
+      map.set(x, set);
+    }
+  }
+
+  let count = 0;
+  const seen = new Set();
+  for (let x = 0; x < n; x++) {
+    if (seen.has(x)) {
+      continue;
+    }
+    if (!map.has(x)) {
+      count++;
+      continue;
+    }
+
+    const nums = map.get(x);
+    if (isComplete(x, nums, new Set())) {
+      count++;
+    }
+
+    for (const num of nums) {
+      seen.add(num);
+    }
+  }
+
+  return count;
+
+  function isComplete(cur, prev, memo) {
+    if (memo.has(cur)) {
+      return true;
+    }
+    memo.add(cur);
+    const next = map.get(cur);
+    if (prev.size !== next.size) {
+      return false;
+    }
+    for (const num of next) {
+      if (!prev.has(num) || !isComplete(num, next, memo)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }

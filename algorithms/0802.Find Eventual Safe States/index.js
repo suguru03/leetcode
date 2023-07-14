@@ -7,31 +7,23 @@ module.exports = { eventualSafeNodes };
  * @return {number[]}
  */
 function eventualSafeNodes(graph) {
-  const l = graph.length;
-  const safe = Array(l);
+  const checked = new Map();
   const result = [];
-  for (let i = 0; i < l; i++) {
-    walk(i, {});
+  for (let i = 0; i < graph.length; i++) {
+    if (checkSafe(i)) {
+      result.push(i);
+    }
   }
-  return result.sort((a, b) => a - b);
 
-  function walk(i, map) {
-    const s = safe[i];
-    if (s !== undefined) {
-      return s;
+  return result;
+
+  function checkSafe(node) {
+    if (checked.has(node)) {
+      return checked.get(node);
     }
-    if (map[i]) {
-      return false;
-    }
-    map[i] = true;
-    for (const j of graph[i]) {
-      const s = walk(j, map);
-      if (!s) {
-        return false;
-      }
-    }
-    safe[i] = true;
-    result.push(i);
-    return true;
+
+    checked.set(node, false);
+    checked.set(node, graph[node].every(checkSafe));
+    return checked.get(node);
   }
 }

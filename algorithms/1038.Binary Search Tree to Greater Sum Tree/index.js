@@ -4,9 +4,10 @@ module.exports = { bstToGst };
 
 /**
  * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val
- *     this.left = this.right = null
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
  * }
  */
 /**
@@ -14,18 +15,16 @@ module.exports = { bstToGst };
  * @return {TreeNode}
  */
 function bstToGst(root) {
-  let sum = 0;
+  let prev = 0;
   dfs(root);
   return root;
-
   function dfs(node) {
     if (!node) {
       return;
     }
-    const { left, right, val } = node;
-    dfs(right);
-    sum += val;
-    node.val = sum;
-    dfs(left);
+    dfs(node.right);
+    node.val += prev;
+    prev = node.val;
+    dfs(node.left);
   }
 }

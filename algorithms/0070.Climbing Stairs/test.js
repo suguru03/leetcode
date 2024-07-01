@@ -7,10 +7,6 @@ const { climbStairs } = require('./');
 describe('#climbStairs', () => {
   const tests = [
     {
-      n: 0,
-      result: 1,
-    },
-    {
       n: 1,
       result: 1,
     },

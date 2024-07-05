@@ -2,13 +2,6 @@
 
 module.exports = { orangesRotting };
 
-class Cell {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-}
-
 /**
  * @param {number[][]} grid
  * @return {number}
@@ -16,44 +9,45 @@ class Cell {
 function orangesRotting(grid) {
   let fresh = 0;
   const queue = [];
-  for (const [y, row] of grid.entries()) {
-    for (const [x, val] of row.entries()) {
-      switch (val) {
+  for (let y = 0; y < grid.length; y++) {
+    for (let x = 0; x < grid[y].length; x++) {
+      switch (grid[y][x]) {
         case 1: {
           fresh++;
           break;
         }
         case 2: {
-          grid[y][x] = 0;
-          queue.push(new Cell(x, y));
-          break;
+          queue.push({ x, y });
         }
       }
     }
   }
-  let elapse = 0;
-  const delta = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+
+  let elapsed = 0;
+  const delta = [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+  ];
   while (fresh > 0 && queue.length > 0) {
-    elapse++;
+    elapsed++;
     let size = queue.length;
     while (--size >= 0) {
-      const { x, y } = queue.shift();
+      const root = queue.shift();
       for (const [dx, dy] of delta) {
-        if (isFresh(x + dx, y + dy)) {
-          const next = new Cell(x + dx, y + dy);
-          fresh--;
-          grid[next.y][next.x] = 0;
-          queue.push(next);
+        let x = root.x + dx;
+        let y = root.y + dy;
+        if (y < 0 || y >= grid.length || x < 0 || x >= grid[y].length || grid[y][x] !== 1) {
+          continue;
         }
+
+        fresh--;
+        grid[y][x] = 2;
+        queue.push({ x, y });
       }
     }
   }
-  return fresh === 0 ? elapse : -1;
 
-  function isFresh(x, y) {
-    if (y < 0 || y >= grid.length || x < 0 || x >= grid[y].length) {
-      return false;
-    }
-    return grid[y][x] === 1;
-  }
+  return fresh === 0 ? elapsed : -1;
 }

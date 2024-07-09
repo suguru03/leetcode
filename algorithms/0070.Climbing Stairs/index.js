@@ -8,8 +8,9 @@ module.exports = { climbStairs, climbStairs2 };
  * @returns {number}
  */
 function climbStairs(n) {
-  let [prev, cur] = [0, 1];
-  while (n--) {
+  let prev = 0;
+  let cur = 1;
+  while (--n >= 0) {
     [prev, cur] = [cur, cur + prev];
   }
   return cur;

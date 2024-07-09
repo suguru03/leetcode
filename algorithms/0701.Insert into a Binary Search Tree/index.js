@@ -17,20 +17,18 @@ module.exports = { insertIntoBST, insertIntoBST2 };
  * @return {TreeNode}
  */
 function insertIntoBST(root, val) {
-  const target = new TreeNode(val);
+  const child = new TreeNode(val);
+  if (root === null) {
+    return child;
+  }
+
   let node = root;
-  while (node) {
+  while (node !== child) {
     if (val < node.val) {
-      if (!node.left) {
-        node.left = target;
-        break;
-      }
+      node.left ??= child;
       node = node.left;
     } else {
-      if (!node.right) {
-        node.right = target;
-        break;
-      }
+      node.right ??= child;
       node = node.right;
     }
   }

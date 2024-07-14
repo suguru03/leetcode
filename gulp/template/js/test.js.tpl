@@ -6,7 +6,7 @@ const { template } = require('./');
 
 describe('#template', () => {
 
-  const tests = [$1];
+  const tests = $1;
 
   for (const { $2 result } of tests) {
     it(`$3 -> ${result}`, () => {

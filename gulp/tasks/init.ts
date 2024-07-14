@@ -1,18 +1,19 @@
+import * as assert from 'node:assert';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { execSync } from 'node:child_process';
+
 import * as _ from 'lodash';
-import * as fs from 'fs';
-import * as path from 'path';
 import * as prettier from 'prettier';
 import * as prompt from 'prompt';
-import * as puppeteer from 'puppeteer';
 import Aigle from 'aigle';
 import axios from 'axios';
-import { execSync } from 'child_process';
 
 import * as config from '../../package.json';
 
 Aigle.promisifyAll(prompt);
 
-const base = 'https://leetcode.com';
+const baseUrl = 'https://leetcode.com';
 enum Language {
   JavaScript = 'js',
   Rust = 'rs',
@@ -37,78 +38,94 @@ const schema = {
     },
   },
 };
-
 export async function init() {
   prompt.start();
   const { num, language = Language.JavaScript } = await prompt.getAsync(schema);
 
-  const { data } = await axios(`${base}/api/problems/all/`);
+  const { data } = await axios(`${baseUrl}/api/problems/all/`);
   const item = _.find(data.stat_status_pairs, (item) => item.stat.frontend_question_id === num);
-  if (!item) {
-    throw new Error(`${num} is not found`);
-  }
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-
-  await setLanguage(page, language);
-
-  // load the problem page, it may need to adjust the timeout
-  await createProblem(page, item.stat, language);
-  await browser.close();
+  assert.ok(item, `${num} is not found`);
+  await createProblem(item.stat, language);
 }
 
-function assignDefault(map: any, { type, key }) {
+function tryAssignValue(map: any, value: any, { type, key }: { type: string; key: string }) {
   key = key || 'result';
   switch (type) {
     case 'number':
-      map[key] = 0;
+      value = Number(value);
+      map[key] = Number.isNaN(value) ? 0 : value;
       break;
     case 'string':
-      map[key] = '';
+      map[key] = value ?? '';
       break;
     case 'boolean':
-      map[key] = true;
+      map[key] = /true|false/i.test(value) ? /true/.test(value) : true;
       break;
     default:
-      if (/\[]$/.test(type)) {
-        map[key] = [];
-      } else {
-        map[key] = '';
+      try {
+        map[key] = JSON.parse(value);
+      } catch (e) {
+        console.log(`failed to parse value: ${value}`);
+        if (/\[]$/.test(type)) {
+          map[key] = [];
+        } else {
+          map[key] = '';
+        }
       }
       break;
   }
 }
 
-async function setLanguage(page: any, lang: Language) {
-  // set local storage
-  await page.goto(`${base}`);
-  await page.evaluate((language: string) => localStorage.setItem('global_lang', language), langMap[lang]);
+interface CodeSnippet {
+  lang: string;
+  langSlug: string;
+  code: string;
 }
 
-async function createProblem(page: any, stat: any, lang: Language) {
+interface Question {
+  content: string;
+  exampleTestcaseList: string[];
+  codeSnippets: CodeSnippet[];
+}
+
+async function getQuestionDetail(slug: string): Promise<Question> {
+  const query = `
+    query getQuestionDetail($titleSlug: String!) {
+      question(titleSlug: $titleSlug) {
+        content
+        exampleTestcaseList
+        codeSnippets {
+          lang
+          langSlug
+          code
+        }
+      }
+    }
+  `;
+
+  const variables = {
+    titleSlug: slug,
+  };
+  const response = await axios.post(
+    `${baseUrl}/graphql`,
+    { query, variables },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+
+  return response.data.data.question;
+}
+
+async function createProblem(stat: any, lang: Language) {
   const { frontend_question_id: qid, question__title: title, question__title_slug: slug } = stat;
   const id = `${qid}`.padStart(4, '0');
-  const url = `${base}/problems/${slug}`;
-  await page.goto(url);
   console.log(`Reading leetcode page... id: ${id}, title: ${title}, language: ${lang}`);
+  const question = await getQuestionDetail(slug);
 
-  // wait until page is loaded
-  let count = 0;
-  const iterator = () => {
-    if (++count > 5) {
-      throw new Error('class not found');
-    }
-    return page.evaluate(() => {
-      try {
-        return document.querySelector('*[data-cy=question-detail-main-tabs]').children[1].querySelector('div')
-          .children[1].textContent;
-      } catch (e) {
-        return '';
-      }
-    });
-  };
-  const tester = (text) => (text ? true : Aigle.delay(1000, false));
-  const text = await Aigle.doUntil(iterator, tester);
+  console.log('_(:3」∠)_________________', question);
   const dirname = `${id}.${title}`;
   const relativeDirPath = path.join('algorithms', dirname);
   const dirPath = path.resolve(__dirname, '../..', relativeDirPath);
@@ -117,24 +134,21 @@ async function createProblem(page: any, stat: any, lang: Language) {
   }
 
   // create README
-  const readme = `## ${id}. ${title}\n\n${url}\n\n${text}`;
-  const regex = / /g;
+  const url = `${baseUrl}/problems/${slug}/`;
+  const readme = `## ${id}. ${title}\n\n${url}\n\n${question.content}`;
   const readmePath = path.resolve(dirPath, 'README.md');
   if (!fs.existsSync(readmePath)) {
-    fs.writeFileSync(readmePath, readme.replace(regex, ''));
+    fs.writeFileSync(readmePath, readme);
   }
 
   // get description
-  let code = await page.evaluate(() => {
-    const dom = document.querySelectorAll('.CodeMirror-line');
-    return Array.from(dom, (element) => element.textContent).join('\n');
-  });
-  code = code.replace(regex, '');
+  const code = question.codeSnippets.find((snippet) => snippet.langSlug === langMap[lang])?.code;
+  assert.ok(code, `${lang} not found`);
 
   console.log(`Creating files... language: ${lang}`);
   switch (lang) {
     case Language.JavaScript: {
-      createJavaScript(code, dirPath);
+      createJavaScript(code, question.exampleTestcaseList, dirPath);
       break;
     }
     case Language.Rust: {
@@ -147,7 +161,7 @@ async function createProblem(page: any, stat: any, lang: Language) {
   }
 }
 
-function createJavaScript(code: string, dirPath: string) {
+function createJavaScript(code: string, exampleTestcaseList: Question['exampleTestcaseList'], dirPath: string) {
   const funcRe = /var (.+) = function/;
   const funcName = code.match(funcRe)[1];
   code = code.replace(funcRe, 'function $1').replace(/[;%]/g, '');
@@ -166,7 +180,7 @@ function createJavaScript(code: string, dirPath: string) {
   const tplTestPath = path.resolve(__dirname, '../template/js/test.js.tpl');
   let testFile = fs.readFileSync(tplTestPath, 'utf8').replace(/template/g, funcName);
   try {
-    const info = _.chain(code)
+    const jsdocInfo = _.chain(code)
       .split(/\n/g)
       .map((line) => {
         const [, info, type, key] = line.match(/@(param|return) {(.+)} ?(.*)/) || [];
@@ -174,11 +188,16 @@ function createJavaScript(code: string, dirPath: string) {
       })
       .filter()
       .value();
-    const testExample = _.transform(info, (map, info) => assignDefault(map, info), {});
-    const keys = Object.keys(_.omit(testExample, 'result'));
+    const testExamples = exampleTestcaseList.map((text) => {
+      const list = text.split('\n');
+      return _.transform(jsdocInfo, (map, info, i) => tryAssignValue(map, list[i], info), {});
+    });
+
+    assert.ok(testExamples.length > 0);
+    const keys = jsdocInfo.map((info) => info.key).filter((key) => key);
     const argStr = keys.join(', ');
     testFile = testFile
-      .replace(/\$1/, JSON.stringify(testExample, null, 2))
+      .replace(/\$1/, JSON.stringify(testExamples, null, 2))
       .replace(/\$2/, argStr ? `${argStr},` : '')
       .replace(/\$3/, keys.map((key) => `$\{${key}}`).join(', '))
       .replace(/\$4/, argStr);
@@ -187,6 +206,7 @@ function createJavaScript(code: string, dirPath: string) {
     console.log('You need to make test cases');
   }
   const testpath = path.resolve(dirPath, 'test.js');
+  console.log(testFile);
   fs.writeFileSync(testpath, testFile);
 }
 

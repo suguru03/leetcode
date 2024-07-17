@@ -1,6 +1,8 @@
 'use strict';
 
-module.exports = { leastInterval };
+const { MaxPriorityQueue } = require('@datastructures-js/priority-queue');
+
+module.exports = { leastInterval, leastInterval2 };
 
 /**
  * @param {character[]} tasks
@@ -40,10 +42,47 @@ function leastInterval(tasks, n) {
   return count;
 }
 
+/**
+ * @param {character[]} tasks
+ * @param {number} n
+ * @return {number}
+ */
+function leastInterval2(tasks, n) {
+  const map = new Map();
+  for (const c of tasks) {
+    map.set(c, ~~map.get(c) + 1);
+  }
+
+  const pq = new MaxPriorityQueue();
+  for (const count of map.values()) {
+    pq.enqueue(count);
+  }
+  let result = 0;
+  while (!pq.isEmpty()) {
+    const next = [];
+    let cur = n;
+    do {
+      result++;
+      const count = pq.dequeue().element - 1;
+      if (count === 0) {
+        continue;
+      }
+      next.push(count);
+    } while (!pq.isEmpty() && --cur >= 0);
+    if (cur > 0 && next.length !== 0) {
+      result += cur;
+    }
+    for (const n of next) {
+      pq.enqueue(n);
+    }
+  }
+  return result;
+}
+
 const top = 0;
-const parent = i => ((i + 1) >>> 1) - 1;
-const left = i => (i << 1) + 1;
-const right = i => (i + 1) << 1;
+const parent = (i) => ((i + 1) >>> 1) - 1;
+const left = (i) => (i << 1) + 1;
+const right = (i) => (i + 1) << 1;
 
 /**
  * @see https://stackoverflow.com/questions/42919469/efficient-way-to-implement-priority-queue-in-javascript/42919752

@@ -11,6 +11,9 @@
     "benchmark": "ts-node benchmark",
     "lint-staged": "lint-staged"
   },
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^5.4.0"
+  },
   "devDependencies": {
     "@types/gulp": "^4.0.8",
     "@types/lodash": "^4.17.6",

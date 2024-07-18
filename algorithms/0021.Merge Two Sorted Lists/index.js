@@ -17,19 +17,19 @@ const { ListNode } = require('../util');
  * @return {ListNode}
  */
 function mergeTwoLists(l1, l2) {
-  const head = { next: null };
-  let h = head;
-  while (l1 && l2) {
+  const head = new ListNode(0);
+  let node = head;
+  while (l1 !== null && l2 !== null) {
     if (l1.val <= l2.val) {
-      h.next = l1;
+      node.next = l1;
       l1 = l1.next;
     } else {
-      h.next = l2;
+      node.next = l2;
       l2 = l2.next;
     }
-    h = h.next;
+    node = node.next;
   }
-  h.next = l1 ? l1 : l2;
+  node.next = l1 !== null ? l1 : l2;
   return head.next;
 }
 

@@ -125,7 +125,6 @@ async function createProblem(stat: any, lang: Language) {
   console.log(`Reading leetcode page... id: ${id}, title: ${title}, language: ${lang}`);
   const question = await getQuestionDetail(slug);
 
-  console.log('_(:3」∠)_________________', question);
   const dirname = `${id}.${title}`;
   const relativeDirPath = path.join('algorithms', dirname);
   const dirPath = path.resolve(__dirname, '../..', relativeDirPath);

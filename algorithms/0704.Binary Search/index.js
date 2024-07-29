@@ -8,18 +8,18 @@ module.exports = { search };
  * @return {number}
  */
 function search(nums, target) {
-  let l = 0;
-  let r = nums.length;
-  while (l < r) {
-    const m = (l + (r - l) / 2) | 0;
-    const n = nums[m];
-    if (n === target) {
-      return m;
+  let left = 0;
+  let right = nums.length;
+  while (left < right) {
+    const mid = ((right - left) / 2 + left) | 0;
+    const val = nums[mid];
+    if (val === target) {
+      return mid;
     }
-    if (n < target) {
-      l = m + 1;
+    if (val > target) {
+      right = mid;
     } else {
-      r = m;
+      left = mid + 1;
     }
   }
   return -1;

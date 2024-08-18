@@ -1,53 +1,105 @@
 'use strict';
 
-module.exports = { pacificAtlantic };
+module.exports = { pacificAtlantic, pacificAtlantic2 };
 
-const delta = [
-  [-1, 0],
-  [1, 0],
-  [0, -1],
-  [0, 1],
-];
+const Mark = {
+  Pacific: 1 << 0,
+  Atlantic: 1 << 1,
+};
 
 /**
- * @param {number[][]} matrix
+ * @param {number[][]} heights
  * @return {number[][]}
  */
-function pacificAtlantic(matrix) {
-  const n = matrix.length;
-  const m = matrix[n - 1]?.length;
-  if (!n || !m) {
-    return [];
-  }
+function pacificAtlantic(heights) {
+  const target = Mark.Pacific | Mark.Atlantic;
   const result = [];
-  const marked = Array.from(matrix, (row) => Array(row.length).fill(0));
-  for (let x = 0; x < m; x++) {
-    dfs(-Infinity, x, 0, 1);
+  const h = heights.length;
+  const w = heights[0].length;
+  const marks = Array.from(heights, (row) => Array(row.length).fill(0));
+  for (let c = 0; c < w; c++) {
+    track(c, 0, 0, Mark.Pacific);
+    track(c, h - 1, 0, Mark.Atlantic);
   }
-  for (let y = 0; y < n; y++) {
-    dfs(-Infinity, 0, y, 1);
+  for (let r = 0; r < h; r++) {
+    track(0, r, 0, Mark.Pacific);
+    track(w - 1, r, 0, Mark.Atlantic);
   }
-  for (let x = 0; x < m; x++) {
-    dfs(-Infinity, x, n - 1, -1);
+
+  return result;
+
+  function track(c, r, prev, mark) {
+    if (r < 0 || r >= h || c < 0 || c >= w) {
+      return;
+    }
+
+    if (heights[r][c] < prev) {
+      return;
+    }
+
+    if ((marks[r][c] & mark) === mark) {
+      return;
+    }
+
+    marks[r][c] |= mark;
+    if (marks[r][c] === target) {
+      result.push([r, c]);
+    }
+
+    prev = heights[r][c];
+    track(c - 1, r, prev, mark);
+    track(c, r - 1, prev, mark);
+    track(c + 1, r, prev, mark);
+    track(c, r + 1, prev, mark);
   }
-  for (let y = 0; y < n; y++) {
-    dfs(-Infinity, m - 1, y, -1);
+}
+
+/**
+ * @param {number[][]} heights
+ * @return {number[][]}
+ */
+function pacificAtlantic2(heights) {
+  const result = [];
+  const seen = new Set();
+  let pacific = false;
+  let atlantic = false;
+  for (let r = 0; r < heights.length; r++) {
+    for (let c = 0; c < heights[r].length; c++) {
+      seen.clear();
+      pacific = false;
+      atlantic = false;
+      track(c, r, Infinity);
+      if (pacific && atlantic) {
+        result.push([r, c]);
+      }
+    }
   }
   return result;
 
-  function dfs(prev, x, y, mark) {
-    if (x < 0 || x >= m || y < 0 || y >= n || matrix[y][x] < prev) {
+  function track(r, c, prev) {
+    if (c < 0 || c >= heights.length || r < 0 || r >= heights[c].length) {
       return;
     }
-    if (marked[y][x] === mark) {
+
+    if (heights[c][r] > prev) {
       return;
     }
-    if (marked[y][x] === -mark) {
-      result.push([y, x]);
+
+    const key = `${r}:${c}`;
+    if (seen.has(key)) {
+      return;
     }
-    marked[y][x] = mark;
-    for (const [dx, dy] of delta) {
-      dfs(matrix[y][x], x + dx, y + dy, mark);
+    seen.add(key);
+
+    pacific ||= r === 0 || c === 0;
+    atlantic ||= r === heights[c].length - 1 || c === heights.length - 1;
+    if (pacific && atlantic) {
+      return;
     }
+    prev = heights[c][r];
+    track(r - 1, c, prev);
+    track(r, c - 1, prev);
+    track(r + 1, c, prev);
+    track(r, c + 1, prev);
   }
 }
